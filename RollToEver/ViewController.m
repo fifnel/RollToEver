@@ -7,8 +7,15 @@
 //
 
 #import "ViewController.h"
+#import <AssetsLibrary/ALAssetsLibrary.h>
+#import <AssetsLibrary/ALAsset.h>
+#import <AssetsLibrary/ALAssetsGroup.h>
+#import <AssetsLibrary/ALAssetsFilter.h>
 
 @implementation ViewController
+@synthesize UploadProgress;
+@synthesize ProgressText;
+@synthesize numOfPhotos;
 
 - (void)didReceiveMemoryWarning
 {
@@ -22,13 +29,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    rollToEver_ = [[RollToEver alloc]init];
+    rollToEver_.delegate = self;
 }
 
 - (void)viewDidUnload
 {
+    [self setUploadProgress:nil];
+    [ProgressText release];
+    ProgressText = nil;
+    [self setProgressText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    [rollToEver_ release];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,4 +73,33 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)start:(id)sender {
+    [rollToEver_ startUpload];
+}
+
+- (void)RollToEverStartUpload:(NSInteger)num {
+    numOfPhotos = num;
+    UploadProgress.progress = 0.0;
+    [ProgressText setText:@"start"];
+}
+
+- (void)RollToEverFinishUpload:(ALAsset *)assert index:(NSInteger)index {
+    if (numOfPhotos > 0) {
+        UploadProgress.progress = (float)(index+1) / (float)numOfPhotos;
+    } else {
+        UploadProgress.progress = 1.0;
+    }
+    [ProgressText setText:[NSString stringWithFormat:@"index:%d", index]];
+}
+
+- (void)RollToEverFinishAllUpload {
+    [ProgressText setText:@"finish"];
+}
+
+- (void)dealloc {
+    [UploadProgress release];
+    [ProgressText release];
+    [ProgressText release];
+    [super dealloc];
+}
 @end

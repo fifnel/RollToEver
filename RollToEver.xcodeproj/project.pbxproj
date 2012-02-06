@@ -20,6 +20,8 @@
 		C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B12B14DF79D400F4169E /* InfoPlist.strings */; };
 		C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B12F14DF79D400F4169E /* RollToEverTests.m */; };
+		C039B14414DF7CD400F4169E /* RollToEver.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B14314DF7CD400F4169E /* RollToEver.m */; };
+		C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +39,24 @@
 		C039B10414DF79D300F4169E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C039B10614DF79D300F4169E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C039B10814DF79D300F4169E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C039B10C14DF79D300F4169E /* RollToEver-Info.plist */ = {isa = PBXFileReference; path = "RollToEver-Info.plist"; sourceTree = "<group>"; };
+		C039B10C14DF79D300F4169E /* RollToEver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEver-Info.plist"; sourceTree = "<group>"; };
 		C039B10E14DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C039B11014DF79D300F4169E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C039B11214DF79D300F4169E /* RollToEver-Prefix.pch */ = {isa = PBXFileReference; path = "RollToEver-Prefix.pch"; sourceTree = "<group>"; };
-		C039B11314DF79D300F4169E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		C039B11214DF79D300F4169E /* RollToEver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEver-Prefix.pch"; sourceTree = "<group>"; };
+		C039B11314DF79D300F4169E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C039B11414DF79D300F4169E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C039B11714DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C039B11914DF79D300F4169E /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		C039B11914DF79D300F4169E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C039B11A14DF79D300F4169E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C039B12114DF79D400F4169E /* RollToEverTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollToEverTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C039B12214DF79D400F4169E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		C039B12A14DF79D400F4169E /* RollToEverTests-Info.plist */ = {isa = PBXFileReference; path = "RollToEverTests-Info.plist"; sourceTree = "<group>"; };
+		C039B12A14DF79D400F4169E /* RollToEverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverTests-Info.plist"; sourceTree = "<group>"; };
 		C039B12C14DF79D400F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C039B12E14DF79D400F4169E /* RollToEverTests.h */ = {isa = PBXFileReference; path = RollToEverTests.h; sourceTree = "<group>"; };
+		C039B12E14DF79D400F4169E /* RollToEverTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RollToEverTests.h; sourceTree = "<group>"; };
 		C039B12F14DF79D400F4169E /* RollToEverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RollToEverTests.m; sourceTree = "<group>"; };
+		C039B14214DF7CD400F4169E /* RollToEver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollToEver.h; sourceTree = "<group>"; };
+		C039B14314DF7CD400F4169E /* RollToEver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollToEver.m; sourceTree = "<group>"; };
+		C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */,
 				C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */,
 				C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */,
 				C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +106,7 @@
 		C039B10314DF79D300F4169E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */,
 				C039B10414DF79D300F4169E /* UIKit.framework */,
 				C039B10614DF79D300F4169E /* Foundation.framework */,
 				C039B10814DF79D300F4169E /* CoreGraphics.framework */,
@@ -117,6 +124,8 @@
 				C039B11914DF79D300F4169E /* ViewController.h */,
 				C039B11A14DF79D300F4169E /* ViewController.m */,
 				C039B10B14DF79D300F4169E /* Supporting Files */,
+				C039B14214DF7CD400F4169E /* RollToEver.h */,
+				C039B14314DF7CD400F4169E /* RollToEver.m */,
 			);
 			path = RollToEver;
 			sourceTree = "<group>";
@@ -261,6 +270,7 @@
 				C039B11114DF79D300F4169E /* main.m in Sources */,
 				C039B11514DF79D300F4169E /* AppDelegate.m in Sources */,
 				C039B11B14DF79D300F4169E /* ViewController.m in Sources */,
+				C039B14414DF7CD400F4169E /* RollToEver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

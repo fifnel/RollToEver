@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RollToEver.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    RollToEver *rollToEver_;
+    
+@private
+    NSInteger numOfPhotos_;
+}
+
+- (IBAction)start:(id)sender;
+@property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
+@property (retain, nonatomic) IBOutlet UILabel *ProgressText;
+@property (assign) NSInteger numOfPhotos;
 
 @end
