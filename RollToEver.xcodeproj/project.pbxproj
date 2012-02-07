@@ -116,6 +116,7 @@
 		C039B17314E020DF00F4169E /* NSDataMD5Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataMD5Additions.m; path = RollToEver/Evernote/NSDataMD5Additions.m; sourceTree = "<group>"; };
 		C039B17414E020DF00F4169E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "RollToEver/Evernote/NSString+MD5.h"; sourceTree = "<group>"; };
 		C039B17514E020DF00F4169E /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "RollToEver/Evernote/NSString+MD5.m"; sourceTree = "<group>"; };
+		C039B18D14E15C2E00F4169E /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +234,7 @@
 				C039B17314E020DF00F4169E /* NSDataMD5Additions.m */,
 				C039B17414E020DF00F4169E /* NSString+MD5.h */,
 				C039B17514E020DF00F4169E /* NSString+MD5.m */,
+				C039B18D14E15C2E00F4169E /* id.h */,
 			);
 			name = Evernote;
 			sourceTree = "<group>";

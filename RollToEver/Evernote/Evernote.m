@@ -13,20 +13,19 @@
 
 #import "Evernote.h"
 
+#import "id.h"
+/*
+ id.hでは以下の文字列の定義をしています。
+ パスワード類をgitにcommitさせないための対処です。
+ id.hは無視設定にしてください。
+ 
+ NSString * const consumerKey  = @"consumerKey";
+ NSString * const consumerSecret = @"consumerSecret";
+ 
+ NSString * const username = @"username";
+ NSString * const password = @"password";  
+*/
 
-// NOTE: You must change the consumer key and consumer secret to the
-// key and secret that you received from Evernote. If you do not have
-// an API key, visit http://www.evernote.com/about/developer/api/ to
-// get one.
-NSString * const consumerKey  = @"ほげ";
-NSString * const consumerSecret = @"ほげ";
-
-// NOTE: You must change the username and password to the username and
-// password of an account that you have created on the appropriate
-// Evernote service. If you are testing against the sandbox service,
-// you must create an account by visiting
-NSString * const username = @"ひょー";
-NSString * const password = @"ひょー";  
 
 NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
 NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
