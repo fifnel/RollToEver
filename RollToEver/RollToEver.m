@@ -232,24 +232,30 @@
  アップロード開始（メインスレッドから呼ばれる）
  */
 - (void)RollToEverStartUploadOnMainThread:(NSDictionary *)params {
-    NSNumber *num = [params objectForKey:@"num"];
-    [delegate_ RollToEverStartUpload:[num integerValue]];
+    if ([delegate_ respondsToSelector:@selector(RollToEverStartUpload:)]) {
+        NSNumber *num = [params objectForKey:@"num"];
+        [delegate_ RollToEverStartUpload:[num integerValue]];
+    }
 }
 
 /**
  1枚の画像アップロード完了（メインスレッドから呼ばれる）
  */
 - (void)RollToEverFinishUploadOnMainThread:(NSDictionary *)params {
-    ALAsset *asset = [params objectForKey:@"asset"];
-    NSNumber *index = [params objectForKey:@"index"];
-    [delegate_ RollToEverFinishUpload:asset index:[index integerValue]];
+    if ([delegate_ respondsToSelector:@selector(RollToEverFinishUpload:index:)]) {
+        ALAsset *asset = [params objectForKey:@"asset"];
+        NSNumber *index = [params objectForKey:@"index"];
+        [delegate_ RollToEverFinishUpload:asset index:[index integerValue]];
+    }
 }
 
 /**
  全部の画像アップロード完了（メインスレッドから呼ばれる）
  */
 - (void)RollToEverFinishAllUploadOnMainThread:(NSDictionary *)params {
-    [delegate_ RollToEverFinishAllUpload];
+    if ([delegate_ respondsToSelector:@selector(RollToEverFinishAllUpload)]) {
+        [delegate_ RollToEverFinishAllUpload];
+    }
 }
 
 @end
