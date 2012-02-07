@@ -68,6 +68,9 @@
     [self performSelectorInBackground:@selector(startUploadAsync) withObject:nil];
 }
 
+/**
+ スレッド動作用のアップロード開始処理
+ */
 - (void)startUploadAsync {
     NSString *dateStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"LastUpload"];
     if (dateStr == nil) {
