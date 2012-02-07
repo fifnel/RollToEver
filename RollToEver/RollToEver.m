@@ -32,6 +32,7 @@
 @synthesize assetsLibrary = assetsLibrary_;
 @synthesize lastUploadDate = lastUploadDate_;
 @synthesize dateFormatter = dateFormatter_;
+@synthesize evernoteTitleDateFormatter = evernoteTitleDateFormatter_;
 
 /**
  初期化処理
@@ -43,6 +44,9 @@
         
         dateFormatter_ = [[NSDateFormatter alloc] init];
         [dateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
+        
+        evernoteTitleDateFormatter_ = [[NSDateFormatter alloc] init];
+        [evernoteTitleDateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         
         lastUploadDate_ = nil;
     }
@@ -180,10 +184,7 @@
     }
 
     EDAMNote *note = [[[EDAMNote alloc] init] autorelease];
-    
-    // Setting initial values sent by the user
-    // TODO 日付をタイトルにしたい
-    note.title = filename;
+    note.title = [evernoteTitleDateFormatter_ stringFromDate:date];
     // TODO アップロード先のノートブックは設定から読み込みたい
 //    note.notebookGuid = [indexArray objectAtIndex:[notebookPicker selectedRowInComponent:0]];  
     
@@ -215,6 +216,7 @@
     // Adding the content & resources to the note
     [note setContent:ENML];
     [note setResources:resources];
+    [note setCreated:[date timeIntervalSince1970]*1000];
     
     // Saving the note on the Evernote servers
     // Simple error management

@@ -19,12 +19,14 @@
     ALAssetsLibrary *assetsLibrary_;
     NSDate *lastUploadDate_;
     NSDateFormatter *dateFormatter_;
+    NSDateFormatter *evernoteTitleDateFormatter_;
 }
 
 @property (assign) id delegate;
 @property (retain) ALAssetsLibrary *assetsLibrary;
 @property (retain) NSDate *lastUploadDate;
 @property (retain) NSDateFormatter *dateFormatter;
+@property (retain) NSDateFormatter *evernoteTitleDateFormatter;
 
 - (void)startUpload;
 
