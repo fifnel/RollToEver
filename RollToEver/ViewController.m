@@ -13,6 +13,7 @@
 #import <AssetsLibrary/ALAssetsFilter.h>
 
 @implementation ViewController
+
 @synthesize UploadProgress;
 @synthesize ProgressText;
 @synthesize numOfPhotos;

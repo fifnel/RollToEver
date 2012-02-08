@@ -21,6 +21,9 @@
 - (NSString *)evernotePassword;
 - (void)setEvernotePassword:(NSString *)evernotePassword;
 
+- (NSString *)evernoteNotebookName;
+- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName;
+
 - (NSString *)evernoteNotebookGUID;
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID;
 
@@ -93,6 +96,15 @@ static NSString *EVERNOTE_PASSWORD = @"EvernotePassword";
 
 - (void)setEvernotePassword:(NSString *)evernotePassword {
     [[NSUserDefaults standardUserDefaults] setValue:evernotePassword forKey:EVERNOTE_PASSWORD];
+}
+
+static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
+- (NSString *)evernoteNotebookName {
+    return [[NSUserDefaults standardUserDefaults] stringForKey:EVERNOTE_NOTEBOOK_NAME];
+}
+
+- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName {
+    [[NSUserDefaults standardUserDefaults] setValue:evernoteNotebookName forKey:EVERNOTE_NOTEBOOK_NAME];
 }
 
 static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";

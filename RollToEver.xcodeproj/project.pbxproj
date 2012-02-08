@@ -43,6 +43,7 @@
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0C23B1F14E2719000507D08 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1E14E2719000507D08 /* UserSettings.m */; };
+		C0C23B2414E27B4300507D08 /* NotebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B2314E27B4300507D08 /* NotebookTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,8 @@
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0C23B1D14E2719000507D08 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		C0C23B1E14E2719000507D08 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		C0C23B2214E27B4300507D08 /* NotebookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookTableViewController.h; sourceTree = "<group>"; };
+		C0C23B2314E27B4300507D08 /* NotebookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 				C039B11A14DF79D300F4169E /* ViewController.m */,
 				C094D85A14E19B0800E30669 /* SettingsTableViewController.h */,
 				C094D85B14E19B0800E30669 /* SettingsTableViewController.m */,
+				C0C23B2214E27B4300507D08 /* NotebookTableViewController.h */,
+				C0C23B2314E27B4300507D08 /* NotebookTableViewController.m */,
 				C039B14214DF7CD400F4169E /* RollToEver.h */,
 				C039B14314DF7CD400F4169E /* RollToEver.m */,
 				C0C23B1D14E2719000507D08 /* UserSettings.h */,
@@ -458,6 +463,7 @@
 				C039B18714E020DF00F4169E /* NSString+MD5.m in Sources */,
 				C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */,
 				C0C23B1F14E2719000507D08 /* UserSettings.m in Sources */,
+				C0C23B2414E27B4300507D08 /* NotebookTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RollToEver.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController
+{
     RollToEver *rollToEver_;
     
 @private

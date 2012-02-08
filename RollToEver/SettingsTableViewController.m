@@ -8,8 +8,9 @@
 
 #import "SettingsTableViewController.h"
 
-
 @implementation SettingsTableViewController
+
+@synthesize notebookName = notebookName_;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,6 +44,8 @@
 
 - (void)viewDidUnload
 {
+    [notebookNameCell_ release];
+    notebookNameCell_ = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -51,6 +54,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (notebookName_) {
+        [[notebookNameCell_ textLabel] setText:notebookName_];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -92,5 +99,9 @@
 
 - (IBAction)returnMainPage:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+}
+- (void)dealloc {
+    [notebookNameCell_ release];
+    [super dealloc];
 }
 @end

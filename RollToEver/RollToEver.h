@@ -12,7 +12,8 @@
 /**
  カメラロールからEvernoteへアップロードするクラス
  */
-@interface RollToEver : NSObject {
+@interface RollToEver : NSObject
+{
 
 @private
     id delegate_;

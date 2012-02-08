@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
+{
+    NSString *notebookName_;
+    
+@private
+    IBOutlet UITableViewCell *notebookNameCell_;
+}
 - (IBAction)returnMainPage:(id)sender;
+
+@property (retain) NSString *notebookName;
 
 @end

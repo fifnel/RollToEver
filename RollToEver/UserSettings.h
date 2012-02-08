@@ -14,6 +14,7 @@
 
 @property (assign) NSString *evernoteUserId;
 @property (assign) NSString *evernotePassword;
+@property (assign) NSString *evernoteNotebookName;
 @property (assign) NSString *evernoteNotebookGUID;
 @property (assign) NSString *lastPhotoDate;
 
