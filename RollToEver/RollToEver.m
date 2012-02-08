@@ -15,6 +15,7 @@
 #import "Evernote.h"
 #import "NSString+MD5.h"
 #import "NSDataMD5Additions.h"
+#import "UserSettings.h"
 
 @interface RollToEver()
 - (void)startUploadAsync;
@@ -76,7 +77,7 @@
  スレッド動作用のアップロード開始処理
  */
 - (void)startUploadAsync {
-    NSString *dateStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"LastUpload"];
+    NSString *dateStr = [UserSettings sharedInstance].lastPhotoDate;
     if (dateStr == nil) {
         lastUploadDate_ = nil;
     } else {
@@ -163,7 +164,7 @@
     // 最終アップロード日時の更新
     lastUploadDate_ = photoDate;
     NSString *dateStr = [dateFormatter_ stringFromDate:lastUploadDate_];
-    [[NSUserDefaults standardUserDefaults] setValue:dateStr forKey:@"LastUpload"];
+    [UserSettings sharedInstance].lastPhotoDate = dateStr;
     
     NSNumber *indexNumber = [[[NSNumber alloc] initWithInteger:index] autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:

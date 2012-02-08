@@ -26,7 +26,8 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in RollToEverTests");
+    
+//    STFail(@"Unit tests are not implemented yet in RollToEverTests");
 }
 
 @end
