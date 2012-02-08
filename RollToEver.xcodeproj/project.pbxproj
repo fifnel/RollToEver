@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C02269D914E2C44F00C27758 /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02269D814E2C44F00C27758 /* AccountSettingViewController.m */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C02269D714E2C44F00C27758 /* AccountSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingViewController.h; sourceTree = "<group>"; };
+		C02269D814E2C44F00C27758 /* AccountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingViewController.m; sourceTree = "<group>"; };
 		C039B10014DF79D300F4169E /* RollToEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C039B10414DF79D300F4169E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C039B10614DF79D300F4169E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,6 +200,8 @@
 				C039B11A14DF79D300F4169E /* ViewController.m */,
 				C094D85A14E19B0800E30669 /* SettingsTableViewController.h */,
 				C094D85B14E19B0800E30669 /* SettingsTableViewController.m */,
+				C02269D714E2C44F00C27758 /* AccountSettingViewController.h */,
+				C02269D814E2C44F00C27758 /* AccountSettingViewController.m */,
 				C0C23B2214E27B4300507D08 /* NotebookTableViewController.h */,
 				C0C23B2314E27B4300507D08 /* NotebookTableViewController.m */,
 				C039B14214DF7CD400F4169E /* RollToEver.h */,
@@ -464,6 +469,7 @@
 				C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */,
 				C0C23B1F14E2719000507D08 /* UserSettings.m in Sources */,
 				C0C23B2414E27B4300507D08 /* NotebookTableViewController.m in Sources */,
+				C02269D914E2C44F00C27758 /* AccountSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
