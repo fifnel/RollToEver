@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C02269D914E2C44F00C27758 /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02269D814E2C44F00C27758 /* AccountSettingViewController.m */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C00C791014E4B95B00A68DCC /* AssetURLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetURLStorage.h; sourceTree = "<group>"; };
+		C00C791114E4B95B00A68DCC /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetURLStorage.m; sourceTree = "<group>"; };
 		C02269D714E2C44F00C27758 /* AccountSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingViewController.h; sourceTree = "<group>"; };
 		C02269D814E2C44F00C27758 /* AccountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingViewController.m; sourceTree = "<group>"; };
 		C039B10014DF79D300F4169E /* RollToEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +222,8 @@
 				C039B14314DF7CD400F4169E /* RollToEver.m */,
 				C0C23B1D14E2719000507D08 /* UserSettings.h */,
 				C0C23B1E14E2719000507D08 /* UserSettings.m */,
+				C00C791014E4B95B00A68DCC /* AssetURLStorage.h */,
+				C00C791114E4B95B00A68DCC /* AssetURLStorage.m */,
 				C039B11614DF79D300F4169E /* MainStoryboard.storyboard */,
 				C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */,
 				C039B10B14DF79D300F4169E /* Supporting Files */,
@@ -485,6 +490,7 @@
 				C0C23B2414E27B4300507D08 /* NotebookTableViewController.m in Sources */,
 				C02269D914E2C44F00C27758 /* AccountSettingViewController.m in Sources */,
 				C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */,
+				C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

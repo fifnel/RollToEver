@@ -10,6 +10,7 @@
 
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "AssetURLStorage.h"
 
 @implementation CoreDataTest
 
@@ -17,6 +18,24 @@
 - (void)testMath
 {
     STAssertTrue((1 + 1) == 2, @"Compiler isn't feeling well today :-(");
+}
+
+- (void) testAssetURLStorage
+{
+    AssetURLStorage *storage = [[[AssetURLStorage alloc] init] retain];
+    NSString *url = @"urltest";
+    
+    BOOL exist;
+    exist = [storage isExistURL:url];
+    NSLog(@"prev:%d",exist);
+
+    [storage insertURL:url];
+    exist = [storage isExistURL:url];
+    NSLog(@"insert:%d",exist);
+
+    [storage deleteURL:url];
+    exist = [storage isExistURL:url];
+    NSLog(@"delete:%d",exist);
 }
 
 - (void) testCoreData
