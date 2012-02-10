@@ -68,7 +68,7 @@
     NSArray *results = [self getManagedObjectsURL:url];
 
     if (results != nil && [results count] > 0) {
-        NSLog(@"count=%d", [results count]);
+        // NSLog(@"isExistURL count=%d", [results count]);
         return YES;
     } else {
         return NO;
