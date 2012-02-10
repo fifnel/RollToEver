@@ -27,9 +27,6 @@
 - (NSString *)evernoteNotebookGUID;
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID;
 
-- (NSString *)lastPhotoDate;
-- (void)setLastPhotoDate:(NSString *)lastPhotoDate;
-
 @end
 
 @implementation UserSettings
@@ -115,16 +112,5 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID {
     [[NSUserDefaults standardUserDefaults] setValue:evernoteNotebookGUID forKey:EVERNOTE_NOTEBOOK_GUID];
 }
-
-static NSString *LAST_PHOTO_DATE = @"LastPhotoDate";
-- (NSString *)lastPhotoDate {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:LAST_PHOTO_DATE];
-}
-
-- (void)setLastPhotoDate:(NSString *)lastPhotoDate {
-    [[NSUserDefaults standardUserDefaults] setValue:lastPhotoDate forKey:LAST_PHOTO_DATE];
-}
-
-
 
 @end

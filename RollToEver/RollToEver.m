@@ -8,30 +8,24 @@
 
 #import "RollToEver.h"
 #import <AssetsLibrary/ALAsset.h>
-#import <AssetsLibrary/ALAssetsGroup.h>
-#import <AssetsLibrary/ALAssetsFilter.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
 #import "Evernote.h"
 #import "NSString+MD5.h"
 #import "NSDataMD5Additions.h"
 #import "UserSettings.h"
+#import "AssetURLStorage.h"
 
 @interface RollToEver()
+
 - (void)startUploadAsync;
-- (void)uploadPhoto:(ALAsset *)asset index:(NSInteger)index stop:(BOOL *)stop;
+- (void)uploadPhoto:(ALAsset *)asset index:(NSInteger)index;
 - (void)uploadPhotoToEvernote:(NSData *)image date:(NSDate *)date filename:(NSString *)filename;
-- (void)RollToEverStartUploadOnMainThread:(NSDictionary *)params;
-- (void)RollToEverFinishUploadOnMainThread:(NSDictionary *)params;
-- (void)RollToEverFinishAllUploadOnMainThread:(NSDictionary *)params;
 
 @end
 
 @implementation RollToEver
 
-@synthesize delegate = delegate_;
-@synthesize assetsLibrary = assetsLibrary_;
-@synthesize lastUploadDate = lastUploadDate_;
 @synthesize dateFormatter = dateFormatter_;
 @synthesize evernoteTitleDateFormatter = evernoteTitleDateFormatter_;
 
@@ -41,15 +35,14 @@
 - (id)init {
     self = [super init];
     if (self != nil) {
-        assetsLibrary_ = [[ALAssetsLibrary alloc] init];
+        enumerator = [[AssetsEnumerator alloc] init];
+        enumerator.delegate = self;
         
         dateFormatter_ = [[NSDateFormatter alloc] init];
         [dateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
         
         evernoteTitleDateFormatter_ = [[NSDateFormatter alloc] init];
         [evernoteTitleDateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        
-        lastUploadDate_ = nil;
     }
     
     return self;
@@ -60,8 +53,7 @@
  */
 - (void)dealloc {
     [dateFormatter_ release];
-    [assetsLibrary_ release];
-    [lastUploadDate_ release];
+    [enumerator release];
     
     [super dealloc];
 }
@@ -72,62 +64,38 @@
 - (void)startUpload {
     [self performSelectorInBackground:@selector(startUploadAsync) withObject:nil];
 }
-
-/**
- スレッド動作用のアップロード開始処理
- */
 - (void)startUploadAsync {
-    NSString *dateStr = [UserSettings sharedInstance].lastPhotoDate;
-    if (dateStr == nil) {
-        lastUploadDate_ = nil;
-    } else {
-        lastUploadDate_ = [[dateFormatter_ dateFromString:dateStr] retain];
+    [enumerator startEnumeration];
+}
+
+
+- (void)AssetsEnumerationStart:(NSInteger)count {
+    NSLog(@"AssetsEnumerationStart:%d", count);
+}
+
+- (void)AssetsEnumerationEnd {
+    NSLog(@"AssetsEnumerationEnd");
+}
+
+- (void)AssetsEnumerationFind:(ALAsset *)asset index:(NSInteger)index {
+    if (asset != nil) {
+        NSString *url = [[[asset defaultRepresentation] url] absoluteString];
+        AssetURLStorage *urlStorage = [[AssetURLStorage alloc] init];
+        if (![urlStorage isExistURL:url]) {
+            [self uploadPhoto:asset index:index];
+            [urlStorage insertURL:url];
+        }
     }
-    NSLog(@"last upload=%@", lastUploadDate_);
-    
-    
-    // グループ内画像1枚ずつ呼び出される
-    ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
-    ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-        if (result) {
-            [self uploadPhoto:result index:index stop:stop];
-        }
-    };
-    
-    // グループごと呼び出される
-    ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
-    ^(ALAssetsGroup *group, BOOL *stop) {
-        if (group) {
-            NSNumber *num = [[[NSNumber alloc]initWithInteger:[group numberOfAssets]] autorelease];
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    num, @"num",
-                                    nil];
-            [self performSelectorOnMainThread:@selector(RollToEverStartUploadOnMainThread:)
-                                   withObject:params
-                                waitUntilDone:YES];
-            NSLog(@"upload start numberOfAssets:%d", [group numberOfAssets]);
-            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-            [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
-        } else {
-            NSLog(@"upload finish");
-            [self performSelectorOnMainThread:@selector(RollToEverFinishAllUploadOnMainThread:)
-                                   withObject:nil
-                                waitUntilDone:YES];
-        }
-    };
-    
-    // 列挙開始
-    [assetsLibrary_ enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                                  usingBlock:usingBlock
-                                failureBlock:^(NSError *error) {
-                                    NSLog(@"failure");
-                                }];
+}
+
+- (void)AssetsEnumerationFailure:(NSError *)error {
+    NSLog(@"AssetsEnumerationFailure:%@", error);
 }
 
 /**
  写真1枚のアップロード
  */
-- (void)uploadPhoto:(ALAsset *)asset index:(NSInteger)index stop:(BOOL *)stop {
+- (void)uploadPhoto:(ALAsset *)asset index:(NSInteger)index {
     /*
     NSLog(@"index=%d date=%@ type=%@ url=%@",
           index,
@@ -136,14 +104,6 @@
           [asset valueForProperty:ALAssetPropertyURLs]
           );
      */
-    NSDate *photoDate = [asset valueForProperty:ALAssetPropertyDate];
-    if (photoDate == nil) {
-        return;
-    }
-    if (lastUploadDate_ != nil && [photoDate earlierDate:lastUploadDate_] == photoDate) {
-//        return; // test
-    }
-    
     // Rowデータを取得して実際のアップロード処理に投げる
     ALAssetRepresentation *rep = [asset defaultRepresentation];
     long long size = [rep size];
@@ -157,21 +117,10 @@
         return;
     }
     NSData *data = [[NSData alloc]initWithBytesNoCopy:buf length:size];
-    [self uploadPhotoToEvernote:data date:photoDate filename:[rep filename]];
+    NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
+    [self uploadPhotoToEvernote:data date:date filename:[rep filename]];
     free(buf);
     [data release];
-    
-    // 最終アップロード日時の更新
-    lastUploadDate_ = photoDate;
-    NSString *dateStr = [dateFormatter_ stringFromDate:lastUploadDate_];
-    [UserSettings sharedInstance].lastPhotoDate = dateStr;
-    
-    NSNumber *indexNumber = [[[NSNumber alloc] initWithInteger:index] autorelease];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            asset, @"asset",
-                            indexNumber, @"index",
-                            nil];
-    [self performSelectorOnMainThread:@selector(RollToEverFinishUploadOnMainThread:) withObject:params waitUntilDone:YES];
 }
 
 /**
@@ -231,36 +180,6 @@
         [alertDone show];
         [alertDone release];
         return;
-    }
-}
-
-/**
- アップロード開始（メインスレッドから呼ばれる）
- */
-- (void)RollToEverStartUploadOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(RollToEverStartUpload:)]) {
-        NSNumber *num = [params objectForKey:@"num"];
-        [delegate_ RollToEverStartUpload:[num integerValue]];
-    }
-}
-
-/**
- 1枚の画像アップロード完了（メインスレッドから呼ばれる）
- */
-- (void)RollToEverFinishUploadOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(RollToEverFinishUpload:index:)]) {
-        ALAsset *asset = [params objectForKey:@"asset"];
-        NSNumber *index = [params objectForKey:@"index"];
-        [delegate_ RollToEverFinishUpload:asset index:[index integerValue]];
-    }
-}
-
-/**
- 全部の画像アップロード完了（メインスレッドから呼ばれる）
- */
-- (void)RollToEverFinishAllUploadOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(RollToEverFinishAllUpload)]) {
-        [delegate_ RollToEverFinishAllUpload];
     }
 }
 
