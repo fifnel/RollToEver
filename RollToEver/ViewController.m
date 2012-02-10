@@ -32,7 +32,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     rollToEver_ = [[RollToEver alloc]init];
-    rollToEver_.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -103,4 +102,5 @@
     [ProgressText_ release];
     [super dealloc];
 }
+
 @end
