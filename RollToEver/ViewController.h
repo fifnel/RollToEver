@@ -12,9 +12,6 @@
 @interface ViewController : UIViewController
 {
     RollToEver *rollToEver_;
-    
-@private
-    NSInteger numOfPhotos_;
 }
 
 - (IBAction)start:(id)sender;

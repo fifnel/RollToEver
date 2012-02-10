@@ -98,7 +98,7 @@
     ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
     ^(ALAssetsGroup *group, BOOL *stop) {
         if (group) {
-            NSNumber *num = [[NSNumber alloc]initWithInteger:[group numberOfAssets]];
+            NSNumber *num = [[[NSNumber alloc]initWithInteger:[group numberOfAssets]] autorelease];
             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     num, @"num",
                                     nil];

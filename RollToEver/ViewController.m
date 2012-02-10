@@ -14,9 +14,9 @@
 
 @implementation ViewController
 
-@synthesize UploadProgress;
-@synthesize ProgressText;
-@synthesize numOfPhotos;
+@synthesize UploadProgress = UploadProgress_;
+@synthesize ProgressText = ProgressText_;
+@synthesize numOfPhotos = numOfPhotos_;
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,8 +38,8 @@
 - (void)viewDidUnload
 {
     [self setUploadProgress:nil];
-    [ProgressText release];
-    ProgressText = nil;
+    [ProgressText_ release];
+    ProgressText_ = nil;
     [self setProgressText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -79,28 +79,28 @@
 }
 
 - (void)RollToEverStartUpload:(NSInteger)num {
-    numOfPhotos = num;
-    UploadProgress.progress = 0.0;
-    [ProgressText setText:@"start"];
+    numOfPhotos_ = num;
+    UploadProgress_.progress = 0.0;
+    [ProgressText_ setText:@"start"];
 }
 
 - (void)RollToEverFinishUpload:(ALAsset *)assert index:(NSInteger)index {
-    if (numOfPhotos > 0) {
-        UploadProgress.progress = (float)(index+1) / (float)numOfPhotos;
+    if (numOfPhotos_ > 0) {
+        UploadProgress_.progress = (float)(index+1) / (float)numOfPhotos_;
     } else {
-        UploadProgress.progress = 1.0;
+        UploadProgress_.progress = 1.0;
     }
-    [ProgressText setText:[NSString stringWithFormat:@"index:%d", index]];
+    [ProgressText_ setText:[NSString stringWithFormat:@"index:%d", index]];
 }
 
 - (void)RollToEverFinishAllUpload {
-    [ProgressText setText:@"finish"];
+    [ProgressText_ setText:@"finish"];
 }
 
 - (void)dealloc {
-    [UploadProgress release];
-    [ProgressText release];
-    [ProgressText release];
+    [UploadProgress_ release];
+    [ProgressText_ release];
+    [ProgressText_ release];
     [super dealloc];
 }
 @end
