@@ -50,6 +50,16 @@
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0833FFA14E3947000DB4144 /* CoreDataTest.m */; };
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
+		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
+		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
+		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
+		C0BC74D614E6CCFD003B0611 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */; };
+		C0BC74D814E6CCFD003B0611 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74D714E6CCFD003B0611 /* main.m */; };
+		C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */; };
+		C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74E914E6CE2B003B0611 /* MyTest.m */; };
+		C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */; };
+		C0BC74EE14E6CEEB003B0611 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B11414DF79D300F4169E /* AppDelegate.m */; };
+		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0C23B1F14E2719000507D08 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1E14E2719000507D08 /* UserSettings.m */; };
 		C0C23B2414E27B4300507D08 /* NotebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B2314E27B4300507D08 /* NotebookTableViewController.m */; };
@@ -57,6 +67,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		C039B12614DF79D400F4169E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C039B0F714DF79D300F4169E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C039B0FF14DF79D300F4169E;
+			remoteInfo = RollToEver;
+		};
+		C0BC74F114E6CF64003B0611 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C039B0F714DF79D300F4169E /* Project object */;
 			proxyType = 1;
@@ -144,6 +161,17 @@
 		C0833FFA14E3947000DB4144 /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
 		C094D85A14E19B0800E30669 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		C094D85B14E19B0800E30669 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEverGHUnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BC74D314E6CCFD003B0611 /* RollToEverGHUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverGHUnitTest-Info.plist"; sourceTree = "<group>"; };
+		C0BC74D514E6CCFD003B0611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C0BC74D714E6CCFD003B0611 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEverGHUnitTest-Prefix.pch"; sourceTree = "<group>"; };
+		C0BC74DA14E6CCFD003B0611 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C0BC74DB14E6CCFD003B0611 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = RollToEverGHUnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
+		C0BC74E914E6CE2B003B0611 /* MyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
+		C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewTest.h; sourceTree = "<group>"; };
+		C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewTest.m; sourceTree = "<group>"; };
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0C23B1D14E2719000507D08 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSettings.h; path = RollToEver/UserSettings.h; sourceTree = "<group>"; };
@@ -177,6 +205,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0BC74C914E6CCFD003B0611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */,
+				C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */,
+				C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */,
+				C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */,
+				C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -187,6 +227,7 @@
 				C039B10A14DF79D300F4169E /* RollToEverViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,
 				C039B12814DF79D400F4169E /* RollToEverTests */,
+				C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */,
 				C039B10314DF79D300F4169E /* Frameworks */,
 				C039B10114DF79D300F4169E /* Products */,
 			);
@@ -197,6 +238,7 @@
 			children = (
 				C039B10014DF79D300F4169E /* RollToEver.app */,
 				C039B12114DF79D400F4169E /* RollToEverTests.octest */,
+				C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +246,7 @@
 		C039B10314DF79D300F4169E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */,
 				C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */,
 				C039B10414DF79D300F4169E /* UIKit.framework */,
 				C039B10614DF79D300F4169E /* Foundation.framework */,
@@ -377,6 +420,30 @@
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
 		};
+		C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				C0BC74DA14E6CCFD003B0611 /* AppDelegate.h */,
+				C0BC74DB14E6CCFD003B0611 /* AppDelegate.m */,
+				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
+				C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */,
+				C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */,
+				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
+			);
+			path = RollToEverGHUnitTest;
+			sourceTree = "<group>";
+		};
+		C0BC74D214E6CCFD003B0611 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0BC74D314E6CCFD003B0611 /* RollToEverGHUnitTest-Info.plist */,
+				C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */,
+				C0BC74D714E6CCFD003B0611 /* main.m */,
+				C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -416,6 +483,24 @@
 			productReference = C039B12114DF79D400F4169E /* RollToEverTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		C0BC74CB14E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0BC74E514E6CCFD003B0611 /* Build configuration list for PBXNativeTarget "RollToEverGHUnitTest" */;
+			buildPhases = (
+				C0BC74C814E6CCFD003B0611 /* Sources */,
+				C0BC74C914E6CCFD003B0611 /* Frameworks */,
+				C0BC74CA14E6CCFD003B0611 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0BC74F214E6CF64003B0611 /* PBXTargetDependency */,
+			);
+			name = RollToEverGHUnitTest;
+			productName = RollToEverGHUnitTest;
+			productReference = C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -439,6 +524,7 @@
 			targets = (
 				C039B0FF14DF79D300F4169E /* RollToEver */,
 				C039B12014DF79D400F4169E /* RollToEverTests */,
+				C0BC74CB14E6CCFD003B0611 /* RollToEverGHUnitTest */,
 			);
 		};
 /* End PBXProject section */
@@ -458,6 +544,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BC74CA14E6CCFD003B0611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BC74D614E6CCFD003B0611 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +621,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0BC74C814E6CCFD003B0611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BC74EE14E6CEEB003B0611 /* AppDelegate.m in Sources */,
+				C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */,
+				C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */,
+				C0BC74D814E6CCFD003B0611 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -534,6 +639,11 @@
 			isa = PBXTargetDependency;
 			target = C039B0FF14DF79D300F4169E /* RollToEver */;
 			targetProxy = C039B12614DF79D400F4169E /* PBXContainerItemProxy */;
+		};
+		C0BC74F214E6CF64003B0611 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C039B0FF14DF79D300F4169E /* RollToEver */;
+			targetProxy = C0BC74F114E6CF64003B0611 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -558,6 +668,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				C039B12C14DF79D400F4169E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0BC74D514E6CCFD003B0611 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -668,6 +786,46 @@
 			};
 			name = Release;
 		};
+		C0BC74E314E6CCFD003B0611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RollToEverGHUnitTest\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RollToEverGHUnitTest/RollToEverGHUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "RollToEverGHUnitTest/RollToEverGHUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C0BC74E414E6CCFD003B0611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RollToEverGHUnitTest\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RollToEverGHUnitTest/RollToEverGHUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "RollToEverGHUnitTest/RollToEverGHUnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -697,6 +855,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C0BC74E514E6CCFD003B0611 /* Build configuration list for PBXNativeTarget "RollToEverGHUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BC74E314E6CCFD003B0611 /* Debug */,
+				C0BC74E414E6CCFD003B0611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
