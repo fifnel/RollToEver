@@ -47,9 +47,11 @@
     ^(ALAsset *result, NSUInteger index, BOOL *stop) {
         if (result) {
             NSNumber *num = [NSNumber numberWithInt:index];
+            NSValue *stopPtr = [NSValue valueWithPointer:stop];
             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     result, @"asset", 
                                     num, @"index",
+                                    stopPtr, @"stop",
                                     nil];
             [self performSelectorOnMainThread:@selector(AssetsEnumerationFindOnMainThread:) withObject:params waitUntilDone:YES];
         }
@@ -83,7 +85,7 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil];
         [self AssetsEnumerationFailureOnMainThread:params];
     };
-    
+
     // 列挙開始
     [assetsLibrary_ enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
                                   usingBlock:usingBlock
@@ -105,10 +107,13 @@
 }
 
 - (void)AssetsEnumerationFindOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(AssetsEnumerationFind:index:)]) {
+    if ([delegate_ respondsToSelector:@selector(AssetsEnumerationFind:index:stop:)]) {
         NSNumber *index = [params objectForKey:@"index"];
         ALAsset *asset = [params objectForKey:@"asset"];
-        [delegate_ AssetsEnumerationFind:asset index:[index intValue]];
+        NSValue *stopPtr = [params objectForKey:@"stop"];
+        BOOL *stop;
+        [stopPtr getValue:&stop];
+        [delegate_ AssetsEnumerationFind:asset index:[index intValue] stop:stop];
     }
 }
 

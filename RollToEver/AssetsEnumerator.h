@@ -24,7 +24,7 @@
 
 - (void)AssetsEnumerationStart:(NSInteger)count;
 - (void)AssetsEnumerationEnd;
-- (void)AssetsEnumerationFind:(ALAsset *)asset index:(NSInteger)index;
+- (void)AssetsEnumerationFind:(ALAsset *)asset index:(NSInteger)index stop:(BOOL *)stop;
 - (void)AssetsEnumerationFailure:(NSError *)error;
 
 @end

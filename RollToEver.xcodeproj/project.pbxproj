@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
 		C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */; };
@@ -45,6 +46,11 @@
 		C039B18514E020DF00F4169E /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C039B17014E020DF00F4169E /* MD5.c */; };
 		C039B18614E020DF00F4169E /* NSDataMD5Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B17314E020DF00F4169E /* NSDataMD5Additions.m */; };
 		C039B18714E020DF00F4169E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B17514E020DF00F4169E /* NSString+MD5.m */; };
+		C04F82D714E6D4D800C9D1FE /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82D614E6D4D800C9D1FE /* UploadViewController.m */; };
+		C04F82D914E79FE900C9D1FE /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
+		C04F82DA14E79FE900C9D1FE /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
+		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
+		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -58,7 +64,6 @@
 		C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */; };
 		C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74E914E6CE2B003B0611 /* MyTest.m */; };
 		C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */; };
-		C0BC74EE14E6CEEB003B0611 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B11414DF79D300F4169E /* AppDelegate.m */; };
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0C23B1F14E2719000507D08 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1E14E2719000507D08 /* UserSettings.m */; };
@@ -155,6 +160,10 @@
 		C039B17414E020DF00F4169E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "RollToEver/Evernote/NSString+MD5.h"; sourceTree = "<group>"; };
 		C039B17514E020DF00F4169E /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "RollToEver/Evernote/NSString+MD5.m"; sourceTree = "<group>"; };
 		C039B19114E172DF00F4169E /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = RollToEver/Evernote/id.h; sourceTree = "<group>"; };
+		C04F82D514E6D4D800C9D1FE /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		C04F82D614E6D4D800C9D1FE /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
+		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -166,8 +175,6 @@
 		C0BC74D514E6CCFD003B0611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C0BC74D714E6CCFD003B0611 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEverGHUnitTest-Prefix.pch"; sourceTree = "<group>"; };
-		C0BC74DA14E6CCFD003B0611 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C0BC74DB14E6CCFD003B0611 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = RollToEverGHUnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
 		C0BC74E914E6CE2B003B0611 /* MyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewTest.h; sourceTree = "<group>"; };
@@ -209,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */,
 				C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */,
 				C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */,
 				C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */,
@@ -265,6 +273,8 @@
 				C039B11414DF79D300F4169E /* AppDelegate.m */,
 				C039B11914DF79D300F4169E /* ViewController.h */,
 				C039B11A14DF79D300F4169E /* ViewController.m */,
+				C04F82D514E6D4D800C9D1FE /* UploadViewController.h */,
+				C04F82D614E6D4D800C9D1FE /* UploadViewController.m */,
 				C094D85A14E19B0800E30669 /* SettingsTableViewController.h */,
 				C094D85B14E19B0800E30669 /* SettingsTableViewController.m */,
 				C02269D714E2C44F00C27758 /* AccountSettingViewController.h */,
@@ -423,8 +433,6 @@
 		C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				C0BC74DA14E6CCFD003B0611 /* AppDelegate.h */,
-				C0BC74DB14E6CCFD003B0611 /* AppDelegate.m */,
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */,
 				C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */,
@@ -439,6 +447,8 @@
 				C0BC74D314E6CCFD003B0611 /* RollToEverGHUnitTest-Info.plist */,
 				C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */,
 				C0BC74D714E6CCFD003B0611 /* main.m */,
+				C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */,
+				C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */,
 				C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -607,6 +617,7 @@
 				C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */,
 				C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */,
 				C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */,
+				C04F82D714E6D4D800C9D1FE /* UploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,10 +636,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0BC74EE14E6CEEB003B0611 /* AppDelegate.m in Sources */,
+				C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */,
+				C04F82D914E79FE900C9D1FE /* AssetURLStorage.m in Sources */,
+				C04F82DA14E79FE900C9D1FE /* AssetsEnumerator.m in Sources */,
 				C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */,
 				C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */,
 				C0BC74D814E6CCFD003B0611 /* main.m in Sources */,
+				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,6 +877,7 @@
 				C0BC74E414E6CCFD003B0611 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
