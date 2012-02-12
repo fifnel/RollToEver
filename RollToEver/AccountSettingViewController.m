@@ -90,7 +90,24 @@
 }
 
 - (IBAction)testConnection:(id)sender {
-    [[Evernote sharedInstance] connect];
+    Evernote *evernote = nil;
+    @try {
+        evernote = [[Evernote alloc]
+                    initWithUserID:userId.text
+                    Password:password.text];
+        [evernote connect];
+    }
+    @catch (EDAMUserException * e) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error Evernote connect: error code %i", [e errorCode]];
+        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+        
+        [alertDone show];
+        [alertDone release];
+        return;
+    }
+    @finally {
+        [evernote release];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

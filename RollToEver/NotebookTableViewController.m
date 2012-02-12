@@ -43,15 +43,24 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    Evernote *evernote = nil;
     @try {
-        notebooksList_ = [[Evernote sharedInstance] listNotebooks];
+        evernote = [[Evernote alloc]
+                    initWithUserID:[UserSettings sharedInstance].evernoteUserId
+                    Password:[UserSettings sharedInstance].evernotePassword];
+        notebooksList_ = [evernote listNotebooks];
         notebooksNum_ = [notebooksList_ count];
     }
-    @catch (NSException *exception) {
-        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: @"errorrrrr" delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+    @catch (EDAMUserException * e) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error listing note: error code %i", [e errorCode]];
+        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
         
         [alertDone show];
         [alertDone release];
+        return;
+    }
+    @finally {
+        [evernote release];
     }
 }
 

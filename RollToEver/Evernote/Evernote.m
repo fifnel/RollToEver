@@ -33,39 +33,19 @@ NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/";
 
 // NOTE: You must set the Application name and version
 // used in the User-Agent
-NSString * const applicationName = @"Evernote iOS Demo";
-NSString * const applicationVersion = @"1.01";
+NSString * const applicationName = @"RollToEver";
+NSString * const applicationVersion = @"0.0";
 
 @implementation Evernote
 
 @synthesize shardId, authToken, noteStoreUri, user, noteStore;
 
-/************************************************************
- *
- *  Implementing the singleton pattern
- *
- ************************************************************/
-
-static Evernote *sharedEvernoteManager = nil;
-
-/************************************************************
- *
- *  Accessing the static version of the instance
- *
- ************************************************************/
-
-+ (Evernote *)sharedInstance {
-
-    if (sharedEvernoteManager == nil) {        
-        sharedEvernoteManager = [[Evernote alloc] init];
+-(id)initWithUserID:(NSString *)username Password:(NSString *)password {
+    self = [super init];
+    if (self != nil) {
+        username_ = username;
+        password_ = password;
     }
-    
-    return sharedEvernoteManager;
-    
-}
-
--(id)init{
-  self = [super init];
     
   return self;
 }
@@ -105,7 +85,7 @@ static Evernote *sharedEvernoteManager = nil;
         
  
         // Returned result from the Evernote servers after authentication
-        EDAMAuthenticationResult* authResult =[userStore authenticate:username :password : consumerKey :consumerSecret];
+        EDAMAuthenticationResult* authResult =[userStore authenticate:username_ :password_ : consumerKey :consumerSecret];
         
         // User object describing the account
         self.user = [authResult user];

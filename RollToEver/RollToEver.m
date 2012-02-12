@@ -170,8 +170,13 @@
     
     // Saving the note on the Evernote servers
     // Simple error management
+    Evernote *evernote = nil;
     @try {
-        [[Evernote sharedInstance] createNote:note];
+        evernote = [[Evernote alloc]
+                    initWithUserID:[UserSettings sharedInstance].evernoteUserId
+                    Password:[UserSettings sharedInstance].evernotePassword];
+        [evernote createNote:note];
+        [evernote release];
     }
     @catch (EDAMUserException * e) {
         NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [e errorCode]];
@@ -180,6 +185,9 @@
         [alertDone show];
         [alertDone release];
         return;
+    }
+    @finally {
+        [evernote release];
     }
 }
 

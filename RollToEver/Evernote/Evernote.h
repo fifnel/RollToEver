@@ -19,11 +19,12 @@ extern NSString * const consumerKey;
 extern NSString * const consumerSecret;
 extern NSString * const userStoreUri;
 extern NSString * const noteStoreUriBase;
-extern NSString * const username; 
-extern NSString * const password; 
-extern NSString * const shardId;
 
 @interface Evernote : NSObject {
+@private
+    NSString *username_;
+    NSString *password_;
+
     NSString *authToken;
     EDAMUser *user;
 
@@ -43,7 +44,7 @@ extern NSString * const shardId;
 @property(retain) EDAMNoteStoreClient *noteStore;
 
 
-+ (Evernote *)sharedInstance;
+-(id)initWithUserID:(NSString *)username Password:(NSString *)password;
 
 - (void) connect; 
 
