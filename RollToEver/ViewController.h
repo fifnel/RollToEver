@@ -7,16 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RollToEver.h"
+#import "AssetsEnumerator.h"
+#import "AssetURLStorage.h"
 
 @interface ViewController : UIViewController
 {
-    RollToEver *rollToEver_;
+@private
+    AssetsEnumerator *enumerator_;
+    NSMutableArray *urls_;
+    AssetURLStorage *assetUrlStorage_;
+
+    NSInteger uploadPhotosNum_;
+    NSInteger uploadedPhotosNum_;
 }
 
 - (IBAction)start:(id)sender;
+
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
 @property (retain, nonatomic) IBOutlet UILabel *ProgressText;
-@property (assign) NSInteger numOfPhotos;
 
 @end

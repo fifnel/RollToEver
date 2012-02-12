@@ -3,6 +3,8 @@
 //  client
 //
 //  Evernote API sample code is provided under the terms specified in the file LICENSE.txt which was included with this distribution.
+
+// modified by fifnel
 //
 
 #import <Foundation/Foundation.h>
@@ -31,18 +33,15 @@ extern NSString * const noteStoreUriBase;
     NSURL *noteStoreUri;
     
     EDAMNoteStoreClient *noteStore;
-    
-    Evernote *sharedEvernoteManager;
-}
 
+    NSDateFormatter *titleDateFormatter_;
+}
 
 @property(retain) EDAMUser * user;
 @property(retain) NSString * shardId; 
 @property(retain) NSString * authToken; 
 @property(retain) NSURL * noteStoreUri;
-
 @property(retain) EDAMNoteStoreClient *noteStore;
-
 
 -(id)initWithUserID:(NSString *)username Password:(NSString *)password;
 
@@ -58,6 +57,6 @@ extern NSString * const noteStoreUriBase;
 
 - (void) createNote: (EDAMNote *) note;
 
+- (void)uploadPhoto:(NSData *)image notebookGUID:(NSString *)notebookGUID date:(NSDate *)date filename:(NSString *)filename;
 
-    
-@end
+    @end

@@ -26,7 +26,6 @@
 		C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B12B14DF79D400F4169E /* InfoPlist.strings */; };
 		C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B12F14DF79D400F4169E /* RollToEverTests.m */; };
-		C039B14414DF7CD400F4169E /* RollToEver.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B14314DF7CD400F4169E /* RollToEver.m */; };
 		C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C039B17614E020DF00F4169E /* EDAMLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B14A14E020DF00F4169E /* EDAMLimits.m */; };
 		C039B17714E020DF00F4169E /* Errors.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B14C14E020DF00F4169E /* Errors.m */; };
@@ -115,8 +114,6 @@
 		C039B12C14DF79D400F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C039B12E14DF79D400F4169E /* RollToEverTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RollToEverTests.h; sourceTree = "<group>"; };
 		C039B12F14DF79D400F4169E /* RollToEverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RollToEverTests.m; sourceTree = "<group>"; };
-		C039B14214DF7CD400F4169E /* RollToEver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollToEver.h; path = RollToEver/RollToEver.h; sourceTree = "<group>"; };
-		C039B14314DF7CD400F4169E /* RollToEver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RollToEver.m; path = RollToEver/RollToEver.m; sourceTree = "<group>"; };
 		C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C039B14914E020DF00F4169E /* EDAMLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMLimits.h; sourceTree = "<group>"; };
 		C039B14A14E020DF00F4169E /* EDAMLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMLimits.m; sourceTree = "<group>"; };
@@ -418,8 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */,
-				C039B14214DF7CD400F4169E /* RollToEver.h */,
-				C039B14314DF7CD400F4169E /* RollToEver.m */,
 				C0C23B1D14E2719000507D08 /* UserSettings.h */,
 				C0C23B1E14E2719000507D08 /* UserSettings.m */,
 				C00C791014E4B95B00A68DCC /* AssetURLStorage.h */,
@@ -591,7 +586,6 @@
 				C039B11114DF79D300F4169E /* main.m in Sources */,
 				C039B11514DF79D300F4169E /* AppDelegate.m in Sources */,
 				C039B11B14DF79D300F4169E /* ViewController.m in Sources */,
-				C039B14414DF7CD400F4169E /* RollToEver.m in Sources */,
 				C039B17614E020DF00F4169E /* EDAMLimits.m in Sources */,
 				C039B17714E020DF00F4169E /* Errors.m in Sources */,
 				C039B17814E020DF00F4169E /* NoteStore.m in Sources */,

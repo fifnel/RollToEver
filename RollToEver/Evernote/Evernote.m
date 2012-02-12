@@ -10,8 +10,12 @@
 //  Evernote API sample code is provided under the terms specified 
 //  in the file LICENSE.txt which was included with this distribution.
 //
+// modified by fifnel
 
 #import "Evernote.h"
+
+#import "NSString+MD5.h"
+#import "NSDataMD5Additions.h"
 
 #import "id.h"
 /*
@@ -21,10 +25,8 @@
  
  NSString * const consumerKey  = @"consumerKey";
  NSString * const consumerSecret = @"consumerSecret";
- 
- NSString * const username = @"username";
- NSString * const password = @"password";  
-*/
+
+ */
 
 
 NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
@@ -45,6 +47,9 @@ NSString * const applicationVersion = @"0.0";
     if (self != nil) {
         username_ = username;
         password_ = password;
+        
+        titleDateFormatter_ = [[NSDateFormatter alloc] init];
+        [titleDateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     }
     
   return self;
@@ -186,6 +191,73 @@ NSString * const applicationVersion = @"0.0";
 
     // Calling a function in the API
     [noteStore createNote:authToken :note];
+}
+
+/**
+ Creating a note and Upload photo
+
+ modified
+   from
+     evernote-api-1.20/cocoa/sample/client/addNoteViewController.m
+       -(IBAction)sendNoteEvernote:(id)sender;
+ by fifnel
+ */
+- (void)uploadPhoto:(NSData *)image notebookGUID:(NSString *)notebookGUID date:(NSDate *)date filename:(NSString *)filename {
+    
+    NSUInteger imageSize = [image length];
+    if (imageSize <= 0) {
+        return;
+    }
+    
+    EDAMNote *note = [[[EDAMNote alloc] init] autorelease];
+    note.title = [titleDateFormatter_ stringFromDate:date];
+    if (notebookGUID != nil) {
+        note.notebookGuid = notebookGUID;
+    }
+    
+    // Calculating the md5
+    NSString *hash = [[[image md5] description] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    hash = [hash substringWithRange:NSMakeRange(1, [hash length] - 2)];
+    
+    // 1) create the data EDAMData using the hash, the size and the data of the image
+    EDAMData *imageData = [[[EDAMData alloc] initWithBodyHash:[hash dataUsingEncoding: NSASCIIStringEncoding] size:[image length] body:image] autorelease];
+    
+    // 2) Create an EDAMResourceAttributes object with other important attributes of the file
+    EDAMResourceAttributes *imageAttributes = [[[EDAMResourceAttributes alloc] init] autorelease];
+    [imageAttributes setFileName:filename];
+    
+    // 3) create an EDAMResource the hold the mime, the data and the attributes
+    EDAMResource *imageResource  = [[[EDAMResource alloc] init] autorelease];
+    [imageResource setMime:@"image/jpeg"];
+    [imageResource setData:imageData];
+    [imageResource setAttributes:imageAttributes];
+    
+    // We are quickly the ENML code for the image to the content
+    NSString *ENML = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note><en-media type=\"image/jpeg\" hash=\"%@\"/></en-note>", hash];
+    
+    // We are transforming the resource into a array to attach it to the note
+    NSArray *resources = [[NSArray alloc] initWithObjects:imageResource, nil];
+    
+    NSLog(@"%@", ENML);
+    
+    // Adding the content & resources to the note
+    [note setContent:ENML];
+    [note setResources:resources];
+    [note setCreated:[date timeIntervalSince1970]*1000];
+    
+    // Saving the note on the Evernote servers
+    // Simple error management
+    @try {
+        [self createNote:note];
+    }
+    @catch (EDAMUserException * e) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [e errorCode]];
+        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+        
+        [alertDone show];
+        [alertDone release];
+        return;
+    }
 }
 
 - (void)dealloc
