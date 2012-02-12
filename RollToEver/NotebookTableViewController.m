@@ -129,8 +129,8 @@
     EDAMNotebook *notebook = (EDAMNotebook *)[notebooksList_ objectAtIndex:[indexPath row]];
 
     parent.notebookName = notebook.name;
-    [UserSettings sharedInstance].evernoteNotebookName = notebook.name;
-    [UserSettings sharedInstance].evernoteNotebookGUID = notebook.guid;
+    [[UserSettings sharedInstance] setEvernoteNotebookName:notebook.name];
+    [[UserSettings sharedInstance] setEvernoteNotebookGUID:notebook.guid];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

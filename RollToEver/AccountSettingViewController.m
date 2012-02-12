@@ -68,8 +68,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [UserSettings sharedInstance].evernoteUserId = userId.text;
-    [UserSettings sharedInstance].evernotePassword = password.text;
+    [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
+    [[UserSettings sharedInstance] setEvernotePassword:password.text];
     
     NSArray *array = self.navigationController.viewControllers;
     int arrayCount = [array count];
