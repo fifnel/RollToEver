@@ -19,6 +19,8 @@
     
     NSInteger uploadPhotosNum_;
     NSInteger uploadedPhotosNum_;
+    
+    BOOL working_;
 }
 
 - (void)start;

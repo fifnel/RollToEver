@@ -41,13 +41,18 @@
         enumerator_ = [[AssetsEnumerator alloc] init];
         enumerator_.delegate = self;
         urls_ = nil;
+        
+        working_ = NO;
     }
     return self;
 }
 
 - (void)start {
-    // TODO すでにスレッドが動いている場合にどうするか
-    // 動作中フラグみたいなのを作りたい
+    if (working_ == YES) {
+        return;
+    }
+    working_ = YES;
+
     [urls_ release];
     urls_ = [[NSMutableArray alloc] init];
     [self performSelectorInBackground:@selector(startUploadAsync) withObject:nil];
@@ -92,6 +97,7 @@
         [self PhotoUploaderReadyOnMainThread:params];
         if (cancel != nil && *cancel == YES) {
             [self PhotoUploaderCenceledOnMainThread:nil];
+            working_ = NO;
             return;
         }
     }
@@ -132,6 +138,7 @@
     }
     
     [self PhotoUploaderSucceededOnMainThread:nil];
+    working_ = NO;
 }
 
 /**
