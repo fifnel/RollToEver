@@ -70,11 +70,6 @@
 {
     [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
     [[UserSettings sharedInstance] setEvernotePassword:password.text];
-    
-    NSArray *array = self.navigationController.viewControllers;
-    int arrayCount = [array count];
-    SettingsTableViewController *parent = [array objectAtIndex:arrayCount - 1];
-    parent.evernoteAccount = userId.text;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

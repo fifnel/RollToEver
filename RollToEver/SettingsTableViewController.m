@@ -12,9 +12,6 @@
 
 @implementation SettingsTableViewController
 
-@synthesize evernoteAccount = evernoteAccount_;
-@synthesize notebookName = notebookName_;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -38,9 +35,6 @@
 {
     [super viewDidLoad];
     
-    evernoteAccount_ = [UserSettings sharedInstance].evernoteUserId;
-    notebookName_ = [UserSettings sharedInstance].evernoteNotebookName;
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -50,9 +44,7 @@
 
 - (void)viewDidUnload
 {
-    [notebookNameCell_ release];
     notebookNameCell_ = nil;
-    [evernoteAccountCell_ release];
     evernoteAccountCell_ = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -63,11 +55,14 @@
 {
     [super viewWillAppear:animated];
     
-    if (evernoteAccount_) {
-        [[evernoteAccountCell_ textLabel] setText:evernoteAccount_];
+    NSString *evernoteAccount = [UserSettings sharedInstance].evernoteUserId;
+    NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
+    
+    if (evernoteAccount) {
+        [[evernoteAccountCell_ textLabel] setText:evernoteAccount];
     }
-    if (notebookName_) {
-        [[notebookNameCell_ textLabel] setText:notebookName_];
+    if (notebookName) {
+        [[notebookNameCell_ textLabel] setText:notebookName];
     }
 }
 

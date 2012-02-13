@@ -12,10 +12,17 @@
 
 +(UserSettings *)sharedInstance;
 
-@property (assign) NSString *evernoteUserId;
-@property (assign) NSString *evernotePassword;
-@property (assign) NSString *evernoteNotebookName;
-@property (assign) NSString *evernoteNotebookGUID;
+- (NSString *)evernoteUserId;
+- (void)setEvernoteUserId:(NSString *)evernoteUserId;
+
+- (NSString *)evernotePassword;
+- (void)setEvernotePassword:(NSString *)evernotePassword;
+
+- (NSString *)evernoteNotebookName;
+- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName;
+
+- (NSString *)evernoteNotebookGUID;
+- (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID;
 
 @end
 
