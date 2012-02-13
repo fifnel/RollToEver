@@ -33,6 +33,7 @@
 		C000DDB514E8E87100DDD8C8 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9F14E8E87100DDD8C8 /* TMemoryBuffer.m */; };
 		C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA214E8E87100DDD8C8 /* TTransportException.m */; };
 		C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */; };
+		C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
 		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
 		C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */; };
@@ -142,6 +143,8 @@
 		C000DDA214E8E87100DDD8C8 /* TTransportException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTransportException.m; sourceTree = "<group>"; };
 		C000DDA314E8E87100DDD8C8 /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
 		C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
+		C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoUploader.h; path = RollToEver/PhotoUploader.h; sourceTree = "<group>"; };
+		C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoUploader.m; path = RollToEver/PhotoUploader.m; sourceTree = "<group>"; };
 		C00C791014E4B95B00A68DCC /* AssetURLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetURLStorage.h; path = RollToEver/AssetURLStorage.h; sourceTree = "<group>"; };
 		C00C791114E4B95B00A68DCC /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetURLStorage.m; path = RollToEver/AssetURLStorage.m; sourceTree = "<group>"; };
 		C00C791814E53CE600A68DCC /* AssetsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsEnumerator.h; path = RollToEver/AssetsEnumerator.h; sourceTree = "<group>"; };
@@ -458,6 +461,8 @@
 				C00C791114E4B95B00A68DCC /* AssetURLStorage.m */,
 				C00C791814E53CE600A68DCC /* AssetsEnumerator.h */,
 				C00C791914E53CE600A68DCC /* AssetsEnumerator.m */,
+				C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */,
+				C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				C000DDB514E8E87100DDD8C8 /* TMemoryBuffer.m in Sources */,
 				C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */,
 				C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
+				C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

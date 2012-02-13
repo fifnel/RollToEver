@@ -7,18 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AssetsEnumerator.h"
-#import "AssetURLStorage.h"
+#import "PhotoUploader.h"
 
 @interface ViewController : UIViewController
 {
 @private
-    AssetsEnumerator *enumerator_;
-    NSMutableArray *urls_;
-    AssetURLStorage *assetUrlStorage_;
-
-    NSInteger uploadPhotosNum_;
-    NSInteger uploadedPhotosNum_;
+    PhotoUploader *photoUploader_;
 }
 
 - (IBAction)start:(id)sender;
