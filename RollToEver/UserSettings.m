@@ -13,6 +13,7 @@
  */
 
 #import "UserSettings.h"
+#import "PDKeychainBindings.h"
 
 @interface UserSettings()
 - (NSString *)evernoteUserId;
@@ -79,38 +80,38 @@ static UserSettings *sharedUserSettingsInstance = nil;
 
 static NSString *EVERNOTE_USER_ID = @"EvernoteUserID";
 - (NSString *)evernoteUserId {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:EVERNOTE_USER_ID];
+    return [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_USER_ID];
 }
 
 - (void)setEvernoteUserId:(NSString *)evernoteUserId {
-    [[NSUserDefaults standardUserDefaults] setValue:evernoteUserId forKey:EVERNOTE_USER_ID];
+    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteUserId forKey:EVERNOTE_USER_ID];
 }
 
 static NSString *EVERNOTE_PASSWORD = @"EvernotePassword";
 - (NSString *)evernotePassword {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:EVERNOTE_PASSWORD];
+    return [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_PASSWORD];
 }
 
 - (void)setEvernotePassword:(NSString *)evernotePassword {
-    [[NSUserDefaults standardUserDefaults] setValue:evernotePassword forKey:EVERNOTE_PASSWORD];
+    [[PDKeychainBindings sharedKeychainBindings] setString:evernotePassword forKey:EVERNOTE_PASSWORD];
 }
 
 static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
 - (NSString *)evernoteNotebookName {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:EVERNOTE_NOTEBOOK_NAME];
+    return [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_NAME];
 }
 
 - (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName {
-    [[NSUserDefaults standardUserDefaults] setValue:evernoteNotebookName forKey:EVERNOTE_NOTEBOOK_NAME];
+    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookName forKey:EVERNOTE_NOTEBOOK_NAME];
 }
 
 static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 - (NSString *)evernoteNotebookGUID {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:EVERNOTE_NOTEBOOK_GUID];
+    return [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_GUID];
 }
 
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID {
-    [[NSUserDefaults standardUserDefaults] setValue:evernoteNotebookGUID forKey:EVERNOTE_NOTEBOOK_GUID];
+    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:evernoteNotebookGUID];
 }
 
 @end
