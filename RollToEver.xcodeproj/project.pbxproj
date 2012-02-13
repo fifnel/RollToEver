@@ -34,6 +34,8 @@
 		C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA214E8E87100DDD8C8 /* TTransportException.m */; };
 		C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */; };
 		C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
+		C000DDBC14E966B100DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
+		C000DDBD14E966B900DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
 		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
 		C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */; };
@@ -144,6 +146,7 @@
 		C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
 		C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoUploader.h; path = RollToEver/PhotoUploader.h; sourceTree = "<group>"; };
 		C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoUploader.m; path = RollToEver/PhotoUploader.m; sourceTree = "<group>"; };
+		C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C00C791014E4B95B00A68DCC /* AssetURLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetURLStorage.h; path = RollToEver/AssetURLStorage.h; sourceTree = "<group>"; };
 		C00C791114E4B95B00A68DCC /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetURLStorage.m; path = RollToEver/AssetURLStorage.m; sourceTree = "<group>"; };
 		C00C791814E53CE600A68DCC /* AssetsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsEnumerator.h; path = RollToEver/AssetsEnumerator.h; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C000DDBC14E966B100DDD8C8 /* CoreLocation.framework in Frameworks */,
 				C000DD7114E8E44500DDD8C8 /* Security.framework in Frameworks */,
 				C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */,
 				C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */,
@@ -227,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C000DDBD14E966B900DDD8C8 /* CoreLocation.framework in Frameworks */,
 				C000DD7014E8E43900DDD8C8 /* Security.framework in Frameworks */,
 				C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */,
 				C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */,
@@ -355,6 +360,7 @@
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
+				C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */,
 				C000DD6E14E8E3F500DDD8C8 /* Libraries */,
 				C039B10A14DF79D300F4169E /* RollToEverViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,

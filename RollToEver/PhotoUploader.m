@@ -10,6 +10,7 @@
 #import <AssetsLibrary/ALAssetsLibrary.h>
 #import <AssetsLibrary/ALAsset.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Evernote.h"
 #import "UserSettings.h"
 #import "AssetsEnumerator.h"
@@ -158,6 +159,7 @@
     }
     NSData *data = [[NSData alloc]initWithBytesNoCopy:buf length:size];
     NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
+//    CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
     
     Evernote *evernote = nil;
     @try {
