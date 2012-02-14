@@ -11,6 +11,7 @@
 #import <AssetsLibrary/ALAssetRepresentation.h>
 #import "AssetsEnumerator.h"
 #import "AssetURLStorage.h"
+#import "AllAssetsURLRegister.h"
 
 @interface MyTest : GHAsyncTestCase
 {
@@ -18,6 +19,7 @@
     AssetsEnumerator *enumerator_;
     NSMutableArray *urls_;
     AssetURLStorage *assetUrlStorage_;
+    AllAssetsURLRegister *allregister_;
 }
 
 @end
@@ -30,8 +32,8 @@
     enumerator_.delegate = self;
     urls_ = [[NSMutableArray alloc] init];
     assetUrlStorage_ = [[AssetURLStorage alloc] init];
-    
-
+    allregister_ = [[AllAssetsURLRegister alloc] init];
+    allregister_.delegate = self;
 }
 
 - (void)tearDown {
@@ -99,6 +101,16 @@
 }
 
 - (void)AssetsEnumerationFailure:(NSError *)error {
+}
+
+- (void)testAllRegister {
+    [allregister_ start];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+}
+
+- (void)AllAssetsURLRegisterDidFinish:(BOOL)succeeded {
+    GHAssertTrue(succeeded, @"AllAssetsURLRegisterDidFinish failure");
+//    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testAllRegister)];
 }
 
 @end

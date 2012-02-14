@@ -36,6 +36,28 @@
 		C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
 		C000DDBC14E966B100DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
 		C000DDBD14E966B900DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
+		C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */; };
+		C000DDC414EAB65400DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
+		C000DDC514EAB65400DDD8C8 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */; };
+		C000DDC614EAB6A100DDD8C8 /* EDAMLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD7714E8E87100DDD8C8 /* EDAMLimits.m */; };
+		C000DDC714EAB6A100DDD8C8 /* Errors.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD7914E8E87100DDD8C8 /* Errors.m */; };
+		C000DDC814EAB6A100DDD8C8 /* NoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD7B14E8E87100DDD8C8 /* NoteStore.m */; };
+		C000DDC914EAB6A100DDD8C8 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD7D14E8E87100DDD8C8 /* Types.m */; };
+		C000DDCA14EAB6A100DDD8C8 /* UserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD7F14E8E87100DDD8C8 /* UserStore.m */; };
+		C000DDCB14EAB6A100DDD8C8 /* Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8114E8E87100DDD8C8 /* Evernote.m */; };
+		C000DDCC14EAB6A100DDD8C8 /* NSDataMD5Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8714E8E87100DDD8C8 /* NSDataMD5Additions.m */; };
+		C000DDCD14EAB6A100DDD8C8 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8914E8E87100DDD8C8 /* NSString+MD5.m */; };
+		C000DDCE14EAB6A100DDD8C8 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8D14E8E87100DDD8C8 /* TBinaryProtocol.m */; };
+		C000DDCF14EAB6A100DDD8C8 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9014E8E87100DDD8C8 /* TProtocolException.m */; };
+		C000DDD014EAB6A100DDD8C8 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9314E8E87100DDD8C8 /* TProtocolUtil.m */; };
+		C000DDD114EAB6A100DDD8C8 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9614E8E87100DDD8C8 /* TApplicationException.m */; };
+		C000DDD214EAB6A100DDD8C8 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9814E8E87100DDD8C8 /* TException.m */; };
+		C000DDD314EAB6A100DDD8C8 /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9D14E8E87100DDD8C8 /* THTTPClient.m */; };
+		C000DDD414EAB6A100DDD8C8 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DD9F14E8E87100DDD8C8 /* TMemoryBuffer.m */; };
+		C000DDD514EAB6A100DDD8C8 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA214E8E87100DDD8C8 /* TTransportException.m */; };
+		C000DDD614EAB6A100DDD8C8 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */; };
+		C000DDD714EAB6CB00DDD8C8 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1E14E2719000507D08 /* UserSettings.m */; };
+		C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8414E8E87100DDD8C8 /* MD5.c */; };
 		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
 		C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */; };
@@ -147,6 +169,8 @@
 		C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoUploader.h; path = RollToEver/PhotoUploader.h; sourceTree = "<group>"; };
 		C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoUploader.m; path = RollToEver/PhotoUploader.m; sourceTree = "<group>"; };
 		C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C000DDC114EAB12700DDD8C8 /* AllAssetsURLRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllAssetsURLRegister.h; path = RollToEver/AllAssetsURLRegister.h; sourceTree = "<group>"; };
+		C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllAssetsURLRegister.m; path = RollToEver/AllAssetsURLRegister.m; sourceTree = "<group>"; };
 		C00C791014E4B95B00A68DCC /* AssetURLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetURLStorage.h; path = RollToEver/AssetURLStorage.h; sourceTree = "<group>"; };
 		C00C791114E4B95B00A68DCC /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetURLStorage.m; path = RollToEver/AssetURLStorage.m; sourceTree = "<group>"; };
 		C00C791814E53CE600A68DCC /* AssetsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsEnumerator.h; path = RollToEver/AssetsEnumerator.h; sourceTree = "<group>"; };
@@ -464,6 +488,8 @@
 				C00C791914E53CE600A68DCC /* AssetsEnumerator.m */,
 				C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */,
 				C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */,
+				C000DDC114EAB12700DDD8C8 /* AllAssetsURLRegister.h */,
+				C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -658,6 +684,7 @@
 				C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */,
 				C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
 				C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */,
+				C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +703,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */,
+				C000DDD714EAB6CB00DDD8C8 /* UserSettings.m in Sources */,
+				C000DDC614EAB6A100DDD8C8 /* EDAMLimits.m in Sources */,
+				C000DDC714EAB6A100DDD8C8 /* Errors.m in Sources */,
+				C000DDC814EAB6A100DDD8C8 /* NoteStore.m in Sources */,
+				C000DDC914EAB6A100DDD8C8 /* Types.m in Sources */,
+				C000DDCA14EAB6A100DDD8C8 /* UserStore.m in Sources */,
+				C000DDCB14EAB6A100DDD8C8 /* Evernote.m in Sources */,
+				C000DDCC14EAB6A100DDD8C8 /* NSDataMD5Additions.m in Sources */,
+				C000DDCD14EAB6A100DDD8C8 /* NSString+MD5.m in Sources */,
+				C000DDCE14EAB6A100DDD8C8 /* TBinaryProtocol.m in Sources */,
+				C000DDCF14EAB6A100DDD8C8 /* TProtocolException.m in Sources */,
+				C000DDD014EAB6A100DDD8C8 /* TProtocolUtil.m in Sources */,
+				C000DDD114EAB6A100DDD8C8 /* TApplicationException.m in Sources */,
+				C000DDD214EAB6A100DDD8C8 /* TException.m in Sources */,
+				C000DDD314EAB6A100DDD8C8 /* THTTPClient.m in Sources */,
+				C000DDD414EAB6A100DDD8C8 /* TMemoryBuffer.m in Sources */,
+				C000DDD514EAB6A100DDD8C8 /* TTransportException.m in Sources */,
+				C000DDD614EAB6A100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
+				C000DDC414EAB65400DDD8C8 /* PhotoUploader.m in Sources */,
+				C000DDC514EAB65400DDD8C8 /* AllAssetsURLRegister.m in Sources */,
 				C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */,
 				C04F82D914E79FE900C9D1FE /* AssetURLStorage.m in Sources */,
 				C04F82DA14E79FE900C9D1FE /* AssetsEnumerator.m in Sources */,
