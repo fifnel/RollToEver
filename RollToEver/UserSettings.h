@@ -12,6 +12,12 @@
 
 +(UserSettings *)sharedInstance;
 
+- (NSString *)version;
+- (void)setVersion:(NSString *)version;
+
+- (NSString *)isFirstTime;
+- (void)setIsFirstTime:(NSString *)isFirstTime;
+
 - (NSString *)evernoteUserId;
 - (void)setEvernoteUserId:(NSString *)evernoteUserId;
 

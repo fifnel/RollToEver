@@ -63,6 +63,24 @@ static UserSettings *sharedUserSettingsInstance = nil;
 
 #pragma  mark - propertyes methods
 
+static NSString *VERSION = @"Version";
+- (NSString *)version {
+    return [[NSUserDefaults standardUserDefaults] stringForKey:VERSION];
+}
+
+- (void)setVersion:(NSString *)version {
+    [[NSUserDefaults standardUserDefaults] setValue:version forKey:VERSION];
+}
+
+static NSString *ISFIRSTTIME = @"IsFirstTime";
+- (NSString *)isFirstTime {
+    return [[NSUserDefaults standardUserDefaults] stringForKey:ISFIRSTTIME];
+}
+
+- (void)setIsFirstTime:(NSString *)isFirstTime {
+    [[NSUserDefaults standardUserDefaults] setValue:isFirstTime forKey:ISFIRSTTIME];
+}
+
 static NSString *EVERNOTE_USER_ID = @"EvernoteUserID";
 - (NSString *)evernoteUserId {
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_USER_ID];
