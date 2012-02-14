@@ -41,8 +41,6 @@
     AssetsEnumerator *ae = [[AssetsEnumerator alloc] init];
     ae.delegate = self;
     [ae startEnumeration];
-
-    sleep(10);
 }
 
 @end

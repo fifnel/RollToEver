@@ -360,7 +360,6 @@
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
-				C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */,
 				C000DD6E14E8E3F500DDD8C8 /* Libraries */,
 				C039B10A14DF79D300F4169E /* RollToEverViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,
@@ -384,13 +383,14 @@
 		C039B10314DF79D300F4169E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C000DD6F14E8E43900DDD8C8 /* Security.framework */,
-				C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */,
-				C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */,
 				C039B10414DF79D300F4169E /* UIKit.framework */,
 				C039B10614DF79D300F4169E /* Foundation.framework */,
+				C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */,
 				C039B10814DF79D300F4169E /* CoreGraphics.framework */,
 				C0833FF214E392A700DB4144 /* CoreData.framework */,
+				C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */,
+				C000DD6F14E8E43900DDD8C8 /* Security.framework */,
+				C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */,
 				C039B12214DF79D400F4169E /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
