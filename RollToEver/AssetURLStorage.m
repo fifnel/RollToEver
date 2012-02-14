@@ -110,6 +110,25 @@
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
     }
-}   
+}
+
+/**
+ 登録されているURLをすべて削除する
+ */
+- (void)deleteAllURLs {
+
+    NSArray *urls = [self getManagedObjects];
+    for (int i=0, end=[urls count]; i<end; i++) {
+        NSManagedObject *obj = [urls objectAtIndex:i];
+        NSString *url = [obj valueForKey:@"url"];
+        NSLog(@"delete url=%@", url);
+        [self.managedObjectContext deleteObject:obj];
+    }
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
+    }
+}
 
 @end

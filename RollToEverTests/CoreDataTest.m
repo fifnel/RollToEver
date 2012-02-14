@@ -81,4 +81,10 @@
     }
 }
 
+- (void)testAllDelete {
+    AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+    
+    [storage deleteAllURLs];
+}
+
 @end

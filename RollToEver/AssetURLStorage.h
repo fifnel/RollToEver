@@ -13,5 +13,6 @@
 - (BOOL)isExistURL:(NSString *)url;
 - (BOOL)insertURL:(NSString *)url;
 - (void)deleteURL:(NSString *)url;
+- (void)deleteAllURLs;
 
 @end
