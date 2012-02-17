@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "THTTPAsyncClient.h"
 
 @implementation ViewController
 
@@ -122,9 +121,8 @@
     [ProgressText_ setText:@"failure"];
 }
 
-- (void)testRemainAsync:(NSInteger)remain sended:(NSInteger)sended total:(NSInteger)total {
-    NSLog(@"testReamin:%d/%d/%d", remain, sended, total);
-    [UploadSingleProgress_ setProgress:(float)sended/(float)total];
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    [UploadSingleProgress_ setProgress:(float)totalBytesWritten/(float)totalBytesExpectedToWrite];
 }
 
 @end
