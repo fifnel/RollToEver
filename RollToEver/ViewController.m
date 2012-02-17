@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "THTTPAsyncClient.h"
 
 @implementation ViewController
 
+@synthesize UploadSingleProgress = UploadSingleProgress_;
 @synthesize UploadProgress = UploadProgress_;
 @synthesize ProgressText = ProgressText_;
 
@@ -37,6 +39,7 @@
     ProgressText_ = nil;
     [self setProgressText:nil];
     [photoUploader_ release];
+    [self setUploadSingleProgress:nil];
     [super viewDidUnload];
 }
 
@@ -73,6 +76,7 @@
 - (void)dealloc {
     [UploadProgress_ release];
     [ProgressText_ release];
+    [UploadSingleProgress_ release];
     [super dealloc];
 }
 
@@ -82,9 +86,12 @@
     [ProgressText_ setText:@"ready"];
     
     NSString *msg = [NSString stringWithFormat:@"%d枚のアップロード対象画像が見つかりました。", totalCount];
+    NSLog(@"%@", msg);
+    /*
     UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle:@"RoolToEver" message:msg delegate:self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
     [alertDone show];
     [alertDone release];
+     */
 }
 
 - (void)PhotoUploaderUploadBegin:(ALAsset *)asset count:(NSInteger)count totalCount:(NSInteger)totalCount {
@@ -113,6 +120,11 @@
 
 - (void)PhotoUploaderFailure {
     [ProgressText_ setText:@"failure"];
+}
+
+- (void)testRemainAsync:(NSInteger)remain sended:(NSInteger)sended total:(NSInteger)total {
+    NSLog(@"testReamin:%d/%d/%d", remain, sended, total);
+    [UploadSingleProgress_ setProgress:(float)sended/(float)total];
 }
 
 @end

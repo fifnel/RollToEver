@@ -16,6 +16,7 @@
 
 #import "NSString+MD5.h"
 #import "NSDataMD5Additions.h"
+#import "THTTPAsyncClient.h"
 
 #import "id.h"
 /*
@@ -41,6 +42,7 @@ NSString * const applicationVersion = @"0.0";
 @implementation Evernote
 
 @synthesize shardId, authToken, noteStoreUri, user, noteStore;
+@synthesize delegate = delegate_;
 
 -(id)initWithUserID:(NSString *)username Password:(NSString *)password {
     self = [super init];
@@ -70,7 +72,7 @@ NSString * const applicationVersion = @"0.0";
         // Instantiate the Thrift objects
         NSURL * NSURLuserStoreUri = [[[NSURL alloc] initWithString: userStoreUri] autorelease];
         
-        THTTPClient *userStoreHttpClient = [[[THTTPClient alloc] initWithURL:  NSURLuserStoreUri] autorelease];
+        THTTPAsyncClient *userStoreHttpClient = [[[THTTPAsyncClient alloc] initWithURL:  NSURLuserStoreUri] autorelease];
         TBinaryProtocol *userStoreProtocol = [[[TBinaryProtocol alloc] initWithTransport:userStoreHttpClient] autorelease];
         EDAMUserStoreClient *userStore = [[[EDAMUserStoreClient alloc] initWithProtocol:userStoreProtocol] autorelease];
         
@@ -108,7 +110,8 @@ NSString * const applicationVersion = @"0.0";
         
         
         // Initializing the NoteStore client
-        THTTPClient *noteStoreHttpClient = [[[THTTPClient alloc] initWithURL:noteStoreUri userAgent: userAgent timeout:15000] autorelease];
+        THTTPAsyncClient *noteStoreHttpClient = [[[THTTPAsyncClient alloc] initWithURL:noteStoreUri userAgent: userAgent timeout:15000] autorelease];
+        noteStoreHttpClient.delegate = delegate_;
         TBinaryProtocol *noteStoreProtocol = [[[TBinaryProtocol alloc] initWithTransport:noteStoreHttpClient] autorelease];
         noteStore = [[[EDAMNoteStoreClient alloc] initWithProtocol:noteStoreProtocol] retain];
         

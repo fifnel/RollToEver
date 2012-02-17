@@ -173,6 +173,7 @@
         evernote = [[Evernote alloc]
                     initWithUserID:[UserSettings sharedInstance].evernoteUserId
                     Password:[UserSettings sharedInstance].evernotePassword];
+        evernote.delegate = delegate_;
         [evernote uploadPhoto:data notebookGUID:[UserSettings sharedInstance].evernoteNotebookGUID date:date filename:[rep filename]];
     }
     @catch (EDAMUserException * e) {

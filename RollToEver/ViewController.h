@@ -19,5 +19,6 @@
 
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
 @property (retain, nonatomic) IBOutlet UILabel *ProgressText;
+@property (retain, nonatomic) IBOutlet UIProgressView *UploadSingleProgress;
 
 @end

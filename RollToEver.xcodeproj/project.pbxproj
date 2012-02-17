@@ -86,6 +86,8 @@
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0833FFA14E3947000DB4144 /* CoreDataTest.m */; };
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
+		C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
+		C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
 		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -212,6 +214,8 @@
 		C0833FFA14E3947000DB4144 /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
 		C094D85A14E19B0800E30669 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		C094D85B14E19B0800E30669 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		C0AA450114EE8A750044DD75 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/THTTPAsyncClient.h; sourceTree = "<group>"; };
+		C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THTTPAsyncClient.m; path = RollToEver/THTTPAsyncClient.m; sourceTree = "<group>"; };
 		C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEverGHUnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BC74D314E6CCFD003B0611 /* RollToEverGHUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverGHUnitTest-Info.plist"; sourceTree = "<group>"; };
 		C0BC74D514E6CCFD003B0611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 				C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */,
 				C000DDC114EAB12700DDD8C8 /* AllAssetsURLRegister.h */,
 				C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */,
+				C0AA450114EE8A750044DD75 /* THTTPAsyncClient.h */,
+				C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
 				C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */,
 				C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */,
+				C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +750,7 @@
 				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 				C000DD6A14E8E3DB00DDD8C8 /* PDKeychainBindings.m in Sources */,
 				C000DD6C14E8E3DB00DDD8C8 /* PDKeychainBindingsController.m in Sources */,
+				C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

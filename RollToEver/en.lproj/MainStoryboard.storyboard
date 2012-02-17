@@ -51,6 +51,10 @@
                                 <rect key="frame" x="20" y="306" width="280" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="Z42-Fj-XwJ">
+                                <rect key="frame" x="20" y="123" width="280" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -58,6 +62,7 @@
                     <connections>
                         <outlet property="ProgressText" destination="Q0Q-SQ-YUw" id="sqW-ih-MFT"/>
                         <outlet property="UploadProgress" destination="dq0-Hs-D2n" id="jxU-6N-zJT"/>
+                        <outlet property="UploadSingleProgress" destination="Z42-Fj-XwJ" id="7tc-qS-oZg"/>
                     </connections>
                 </viewController>
             </objects>
@@ -296,6 +301,7 @@
                 <relationship kind="action" name="start:"/>
                 <relationship kind="outlet" name="ProgressText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="UploadProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="UploadSingleProgress" candidateClass="UIProgressView"/>
             </relationships>
         </class>
     </classes>

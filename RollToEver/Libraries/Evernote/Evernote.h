@@ -42,6 +42,7 @@ extern NSString * const noteStoreUriBase;
 @property(retain) NSString * authToken; 
 @property(retain) NSURL * noteStoreUri;
 @property(retain) EDAMNoteStoreClient *noteStore;
+@property(retain) id delegate;
 
 -(id)initWithUserID:(NSString *)username Password:(NSString *)password;
 
@@ -59,4 +60,4 @@ extern NSString * const noteStoreUriBase;
 
 - (void)uploadPhoto:(NSData *)image notebookGUID:(NSString *)notebookGUID date:(NSDate *)date filename:(NSString *)filename;
 
-    @end
+@end
