@@ -57,7 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    assetsList = [assetsLoader EnumerateURLExcludeDuplication:NO];
+    assetsList = [[assetsLoader EnumerateURLExcludeDuplication:NO] retain];
     NSLog(@"count=%d", [assetsList retainCount]);
     [super viewWillAppear:animated];
 }

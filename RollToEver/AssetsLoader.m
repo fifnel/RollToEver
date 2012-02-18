@@ -28,7 +28,7 @@
 
 // アセットURLのリストを取得する
 - (NSMutableArray *)EnumerateURLExcludeDuplication:(BOOL)exclude {
-    __block NSMutableArray *result = [[[[NSMutableArray alloc] init] autorelease] retain];
+    __block NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
     __block BOOL completed = NO;
     __block AssetURLStorage *urlStorage = nil;
 
