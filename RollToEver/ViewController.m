@@ -125,4 +125,7 @@
     [UploadSingleProgress_ setProgress:(float)totalBytesWritten/(float)totalBytesExpectedToWrite];
 }
 
+- (IBAction)goUploadList:(id)sender {
+}
+
 @end

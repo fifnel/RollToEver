@@ -16,6 +16,7 @@
 }
 
 - (IBAction)start:(id)sender;
+- (IBAction)goUploadList:(id)sender;
 
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
 @property (retain, nonatomic) IBOutlet UILabel *ProgressText;

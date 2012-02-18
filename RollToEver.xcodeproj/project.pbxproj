@@ -87,6 +87,8 @@
 		C08634F414EFEBDA003A5E13 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634F314EFEBDA003A5E13 /* AssetsLoader.m */; };
 		C08634F514EFEBDA003A5E13 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634F314EFEBDA003A5E13 /* AssetsLoader.m */; };
 		C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */; };
+		C0881F9614F00F1300818BAE /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */; };
+		C0881F9714F00F1300818BAE /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */; };
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
 		C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
 		C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
@@ -216,6 +218,8 @@
 		C08634F314EFEBDA003A5E13 /* AssetsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetsLoader.m; path = RollToEver/AssetsLoader.m; sourceTree = "<group>"; };
 		C08634FA14EFFC63003A5E13 /* AssetsLoaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsLoaderTest.h; sourceTree = "<group>"; };
 		C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsLoaderTest.m; sourceTree = "<group>"; };
+		C0881F9414F00F1300818BAE /* UploadAssetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAssetListViewController.h; sourceTree = "<group>"; };
+		C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAssetListViewController.m; sourceTree = "<group>"; };
 		C094D85A14E19B0800E30669 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		C094D85B14E19B0800E30669 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		C0AA450114EE8A750044DD75 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/THTTPAsyncClient.h; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				C039B11414DF79D300F4169E /* AppDelegate.m */,
 				C039B11914DF79D300F4169E /* ViewController.h */,
 				C039B11A14DF79D300F4169E /* ViewController.m */,
+				C0881F9414F00F1300818BAE /* UploadAssetListViewController.h */,
+				C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */,
 				C094D85A14E19B0800E30669 /* SettingsTableViewController.h */,
 				C094D85B14E19B0800E30669 /* SettingsTableViewController.m */,
 				C02269D714E2C44F00C27758 /* AccountSettingViewController.h */,
@@ -709,6 +715,7 @@
 				C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */,
 				C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
 				C08634F414EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
+				C0881F9614F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,6 +766,7 @@
 				C000DD6C14E8E3DB00DDD8C8 /* PDKeychainBindingsController.m in Sources */,
 				C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
 				C08634F514EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
+				C0881F9714F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
