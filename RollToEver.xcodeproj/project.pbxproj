@@ -60,7 +60,6 @@
 		C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8414E8E87100DDD8C8 /* MD5.c */; };
 		C00C791214E4B95B00A68DCC /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791114E4B95B00A68DCC /* AssetURLStorage.m */; };
 		C00C791A14E53CE600A68DCC /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791914E53CE600A68DCC /* AssetsEnumerator.m */; };
-		C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */; };
 		C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C02269D914E2C44F00C27758 /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02269D814E2C44F00C27758 /* AccountSettingViewController.m */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
@@ -85,6 +84,9 @@
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0833FFA14E3947000DB4144 /* CoreDataTest.m */; };
+		C08634F414EFEBDA003A5E13 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634F314EFEBDA003A5E13 /* AssetsLoader.m */; };
+		C08634F514EFEBDA003A5E13 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634F314EFEBDA003A5E13 /* AssetsLoader.m */; };
+		C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */; };
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
 		C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
 		C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
@@ -177,8 +179,6 @@
 		C00C791114E4B95B00A68DCC /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetURLStorage.m; path = RollToEver/AssetURLStorage.m; sourceTree = "<group>"; };
 		C00C791814E53CE600A68DCC /* AssetsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsEnumerator.h; path = RollToEver/AssetsEnumerator.h; sourceTree = "<group>"; };
 		C00C791914E53CE600A68DCC /* AssetsEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetsEnumerator.m; path = RollToEver/AssetsEnumerator.m; sourceTree = "<group>"; };
-		C00C791C14E56AF800A68DCC /* AssetsEnumeratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsEnumeratorTest.h; sourceTree = "<group>"; };
-		C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsEnumeratorTest.m; sourceTree = "<group>"; };
 		C02269D714E2C44F00C27758 /* AccountSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingViewController.h; sourceTree = "<group>"; };
 		C02269D814E2C44F00C27758 /* AccountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingViewController.m; sourceTree = "<group>"; };
 		C039B10014DF79D300F4169E /* RollToEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +212,10 @@
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
 		C0833FFA14E3947000DB4144 /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
+		C08634F214EFEBDA003A5E13 /* AssetsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsLoader.h; path = RollToEver/AssetsLoader.h; sourceTree = "<group>"; };
+		C08634F314EFEBDA003A5E13 /* AssetsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetsLoader.m; path = RollToEver/AssetsLoader.m; sourceTree = "<group>"; };
+		C08634FA14EFFC63003A5E13 /* AssetsLoaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsLoaderTest.h; sourceTree = "<group>"; };
+		C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsLoaderTest.m; sourceTree = "<group>"; };
 		C094D85A14E19B0800E30669 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		C094D85B14E19B0800E30669 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		C0AA450114EE8A750044DD75 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/THTTPAsyncClient.h; sourceTree = "<group>"; };
@@ -470,12 +474,12 @@
 			children = (
 				C039B12E14DF79D400F4169E /* RollToEverTests.h */,
 				C039B12F14DF79D400F4169E /* RollToEverTests.m */,
+				C08634FA14EFFC63003A5E13 /* AssetsLoaderTest.h */,
+				C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */,
 				C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */,
 				C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */,
 				C0833FF914E3947000DB4144 /* CoreDataTest.h */,
 				C0833FFA14E3947000DB4144 /* CoreDataTest.m */,
-				C00C791C14E56AF800A68DCC /* AssetsEnumeratorTest.h */,
-				C00C791D14E56AF800A68DCC /* AssetsEnumeratorTest.m */,
 				C039B12914DF79D400F4169E /* Supporting Files */,
 			);
 			path = RollToEverTests;
@@ -498,6 +502,8 @@
 				C0C23B1E14E2719000507D08 /* UserSettings.m */,
 				C00C791014E4B95B00A68DCC /* AssetURLStorage.h */,
 				C00C791114E4B95B00A68DCC /* AssetURLStorage.m */,
+				C08634F214EFEBDA003A5E13 /* AssetsLoader.h */,
+				C08634F314EFEBDA003A5E13 /* AssetsLoader.m */,
 				C00C791814E53CE600A68DCC /* AssetsEnumerator.h */,
 				C00C791914E53CE600A68DCC /* AssetsEnumerator.m */,
 				C000DDB814E8F96200DDD8C8 /* PhotoUploader.h */,
@@ -702,6 +708,7 @@
 				C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */,
 				C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */,
 				C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
+				C08634F414EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,10 +716,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C00C791F14E56B0B00A68DCC /* AssetsEnumeratorTest.m in Sources */,
 				C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */,
 				C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */,
 				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
+				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +758,7 @@
 				C000DD6A14E8E3DB00DDD8C8 /* PDKeychainBindings.m in Sources */,
 				C000DD6C14E8E3DB00DDD8C8 /* PDKeychainBindingsController.m in Sources */,
 				C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */,
+				C08634F514EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

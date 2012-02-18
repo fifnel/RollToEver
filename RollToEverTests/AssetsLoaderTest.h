@@ -1,8 +1,8 @@
 //
-//  AssetsEnumeratorTest.h
+//  AssetsLoaderTest.h
 //  RollToEver
 //
-//  Created by fifnel on 2012/02/11.
+//  Created by fifnel on 2012/02/19.
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
@@ -11,6 +11,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface AssetsEnumeratorTest : SenTestCase
+@interface AssetsLoaderTest : SenTestCase
 
 @end
