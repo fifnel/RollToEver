@@ -23,14 +23,16 @@
 }
 
 - (void)dealloc {
-    [assetsLibrary_ dealloc];
+    [assetsLibrary_ release];
 }
 
 // アセットURLのリストを取得する
 - (NSMutableArray *)EnumerateURLExcludeDuplication:(BOOL)exclude {
     __block NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
     __block BOOL completed = NO;
+    __block NSError *assetError = nil;
     __block AssetURLStorage *urlStorage = nil;
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
 
     if (exclude) {
         urlStorage = [[[AssetURLStorage alloc] init] autorelease];
@@ -60,6 +62,7 @@
             [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
         } else {
             completed = YES;
+            dispatch_semaphore_signal(sema);
         }
     };
     
@@ -67,7 +70,9 @@
     ALAssetsLibraryAccessFailureBlock failureBlock = 
     ^(NSError *error) {
         NSLog(@"error:%@", error);
+        assetError = [error retain];
         completed = YES;
+        dispatch_semaphore_signal(sema);
     };
     
     // 列挙開始
@@ -75,8 +80,13 @@
                                   usingBlock:usingBlock
                                 failureBlock:failureBlock];
     
-    while (!completed) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    if ([NSThread isMainThread]) {
+        while (!completed && !assetError) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
+    }
+    else {
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
     
     return result;
@@ -90,24 +100,36 @@
 
 // 1アセットの読み込み
 - (ALAsset *)loadAssetURL:(NSURL *)url {
+    /*
+     cocoa touch - Error trying to assigning __block ALAsset from inside assetForURL:resultBlock: - Stack Overflow
+     http://stackoverflow.com/questions/7625402/error-trying-to-assigning-block-alasset-from-inside-assetforurlresultblock
+     */
     __block ALAsset *result = nil;
-    __block BOOL completed = NO;
+    __block NSError *assetError = nil;
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
-    [assetsLibrary_ assetForURL:url
-                    resultBlock:^(ALAsset *asset) {
-                        result = [asset retain];
-                        completed = YES;
-                    }
-                   failureBlock:^(NSError *error) {
-                        NSLog(@"error:%@", error);
-                        completed = YES;
-                   }];
+    [[self assetsLibrary] assetForURL:url resultBlock:^(ALAsset *asset) {
+        result = [asset retain];
+        dispatch_semaphore_signal(sema);
+    } failureBlock:^(NSError *error) {
+        assetError = [error retain];
+        dispatch_semaphore_signal(sema);
+    }];
     
-    while (!completed) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    
+    if ([NSThread isMainThread]) {
+        while (!result && !assetError) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
+    }
+    else {
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
     
-    return result;
+    dispatch_release(sema);
+    [assetError release];
+    
+    return [result autorelease];
 }
 
 @end
