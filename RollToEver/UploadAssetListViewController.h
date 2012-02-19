@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "AssetsLoader.h"
+#import "Evernote.h"
+#import "AssetURLStorage.h"
 
 @interface UploadAssetListViewController : UITableViewController
 {
 @private
-    NSInteger section;
-    NSInteger sectionItem;
-    NSArray *assetsList;
-    AssetsLoader *assetsLoader;
+    NSArray *assetsList_;
+    AssetsLoader *assetsLoader_;
+    AssetURLStorage *urlStorage_;
+    NSOperationQueue *operationQueue_;
+    NSInteger uploadIndex_;
 }
 
 - (IBAction)startUpload:(id)sender;
+
 @end

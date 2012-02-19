@@ -7,6 +7,14 @@
 //
 
 #import "UploadAssetListViewController.h"
+#import "PhotoUploadOperation.h"
+
+@interface UploadAssetListViewController()
+- (void)updateProgress:(NSDictionary *)params;
+- (void)resetProgressAsyncIndex:(NSInteger)index;
+- (void)fullProgressAsyncIndex:(NSInteger)index;
+- (void)updateProgressAsyncIndex:(NSInteger)index progress:(NSInteger)progress max:(NSInteger)max;
+@end
 
 @implementation UploadAssetListViewController
 
@@ -33,11 +41,18 @@
 {
     [super viewDidLoad];
     
-    if (assetsLoader != nil) {
-        [assetsLoader release];
+    if (assetsLoader_ != nil) {
+        [assetsLoader_ release];
     }
-    assetsLoader = [[AssetsLoader alloc] init];
-
+    assetsLoader_ = [[AssetsLoader alloc] init];
+    if (operationQueue_ != nil) {
+        [operationQueue_ release];
+    }
+    operationQueue_ = [[NSOperationQueue alloc] init];
+    if (urlStorage_ != nil) {
+        [urlStorage_ release];
+    }
+    urlStorage_ = [[AssetURLStorage alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,14 +66,18 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    [assetsLoader release];
-    assetsLoader = nil;
+    [assetsLoader_ release];
+    assetsLoader_ = nil;
+    [operationQueue_ release];
+    operationQueue_ = nil;
+    [urlStorage_ release];
+    urlStorage_ = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    assetsList = [[assetsLoader EnumerateURLExcludeDuplication:NO] retain];
-    NSLog(@"count=%d", [assetsList retainCount]);
+    assetsList_ = [[assetsLoader_ EnumerateURLExcludeDuplication:NO] retain];
+    NSLog(@"count=%d", [assetsList_ retainCount]);
     [super viewWillAppear:animated];
 }
 
@@ -93,8 +112,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"count=%d", [assetsList retainCount]);
-    return [assetsList count];
+    NSLog(@"count=%d", [assetsList_ retainCount]);
+    return [assetsList_ count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,13 +126,21 @@
     }
     
     NSInteger index = [indexPath row];
-    ALAsset *asset = [assetsLoader loadAssetURLString:[assetsList objectAtIndex:index]];
+    ALAsset *asset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:index]];
     UIImage *thumb = [[[UIImage alloc] initWithCGImage:[asset thumbnail]] autorelease];
-    UIImageView *thumbView = [[[UIImageView alloc] initWithImage:thumb] autorelease];
     
     // Configure the cell...
-    [[cell textLabel] setText:[assetsList objectAtIndex:index]];
-    [cell addSubview:thumbView];
+//    [[cell textLabel] setText:[assetsList objectAtIndex:index]];
+    [[cell imageView] setImage:thumb];
+    UIProgressView *progress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    
+    // サムネイルは正方形なので、高さ＝幅ということにしてプログレスバーの位置を調整する
+    CGRect rect = [cell bounds];
+    rect.origin.x += rect.size.height;
+    rect.size.width -= rect.size.height;
+    rect.origin.y += rect.size.height/2;
+    progress.frame = rect;
+    [cell addSubview:progress];
     
     return cell;
 }
@@ -172,7 +199,67 @@
 }
 
 - (IBAction)startUpload:(id)sender {
-    sectionItem++;
-    [self.tableView reloadData];
+    uploadIndex_ = 0;
+    ALAsset *asset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:uploadIndex_]];
+    PhotoUploadOperation *ope = [[PhotoUploadOperation alloc] initWithAsset:asset];
+    ope.delegate = self;
+    [operationQueue_ addOperation:ope];
+    [ope release];
 }
+
+#pragma mark - UpdateProgress
+
+- (void)updateProgress:(NSDictionary *)params {
+    NSNumber *index    = [params valueForKey:@"index"];
+    NSNumber *progress = [params valueForKey:@"progress"];
+    NSNumber *max      = [params valueForKey:@"max"];
+    
+    UITableView *tableView = [self tableView];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[index intValue] inSection:0]];
+    UIProgressView *progressView = [[cell subviews] objectAtIndex:1];
+    [progressView setProgress:[progress floatValue]/[max floatValue] animated:YES];
+    [cell setNeedsLayout];
+}
+
+- (void)resetProgressAsyncIndex:(NSInteger)index {
+    [self updateProgressAsyncIndex:index progress:0 max:1];
+}
+
+- (void)fullProgressAsyncIndex:(NSInteger)index {
+    [self updateProgressAsyncIndex:index progress:1 max:1];
+}
+
+- (void)updateProgressAsyncIndex:(NSInteger)index progress:(NSInteger)progress max:(NSInteger)max {
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            [NSNumber numberWithInteger:index],    @"index",
+                            [NSNumber numberWithInteger:progress], @"progress",
+                            [NSNumber numberWithInteger:max],      @"max",
+                            nil];
+    [self performSelectorOnMainThread:@selector(updateProgress:) withObject:params waitUntilDone:YES];
+}
+
+- (void)PhotoUploadOperationStart:(PhotoUploadOperation *)operation {
+    [self resetProgressAsyncIndex:uploadIndex_];
+}
+
+- (void)PhotoUploadOperation:(PhotoUploadOperation *)operation progress:(NSInteger)progress max:(NSInteger)max {
+    [self updateProgressAsyncIndex:uploadIndex_ progress:progress max:max];
+}
+
+- (void)PhotoUploadOperationFinish:(PhotoUploadOperation *)operation {
+    [self fullProgressAsyncIndex:uploadIndex_];
+    ALAsset *currentAsset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:uploadIndex_]];
+    ALAssetRepresentation *rep = [currentAsset defaultRepresentation];
+    [urlStorage_ insertURL:[rep.url absoluteString]];
+    
+    uploadIndex_++;
+    if (uploadIndex_ < [assetsList_ count]) {
+        ALAsset *asset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:uploadIndex_]];
+        PhotoUploadOperation *ope = [[PhotoUploadOperation alloc] initWithAsset:asset];
+        ope.delegate = self;
+        [operationQueue_ addOperation:ope];
+        [ope release];
+    }
+}
+
 @end
