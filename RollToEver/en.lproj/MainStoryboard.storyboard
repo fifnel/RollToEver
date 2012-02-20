@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F2K-sm-vmS">
-                                <rect key="frame" x="124" y="245" width="72" height="37"/>
+                                <rect key="frame" x="124" y="284" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="start">
@@ -36,11 +36,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="dq0-Hs-D2n">
-                                <rect key="frame" x="20" y="306" width="280" height="9"/>
+                                <rect key="frame" x="28" y="329" width="280" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="Z42-Fj-XwJ">
-                                <rect key="frame" x="20" y="123" width="280" height="9"/>
+                                <rect key="frame" x="20" y="65" width="280" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="otv-z2-jIg">
@@ -59,6 +59,10 @@
                                     <segue destination="z7g-pc-aB2" kind="push" id="3hH-cx-RbM"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="UBU-hL-U9M">
+                                <rect key="frame" x="40" y="144" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -73,6 +77,7 @@
                         <outlet property="ProgressText" destination="Q0Q-SQ-YUw" id="sqW-ih-MFT"/>
                         <outlet property="UploadProgress" destination="dq0-Hs-D2n" id="jxU-6N-zJT"/>
                         <outlet property="UploadSingleProgress" destination="Z42-Fj-XwJ" id="7tc-qS-oZg"/>
+                        <outlet property="uploadingImage" destination="UBU-hL-U9M" id="b5q-4y-2Fy"/>
                     </connections>
                 </viewController>
             </objects>
@@ -337,6 +342,7 @@
                 <relationship kind="outlet" name="ProgressText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="UploadProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="UploadSingleProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
     </classes>

@@ -12,7 +12,7 @@
 @interface ViewController : UIViewController
 {
 @private
-    PhotoUploader *photoUploader_;
+    NSOperationQueue *operationQueue_;
 }
 
 - (IBAction)start:(id)sender;
@@ -21,5 +21,6 @@
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
 @property (retain, nonatomic) IBOutlet UILabel *ProgressText;
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadSingleProgress;
+@property (retain, nonatomic) IBOutlet UIImageView *uploadingImage;
 
 @end

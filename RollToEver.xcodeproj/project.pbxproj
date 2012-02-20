@@ -91,6 +91,8 @@
 		C0881F9714F00F1300818BAE /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */; };
 		C0881F9B14F0E14700818BAE /* PhotoUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881F9A14F0E14700818BAE /* PhotoUploadOperation.m */; };
 		C0881F9C14F0E14700818BAE /* PhotoUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881F9A14F0E14700818BAE /* PhotoUploadOperation.m */; };
+		C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
+		C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
 		C094D85C14E19B0800E30669 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C094D85B14E19B0800E30669 /* SettingsTableViewController.m */; };
 		C0AA450314EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
 		C0AA450414EE8A750044DD75 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */; };
@@ -224,6 +226,8 @@
 		C0881F9514F00F1300818BAE /* UploadAssetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAssetListViewController.m; sourceTree = "<group>"; };
 		C0881F9914F0E14700818BAE /* PhotoUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoUploadOperation.h; path = RollToEver/PhotoUploadOperation.h; sourceTree = "<group>"; };
 		C0881F9A14F0E14700818BAE /* PhotoUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoUploadOperation.m; path = RollToEver/PhotoUploadOperation.m; sourceTree = "<group>"; };
+		C0881FAA14F29FAD00818BAE /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+InvocationUtils.h"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
+		C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+InvocationUtils.m"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
 		C094D85A14E19B0800E30669 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		C094D85B14E19B0800E30669 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		C0AA450114EE8A750044DD75 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/THTTPAsyncClient.h; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 		C000DD6E14E8E3F500DDD8C8 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
 				C000DD7414E8E87100DDD8C8 /* Evernote */,
 				C000DD6D14E8E3E500DDD8C8 /* PDKeyChain */,
 			);
@@ -502,6 +507,15 @@
 				C039B12B14DF79D400F4169E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
+			isa = PBXGroup;
+			children = (
+				C0881FAA14F29FAD00818BAE /* NSObject+InvocationUtils.h */,
+				C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */,
+			);
+			name = "NSObject+InvocationUtils";
 			sourceTree = "<group>";
 		};
 		C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */ = {
@@ -723,6 +737,7 @@
 				C08634F414EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
 				C0881F9614F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 				C0881F9B14F0E14700818BAE /* PhotoUploadOperation.m in Sources */,
+				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +790,7 @@
 				C08634F514EFEBDA003A5E13 /* AssetsLoader.m in Sources */,
 				C0881F9714F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 				C0881F9C14F0E14700818BAE /* PhotoUploadOperation.m in Sources */,
+				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

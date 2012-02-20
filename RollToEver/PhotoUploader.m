@@ -7,138 +7,155 @@
 //
 
 #import "PhotoUploader.h"
-#import <AssetsLibrary/ALAssetsLibrary.h>
-#import <AssetsLibrary/ALAsset.h>
-#import <AssetsLibrary/ALAssetRepresentation.h>
-#import <CoreLocation/CoreLocation.h>
+//#import <CoreLocation/CoreLocation.h>
 #import "Evernote.h"
 #import "UserSettings.h"
-#import "AssetsEnumerator.h"
+#import "AssetsLoader.h"
 #import "AssetURLStorage.h"
+#import "NSObject+InvocationUtils.h"
 
 @interface PhotoUploader()
 
-- (void)startUploadAsync;
+@property (assign, readwrite) NSInteger currentIndex;
+@property (assign, readwrite) NSInteger totalCount;
+
+@property (retain) ALAsset *currentAsset;
+
 - (void)uploadPhotoToEvernote:(ALAsset *)asset;
 
-- (void)PhotoUploaderReadyOnMainThread:(NSDictionary *)params;
-- (void)PhotoUploaderUploadBeginOnMainThread:(NSDictionary *)params;
-- (void)PhotoUploaderUploadEndOnMainThread:(NSDictionary *)params;
-- (void)PhotoUploaderSucceededOnMainThread:(NSDictionary *)params;
-- (void)PhotoUploaderFailureOnMainThread:(NSDictionary *)params;
-- (void)PhotoUploaderCenceledOnMainThread:(NSDictionary *)params;
+- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader;
+- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error;
 
 @end
 
-@implementation PhotoUploader    
+@implementation PhotoUploader
 
+@synthesize currentIndex = currentIndex_;
+@synthesize totalCount = totalCount_;
 @synthesize delegate = delegate_;
+@synthesize currentAsset = currentAsset_;
 
 - (id)init {
+    self = [self initWithDelegate:nil];
+    return self;
+}
+
+- (id)initWithDelegate:(id)delegate {
     self = [super init];
     if (self != nil) {
+        assetsLibrary_ = [[ALAssetsLibrary alloc] init];
         assetUrlStorage_ = [[AssetURLStorage alloc] init];
-        enumerator_ = [[AssetsEnumerator alloc] init];
-        enumerator_.delegate = self;
-        urls_ = nil;
-        
-        working_ = NO;
+        delegate_ = delegate;
     }
     return self;
 }
 
-- (void)start {
-    if (working_ == YES) {
+- (void)dealloc {
+    [assetsLibrary_ release];
+    [assetUrlStorage_ release];
+    
+    [super dealloc];
+}
+
+- (void)main {
+//    __block BOOL completed = NO;
+//    __block NSError *assetError = nil;
+    __block AssetURLStorage *urlStorage = nil;
+//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+
+    urlStorage = [[[AssetURLStorage alloc] init] autorelease];
+    currentIndex_ = 0;
+    totalCount_ = 0;
+    
+    AssetsLoader *loader = [[AssetsLoader alloc] init];
+    NSArray *urlList = [loader EnumerateURLExcludeDuplication:NO];
+    if (urlList == nil) {
+        [self PhotoUploaderErrorAsync:self error:nil];
         return;
     }
-    working_ = YES;
-
-    [urls_ release];
-    urls_ = [[NSMutableArray alloc] init];
-    [self performSelectorInBackground:@selector(startUploadAsync) withObject:nil];
-}
-
-- (void)startUploadAsync {
-    [enumerator_ startEnumeration];
-}
-
-- (void)AssetsEnumerationStart:(NSInteger)count {
-    NSLog(@"AssetsEnumerationStart:%d", count);
-}
-
-- (void)AssetsEnumerationFind:(ALAsset *)asset index:(NSInteger)index stop:(BOOL *)stop {
-    if (asset == nil) {
-        return;
-    }
-    ALAssetRepresentation *rep = [asset defaultRepresentation];
-    if (![assetUrlStorage_ isExistURL:[rep.url absoluteString]]) {
-        NSLog(@"add url:%@", [rep.url absoluteString]);
-        [urls_ addObject:rep.url];
-    } else {
-        NSLog(@"skip url:%@", [rep.url absoluteString]);
-                [urls_ addObject:rep.url];//test
-    }
-    //    *stop = YES;
-}
-
-- (void)AssetsEnumerationEnd {
-    NSLog(@"AssetsEnumerationEnd count=%d", [urls_ count]);
-    uploadPhotosNum_ = [urls_ count];
-    uploadedPhotosNum_ = 0;
+    totalCount_ = [urlList count];
     
-    {
-        bool *cancel = NO;
-        NSValue *cancelValue = [NSValue valueWithPointer:cancel];
-        NSNumber *count = [NSNumber numberWithInteger:[urls_ count]];
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                count, @"count",
-                                cancelValue, @"cancel",
-                                nil];
-        [self PhotoUploaderReadyOnMainThread:params];
-        if (cancel != nil && *cancel == YES) {
-            [self PhotoUploaderCenceledOnMainThread:nil];
-            working_ = NO;
-            return;
+    [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:self.totalCount]];
+    
+    for (NSInteger i=0; i<totalCount_; i++) {
+        NSString *url = [urlList objectAtIndex:i];
+        ALAsset *asset = [loader loadAssetURLString:url];
+        if (asset == nil) {
+            [self PhotoUploaderErrorAsync:self error:nil];
+            continue;
+        }
+        
+        currentAsset_ = asset;
+        [self PhotoUploaderWillUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
+        [self uploadPhotoToEvernote:asset];
+        [urlStorage insertURL:url];
+        [self PhotoUploaderDidUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
+
+    }
+    
+    [self PhotoUploaderDidFinishAsync:self];
+
+    
+    
+    /*
+    // グループ内画像1枚ずつ呼び出される
+    ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
+    ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
+        if (asset) {
+            ALAssetRepresentation *rep = [asset defaultRepresentation];
+            NSString *url = [rep.url absoluteString];
+            if (![urlStorage isExistURL:url]) {
+                [self PhotoUploaderWillUploadAsync:self asset:asset index:index totalCount:self.totalCount];
+                [self uploadPhotoToEvernote:asset];
+                [urlStorage insertURL:url];
+                [self PhotoUploaderDidUploadAsync:self asset:asset index:index totalCount:self.totalCount];
+            }
+        }
+    };
+    
+    // グループごと呼び出される
+    ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
+    ^(ALAssetsGroup *group, BOOL *stop) {
+        self.totalCount = [group numberOfAssets];
+        [self PhotoUploaderWillStartAsync:self totalCount:self.totalCount];
+        if (group) {
+            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+            [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
+        } else {
+            [self PhotoUploaderDidFinishAsync:self];
+            completed = YES;
+            dispatch_semaphore_signal(sema);
+        }
+    };
+    
+    // 列挙に失敗したときに呼び出される
+    ALAssetsLibraryAccessFailureBlock failureBlock = 
+    ^(NSError *error) {
+        NSLog(@"error:%@", error);
+        assetError = [error retain];
+        
+        dispatch_semaphore_signal(sema);
+    };
+    
+    // 列挙開始
+    [assetsLibrary_ enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+                                  usingBlock:usingBlock
+                                failureBlock:failureBlock];
+    
+    if ([NSThread isMainThread]) {
+        while (!completed && !assetError) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
     }
-    
-    {
-        ALAssetsLibrary *assetsLibrary = [[[ALAssetsLibrary alloc] init] autorelease];
-        for (int i=0, end=[urls_ count]; i<end; i++) {
-            
-            [assetsLibrary assetForURL:[urls_ objectAtIndex:i]
-             
-                           resultBlock:^(ALAsset *asset) {
-                               NSString *url = [[[asset defaultRepresentation] url] absoluteString];
-                               AssetURLStorage *urlStorage = [[[AssetURLStorage alloc] init] autorelease];
-                               //                               if (![urlStorage isExistURL:url]) {
-                               if (1) {
-                                   NSNumber *count = [NSNumber numberWithInteger:i];
-                                   NSNumber *totalCount = [NSNumber numberWithInteger:end];
-                                   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           asset, @"asset",
-                                                           count, @"count",
-                                                           totalCount, @"totalCount",
-                                                           nil];
-                                   [self PhotoUploaderUploadBeginOnMainThread:params];
-                                   
-                                   [self uploadPhotoToEvernote:asset];
-                                   [urlStorage insertURL:url];
-                                   
-                                   [self PhotoUploaderUploadEndOnMainThread:params];
-                                   NSLog(@"UL=%@", [urls_ objectAtIndex:i]);
-                               }
-                           }
-             
-                          failureBlock:^(NSError *error) {
-                              [self PhotoUploaderFailureOnMainThread:nil];
-                              NSLog(@"failure=%@", [urls_ objectAtIndex:i]);
-                          }];
-        }
+    else {
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
     
-    [self PhotoUploaderSucceededOnMainThread:nil];
-    working_ = NO;
+    [assetError release];
+     */
 }
 
 /**
@@ -193,48 +210,43 @@
                             
 #pragma mark - delegate call
 
-- (void)PhotoUploaderReadyOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderReady:cancel:)]) {
-        NSValue *cancelValue = [params objectForKey:@"cancel"];
-        BOOL *cancel;
-        [cancelValue getValue:&cancel];
-        [delegate_ PhotoUploaderReady:[urls_ count] cancel:cancel];
-    }
-}
-        
-- (void)PhotoUploaderUploadBeginOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploadBegin:count:totalCount:)]) {
-        ALAsset *asset = [params objectForKey:@"asset"];
-        NSNumber *count = [params objectForKey:@"count"];
-        NSNumber *totalCount = [params objectForKey:@"totalCount"];
-        [delegate_ PhotoUploaderUploadBegin:asset count:[count intValue] totalCount:[totalCount intValue]];
+- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillStart:totalCount:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillStart:totalCount:) withObjects:photoUploader, totalCount, nil];
     }
 }
 
-- (void)PhotoUploaderUploadEndOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploadEnd:count:totalCount:)]) {
-        ALAsset *asset = [params objectForKey:@"asset"];
-        NSNumber *count = [params objectForKey:@"count"];
-        NSNumber *totalCount = [params objectForKey:@"totalCount"];
-        [delegate_ PhotoUploaderUploadEnd:asset count:[count intValue] totalCount:[totalCount intValue]];
+- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillUpload:asset:index:totalCount:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
 }
 
-- (void)PhotoUploaderSucceededOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderSucceeded)]) {
-        [delegate_ PhotoUploaderSucceeded];
+- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidUpload:asset:index:totalCount:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
+    }
+    
+}
+
+- (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidFinish:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidFinish:) withObjects:photoUploader, nil];
+    }
+    
+}
+
+- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderError:error:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderError:error:) withObjects:photoUploader, error, nil];
     }
 }
 
-- (void)PhotoUploaderFailureOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderFailure)]) {
-        [delegate_ PhotoUploaderFailure];
-    }
-}
+#pragma mark - NSURLConnection delegate
 
-- (void)PhotoUploaderCenceledOnMainThread:(NSDictionary *)params {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderCenceled)]) {
-        [delegate_ PhotoUploaderCenceled];
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:) withObjects:self, self.currentAsset, self.currentIndex, self.totalCount, totalBytesWritten, totalBytesExpectedToWrite];
     }
 }
 

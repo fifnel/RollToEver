@@ -17,7 +17,7 @@
 
 @property (assign) ALAssetsLibrary *assetsLibrary;
 
-- (NSMutableArray *)EnumerateURLExcludeDuplication:(BOOL)exclude;
+- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude;
 - (ALAsset *)loadAssetURLString:(NSString *)urlString;
 - (ALAsset *)loadAssetURL:(NSURL *)url;
 

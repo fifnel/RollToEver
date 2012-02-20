@@ -7,36 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AssetsEnumerator.h"
+#import <AssetsLibrary/ALAssetsLibrary.h>
+#import <AssetsLibrary/ALAsset.h>
+#import <AssetsLibrary/ALAssetRepresentation.h>
 #import "AssetURLStorage.h"
 
-@interface PhotoUploader : NSObject
+@interface PhotoUploader : NSOperation
 {
 @private
-    AssetsEnumerator *enumerator_;
-    NSMutableArray *urls_;
+    ALAssetsLibrary *assetsLibrary_;
     AssetURLStorage *assetUrlStorage_;
-    
-    NSInteger uploadPhotosNum_;
-    NSInteger uploadedPhotosNum_;
-    
-    BOOL working_;
 }
 
-- (void)start;
+- (id)initWithDelegate:(id)delegate;
 
 @property (assign) id delegate;
+@property (readonly) NSInteger currentIndex;
+@property (readonly) NSInteger totalCount;
 
 @end
 
 @interface NSObject(PhotoUploaderDelegate)
 
-- (void)PhotoUploaderReady:(NSInteger)totalCount cancel:(BOOL *)cancel;
-- (void)PhotoUploaderUploadBegin:(ALAsset *)asset count:(NSInteger)count totalCount:(NSInteger)totalCount;
-- (void)PhotoUploaderUploadEnd:(ALAsset *)asset count:(NSInteger)count totalCount:(NSInteger)totalCount;
-- (void)PhotoUploaderSucceeded;
-- (void)PhotoUploaderCenceled;
-- (void)PhotoUploaderFailure;
+- (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount uploadedSize:(NSNumber *)uploadedSize totalSize:(NSNumber *)totalSize;
+- (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader;
+- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error;
 
 @end
 

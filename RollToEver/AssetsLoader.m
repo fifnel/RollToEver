@@ -27,7 +27,7 @@
 }
 
 // アセットURLのリストを取得する
-- (NSMutableArray *)EnumerateURLExcludeDuplication:(BOOL)exclude {
+- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude {
     __block NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
     __block BOOL completed = NO;
     __block NSError *assetError = nil;
@@ -87,6 +87,10 @@
     }
     else {
         dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    }
+    if (assetError) {
+        [assetError release];
+        result = nil;
     }
     
     return result;

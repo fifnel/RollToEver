@@ -11,6 +11,7 @@
 @implementation ViewController
 
 @synthesize UploadSingleProgress = UploadSingleProgress_;
+@synthesize uploadingImage;
 @synthesize UploadProgress = UploadProgress_;
 @synthesize ProgressText = ProgressText_;
 
@@ -27,8 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    photoUploader_ = [[PhotoUploader alloc] init];
-    photoUploader_.delegate = self;
+    operationQueue_ = [[NSOperationQueue alloc] init];
 }
 
 - (void)viewDidUnload
@@ -37,8 +37,11 @@
     [ProgressText_ release];
     ProgressText_ = nil;
     [self setProgressText:nil];
-    [photoUploader_ release];
     [self setUploadSingleProgress:nil];
+    [self setUploadingImage:nil];
+
+    [operationQueue_ release];
+    
     [super viewDidUnload];
 }
 
@@ -69,17 +72,50 @@
 }
 
 - (IBAction)start:(id)sender {
-    [photoUploader_ start];
+    PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
+    [operationQueue_ addOperation:uploader];
 }
 
 - (void)dealloc {
     [UploadProgress_ release];
     [ProgressText_ release];
     [UploadSingleProgress_ release];
+    [uploadingImage release];
     [super dealloc];
 }
 
-#pragma mark - AssetsEnumeration Delegate
+#pragma mark - PhotoUploader delegate
+- (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSInteger)totalCount {
+    [ProgressText_ setText:@"start"];
+}
+
+- (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount {
+    ALAssetRepresentation *rep = [asset defaultRepresentation];
+    UIImage *image = [[UIImage alloc] initWithCGImage:[rep fullScreenImage]];
+    [uploadingImage setImage:image];
+    [image release];
+}
+
+- (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount uploadedSize:(NSInteger)uploadedSize totalSize:(NSInteger)totalSize {
+    if (totalSize > 0) {
+        [UploadProgress_ setProgress:(float)uploadedSize/(float)totalSize];
+    }
+}
+
+- (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount {
+    
+}
+
+- (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader {
+    [ProgressText_ setText:@"finish"];
+}
+
+- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error {
+    [ProgressText_ setText:@"error"];
+}
+
+
+#pragma mark - AssetsEnumeration Delegate あとでけす
 - (void)PhotoUploaderReady:(NSInteger)totalCount cancel:(BOOL *)cancel {
     UploadProgress_.progress = 0.0;
     [ProgressText_ setText:@"ready"];
