@@ -53,6 +53,10 @@
         [urlStorage_ release];
     }
     urlStorage_ = [[AssetURLStorage alloc] init];
+    if (assetsUploadProgress_ != nil) {
+        [assetsUploadProgress_ release];
+    }
+    assetsUploadProgress_ = [[NSMutableArray alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -77,7 +81,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     assetsList_ = [[assetsLoader_ EnumerateURLExcludeDuplication:NO] retain];
-    NSLog(@"count=%d", [assetsList_ retainCount]);
+    for (NSInteger i=0, end=[assetsList_ count]; i<end; i++) {
+        NSNumber *num = [NSNumber numberWithFloat:0.0f];
+        [assetsUploadProgress_ addObject:num];
+    }
     [super viewWillAppear:animated];
 }
 
@@ -118,29 +125,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger index = [indexPath row];
+    ALAsset *asset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:index]];
+
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    
+        UIProgressView *progress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+        
+        // サムネイルは正方形なので、高さ＝幅ということにしてプログレスバーの位置を調整する
+        CGRect rect = [cell bounds];
+        rect.origin.x += rect.size.height;
+        rect.size.width -= rect.size.height;
+        rect.origin.y += rect.size.height/2;
+        progress.frame = rect;
+        [cell addSubview:progress];
     }
     
-    NSInteger index = [indexPath row];
-    ALAsset *asset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:index]];
     UIImage *thumb = [[[UIImage alloc] initWithCGImage:[asset thumbnail]] autorelease];
-    
-    // Configure the cell...
-//    [[cell textLabel] setText:[assetsList objectAtIndex:index]];
     [[cell imageView] setImage:thumb];
-    UIProgressView *progress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
-    
-    // サムネイルは正方形なので、高さ＝幅ということにしてプログレスバーの位置を調整する
-    CGRect rect = [cell bounds];
-    rect.origin.x += rect.size.height;
-    rect.size.width -= rect.size.height;
-    rect.origin.y += rect.size.height/2;
-    progress.frame = rect;
-    [cell addSubview:progress];
+
+    // プログレスバーの状況をどこかに保存しないと
+    NSNumber *progress = [assetsUploadProgress_ objectAtIndex:index];
+    UIProgressView *progressView = [[cell subviews] objectAtIndex:1];
+    [progressView setProgress:[progress floatValue]];
     
     return cell;
 }
@@ -240,10 +250,12 @@
 
 - (void)PhotoUploadOperationStart:(PhotoUploadOperation *)operation {
     [self resetProgressAsyncIndex:uploadIndex_];
+    [assetsUploadProgress_ insertObject:[NSNumber numberWithFloat:0.0f] atIndex:uploadIndex_];
 }
 
 - (void)PhotoUploadOperation:(PhotoUploadOperation *)operation progress:(NSInteger)progress max:(NSInteger)max {
     [self updateProgressAsyncIndex:uploadIndex_ progress:progress max:max];
+    [assetsUploadProgress_ insertObject:[NSNumber numberWithFloat:(float)progress/(float)max] atIndex:uploadIndex_];
 }
 
 - (void)PhotoUploadOperationFinish:(PhotoUploadOperation *)operation {
@@ -251,6 +263,8 @@
     ALAsset *currentAsset = [assetsLoader_ loadAssetURLString:[assetsList_ objectAtIndex:uploadIndex_]];
     ALAssetRepresentation *rep = [currentAsset defaultRepresentation];
     [urlStorage_ insertURL:[rep.url absoluteString]];
+    
+    [assetsUploadProgress_ insertObject:[NSNumber numberWithFloat:1.0f] atIndex:uploadIndex_];
     
     uploadIndex_++;
     if (uploadIndex_ < [assetsList_ count]) {

@@ -16,6 +16,7 @@
 @private
     NSArray *assetsList_;
     AssetsLoader *assetsLoader_;
+    NSMutableArray *assetsUploadProgress_;
     AssetURLStorage *urlStorage_;
     NSOperationQueue *operationQueue_;
     NSInteger uploadIndex_;
