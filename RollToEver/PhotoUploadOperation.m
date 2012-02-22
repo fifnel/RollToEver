@@ -27,6 +27,7 @@
 
 - (void)dealloc {
     [asset_ release];
+    [super dealloc];
 }
 
 - (void)main {

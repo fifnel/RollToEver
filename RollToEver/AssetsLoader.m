@@ -24,6 +24,7 @@
 
 - (void)dealloc {
     [assetsLibrary_ release];
+    [super dealloc];
 }
 
 // アセットURLのリストを取得する

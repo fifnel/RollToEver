@@ -26,6 +26,7 @@
 - (void)dealloc {
     [storage_ release];
     [enumerator_ release];
+    [super dealloc];
 }
 
 - (void)start {

@@ -39,6 +39,7 @@
 - (void)dealloc {
     [assetsLibrary_ release];
     assetsLibrary_ = nil;
+    [super dealloc];
 }
 
 - (void) startEnumeration {
