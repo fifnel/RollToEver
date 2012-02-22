@@ -7,20 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PhotoUploader.h"
 
 @interface ViewController : UIViewController
 {
-@private
-    NSOperationQueue *operationQueue_;
 }
 
-- (IBAction)start:(id)sender;
-- (IBAction)goUploadList:(id)sender;
-
-@property (retain, nonatomic) IBOutlet UIProgressView *UploadProgress;
-@property (retain, nonatomic) IBOutlet UILabel *ProgressText;
-@property (retain, nonatomic) IBOutlet UIProgressView *UploadSingleProgress;
-@property (retain, nonatomic) IBOutlet UIImageView *uploadingImage;
+@property (retain, nonatomic, readonly) UIView *loadingView;
+@property (assign, nonatomic, readonly) NSInteger photoCount;
+@property (retain, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
 
 @end

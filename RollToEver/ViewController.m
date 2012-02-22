@@ -7,13 +7,24 @@
 //
 
 #import "ViewController.h"
+#import "AssetsLoader.h"
+
+@interface ViewController()
+
+- (void)assetsCountAsync;
+- (void)assetsCount;
+
+@property (retain, nonatomic, readwrite) UIView *loadingView;
+@property (assign, nonatomic, readwrite) NSInteger photoCount;
+@property (retain, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
+
+@end
 
 @implementation ViewController
 
-@synthesize UploadSingleProgress = UploadSingleProgress_;
-@synthesize uploadingImage;
-@synthesize UploadProgress = UploadProgress_;
-@synthesize ProgressText = ProgressText_;
+@synthesize loadingView = loadingView_;
+@synthesize photoCount = photoCount_;
+@synthesize photoCountInfo = photoCountInfo_;
 
 - (void)didReceiveMemoryWarning
 {
@@ -27,26 +38,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    operationQueue_ = [[NSOperationQueue alloc] init];
+    self.loadingView = nil;
 }
 
 - (void)viewDidUnload
 {
-    [self setUploadProgress:nil];
-    [ProgressText_ release];
-    ProgressText_ = nil;
-    [self setProgressText:nil];
-    [self setUploadSingleProgress:nil];
-    [self setUploadingImage:nil];
-
-    [operationQueue_ release];
-    
+    self.loadingView = nil;
     [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self performSelectorOnMainThread:@selector(assetsCountAsync) withObject:nil waitUntilDone:NO];
+    
+    self.loadingView = [[UIView alloc] initWithFrame:self.navigationController.view.bounds];
+    [self.loadingView setBackgroundColor:[UIColor blackColor]];
+    [self.loadingView setAlpha:0.5];
+    
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [indicatorView setCenter:CGPointMake(self.loadingView.bounds.size.width/2, self.loadingView.bounds.size.height/2 )];
+    
+    [self.loadingView addSubview:indicatorView];
+    [self.navigationController.view addSubview: self.loadingView];
+    
+    [indicatorView startAnimating];
+    
     [super viewWillAppear:animated];
 }
 
@@ -71,97 +87,26 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)start:(id)sender {
-    PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
-    [operationQueue_ addOperation:uploader];
-}
-
 - (void)dealloc {
-    [UploadProgress_ release];
-    [ProgressText_ release];
-    [UploadSingleProgress_ release];
-    [uploadingImage release];
+    self.loadingView = nil;
+    self.photoCountInfo = nil;
+
     [super dealloc];
 }
 
-#pragma mark - PhotoUploader delegate
-- (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSInteger)totalCount {
-    [ProgressText_ setText:@"start"];
-}
-
-- (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount {
-    ALAssetRepresentation *rep = [asset defaultRepresentation];
-    UIImage *image = [[UIImage alloc] initWithCGImage:[rep fullScreenImage]];
-    [uploadingImage setImage:image];
-    [image release];
-}
-
-- (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount uploadedSize:(NSInteger)uploadedSize totalSize:(NSInteger)totalSize {
-    if (totalSize > 0) {
-        [UploadProgress_ setProgress:(float)uploadedSize/(float)totalSize];
-    }
-}
-
-- (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSInteger)index totalCount:(NSInteger)totalCount {
+- (void)assetsCountAsync {
+    AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
+    NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
+    photoCount_ = [assets count];
+    [assetsLoader release];
     
+    [self performSelectorOnMainThread:@selector(assetsCount) withObject:nil waitUntilDone:YES];
 }
 
-- (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader {
-    [ProgressText_ setText:@"finish"];
-}
-
-- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error {
-    [ProgressText_ setText:@"error"];
-}
-
-
-#pragma mark - AssetsEnumeration Delegate あとでけす
-- (void)PhotoUploaderReady:(NSInteger)totalCount cancel:(BOOL *)cancel {
-    UploadProgress_.progress = 0.0;
-    [ProgressText_ setText:@"ready"];
-    
-    NSString *msg = [NSString stringWithFormat:@"%d枚のアップロード対象画像が見つかりました。", totalCount];
-    NSLog(@"%@", msg);
-    /*
-    UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle:@"RoolToEver" message:msg delegate:self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-    [alertDone show];
-    [alertDone release];
-     */
-}
-
-- (void)PhotoUploaderUploadBegin:(ALAsset *)asset count:(NSInteger)count totalCount:(NSInteger)totalCount {
-    [ProgressText_ setText:[NSString stringWithFormat:@"begin:%d/%d", count, totalCount]];
-}
-
-- (void)PhotoUploaderUploadEnd:(ALAsset *)asset count:(NSInteger)count totalCount:(NSInteger)totalCount {
-    [ProgressText_ setText:[NSString stringWithFormat:@"end:%d/%d", count, totalCount]];
-    
-    if (totalCount > 0) {
-        UploadProgress_.progress = (float)count / (float)totalCount;
-    } else {
-        UploadProgress_.progress = 1.0;
-    }
-}
-
-- (void)PhotoUploaderSucceeded {
-    [ProgressText_ setText:@"succeeded"];
-    
-}
-
-- (void)PhotoUploaderCenceled {
-    [ProgressText_ setText:@"canceled"];
-    
-}
-
-- (void)PhotoUploaderFailure {
-    [ProgressText_ setText:@"failure"];
-}
-
-- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    [UploadSingleProgress_ setProgress:(float)totalBytesWritten/(float)totalBytesExpectedToWrite];
-}
-
-- (IBAction)goUploadList:(id)sender {
+- (void)assetsCount {
+    photoCountInfo_.text = [NSString stringWithFormat:@"%d枚の写真がみつかりました", photoCount_];
+    [loadingView_ removeFromSuperview];
+    [self setLoadingView:nil];
 }
 
 @end
