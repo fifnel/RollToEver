@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2177" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SXe-MM-VPt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2177" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SXe-MM-VPt">
     <dependencies>
-        <development defaultVersion="4200" identifier="xcode"/>
+        <development version="4300" defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1173"/>
     </dependencies>
     <scenes>
@@ -26,7 +26,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FF5-gu-7oW" kind="modal" id="51a-hj-UfL"/>
+                                    <segue destination="70Y-Hc-k9U" kind="modal" id="DXR-zt-vqg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="アップロード対象ファイルが ｎ個みつかりました" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="4FQ-SX-xWf">
@@ -53,35 +53,15 @@
             </objects>
             <point key="canvasLocation" x="1069" y="-147"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Iqa-LM-Pqx">
+        <!--Upload View Controller-->
+        <scene sceneID="zMi-eD-0Ox">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OHU-HR-nUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="FF5-gu-7oW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EeK-0Z-cko">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjC-vY-a0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="70Y-Hc-k9U" customClass="UploadViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S6e-5s-8L1">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="vsz-7c-Y87">
-                                <rect key="frame" x="40" y="238" width="240" height="9"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="bsE-Fi-pJg">
-                                <rect key="frame" x="40" y="102" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="GJX-f6-ehn">
-                                <rect key="frame" x="40" y="382" width="240" height="9"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </progressView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading... 10/100" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="IqF-ty-wEH">
-                                <rect key="frame" x="20" y="63" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" id="5kn-YG-LZs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -89,27 +69,58 @@
                                     <navigationItem title="RollToEver" id="qXc-An-icM"/>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IgA-zH-kch">
-                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="P6Y-tD-x9o"/>
-                                    <barButtonItem systemItem="cancel" id="6an-cD-leM"/>
-                                </items>
-                            </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Cycle:634KB" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
-                                <rect key="frame" x="40" y="353" width="240" height="21"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="vsz-7c-Y87">
+                                <rect key="frame" x="40" y="236" width="240" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="bsE-Fi-pJg">
+                                <rect key="frame" x="40" y="100" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="GJX-f6-ehn">
+                                <rect key="frame" x="40" y="380" width="240" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading... 10/100" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="IqF-ty-wEH">
+                                <rect key="frame" x="20" y="61" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Cycle:634KB" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
+                                <rect key="frame" x="40" y="351" width="240" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IgA-zH-kch">
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="P6Y-tD-x9o"/>
+                                    <barButtonItem systemItem="cancel" id="6an-cD-leM">
+                                        <connections>
+                                            <action selector="cancel:" destination="70Y-Hc-k9U" id="NUT-iF-73n"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="EvernoteCycleProgress" destination="GJX-f6-ehn" id="ymz-u4-Zte"/>
+                        <outlet property="EvernoteCycleText" destination="hHS-2E-sll" id="TJh-aG-6Pf"/>
+                        <outlet property="UploadingImage" destination="bsE-Fi-pJg" id="hmF-rE-2Yb"/>
+                        <outlet property="UploadingProgress" destination="vsz-7c-Y87" id="665-JW-DeO"/>
+                        <outlet property="UploadingText" destination="IqF-ty-wEH" id="xLT-0J-4tV"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1492" y="-352"/>
+            <point key="canvasLocation" x="1501" y="-435"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="jdd-tP-ehb">
@@ -171,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="275" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -316,35 +327,6 @@
             <point key="canvasLocation" x="732" y="-147"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AccountSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="testConnection:"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NotebookTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returnMainPage:"/>
-                <relationship kind="outlet" name="evernoteAccountCell_" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="notebookNameCell_" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goUploadList:"/>
-                <relationship kind="action" name="start:"/>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

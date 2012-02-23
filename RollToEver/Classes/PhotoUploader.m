@@ -67,7 +67,7 @@
     totalCount_ = 0;
     
     AssetsLoader *loader = [[AssetsLoader alloc] init];
-    NSArray *urlList = [loader EnumerateURLExcludeDuplication:NO];
+    NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
     if (urlList == nil) {
         [self PhotoUploaderErrorAsync:self error:nil];
         return;

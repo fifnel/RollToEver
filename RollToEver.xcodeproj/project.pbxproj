@@ -106,6 +106,8 @@
 		C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0314F68BD500948DC6 /* UserSettings.m */; };
 		C039CE2414F68BD500948DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* ViewController.m */; };
 		C039CE2514F68BD500948DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* ViewController.m */; };
+		C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
+		C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
@@ -255,6 +257,8 @@
 		C039CE0314F68BD500948DC6 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSettings.m; path = RollToEver/Classes/UserSettings.m; sourceTree = "<group>"; };
 		C039CE0414F68BD500948DC6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Classes/ViewController.h; sourceTree = "<group>"; };
 		C039CE0514F68BD500948DC6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Classes/ViewController.m; sourceTree = "<group>"; };
+		C039CE2614F6911700948DC6 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadViewController.h; path = Classes/UploadViewController.h; sourceTree = "<group>"; };
+		C039CE2714F6911700948DC6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadViewController.m; path = Classes/UploadViewController.m; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
 		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
 		C074D16714ED46310077C201 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -498,6 +502,8 @@
 				C039CDEE14F68BD400948DC6 /* AppDelegate.m */,
 				C039CE0414F68BD500948DC6 /* ViewController.h */,
 				C039CE0514F68BD500948DC6 /* ViewController.m */,
+				C039CE2614F6911700948DC6 /* UploadViewController.h */,
+				C039CE2714F6911700948DC6 /* UploadViewController.m */,
 				C039CDFC14F68BD500948DC6 /* SettingsTableViewController.h */,
 				C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */,
 				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
@@ -825,6 +831,7 @@
 				C039CE2014F68BD500948DC6 /* UploadAssetListViewController.m in Sources */,
 				C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2414F68BD500948DC6 /* ViewController.m in Sources */,
+				C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,6 +892,7 @@
 				C039CE2114F68BD500948DC6 /* UploadAssetListViewController.m in Sources */,
 				C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2514F68BD500948DC6 /* ViewController.m in Sources */,
+				C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
