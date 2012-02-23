@@ -34,8 +34,6 @@
 		C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA214E8E87100DDD8C8 /* TTransportException.m */; };
 		C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */; };
 		C000DDBA14E8F96200DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
-		C000DDBC14E966B100DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
-		C000DDBD14E966B900DDD8C8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
 		C000DDC314EAB12700DDD8C8 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */; };
 		C000DDC414EAB65400DDD8C8 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDB914E8F96200DDD8C8 /* PhotoUploader.m */; };
 		C000DDC514EAB65400DDD8C8 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDC214EAB12700DDD8C8 /* AllAssetsURLRegister.m */; };
@@ -119,6 +117,12 @@
 		C0E85A2014F5302200B3A1B4 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E85A1514F52F1F00B3A1B4 /* Icon-Small@2x.png */; };
 		C0E85A2114F5302200B3A1B4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E85A1614F52F1F00B3A1B4 /* Icon@2x.png */; };
 		C0E85A2214F5302200B3A1B4 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = C0E85A1714F52F1F00B3A1B4 /* iTunesArtwork */; };
+		C0E85A2514F678C100B3A1B4 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E85A2414F678C100B3A1B4 /* ALAsset+Resize.m */; };
+		C0E85A2614F678C100B3A1B4 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E85A2414F678C100B3A1B4 /* ALAsset+Resize.m */; };
+		C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
+		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
+		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +273,9 @@
 		C0E85A1514F52F1F00B3A1B4 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		C0E85A1614F52F1F00B3A1B4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		C0E85A1714F52F1F00B3A1B4 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		C0E85A2314F678C100B3A1B4 /* ALAsset+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+Resize.h"; sourceTree = "<group>"; };
+		C0E85A2414F678C100B3A1B4 /* ALAsset+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+Resize.m"; sourceTree = "<group>"; };
+		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +283,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C000DDBC14E966B100DDD8C8 /* CoreLocation.framework in Frameworks */,
+				C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */,
+				C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */,
 				C000DD7114E8E44500DDD8C8 /* Security.framework in Frameworks */,
 				C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */,
 				C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */,
@@ -302,7 +310,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C000DDBD14E966B900DDD8C8 /* CoreLocation.framework in Frameworks */,
+				C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */,
+				C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */,
 				C000DD7014E8E43900DDD8C8 /* Security.framework in Frameworks */,
 				C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */,
 				C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */,
@@ -458,6 +467,7 @@
 			children = (
 				C074D17114ED48070077C201 /* libz.dylib */,
 				C074D16F14ED47FE0077C201 /* libxml2.dylib */,
+				C0E85A2814F6799300B3A1B4 /* ImageIO.framework */,
 				C074D17314ED48760077C201 /* MobileCoreServices.framework */,
 				C074D16914ED46360077C201 /* CFNetwork.framework */,
 				C074D16714ED46310077C201 /* SystemConfiguration.framework */,
@@ -561,6 +571,8 @@
 				C0AA450214EE8A750044DD75 /* THTTPAsyncClient.m */,
 				C0881F9914F0E14700818BAE /* PhotoUploadOperation.h */,
 				C0881F9A14F0E14700818BAE /* PhotoUploadOperation.m */,
+				C0E85A2314F678C100B3A1B4 /* ALAsset+Resize.h */,
+				C0E85A2414F678C100B3A1B4 /* ALAsset+Resize.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -806,6 +818,7 @@
 				C0881F9614F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 				C0881F9B14F0E14700818BAE /* PhotoUploadOperation.m in Sources */,
 				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
+				C0E85A2514F678C100B3A1B4 /* ALAsset+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +872,7 @@
 				C0881F9714F00F1300818BAE /* UploadAssetListViewController.m in Sources */,
 				C0881F9C14F0E14700818BAE /* PhotoUploadOperation.m in Sources */,
 				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
+				C0E85A2614F678C100B3A1B4 /* ALAsset+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
