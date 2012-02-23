@@ -7,7 +7,6 @@
 //
 
 #import "PhotoUploader.h"
-//#import <CoreLocation/CoreLocation.h>
 #import "Evernote.h"
 #import "UserSettings.h"
 #import "AssetsLoader.h"
@@ -61,10 +60,7 @@
 }
 
 - (void)main {
-//    __block BOOL completed = NO;
-//    __block NSError *assetError = nil;
     __block AssetURLStorage *urlStorage = nil;
-//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
 
     urlStorage = [[[AssetURLStorage alloc] init] autorelease];
     currentIndex_ = 0;
@@ -97,65 +93,6 @@
     }
     
     [self PhotoUploaderDidFinishAsync:self];
-
-    
-    
-    /*
-    // グループ内画像1枚ずつ呼び出される
-    ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
-    ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
-        if (asset) {
-            ALAssetRepresentation *rep = [asset defaultRepresentation];
-            NSString *url = [rep.url absoluteString];
-            if (![urlStorage isExistURL:url]) {
-                [self PhotoUploaderWillUploadAsync:self asset:asset index:index totalCount:self.totalCount];
-                [self uploadPhotoToEvernote:asset];
-                [urlStorage insertURL:url];
-                [self PhotoUploaderDidUploadAsync:self asset:asset index:index totalCount:self.totalCount];
-            }
-        }
-    };
-    
-    // グループごと呼び出される
-    ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
-    ^(ALAssetsGroup *group, BOOL *stop) {
-        self.totalCount = [group numberOfAssets];
-        [self PhotoUploaderWillStartAsync:self totalCount:self.totalCount];
-        if (group) {
-            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-            [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
-        } else {
-            [self PhotoUploaderDidFinishAsync:self];
-            completed = YES;
-            dispatch_semaphore_signal(sema);
-        }
-    };
-    
-    // 列挙に失敗したときに呼び出される
-    ALAssetsLibraryAccessFailureBlock failureBlock = 
-    ^(NSError *error) {
-        NSLog(@"error:%@", error);
-        assetError = [error retain];
-        
-        dispatch_semaphore_signal(sema);
-    };
-    
-    // 列挙開始
-    [assetsLibrary_ enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                                  usingBlock:usingBlock
-                                failureBlock:failureBlock];
-    
-    if ([NSThread isMainThread]) {
-        while (!completed && !assetError) {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-    }
-    else {
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-    }
-    
-    [assetError release];
-     */
 }
 
 /**
@@ -183,7 +120,6 @@
     }
     NSData *data = [[NSData alloc]initWithBytesNoCopy:buf length:size];
     NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
-//    CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
     
     Evernote *evernote = nil;
     @try {
