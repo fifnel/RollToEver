@@ -12,6 +12,7 @@
 #import "AssetsLoader.h"
 #import "AssetURLStorage.h"
 #import "NSObject+InvocationUtils.h"
+#import "ALAsset+Resize.h"
 
 @interface PhotoUploader()
 
@@ -67,7 +68,7 @@
     totalCount_ = 0;
     
     AssetsLoader *loader = [[AssetsLoader alloc] init];
-    NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
+    NSArray *urlList = [loader EnumerateURLExcludeDuplication:NO];
     if (urlList == nil) {
         [self PhotoUploaderErrorAsync:self error:nil];
         return;
@@ -108,17 +109,8 @@
      */
     // Rowデータを取得して実際のアップロード処理に投げる
     ALAssetRepresentation *rep = [asset defaultRepresentation];
-    long long size = [rep size];
-    uint8_t *buf = malloc(sizeof(uint8_t)*size);
-    if (buf == nil) {
-        return;
-    }
-    NSError *error = nil;
-    NSInteger readBytes = [rep getBytes:buf fromOffset:0 length:size error:&error];
-    if (readBytes < 0 || error) {
-        return;
-    }
-    NSData *data = [[NSData alloc]initWithBytesNoCopy:buf length:size];
+    NSData *data = [asset resizedImageData:100*100];
+    NSLog(@"count=%d", [data retainCount]);
     NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
     
     Evernote *evernote = nil;
@@ -139,7 +131,6 @@
     }
     @finally {
         [evernote release];
-        free(buf);
         [data release];
     }
 }

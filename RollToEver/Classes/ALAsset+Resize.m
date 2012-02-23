@@ -25,7 +25,7 @@
     }
 
     NSMutableData *resizedImageData = [[[NSMutableData alloc] init] autorelease];
-    float ratio = sqrt(maxPixel / (width*height));
+    float ratio = sqrtf((float)maxPixel / (float)(width*height));
     if (ratio < 1.0f) {
         size_t newWidth  = width*ratio;
         size_t newHeight = height*ratio;
@@ -42,6 +42,7 @@
         CGImageDestinationRef destination = CGImageDestinationCreateWithData((CFMutableDataRef)resizedImageData, kUTTypeJPEG, 1, NULL);
         CGImageDestinationAddImage(destination, [resizedImage CGImage], (CFDictionaryRef)metaData);
         CGImageDestinationFinalize(destination);
+        CFRelease(destination);
     } else {
         // 縮小処理なしでバイト列を返す
         NSUInteger size = [rep size];
