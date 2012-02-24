@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "EvernoteAuthToken.h"
+#import "UserSettings.h"
+#import "id.h"
 #import <CoreData/CoreData.h>
 
 @implementation AppDelegate
@@ -29,6 +31,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSString *username = [UserSettings sharedInstance].evernoteUserId;
+    NSString *password = [UserSettings sharedInstance].evernotePassword;
+    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:username
+                                                              Password:password
+                                                             UserAgent:USERAGENT
+                                                           ConsumerKey:CONSUMERKEY
+                                                        ConsumerSecret:CONSUMERSECRET];
+    assert(ret);
+    
     return YES;
 }
 							
