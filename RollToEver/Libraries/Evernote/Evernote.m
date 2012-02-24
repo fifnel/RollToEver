@@ -92,7 +92,7 @@ NSString * const applicationVersion = @"0.0";
         
  
         // Returned result from the Evernote servers after authentication
-        EDAMAuthenticationResult* authResult =[userStore authenticate:username_ :password_ : consumerKey :consumerSecret];
+        EDAMAuthenticationResult* authResult =[userStore authenticate:username_ :password_ : CONSUMERKEY :CONSUMERSECRET];
         
         // User object describing the account
         self.user = [authResult user];
