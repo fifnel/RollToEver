@@ -20,11 +20,8 @@
 @implementation EvernoteAuthTokenTest
 
 - (void)setUpClass {
-    NSString *username = @"evtest1";
-    NSString *password = @"92TWbdrZMEwEqc";
-    
-    //    NSString *username = [UserSettings sharedInstance].evernoteUserId;
-    //    NSString *password = [UserSettings sharedInstance].evernotePassword;
+    NSString *username = [UserSettings sharedInstance].evernoteUserId;
+    NSString *password = [UserSettings sharedInstance].evernotePassword;
 
     [[EvernoteAuthToken sharedInstance] connectWithUserName:username
                                                    Password:password
