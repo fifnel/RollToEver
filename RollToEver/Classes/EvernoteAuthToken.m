@@ -13,6 +13,7 @@
 #import "UserStore.h"
 #import "NoteStore.h"
 #import "Errors.h"
+#import "EvernoteUserStoreClient.h"
 
 @interface EvernoteAuthToken()
 
@@ -23,8 +24,6 @@
 @end
 
 static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
-static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
-static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
 
 @implementation EvernoteAuthToken
 
@@ -74,28 +73,31 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
 
 - (bool)connectWithUserName:(NSString *)userName
                    Password:(NSString *)password
-                  UserAgent:(NSString *)userAgent
+                 ClientName:(NSString *)clientName
                 ConsumerKey:(NSString *)consumerKey
              ConsumerSecret:(NSString *)consumerSecret {
-    
+    /*
     NSURL *url = [[[NSURL alloc] initWithString:userStoreUri] autorelease];
     THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url] autorelease];
     TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
     EDAMUserStoreClient *userStoreClient = [[[EDAMUserStoreClient alloc] initWithProtocol:protocol] autorelease];
+     */
+    EvernoteUserStoreClient *userStoreClient = [[EvernoteUserStoreClient alloc] init];
 
-    bool versionOk = [userStoreClient checkVersion:userAgent
-                                                  :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
-                                                  :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
+    bool versionOk = [[userStoreClient userStoreClient]
+                      checkVersion:clientName
+                                  :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
+                                  :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
     if (!versionOk) {
         return false;
     }
     
     EDAMAuthenticationResult *authResult = nil;
     @try {
-        authResult = [userStoreClient authenticate:userName
-                                                  :password
-                                                  :consumerKey
-                                                  :consumerSecret];
+        authResult = [[userStoreClient userStoreClient] authenticate:userName
+                                                                    :password
+                                                                    :consumerKey
+                                                                    :consumerSecret];
     }
     @catch (EDAMUserException *exception) {
         NSLog(@"%@", [exception reason]);

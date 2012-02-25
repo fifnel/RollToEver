@@ -15,7 +15,7 @@
 
 - (bool)connectWithUserName:(NSString *)userName
                    Password:(NSString *)password
-                  UserAgent:(NSString *)userAgent
+                 ClientName:(NSString *)clientName
                 ConsumerKey:(NSString *)consumerKey
              ConsumerSecret:(NSString *)consumerSecret;
 

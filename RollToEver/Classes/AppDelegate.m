@@ -35,7 +35,7 @@
     NSString *password = [UserSettings sharedInstance].evernotePassword;
     bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:username
                                                               Password:password
-                                                             UserAgent:USERAGENT
+                                                             ClientName:APPLICATIONNAME
                                                            ConsumerKey:CONSUMERKEY
                                                         ConsumerSecret:CONSUMERSECRET];
     assert(ret);
