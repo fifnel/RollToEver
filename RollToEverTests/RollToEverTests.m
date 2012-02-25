@@ -7,6 +7,9 @@
 //
 
 #import "RollToEverTests.h"
+#import "EvernoteAuthToken.h"
+#import "UserSettings.h"
+#import "id.h"
 
 @implementation RollToEverTests
 
@@ -24,9 +27,15 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testAuthToken
 {
+    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:[UserSettings sharedInstance].evernoteUserId
+                                                              Password:[UserSettings sharedInstance].evernotePassword
+                                                             UserAgent:USERAGENT
+                                                           ConsumerKey:CONSUMERKEY
+                                                        ConsumerSecret:CONSUMERSECRET];
     
+    STAssertTrue(ret, @"EvernoteAuthToken connect failure");
 //    STFail(@"Unit tests are not implemented yet in RollToEverTests");
 }
 

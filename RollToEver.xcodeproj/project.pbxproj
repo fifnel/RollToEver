@@ -78,12 +78,9 @@
 		C039CE0714F68BD500948DC6 /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */; };
 		C039CE0814F68BD500948DC6 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */; };
 		C039CE0914F68BD500948DC6 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */; };
-		C039CE0A14F68BD500948DC6 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEC14F68BD400948DC6 /* AllAssetsURLRegister.m */; };
 		C039CE0B14F68BD500948DC6 /* AllAssetsURLRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEC14F68BD400948DC6 /* AllAssetsURLRegister.m */; };
 		C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
 		C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
-		C039CE0E14F68BD500948DC6 /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */; };
-		C039CE0F14F68BD500948DC6 /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */; };
 		C039CE1014F68BD500948DC6 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF214F68BD400948DC6 /* AssetsLoader.m */; };
 		C039CE1114F68BD500948DC6 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF214F68BD400948DC6 /* AssetsLoader.m */; };
 		C039CE1214F68BD500948DC6 /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF414F68BD400948DC6 /* AssetURLStorage.m */; };
@@ -93,14 +90,10 @@
 		C039CE1714F68BD500948DC6 /* NotebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */; };
 		C039CE1814F68BD500948DC6 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF914F68BD500948DC6 /* PhotoUploader.m */; };
 		C039CE1914F68BD500948DC6 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF914F68BD500948DC6 /* PhotoUploader.m */; };
-		C039CE1A14F68BD500948DC6 /* PhotoUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFB14F68BD500948DC6 /* PhotoUploadOperation.m */; };
-		C039CE1B14F68BD500948DC6 /* PhotoUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFB14F68BD500948DC6 /* PhotoUploadOperation.m */; };
 		C039CE1C14F68BD500948DC6 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */; };
 		C039CE1D14F68BD500948DC6 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */; };
 		C039CE1E14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */; };
 		C039CE1F14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */; };
-		C039CE2014F68BD500948DC6 /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */; };
-		C039CE2114F68BD500948DC6 /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */; };
 		C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0314F68BD500948DC6 /* UserSettings.m */; };
 		C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0314F68BD500948DC6 /* UserSettings.m */; };
 		C039CE2414F68BD500948DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* ViewController.m */; };
@@ -115,6 +108,9 @@
 		C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */; };
 		C039CE3914F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */; };
 		C039CE3A14F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */; };
+		C039CE3C14F89DD100948DC6 /* UploadAssetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */; };
+		C039CE3D14F89DD100948DC6 /* PhotoUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFB14F68BD500948DC6 /* PhotoUploadOperation.m */; };
+		C039CE3E14F89DD100948DC6 /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
@@ -138,6 +134,9 @@
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
+		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
+		C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,8 +257,8 @@
 		C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewController.m; path = Classes/SettingsTableViewController.m; sourceTree = "<group>"; };
 		C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/Classes/THTTPAsyncClient.h; sourceTree = "<group>"; };
 		C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THTTPAsyncClient.m; path = RollToEver/Classes/THTTPAsyncClient.m; sourceTree = "<group>"; };
-		C039CE0014F68BD500948DC6 /* UploadAssetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadAssetListViewController.h; path = Classes/UploadAssetListViewController.h; sourceTree = "<group>"; };
-		C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadAssetListViewController.m; path = Classes/UploadAssetListViewController.m; sourceTree = "<group>"; };
+		C039CE0014F68BD500948DC6 /* UploadAssetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadAssetListViewController.h; path = RollToEver/Classes/UploadAssetListViewController.h; sourceTree = "<group>"; };
+		C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadAssetListViewController.m; path = RollToEver/Classes/UploadAssetListViewController.m; sourceTree = "<group>"; };
 		C039CE0214F68BD500948DC6 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSettings.h; path = RollToEver/Classes/UserSettings.h; sourceTree = "<group>"; };
 		C039CE0314F68BD500948DC6 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSettings.m; path = RollToEver/Classes/UserSettings.m; sourceTree = "<group>"; };
 		C039CE0414F68BD500948DC6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Classes/ViewController.h; sourceTree = "<group>"; };
@@ -301,6 +300,8 @@
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
+		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +473,7 @@
 				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,
 				C039B12814DF79D400F4169E /* RollToEverTests */,
 				C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */,
+				C039CE3B14F8999100948DC6 /* nouse */,
 				C039B10314DF79D300F4169E /* Frameworks */,
 				C039B10114DF79D300F4169E /* Products */,
 			);
@@ -519,14 +521,12 @@
 				C039CE0514F68BD500948DC6 /* ViewController.m */,
 				C039CE2614F6911700948DC6 /* UploadViewController.h */,
 				C039CE2714F6911700948DC6 /* UploadViewController.m */,
+				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
 				C039CDFC14F68BD500948DC6 /* SettingsTableViewController.h */,
 				C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */,
-				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
 				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */,
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
-				C039CE0014F68BD500948DC6 /* UploadAssetListViewController.h */,
-				C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */,
 				C039B10B14DF79D300F4169E /* Supporting Files */,
 			);
 			name = RollToEverViewControllers;
@@ -570,6 +570,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C039CE3B14F8999100948DC6 /* nouse */ = {
+			isa = PBXGroup;
+			children = (
+				C039CDEB14F68BD400948DC6 /* AllAssetsURLRegister.h */,
+				C039CDEC14F68BD400948DC6 /* AllAssetsURLRegister.m */,
+				C039CE0014F68BD500948DC6 /* UploadAssetListViewController.h */,
+				C039CE0114F68BD500948DC6 /* UploadAssetListViewController.m */,
+				C039CDFA14F68BD500948DC6 /* PhotoUploadOperation.h */,
+				C039CDFB14F68BD500948DC6 /* PhotoUploadOperation.m */,
+				C039CDEF14F68BD400948DC6 /* AssetsEnumerator.h */,
+				C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */,
+			);
+			name = nouse;
+			sourceTree = "<group>";
+		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,24 +603,20 @@
 				C039CE0314F68BD500948DC6 /* UserSettings.m */,
 				C039CDF814F68BD500948DC6 /* PhotoUploader.h */,
 				C039CDF914F68BD500948DC6 /* PhotoUploader.m */,
-				C039CDFA14F68BD500948DC6 /* PhotoUploadOperation.h */,
-				C039CDFB14F68BD500948DC6 /* PhotoUploadOperation.m */,
-				C039CDEF14F68BD400948DC6 /* AssetsEnumerator.h */,
-				C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */,
 				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
 				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
 				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
 				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
 				C039CDE914F68BD400948DC6 /* ALAsset+Resize.h */,
 				C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */,
-				C039CDEB14F68BD400948DC6 /* AllAssetsURLRegister.h */,
-				C039CDEC14F68BD400948DC6 /* AllAssetsURLRegister.m */,
 				C039CE2A14F7B32900948DC6 /* EvernoteAuthToken.h */,
 				C039CE2B14F7B32900948DC6 /* EvernoteAuthToken.m */,
 				C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */,
 				C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */,
 				C039CE3714F7EBE900948DC6 /* EvernoteUserStoreClient.h */,
 				C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */,
+				C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */,
+				C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -840,24 +851,21 @@
 				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
 				C039CE0614F68BD500948DC6 /* AccountSettingViewController.m in Sources */,
 				C039CE0814F68BD500948DC6 /* ALAsset+Resize.m in Sources */,
-				C039CE0A14F68BD500948DC6 /* AllAssetsURLRegister.m in Sources */,
 				C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */,
-				C039CE0E14F68BD500948DC6 /* AssetsEnumerator.m in Sources */,
 				C039CE1014F68BD500948DC6 /* AssetsLoader.m in Sources */,
 				C039CE1214F68BD500948DC6 /* AssetURLStorage.m in Sources */,
 				C039CE1414F68BD500948DC6 /* main.m in Sources */,
 				C039CE1614F68BD500948DC6 /* NotebookTableViewController.m in Sources */,
 				C039CE1814F68BD500948DC6 /* PhotoUploader.m in Sources */,
-				C039CE1A14F68BD500948DC6 /* PhotoUploadOperation.m in Sources */,
 				C039CE1C14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,
 				C039CE1E14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */,
-				C039CE2014F68BD500948DC6 /* UploadAssetListViewController.m in Sources */,
 				C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2414F68BD500948DC6 /* ViewController.m in Sources */,
 				C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */,
 				C039CE2C14F7B32900948DC6 /* EvernoteAuthToken.m in Sources */,
 				C039CE3514F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C039CE3914F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
+				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +878,7 @@
 				C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */,
 				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
 				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
+				C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +886,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C039CE3C14F89DD100948DC6 /* UploadAssetListViewController.m in Sources */,
+				C039CE3D14F89DD100948DC6 /* PhotoUploadOperation.m in Sources */,
+				C039CE3E14F89DD100948DC6 /* AssetsEnumerator.m in Sources */,
 				C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */,
 				C000DDC614EAB6A100DDD8C8 /* EDAMLimits.m in Sources */,
 				C000DDC714EAB6A100DDD8C8 /* Errors.m in Sources */,
@@ -907,15 +919,12 @@
 				C039CE0914F68BD500948DC6 /* ALAsset+Resize.m in Sources */,
 				C039CE0B14F68BD500948DC6 /* AllAssetsURLRegister.m in Sources */,
 				C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */,
-				C039CE0F14F68BD500948DC6 /* AssetsEnumerator.m in Sources */,
 				C039CE1114F68BD500948DC6 /* AssetsLoader.m in Sources */,
 				C039CE1314F68BD500948DC6 /* AssetURLStorage.m in Sources */,
 				C039CE1714F68BD500948DC6 /* NotebookTableViewController.m in Sources */,
 				C039CE1914F68BD500948DC6 /* PhotoUploader.m in Sources */,
-				C039CE1B14F68BD500948DC6 /* PhotoUploadOperation.m in Sources */,
 				C039CE1D14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,
 				C039CE1F14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */,
-				C039CE2114F68BD500948DC6 /* UploadAssetListViewController.m in Sources */,
 				C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2514F68BD500948DC6 /* ViewController.m in Sources */,
 				C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */,
@@ -923,6 +932,7 @@
 				C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */,
 				C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C039CE3A14F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
+				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
