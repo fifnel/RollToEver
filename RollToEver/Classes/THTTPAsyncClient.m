@@ -67,7 +67,7 @@
 
 // リクエスト送信前
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
-    NSLog(@"willSendRequest");
+//    NSLog(@"willSendRequest");
     if ([delegate_ respondsToSelector:@selector(connection:willSendRequest:redirectResponse:)]) {
         [delegate_ connection:connection willSendRequest:request redirectResponse:redirectResponse];
     }
@@ -76,7 +76,7 @@
 
 // データ送信後
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    NSLog(@"didSendBodyData:%d/%d/%d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+//    NSLog(@"didSendBodyData:%d/%d/%d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     if ([delegate_ respondsToSelector:@selector(connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
         [delegate_ connection:connection didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
     }
@@ -84,7 +84,7 @@
 
 // レスポンス受信後
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
+//    NSLog(@"didReceiveResponse");
     response_ = [response retain];
     if ([delegate_ respondsToSelector:@selector(connection:didReceiveResponse:)]) {
         [delegate_ connection:connection didReceiveResponse:response];
@@ -94,7 +94,7 @@
 
 // データ受信後
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"didReceived");
+//    NSLog(@"didReceived");
     [responseData_ appendData:data];
     if ([delegate_ respondsToSelector:@selector(connection:didReceiveData:)]) {
         [delegate_ connection:connection didReceiveData:data];
