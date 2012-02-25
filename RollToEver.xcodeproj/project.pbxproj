@@ -137,6 +137,9 @@
 		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
+		C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
+		C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
+		C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +305,8 @@
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
 		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
+		C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +371,7 @@
 		C000DD6E14E8E3F500DDD8C8 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C0FB6C6E14F932BE00ED0F0D /* MBProgressHUD */,
 				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
 				C000DD7414E8E87100DDD8C8 /* Evernote */,
 				C000DD6D14E8E3E500DDD8C8 /* PDKeyChain */,
@@ -522,9 +528,9 @@
 				C039CE2614F6911700948DC6 /* UploadViewController.h */,
 				C039CE2714F6911700948DC6 /* UploadViewController.m */,
 				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
+				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDFC14F68BD500948DC6 /* SettingsTableViewController.h */,
 				C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */,
-				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */,
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
 				C039B10B14DF79D300F4169E /* Supporting Files */,
@@ -679,6 +685,16 @@
 				C039CDD414F68B9E00948DC6 /* Default@2x.png */,
 			);
 			name = Splashes;
+			sourceTree = "<group>";
+		};
+		C0FB6C6E14F932BE00ED0F0D /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */,
+				C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = RollToEver/Libraries/MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -866,6 +882,7 @@
 				C039CE3514F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C039CE3914F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
 				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
+				C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +896,7 @@
 				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
 				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 				C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
+				C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +951,7 @@
 				C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C039CE3A14F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
+				C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

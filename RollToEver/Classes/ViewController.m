@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 #import "AssetsLoader.h"
+#import "MBProgressHUD.h"
+#import <dispatch/dispatch.h>
 
 @interface ViewController()
 
-- (void)assetsCountAsync;
-- (void)assetsCount;
+- (void)assetsCountDidFinish;
 
 @property (retain, nonatomic, readwrite) UIView *loadingView;
 @property (assign, nonatomic, readwrite) NSInteger photoCount;
@@ -49,19 +50,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self performSelectorOnMainThread:@selector(assetsCountAsync) withObject:nil waitUntilDone:NO];
-    
-    self.loadingView = [[UIView alloc] initWithFrame:self.navigationController.view.bounds];
-    [self.loadingView setBackgroundColor:[UIColor blackColor]];
-    [self.loadingView setAlpha:0.5];
-    
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [indicatorView setCenter:CGPointMake(self.loadingView.bounds.size.width/2, self.loadingView.bounds.size.height/2 )];
-    
-    [self.loadingView addSubview:indicatorView];
-    [self.navigationController.view addSubview: self.loadingView];
-    
-    [indicatorView startAnimating];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	hud.labelText = @"Loading";
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
+        NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
+        photoCount_ = [assets count];
+        [assetsLoader release];
+        
+        [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
+    });
     
     [super viewWillAppear:animated];
 }
@@ -94,16 +93,9 @@
     [super dealloc];
 }
 
-- (void)assetsCountAsync {
-    AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
-    NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
-    photoCount_ = [assets count];
-    [assetsLoader release];
-    
-    [self performSelectorOnMainThread:@selector(assetsCount) withObject:nil waitUntilDone:YES];
-}
+- (void)assetsCountDidFinish {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 
-- (void)assetsCount {
     photoCountInfo_.text = [NSString stringWithFormat:@"%d枚の写真がみつかりました", photoCount_];
     [loadingView_ removeFromSuperview];
     [self setLoadingView:nil];
