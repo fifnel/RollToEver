@@ -12,7 +12,7 @@
 #import "AssetsLoader.h"
 #import "AssetURLStorage.h"
 #import "NSObject+InvocationUtils.h"
-#import "ALAsset+Resize.h"
+#import "EvernoteNoteStoreClient+ALAsset.h"
 
 @interface PhotoUploader()
 
@@ -20,8 +20,6 @@
 @property (assign, readwrite) NSInteger totalCount;
 
 @property (retain) ALAsset *currentAsset;
-
-- (void)uploadPhotoToEvernote:(ALAsset *)asset;
 
 - (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount;
 - (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
@@ -77,6 +75,9 @@
     
     [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:self.totalCount]];
     
+    EvernoteNoteStoreClient *noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
+    NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
+    
     for (NSInteger i=0; i<totalCount_; i++) {
         NSString *url = [urlList objectAtIndex:i];
         ALAsset *asset = [loader loadAssetURLString:url];
@@ -84,55 +85,18 @@
             [self PhotoUploaderErrorAsync:self error:nil];
             continue;
         }
-        
         currentAsset_ = asset;
+        
         [self PhotoUploaderWillUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
-        [self uploadPhotoToEvernote:asset];
+        
+        [noteStoreClient createNoteFromAsset:asset NotebookGUID:notebookGUID];
         [urlStorage insertURL:url];
+
         [self PhotoUploaderDidUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
 
     }
     
     [self PhotoUploaderDidFinishAsync:self];
-}
-
-/**
- 写真1枚のアップロード
- */
-- (void)uploadPhotoToEvernote:(ALAsset *)asset {
-    /*
-     NSLog(@"date=%@ type=%@ url=%@",
-     [asset valueForProperty:ALAssetPropertyDate],
-     [asset valueForProperty:ALAssetPropertyType],
-     [asset valueForProperty:ALAssetPropertyURLs]
-     );
-     */
-    // Rowデータを取得して実際のアップロード処理に投げる
-    ALAssetRepresentation *rep = [asset defaultRepresentation];
-    NSData *data = [asset resizedImageData:100*100];
-    NSLog(@"count=%d", [data retainCount]);
-    NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
-    
-    Evernote *evernote = nil;
-    @try {
-        evernote = [[Evernote alloc]
-                    initWithUserID:[UserSettings sharedInstance].evernoteUserId
-                    Password:[UserSettings sharedInstance].evernotePassword];
-        evernote.delegate = delegate_;
-        [evernote uploadPhoto:data notebookGUID:[UserSettings sharedInstance].evernoteNotebookGUID date:date filename:[rep filename]];
-    }
-    @catch (EDAMUserException * e) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [e errorCode]];
-        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-        
-        [alertDone show];
-        [alertDone release];
-        return;
-    }
-    @finally {
-        [evernote release];
-        [data release];
-    }
 }
                             
 #pragma mark - delegate call

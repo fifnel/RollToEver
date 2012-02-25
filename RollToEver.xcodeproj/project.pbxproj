@@ -140,6 +140,9 @@
 		C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
 		C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
 		C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
+		C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
+		C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
+		C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,8 +178,8 @@
 		C000DD7D14E8E87100DDD8C8 /* Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Types.m; sourceTree = "<group>"; };
 		C000DD7E14E8E87100DDD8C8 /* UserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStore.h; sourceTree = "<group>"; };
 		C000DD7F14E8E87100DDD8C8 /* UserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStore.m; sourceTree = "<group>"; };
-		C000DD8014E8E87100DDD8C8 /* Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Evernote.h; sourceTree = "<group>"; };
-		C000DD8114E8E87100DDD8C8 /* Evernote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Evernote.m; sourceTree = "<group>"; };
+		C000DD8014E8E87100DDD8C8 /* Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Evernote.h; path = RollToEver/Libraries/Evernote/Evernote.h; sourceTree = "<group>"; };
+		C000DD8114E8E87100DDD8C8 /* Evernote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Evernote.m; path = RollToEver/Libraries/Evernote/Evernote.m; sourceTree = "<group>"; };
 		C000DD8214E8E87100DDD8C8 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id.h; sourceTree = "<group>"; };
 		C000DD8314E8E87100DDD8C8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C000DD8414E8E87100DDD8C8 /* MD5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MD5.c; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
 		C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteNoteStoreClient+ALAsset.h"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.h"; sourceTree = "<group>"; };
+		C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteNoteStoreClient+ALAsset.m"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,8 +391,6 @@
 				C000DD8A14E8E87100DDD8C8 /* thrift */,
 				C000DD8214E8E87100DDD8C8 /* id.h */,
 				C000DD8314E8E87100DDD8C8 /* LICENSE.txt */,
-				C000DD8014E8E87100DDD8C8 /* Evernote.h */,
-				C000DD8114E8E87100DDD8C8 /* Evernote.m */,
 				C000DD8414E8E87100DDD8C8 /* MD5.c */,
 				C000DD8514E8E87100DDD8C8 /* MD5.h */,
 				C000DD8614E8E87100DDD8C8 /* NSDataMD5Additions.h */,
@@ -579,6 +582,8 @@
 		C039CE3B14F8999100948DC6 /* nouse */ = {
 			isa = PBXGroup;
 			children = (
+				C000DD8014E8E87100DDD8C8 /* Evernote.h */,
+				C000DD8114E8E87100DDD8C8 /* Evernote.m */,
 				C039CDEB14F68BD400948DC6 /* AllAssetsURLRegister.h */,
 				C039CDEC14F68BD400948DC6 /* AllAssetsURLRegister.m */,
 				C039CE0014F68BD500948DC6 /* UploadAssetListViewController.h */,
@@ -623,6 +628,8 @@
 				C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */,
 				C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */,
 				C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */,
+				C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */,
+				C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -760,7 +767,7 @@
 		C039B0F714DF79D300F4169E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = fifnel;
 			};
 			buildConfigurationList = C039B0FA14DF79D300F4169E /* Build configuration list for PBXProject "RollToEver" */;
@@ -883,6 +890,7 @@
 				C039CE3914F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
 				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
+				C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +905,7 @@
 				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 				C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
+				C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +961,7 @@
 				C039CE3A14F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
+				C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

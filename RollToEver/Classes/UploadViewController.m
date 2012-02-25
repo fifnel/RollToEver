@@ -8,10 +8,16 @@
 
 #import "UploadViewController.h"
 #import "PhotoUploader.h"
+#import "EvernoteAuthToken.h"
+#import "EvernoteUserStoreClient.h"
+#import "EvernoteNoteStoreClient.h"
+#import "EvernoteNoteStoreClient+ALAsset.h"
 
 @interface UploadViewController ()
 
 @property (retain, nonatomic, readwrite) NSOperationQueue *operationQueue;
+
+- (void)updateEvernoteCycle;
 
 @end
 
@@ -55,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [UploadingProgress setProgress:0.0f];
     
-    PhotoUploader *uploader = [[PhotoUploader alloc] init];
+    PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
     [operationQueue addOperation:uploader];
     [uploader release];
 
@@ -83,7 +89,7 @@
 }
 
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount {
-    
+    [self updateEvernoteCycle];
 }
 
 - (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
@@ -97,6 +103,7 @@
 
 - (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
     [UploadingProgress setProgress:1.0f];
+    [self updateEvernoteCycle];
 }
 
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader {
@@ -105,6 +112,16 @@
 
 - (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error {
     
+}
+
+- (void)updateEvernoteCycle {
+    EvernoteUserStoreClient *userClient = [[EvernoteUserStoreClient alloc] initWithDelegate:nil];
+    EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
+    EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
+    EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
+    [EvernoteCycleProgress setProgress:(float)syncStatus.uploaded/(float)accounting.uploadLimit];
+    NSString *text = [NSString stringWithFormat:@"%lldKiB / %lldKiB", syncStatus.uploaded/1024, accounting.uploadLimit/1024];
+    [EvernoteCycleText setText:text];
 }
 
 @end
