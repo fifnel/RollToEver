@@ -12,7 +12,6 @@
 {
 }
 
-@property (retain, nonatomic, readonly) UIView *loadingView;
 @property (assign, nonatomic, readonly) NSInteger photoCount;
 @property (retain, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
 

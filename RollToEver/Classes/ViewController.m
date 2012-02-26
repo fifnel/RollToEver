@@ -15,7 +15,6 @@
 
 - (void)assetsCountDidFinish;
 
-@property (retain, nonatomic, readwrite) UIView *loadingView;
 @property (assign, nonatomic, readwrite) NSInteger photoCount;
 @property (retain, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
@@ -23,7 +22,6 @@
 
 @implementation ViewController
 
-@synthesize loadingView = loadingView_;
 @synthesize photoCount = photoCount_;
 @synthesize photoCountInfo = photoCountInfo_;
 
@@ -39,12 +37,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.loadingView = nil;
 }
 
 - (void)viewDidUnload
 {
-    self.loadingView = nil;
     [super viewDidUnload];
 }
 
@@ -87,7 +83,6 @@
 }
 
 - (void)dealloc {
-    self.loadingView = nil;
     self.photoCountInfo = nil;
 
     [super dealloc];
@@ -97,8 +92,6 @@
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 
     photoCountInfo_.text = [NSString stringWithFormat:@"%d枚の写真がみつかりました", photoCount_];
-    [loadingView_ removeFromSuperview];
-    [self setLoadingView:nil];
 }
 
 @end
