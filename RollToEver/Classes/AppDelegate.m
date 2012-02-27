@@ -31,6 +31,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // バージョンチェック
+    NSString *version = [UserSettings sharedInstance].version;
+    if (version == nil) {
+        // 初回起動
+    } else if ([[UserSettings sharedInstance].version compare:APPLICATIONVERSION] != NSOrderedSame) {
+        // バージョンアップの検出
+    } else {
+        // 前回と同じバージョン
+    }
+    [UserSettings sharedInstance].version = APPLICATIONVERSION;
+    
     return YES;
 }
 							
