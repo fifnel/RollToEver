@@ -22,7 +22,8 @@
 
 static UserSettings *sharedUserSettingsInstance = nil;
 
-+(UserSettings *)sharedInstance {
++(UserSettings *)sharedInstance
+{
     @synchronized(self) {
         if (sharedUserSettingsInstance == nil) {
             [[self alloc] init]; // ここでは代入していない
@@ -31,7 +32,8 @@ static UserSettings *sharedUserSettingsInstance = nil;
     return sharedUserSettingsInstance;
 }
 
-+(id)allocWithZone:(NSZone *)zone {
++(id)allocWithZone:(NSZone *)zone
+{
     @synchronized(self) {
         if (sharedUserSettingsInstance == nil) {
             sharedUserSettingsInstance = [super allocWithZone:zone];
@@ -41,48 +43,58 @@ static UserSettings *sharedUserSettingsInstance = nil;
     return nil; // 以降の割り当てではnilを返すようにする
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return self;
 }
 
-- (id)retain {
+- (id)retain
+{
     return self;
 }
 
-- (unsigned)retainCount {
+- (unsigned)retainCount
+{
     return UINT_MAX;  // 解放できないオブジェクトであることを示す
 }
 
-- (oneway void)release {
+- (oneway void)release
+{
     // 何もしない
 }
 
-- (id)autorelease {
+- (id)autorelease
+{
     return self;
 }
 
 #pragma  mark - propertyes methods
 
 static NSString *VERSION = @"Version";
-- (NSString *)version {
+- (NSString *)version
+{
     return [[NSUserDefaults standardUserDefaults] stringForKey:VERSION];
 }
 
-- (void)setVersion:(NSString *)version {
+- (void)setVersion:(NSString *)version
+{
     [[NSUserDefaults standardUserDefaults] setValue:version forKey:VERSION];
 }
 
 static NSString *ISFIRSTTIME = @"IsFirstTime";
-- (NSString *)isFirstTime {
+- (NSString *)isFirstTime
+{
     return [[NSUserDefaults standardUserDefaults] stringForKey:ISFIRSTTIME];
 }
 
-- (void)setIsFirstTime:(NSString *)isFirstTime {
+- (void)setIsFirstTime:(NSString *)isFirstTime
+{
     [[NSUserDefaults standardUserDefaults] setValue:isFirstTime forKey:ISFIRSTTIME];
 }
 
 static NSString *EVERNOTE_USER_ID = @"EvernoteUserID";
-- (NSString *)evernoteUserId {
+- (NSString *)evernoteUserId
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_USER_ID];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -90,12 +102,14 @@ static NSString *EVERNOTE_USER_ID = @"EvernoteUserID";
     return nil;
 }
 
-- (void)setEvernoteUserId:(NSString *)evernoteUserId {
+- (void)setEvernoteUserId:(NSString *)evernoteUserId
+{
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteUserId forKey:EVERNOTE_USER_ID];
 }
 
 static NSString *EVERNOTE_PASSWORD = @"EvernotePassword";
-- (NSString *)evernotePassword {
+- (NSString *)evernotePassword
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_PASSWORD];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -108,7 +122,8 @@ static NSString *EVERNOTE_PASSWORD = @"EvernotePassword";
 }
 
 static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
-- (NSString *)evernoteNotebookName {
+- (NSString *)evernoteNotebookName
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_NAME];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -116,12 +131,14 @@ static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
     return nil;
 }
 
-- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName {
+- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName
+{
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookName forKey:EVERNOTE_NOTEBOOK_NAME];
 }
 
 static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
-- (NSString *)evernoteNotebookGUID {
+- (NSString *)evernoteNotebookGUID
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_GUID];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -129,8 +146,21 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
     return nil;
 }
 
-- (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID {
+- (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID
+{
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:evernoteNotebookGUID];
+}
+
+static NSString *PHOTO_QUALITY = @"PHOTO_QUALITY";
+- (NSInteger)photoQuality
+{
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_QUALITY] integerValue];
+}
+
+- (void)setPhotoQuality:(NSInteger)photoQuality
+{
+    NSString *str = [NSString stringWithFormat:@"%d", photoQuality];
+    [[NSUserDefaults standardUserDefaults] setValue:str forKey:VERSION];
 }
 
 @end
