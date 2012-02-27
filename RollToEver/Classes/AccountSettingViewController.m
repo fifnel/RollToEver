@@ -88,7 +88,7 @@
     Evernote *evernote = nil;
     @try {
         evernote = [[Evernote alloc]
-                    initWithUserID:userId.text
+                    initWithUserId:userId.text
                     Password:password.text];
         [evernote connect];
     }

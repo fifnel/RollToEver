@@ -92,11 +92,11 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     return self;
 }
 
-- (bool)connectWithUserName:(NSString *)userName
-                   Password:(NSString *)password
-                 ClientName:(NSString *)clientName
-                ConsumerKey:(NSString *)consumerKey
-             ConsumerSecret:(NSString *)consumerSecret {
+- (bool)connectWithUserId:(NSString *)userId
+                 Password:(NSString *)password
+               ClientName:(NSString *)clientName
+              ConsumerKey:(NSString *)consumerKey
+           ConsumerSecret:(NSString *)consumerSecret {
     
     self.authToken = nil;
     self.edamUser = nil;
@@ -118,7 +118,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
             return false;
         }
 
-        authResult = [[userStoreClient userStoreClient] authenticate:userName
+        authResult = [[userStoreClient userStoreClient] authenticate:userId
                                                                     :password
                                                                     :consumerKey
                                                                     :consumerSecret];

@@ -57,7 +57,7 @@
     if (evernote_ == nil) {
         @try {
             evernote_ = [[Evernote alloc]
-                         initWithUserID:[UserSettings sharedInstance].evernoteUserId
+                         initWithUserId:[UserSettings sharedInstance].evernoteUserId
                          Password:[UserSettings sharedInstance].evernotePassword];
             notebooksList_ = [evernote_ listNotebooks];
             notebooksNum_ = [notebooksList_ count];

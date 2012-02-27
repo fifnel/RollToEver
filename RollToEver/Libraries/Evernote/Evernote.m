@@ -44,7 +44,7 @@ NSString * const applicationVersion = @"0.0";
 @synthesize shardId, authToken, noteStoreUri, user, noteStore;
 @synthesize delegate = delegate_;
 
--(id)initWithUserID:(NSString *)username Password:(NSString *)password {
+-(id)initWithUserId:(NSString *)username Password:(NSString *)password {
     self = [super init];
     if (self != nil) {
         username_ = username;

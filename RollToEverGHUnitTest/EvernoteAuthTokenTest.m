@@ -20,14 +20,14 @@
 @implementation EvernoteAuthTokenTest
 
 - (void)setUpClass {
-    NSString *username = [UserSettings sharedInstance].evernoteUserId;
+    NSString *userid = [UserSettings sharedInstance].evernoteUserId;
     NSString *password = [UserSettings sharedInstance].evernotePassword;
 
-    [[EvernoteAuthToken sharedInstance] connectWithUserName:username
-                                                   Password:password
-                                                 ClientName:APPLICATIONNAME
-                                                ConsumerKey:CONSUMERKEY
-                                             ConsumerSecret:CONSUMERSECRET];
+    [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
+                                                 Password:password
+                                               ClientName:APPLICATIONNAME
+                                              ConsumerKey:CONSUMERKEY
+                                           ConsumerSecret:CONSUMERSECRET];
 }
 
 - (void)tearDownClass {
@@ -68,12 +68,12 @@
 }
 
 - (void)testEvernote {
-    NSString *username = [UserSettings sharedInstance].evernoteUserId;
+    NSString *userid   = [UserSettings sharedInstance].evernoteUserId;
     NSString *password = [UserSettings sharedInstance].evernotePassword;
 
     NSLog(@"evernote test");
 
-    Evernote *evernote = [[Evernote alloc] initWithUserID:username Password:password];
+    Evernote *evernote = [[Evernote alloc] initWithUserId:userid Password:password];
     [evernote connect];
     EDAMSyncState *syncStatus = [[evernote noteStore] getSyncState:[evernote authToken]];
     GHAssertTrue([syncStatus uploadedIsSet], @"uploaded not set");

@@ -44,7 +44,7 @@ extern NSString * const noteStoreUriBase;
 @property(retain) EDAMNoteStoreClient *noteStore;
 @property(retain) id delegate;
 
--(id)initWithUserID:(NSString *)username Password:(NSString *)password;
+-(id)initWithUserId:(NSString *)username Password:(NSString *)password;
 
 - (void) connect; 
 

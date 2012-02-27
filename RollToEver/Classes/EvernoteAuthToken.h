@@ -13,11 +13,11 @@
 
 + (EvernoteAuthToken *)sharedInstance;
 
-- (bool)connectWithUserName:(NSString *)userName
-                   Password:(NSString *)password
-                 ClientName:(NSString *)clientName
-                ConsumerKey:(NSString *)consumerKey
-             ConsumerSecret:(NSString *)consumerSecret;
+- (bool)connectWithUserId:(NSString *)userId
+                 Password:(NSString *)password
+               ClientName:(NSString *)clientName
+              ConsumerKey:(NSString *)consumerKey
+           ConsumerSecret:(NSString *)consumerSecret;
 
 @property (retain, nonatomic, readonly) NSString *authToken;
 @property (retain, nonatomic, readonly) NSString *shardId;

@@ -68,9 +68,9 @@
     totalCount_ = 0;
 
     if ([EvernoteAuthToken sharedInstance].authToken == nil) {
-        NSString *username = [UserSettings sharedInstance].evernoteUserId;
+        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
         NSString *password = [UserSettings sharedInstance].evernotePassword;
-        bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:username
+        bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
                                                                   Password:password
                                                                 ClientName:APPLICATIONNAME
                                                                ConsumerKey:CONSUMERKEY

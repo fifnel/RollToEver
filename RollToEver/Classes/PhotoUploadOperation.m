@@ -74,7 +74,7 @@
     Evernote *evernote = nil;
     @try {
         evernote = [[Evernote alloc]
-                    initWithUserID:[UserSettings sharedInstance].evernoteUserId
+                    initWithUserId:[UserSettings sharedInstance].evernoteUserId
                     Password:[UserSettings sharedInstance].evernotePassword];
         evernote.delegate = self;
         [evernote uploadPhoto:data notebookGUID:[UserSettings sharedInstance].evernoteNotebookGUID date:date filename:[rep filename]];

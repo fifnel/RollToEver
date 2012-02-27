@@ -29,11 +29,11 @@
 
 - (void)testAuthToken
 {
-    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:[UserSettings sharedInstance].evernoteUserId
-                                                              Password:[UserSettings sharedInstance].evernotePassword
-                                                             UserAgent:USERAGENT
-                                                           ConsumerKey:CONSUMERKEY
-                                                        ConsumerSecret:CONSUMERSECRET];
+    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:[UserSettings sharedInstance].evernoteUserId
+                                                            Password:[UserSettings sharedInstance].evernotePassword
+                                                          ClientName:APPLICATIONNAME
+                                                         ConsumerKey:CONSUMERKEY
+                                                      ConsumerSecret:CONSUMERSECRET];
     
     STAssertTrue(ret, @"EvernoteAuthToken connect failure");
 //    STFail(@"Unit tests are not implemented yet in RollToEverTests");
