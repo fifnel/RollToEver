@@ -151,16 +151,16 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:evernoteNotebookGUID];
 }
 
-static NSString *PHOTO_QUALITY = @"PHOTO_QUALITY";
-- (NSInteger)photoQuality
+static NSString *PHOTO_SIZE = @"PHOTO_SIZE";
+- (NSInteger)photoSize
 {
-    return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_QUALITY] integerValue];
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_SIZE] integerValue];
 }
 
-- (void)setPhotoQuality:(NSInteger)photoQuality
+- (void)setPhotoSize:(NSInteger)photoSize
 {
-    NSString *str = [NSString stringWithFormat:@"%d", photoQuality];
-    [[NSUserDefaults standardUserDefaults] setValue:str forKey:VERSION];
+    NSString *str = [NSString stringWithFormat:@"%d", photoSize];
+    [[NSUserDefaults standardUserDefaults] setValue:str forKey:PHOTO_SIZE];
 }
 
 @end

@@ -30,5 +30,8 @@
 - (NSString *)evernoteNotebookGUID;
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID;
 
+- (NSInteger)photoSize;
+- (void)setPhotoSize:(NSInteger)photoSize;
+
 @end
 
