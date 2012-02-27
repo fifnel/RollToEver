@@ -107,11 +107,20 @@
 }
 
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader {
-    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
+    [alert show];
 }
 
 - (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error {
-    
+    NSString *errorMsg = [NSString stringWithFormat:@"UploadError\nTransport=%d\nCode=%d",
+                          [EvernoteAuthToken sharedInstance].transportError,
+                          [EvernoteAuthToken sharedInstance].edamErrorCode];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)updateEvernoteCycle {

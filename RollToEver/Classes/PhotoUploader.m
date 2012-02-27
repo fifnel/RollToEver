@@ -11,8 +11,10 @@
 #import "UserSettings.h"
 #import "AssetsLoader.h"
 #import "AssetURLStorage.h"
+#import "EvernoteAuthToken.h"
 #import "NSObject+InvocationUtils.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
+#import "id.h"
 
 @interface PhotoUploader()
 
@@ -64,7 +66,21 @@
     urlStorage = [[[AssetURLStorage alloc] init] autorelease];
     currentIndex_ = 0;
     totalCount_ = 0;
-    
+
+    if ([EvernoteAuthToken sharedInstance].authToken == nil) {
+        NSString *username = [UserSettings sharedInstance].evernoteUserId;
+        NSString *password = [UserSettings sharedInstance].evernotePassword;
+        bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserName:username
+                                                                  Password:password
+                                                                ClientName:APPLICATIONNAME
+                                                               ConsumerKey:CONSUMERKEY
+                                                            ConsumerSecret:CONSUMERSECRET];
+        if (!ret) {
+            [self PhotoUploaderErrorAsync:self error:nil];
+            return;
+        }
+    }
+
     AssetsLoader *loader = [[AssetsLoader alloc] init];
     NSArray *urlList = [loader EnumerateURLExcludeDuplication:NO];
     if (urlList == nil) {

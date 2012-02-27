@@ -11,6 +11,7 @@
 #import "EvernoteAuthToken.h"
 #import "ALAsset+Resize.h"
 #import "NSDataMD5Additions.h"
+#import "TTransportException.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
 
@@ -75,10 +76,13 @@ static NSDateFormatter *titleDateFormatter_ = nil;
     @try {
         [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];
     }
-    @catch (EDAMUserException *e) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [e errorCode]];
+    @catch (EDAMUserException *exception) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [exception errorCode]];
         NSLog(@"%@", errorMessage);
-        @throw e;
+        @throw exception;
+    }
+    @catch (TTransportException *exception) {
+        @throw exception;
     }
 }
 

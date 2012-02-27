@@ -8,18 +8,23 @@
 
 #import "EvernoteAuthToken.h"
 
+#import "EvernoteUserStoreClient.h"
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
 #import "UserStore.h"
 #import "NoteStore.h"
 #import "Errors.h"
-#import "EvernoteUserStoreClient.h"
+#import "TTransportException.h"
 
 @interface EvernoteAuthToken()
 
 @property (retain, nonatomic, readwrite) NSString *authToken;
 @property (retain, nonatomic, readwrite) NSString *shardId;
 @property (retain, nonatomic, readwrite) EDAMUser *edamUser;
+
+@property (assign, nonatomic, readwrite) NSInteger edamErrorCode;
+@property (assign, nonatomic, readwrite) BOOL edamErrorCodeIsSet;
+@property (assign, nonatomic, readwrite) BOOL transportError;
 
 @end
 
@@ -30,7 +35,9 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
 @synthesize authToken = authToken_;
 @synthesize shardId = shardId_;
 @synthesize edamUser = edamUser_;
-
+@synthesize edamErrorCode = edamErrorCode_;
+@synthesize edamErrorCodeIsSet = edamErrorCodeIsSet_;
+@synthesize transportError = transportError_;
 
 +(EvernoteAuthToken *)sharedInstance {
     @synchronized(self) {
@@ -71,36 +78,60 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     return self;
 }
 
+- (id)init {
+    self = [super init];
+    if (self != nil) {
+        self.authToken = nil;
+        self.edamUser = nil;
+        self.shardId = nil;
+        
+        self.edamErrorCode = 0;
+        self.edamErrorCodeIsSet = NO;
+        self.transportError = NO;
+    }
+    return self;
+}
+
 - (bool)connectWithUserName:(NSString *)userName
                    Password:(NSString *)password
                  ClientName:(NSString *)clientName
                 ConsumerKey:(NSString *)consumerKey
              ConsumerSecret:(NSString *)consumerSecret {
-    /*
-    NSURL *url = [[[NSURL alloc] initWithString:userStoreUri] autorelease];
-    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url] autorelease];
-    TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-    EDAMUserStoreClient *userStoreClient = [[[EDAMUserStoreClient alloc] initWithProtocol:protocol] autorelease];
-     */
+    
+    self.authToken = nil;
+    self.edamUser = nil;
+    self.shardId = nil;
+    self.edamErrorCode = 0;
+    self.edamErrorCodeIsSet = NO;
+    self.transportError = NO;
+
     EvernoteUserStoreClient *userStoreClient = [[EvernoteUserStoreClient alloc] init];
 
-    bool versionOk = [[userStoreClient userStoreClient]
-                      checkVersion:clientName
-                                  :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
-                                  :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
-    if (!versionOk) {
-        return false;
-    }
     
     EDAMAuthenticationResult *authResult = nil;
     @try {
+        bool versionOk = [[userStoreClient userStoreClient]
+                          checkVersion:clientName
+                          :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
+                          :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
+        if (!versionOk) {
+            return false;
+        }
+
         authResult = [[userStoreClient userStoreClient] authenticate:userName
                                                                     :password
                                                                     :consumerKey
                                                                     :consumerSecret];
     }
     @catch (EDAMUserException *exception) {
-        NSLog(@"%@", [exception reason]);
+        self.edamErrorCodeIsSet = exception.errorCodeIsSet;
+        self.edamErrorCode = exception.errorCode;
+        NSLog(@"errorcode = %d", self.edamErrorCode);
+        return false;
+    }
+    @catch (TTransportException *exception) {
+        self.transportError = YES;
+        NSLog(@"transport error");
         return false;
     }
     if (authResult == nil ||
