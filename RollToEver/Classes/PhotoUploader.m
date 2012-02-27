@@ -38,12 +38,14 @@
 @synthesize delegate = delegate_;
 @synthesize currentAsset = currentAsset_;
 
-- (id)init {
+- (id)init
+{
     self = [self initWithDelegate:nil];
     return self;
 }
 
-- (id)initWithDelegate:(id)delegate {
+- (id)initWithDelegate:(id)delegate
+{
     self = [super init];
     if (self != nil) {
         assetsLibrary_ = [[ALAssetsLibrary alloc] init];
@@ -60,7 +62,8 @@
     [super dealloc];
 }
 
-- (void)main {
+- (void)main
+{
     __block AssetURLStorage *urlStorage = nil;
 
     urlStorage = [[[AssetURLStorage alloc] init] autorelease];
@@ -95,6 +98,13 @@
     NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
     
     for (NSInteger i=0; i<totalCount_; i++) {
+        
+        // キャンセルチェック
+        if ([self isCancelled]) {
+            [self PhotoUploaderCancelAsync:self];
+            return;
+        }
+        
         NSString *url = [urlList objectAtIndex:i];
         ALAsset *asset = [loader loadAssetURLString:url];
         if (asset == nil) {
@@ -102,14 +112,13 @@
             continue;
         }
         currentAsset_ = asset;
-        
+
         [self PhotoUploaderWillUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
         
         [noteStoreClient createNoteFromAsset:asset NotebookGUID:notebookGUID];
         [urlStorage insertURL:url];
 
         [self PhotoUploaderDidUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
-
     }
     
     [self PhotoUploaderDidFinishAsync:self];
@@ -117,41 +126,61 @@
                             
 #pragma mark - delegate call
 
-- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount {
+- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
+{
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillStart:totalCount:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillStart:totalCount:) withObjects:photoUploader, totalCount, nil];
     }
 }
 
-- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
+{
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillUpload:asset:index:totalCount:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
 }
 
-- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
+{
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidUpload:asset:index:totalCount:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
     
 }
 
-- (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader {
+- (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader
+{
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidFinish:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidFinish:) withObjects:photoUploader, nil];
     }
     
 }
 
-- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error {
+- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error
+{
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderError:error:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderError:error:) withObjects:photoUploader, error, nil];
     }
 }
 
+- (void)PhotoUploaderCancelAsync:(PhotoUploader *)photoUploader
+{
+    if ([delegate_ respondsToSelector:@selector(PhotoUploaderCanceled:)]) {
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderCanceled:) withObject:photoUploader waitUntilDone:NO];
+    }
+}
+
 #pragma mark - NSURLConnection delegate
 
-- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    // キャンセルチェック
+    if ([self isCancelled]) {
+        [connection cancel];
+        [self PhotoUploaderCancelAsync:self];
+        return;
+    }
+
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:) withObjects:self, self.currentAsset, self.currentIndex, self.totalCount, totalBytesWritten, totalBytesExpectedToWrite];
     }

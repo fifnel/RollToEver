@@ -58,7 +58,8 @@
     // Release any retained subviews of the main view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [UploadingProgress setProgress:0.0f];
     
     PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
@@ -73,7 +74,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [UploadingText release];
     [UploadingImage release];
     [UploadingProgress release];
@@ -83,35 +85,50 @@
     [super dealloc];
 }
 
-- (IBAction)cancel:(id)sender {
-    // アップロード処理を止める何かを入れる
-    [self dismissModalViewControllerAnimated:YES];
+// キャンセルボタン
+- (IBAction)cancel:(id)sender
+{
+    [operationQueue cancelAllOperations];
+
+    // dismissModalViewControllerAnimated の呼び出しはキャンセル後のdelegateから呼ぶ
 }
 
-- (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount {
+// アップロードのループ開始
+- (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
+{
     [self updateEvernoteCycle];
 }
 
-- (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+// アップロード開始
+- (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
+{
     [UploadingProgress setProgress:0.0f];
     [UploadingImage setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
 }
 
-- (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount uploadedSize:(NSNumber *)uploadedSize totalSize:(NSNumber *)totalSize {
+// アップロード中
+- (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount uploadedSize:(NSNumber *)uploadedSize totalSize:(NSNumber *)totalSize
+{
     [UploadingProgress setProgress:[uploadedSize floatValue]/[totalSize floatValue]];
 }
 
-- (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount {
+// アップロード完了
+- (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
+{
     [UploadingProgress setProgress:1.0f];
     [self updateEvernoteCycle];
 }
 
-- (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader {
+// アップロードのループ終了
+- (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader
+{
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
-- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error {
+// エラー
+- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error
+{
     NSString *errorMsg = [NSString stringWithFormat:@"UploadError\nTransport=%d\nCode=%d",
                           [EvernoteAuthToken sharedInstance].transportError,
                           [EvernoteAuthToken sharedInstance].edamErrorCode];
@@ -119,11 +136,21 @@
     [alert show];
 }
 
--(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+// キャンセル
+- (void)PhotoUploaderCanceled:(PhotoUploader *)photoUploader
+{
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)updateEvernoteCycle {
+// アラートビューのdelegate
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+// Evernote転送残量表示の更新
+- (void)updateEvernoteCycle
+{
     EvernoteUserStoreClient *userClient = [[EvernoteUserStoreClient alloc] initWithDelegate:nil];
     EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
     EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
