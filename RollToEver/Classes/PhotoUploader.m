@@ -74,10 +74,10 @@
         NSString *userid = [UserSettings sharedInstance].evernoteUserId;
         NSString *password = [UserSettings sharedInstance].evernotePassword;
         bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                                  Password:password
-                                                                ClientName:APPLICATIONNAME
-                                                               ConsumerKey:CONSUMERKEY
-                                                            ConsumerSecret:CONSUMERSECRET];
+                                                                Password:password
+                                                              ClientName:APPLICATIONNAME
+                                                             ConsumerKey:CONSUMERKEY
+                                                          ConsumerSecret:CONSUMERSECRET];
         if (!ret) {
             [self PhotoUploaderErrorAsync:self error:nil];
             return;
@@ -85,7 +85,7 @@
     }
 
     AssetsLoader *loader = [[AssetsLoader alloc] init];
-    NSArray *urlList = [loader EnumerateURLExcludeDuplication:NO];
+    NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
     if (urlList == nil) {
         [self PhotoUploaderErrorAsync:self error:nil];
         return;

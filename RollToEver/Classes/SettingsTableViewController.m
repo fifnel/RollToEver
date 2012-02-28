@@ -9,6 +9,9 @@
 #import "SettingsTableViewController.h"
 
 #import "UserSettings.h"
+#import "AssetURLStorage.h"
+#import "AssetsLoader+Utils.h"
+#import "MBProgressHUD.h"
 
 @implementation SettingsTableViewController
 
@@ -19,6 +22,12 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)dealloc {
+    [notebookNameCell_ release];
+    [evernoteAccountCell_ release];
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,7 +109,7 @@
     NSLog(@"row=%d selection=%d", row, section);
     
     switch (section) {
-        case 2: {
+        case 2: { // 画像サイズ
             for (NSInteger i=0; i<4; i++) {
                 NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:section];
                 [[tableView cellForRowAtIndexPath:ip] setAccessoryType:UITableViewCellAccessoryNone];
@@ -109,6 +118,22 @@
             [UserSettings sharedInstance].photoSizeIndex = row;
             break;
         }
+        case 3: { // リセット
+            switch (row) {
+                case 0: { // 全登録
+                    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"既存の写真をすべて送信対象から外しますか？\n実行すると既存の写真のすべてがアップロード対象外となります。" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:@"送信対象から外す" otherButtonTitles:nil];
+                    [actionSheet setTag:0];
+                    [actionSheet showInView:self.navigationController.view];
+                    break;
+                }
+                case 1: { // 全削除
+                    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"これまでの送信記録をクリアしますか？\n実行すると既存の写真すべてが次回送信時のアップロード対象となります。" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:@"クリアする" otherButtonTitles:nil];
+                    [actionSheet setTag:1];
+                    [actionSheet showInView:self.navigationController.view];
+                    break;
+                }
+            }
+        }
         default: {
             break;
         }
@@ -116,11 +141,32 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - event
-
-- (void)dealloc {
-    [notebookNameCell_ release];
-    [evernoteAccountCell_ release];
-    [super dealloc];
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch ([actionSheet tag]) {
+        case 0: { // 全登録
+            if (buttonIndex == 0) {
+                [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
+                [loader AllRegistToStorage];
+                [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            }
+            break;
+        }
+        case 1: { // 全削除
+            if (buttonIndex == 0) {
+                [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                AssetURLStorage *storage = [[[AssetURLStorage alloc] init] autorelease];
+                [storage deleteAllURLs];
+                [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            }
+            break;
+        }
+        default: {
+        }
+    }
 }
+
+
+
 @end

@@ -86,6 +86,7 @@
     
     NSError *error = nil;
     if ([self.managedObjectContext save:&error]) {
+        NSLog(@"insertURL:%@",url);
         return YES;
     } else {
         NSLog(@"(insertURL:)Unresolved error %@, %@", error, [error userInfo]);
@@ -105,6 +106,7 @@
     for (int i=0, end=[array count]; i<end; i++) {
         [self.managedObjectContext deleteObject:(NSManagedObject *)[array objectAtIndex:i]];
     }
+    NSLog(@"deleteURL:%@",url);
 
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
