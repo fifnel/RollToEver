@@ -152,6 +152,7 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 }
 
 static NSString *PHOTO_SIZE_INDEX = @"PHOTO_SIZE_INDEX";
+// サイズはiPhoneのメールに画像を添付した場合に選べるオリジナル・大・中・小を参考にした
 static const NSInteger photoSize_[] = {0, 1224*1632, 480*640, 240*320};
 - (NSInteger)photoSizeIndex
 {
