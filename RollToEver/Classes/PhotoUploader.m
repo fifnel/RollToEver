@@ -96,6 +96,7 @@
     
     EvernoteNoteStoreClient *noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
     NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
+    NSInteger photoSize = [UserSettings sharedInstance].photoSize;
     
     for (NSInteger i=0; i<totalCount_; i++) {
         
@@ -115,7 +116,7 @@
 
         [self PhotoUploaderWillUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
         
-        [noteStoreClient createNoteFromAsset:asset NotebookGUID:notebookGUID];
+        [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
         [urlStorage insertURL:url];
 
         [self PhotoUploaderDidUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];

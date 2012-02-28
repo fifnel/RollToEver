@@ -151,16 +151,27 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:evernoteNotebookGUID];
 }
 
-static NSString *PHOTO_SIZE = @"PHOTO_SIZE";
-- (NSInteger)photoSize
+static NSString *PHOTO_SIZE_INDEX = @"PHOTO_SIZE_INDEX";
+static const NSInteger photoSize_[] = {0, 1224*1632, 480*640, 240*320};
+- (NSInteger)photoSizeIndex
 {
-    return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_SIZE] integerValue];
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_SIZE_INDEX] integerValue];
 }
 
-- (void)setPhotoSize:(NSInteger)photoSize
+- (void)setPhotoSizeIndex:(NSInteger)photoSizeIndex
 {
-    NSString *str = [NSString stringWithFormat:@"%d", photoSize];
-    [[NSUserDefaults standardUserDefaults] setValue:str forKey:PHOTO_SIZE];
+    NSString *str = [NSString stringWithFormat:@"%d", photoSizeIndex];
+    [[NSUserDefaults standardUserDefaults] setValue:str forKey:PHOTO_SIZE_INDEX];
+}
+
+- (NSInteger)photoSize
+{
+    NSInteger index = [self photoSizeIndex];
+    if (index < 0 || index >= sizeof(photoSize_)/sizeof(NSInteger)) {
+        return 0;
+    } else {
+        return photoSize_[index];
+    }
 }
 
 @end

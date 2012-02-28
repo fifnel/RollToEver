@@ -13,8 +13,10 @@
 
 @implementation ALAsset (Resize)
 
-- (NSData *)resizedImageData:(NSInteger)maxPixel {
-
+// アセット内の写真をリサイズして生データを返す
+// maxPixelが0以下の場合はオリジナルサイズのまま返す
+- (NSData *)resizedImageData:(NSInteger)maxPixel
+{
     ALAssetRepresentation *rep = [self defaultRepresentation];
     NSDictionary *metaData = [rep metadata];
     CGImageRef fullResolution = [rep fullResolutionImage];
@@ -25,8 +27,11 @@
     }
 
     NSMutableData *resizedImageData = [[[NSMutableData alloc] init] autorelease];
-    float ratio = sqrtf((float)maxPixel / (float)(width*height));
-    if (ratio < 1.0f) {
+    float ratio = 0.0f;
+    if (maxPixel > 0) {
+        ratio = sqrtf((float)maxPixel / (float)(width*height));
+    }
+    if (maxPixel > 0 && ratio < 1.0f) {
         size_t newWidth  = width*ratio;
         size_t newHeight = height*ratio;
         

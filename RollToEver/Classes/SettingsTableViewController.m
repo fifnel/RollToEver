@@ -64,6 +64,10 @@
     if (notebookName) {
         [[notebookNameCell_ textLabel] setText:notebookName];
     }
+    
+    NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
+    UITableViewCell *photoSizeCell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:photoSizeIndex inSection:2]];
+    [photoSizeCell setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,14 +95,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSInteger row = [indexPath row];
+    NSInteger section = [indexPath section];
+    NSLog(@"row=%d selection=%d", row, section);
+    
+    switch (section) {
+        case 2: {
+            for (NSInteger i=0; i<4; i++) {
+                NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:section];
+                [[tableView cellForRowAtIndexPath:ip] setAccessoryType:UITableViewCellAccessoryNone];
+            }
+            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+            [UserSettings sharedInstance].photoSizeIndex = row;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - event

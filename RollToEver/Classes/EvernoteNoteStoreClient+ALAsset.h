@@ -11,6 +11,6 @@
 
 @interface EvernoteNoteStoreClient (CreatePhotoNote)
 
-- (void)createNoteFromAsset:(ALAsset *)asset NotebookGUID:(NSString *)notebookGUID;
+- (void)createNoteFromAsset:(ALAsset *)asset PhotoSize:(NSInteger)photoSize NotebookGUID:(NSString *)notebookGUID;
 
 @end

@@ -17,10 +17,8 @@
 
 @implementation EvernoteNoteStoreClient (ALAsset)
 
-// ノートのタイトルのフォーマット用
-static NSDateFormatter *titleDateFormatter_ = nil;
-
-- (void)createNoteFromAsset:(ALAsset *)asset NotebookGUID:(NSString *)notebookGUID {
+- (void)createNoteFromAsset:(ALAsset *)asset PhotoSize:(NSInteger)photoSize NotebookGUID:(NSString *)notebookGUID
+{
     /*
      NSLog(@"date=%@ type=%@ url=%@",
      [asset valueForProperty:ALAssetPropertyDate],
@@ -28,20 +26,20 @@ static NSDateFormatter *titleDateFormatter_ = nil;
      [asset valueForProperty:ALAssetPropertyURLs]
      );
      */
-    if (titleDateFormatter_ == nil) {
-        titleDateFormatter_ = [[[NSDateFormatter alloc] init] autorelease];
-        [titleDateFormatter_ setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    }
+
+    // ノートのタイトルのフォーマット用
+    NSDateFormatter *titleDateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    [titleDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     // Rowデータを取得して実際のアップロード処理に投げる
     ALAssetRepresentation *rep = [asset defaultRepresentation];
-    NSData *data = [asset resizedImageData:100*100];
+    NSData *data = [asset resizedImageData:photoSize];
     NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
     NSString *filename = [rep filename];
     
     // データを整理してnoteを作る
     EDAMNote *note = [[[EDAMNote alloc] init] autorelease];
-    note.title = [titleDateFormatter_ stringFromDate:date];
+    note.title = [titleDateFormatter stringFromDate:date];
     note.notebookGuid = notebookGUID;
     
     // Calculating the md5
