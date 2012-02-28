@@ -104,6 +104,7 @@
 {
     [UploadingProgress setProgress:0.0f];
     [UploadingImage setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
+    [UploadingText setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
 }
 
 // アップロード中

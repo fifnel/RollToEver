@@ -69,7 +69,7 @@
                                     <navigationItem title="RollToEver" id="qXc-An-icM"/>
                                 </items>
                             </navigationBar>
-                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="vsz-7c-Y87">
+                            <progressView opaque="NO" contentMode="scaleToFill" id="vsz-7c-Y87">
                                 <rect key="frame" x="40" y="236" width="240" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
@@ -77,19 +77,19 @@
                                 <rect key="frame" x="40" y="100" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="GJX-f6-ehn">
+                            <progressView opaque="NO" contentMode="scaleToFill" id="GJX-f6-ehn">
                                 <rect key="frame" x="40" y="380" width="240" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading... 10/100" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="IqF-ty-wEH">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="IqF-ty-wEH">
                                 <rect key="frame" x="20" y="61" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Cycle:634KB" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
                                 <rect key="frame" x="40" y="351" width="240" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
