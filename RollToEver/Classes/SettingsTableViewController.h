@@ -14,6 +14,5 @@
     IBOutlet UITableViewCell *evernoteAccountCell_;
     IBOutlet UITableViewCell *notebookNameCell_;
 }
-- (IBAction)returnMainPage:(id)sender;
 
 @end

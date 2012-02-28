@@ -103,9 +103,6 @@
 
 #pragma mark - event
 
-- (IBAction)returnMainPage:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
 - (void)dealloc {
     [notebookNameCell_ release];
     [evernoteAccountCell_ release];
