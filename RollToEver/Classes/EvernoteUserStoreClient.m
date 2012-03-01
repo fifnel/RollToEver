@@ -13,7 +13,7 @@
 
 static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
 
-@interface EvernoteUserStoreClient()
+@interface EvernoteUserStoreClient ()
 
 @property (retain, nonatomic, readwrite) EDAMUserStoreClient *userStoreClient;
 
@@ -23,11 +23,13 @@ static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user"
 
 @synthesize userStoreClient = userStoreClient_;
 
-- (id)init {
+- (id)init
+{
     return [self initWithDelegate:nil];
 }
 
-- (id)initWithDelegate:(id)delegate {
+- (id)initWithDelegate:(id)delegate
+{
     self = [super init];
     if (self) {
         // クライアントの初期化

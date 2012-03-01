@@ -15,7 +15,7 @@
 
 static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
 
-@interface EvernoteNoteStoreClient()
+@interface EvernoteNoteStoreClient ()
 
 @property (retain, readwrite) EDAMNoteStoreClient *noteStoreClient;
 
@@ -25,11 +25,13 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
 
 @synthesize noteStoreClient = noteStoreClient_;
 
-- (id)init {
+- (id)init
+{
     return [self initWithDelegate:nil];
 }
 
-- (id) initWithDelegate:(id)delegate {
+- (id) initWithDelegate:(id)delegate
+{
     self = [super init];
     if (self) {
         // URL作成
@@ -55,6 +57,5 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
     }
     return self;
 }
-
 
 @end

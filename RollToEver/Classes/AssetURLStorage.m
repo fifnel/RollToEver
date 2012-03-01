@@ -26,7 +26,8 @@
 /**
  CoreDataのManagedObjectContextを取得
  */
-- (NSManagedObjectContext *)getManagedObjectContext {
+- (NSManagedObjectContext *)getManagedObjectContext
+{
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     return [appDelegate managedObjectContext];
 }
@@ -34,14 +35,16 @@
 /**
  CoreDataからデータをすべて取得
  */
-- (NSArray *)getManagedObjects {
+- (NSArray *)getManagedObjects
+{
     return [self getManagedObjectsURL:nil];
 }
 
 /**
  任意のURLのデータを取得
  */
-- (NSArray *)getManagedObjectsURL:(NSString *)url {
+- (NSArray *)getManagedObjectsURL:(NSString *)url
+{
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
@@ -64,7 +67,8 @@
 /**
  URLが存在（登録済み）するかどうか
  */
-- (BOOL)isExistURL:(NSString *)url {
+- (BOOL)isExistURL:(NSString *)url
+{
     NSArray *results = [self getManagedObjectsURL:url];
 
     if (results != nil && [results count] > 0) {
@@ -78,7 +82,8 @@
 /**
  URLの追加
  */
-- (BOOL)insertURL:(NSString *)url {
+- (BOOL)insertURL:(NSString *)url
+{
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
@@ -97,7 +102,8 @@
 /**
  URLの削除
  */
-- (void)deleteURL:(NSString *)url {
+- (void)deleteURL:(NSString *)url
+{
     NSArray *array = [self getManagedObjectsURL:url];
     if (array == nil) {
         return;
@@ -117,8 +123,8 @@
 /**
  登録されているURLをすべて削除する
  */
-- (void)deleteAllURLs {
-
+- (void)deleteAllURLs
+{
     NSArray *urls = [self getManagedObjects];
     for (int i=0, end=[urls count]; i<end; i++) {
         NSManagedObject *obj = [urls objectAtIndex:i];

@@ -13,17 +13,11 @@
 #import "AssetURLStorage.h"
 
 @interface PhotoUploader : NSOperation
-{
-@private
-    ALAssetsLibrary *assetsLibrary_;
-    AssetURLStorage *assetUrlStorage_;
-}
 
 - (id)initWithDelegate:(id)delegate;
 
-@property (assign) id delegate;
-@property (readonly) NSInteger currentIndex;
-@property (readonly) NSInteger totalCount;
+@property (assign, readonly, nonatomic) NSInteger currentIndex;
+@property (assign, readonly, nonatomic) NSInteger totalCount;
 
 @end
 

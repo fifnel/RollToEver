@@ -14,7 +14,6 @@
 #import "TTransportException.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
-
 @implementation EvernoteNoteStoreClient (ALAsset)
 
 - (void)createNoteFromAsset:(ALAsset *)asset PhotoSize:(NSInteger)photoSize NotebookGUID:(NSString *)notebookGUID

@@ -11,9 +11,11 @@
 
 @implementation AssetsLoader
 
-@synthesize assetsLibrary = assetsLibrary_;
+// instance valiables
+ALAssetsLibrary *assetsLibrary_;
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self != nil) {
         assetsLibrary_ = [[ALAssetsLibrary alloc] init];
@@ -22,13 +24,15 @@
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [assetsLibrary_ release];
     [super dealloc];
 }
 
 // アセットURLのリストを取得する
-- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude {
+- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude
+{
     __block NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
     __block BOOL completed = NO;
     __block NSError *assetError = nil;
@@ -98,13 +102,15 @@
 }
 
 // 1アセットの読み込み
-- (ALAsset *)loadAssetURLString:(NSString *)urlString {
+- (ALAsset *)loadAssetURLString:(NSString *)urlString
+{
     NSURL *url = [NSURL URLWithString:urlString];
     return [self loadAssetURL:url];
 }
 
 // 1アセットの読み込み
-- (ALAsset *)loadAssetURL:(NSURL *)url {
+- (ALAsset *)loadAssetURL:(NSURL *)url
+{
     /*
      cocoa touch - Error trying to assigning __block ALAsset from inside assetForURL:resultBlock: - Stack Overflow
      http://stackoverflow.com/questions/7625402/error-trying-to-assigning-block-alasset-from-inside-assetforurlresultblock
@@ -113,7 +119,7 @@
     __block NSError *assetError = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
-    [[self assetsLibrary] assetForURL:url resultBlock:^(ALAsset *asset) {
+    [assetsLibrary_ assetForURL:url resultBlock:^(ALAsset *asset) {
         result = [asset retain];
         dispatch_semaphore_signal(sema);
     } failureBlock:^(NSError *error) {

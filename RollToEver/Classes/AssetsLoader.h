@@ -15,8 +15,6 @@
 
 @interface AssetsLoader : NSObject
 
-@property (assign) ALAssetsLibrary *assetsLibrary;
-
 - (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude;
 - (ALAsset *)loadAssetURLString:(NSString *)urlString;
 - (ALAsset *)loadAssetURL:(NSURL *)url;

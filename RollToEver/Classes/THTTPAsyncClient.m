@@ -9,21 +9,19 @@
 #import "THTTPAsyncClient.h"
 #import "TTransportException.h"
 
-@interface THTTPAsyncClient()
-{
-@private
-    NSURLConnection *urlConnection_;
-    NSMutableData *responseData_;
-    NSURLResponse *response_;
-    BOOL completed_;
-    NSError *requestError_;
-}
-@end
-
 @implementation THTTPAsyncClient
+
+// instance valiables
+NSURLConnection *urlConnection_;
+NSMutableData *responseData_;
+NSURLResponse *response_;
+BOOL completed_;
+NSError *requestError_;
 
 @synthesize delegate = delegate_;
 
+
+// リクエストをして結果を受信する（ブロックする）
 - (void) flush
 {
     [mRequest setHTTPBody: mRequestData]; // not sure if it copies the data

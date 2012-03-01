@@ -11,7 +11,8 @@
 
 @implementation AssetsLoader (Utils)
 
-- (void)AllRegistToStorage {
+- (void)AllRegistToStorage
+{
     AssetURLStorage *storage = [[AssetURLStorage alloc] init];
     NSArray *urls = [self EnumerateURLExcludeDuplication:NO];
     for (NSString *url in urls) {
@@ -19,6 +20,5 @@
     }
     [storage release];
 }
-
 
 @end

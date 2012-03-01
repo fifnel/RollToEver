@@ -14,7 +14,3 @@
 @property(retain) id delegate;
 
 @end
-
-@interface NSObject(THTTPAsyncClientDelegate)
-- (void)testRemainAsync:(NSInteger)remain sended:(NSInteger)sended total:(NSInteger)total;
-@end

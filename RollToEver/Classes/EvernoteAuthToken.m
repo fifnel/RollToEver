@@ -16,7 +16,7 @@
 #import "Errors.h"
 #import "TTransportException.h"
 
-@interface EvernoteAuthToken()
+@interface EvernoteAuthToken ()
 
 @property (retain, nonatomic, readwrite) NSString *authToken;
 @property (retain, nonatomic, readwrite) NSString *shardId;
@@ -39,7 +39,8 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
 @synthesize edamErrorCodeIsSet = edamErrorCodeIsSet_;
 @synthesize transportError = transportError_;
 
-+(EvernoteAuthToken *)sharedInstance {
++(EvernoteAuthToken *)sharedInstance
+{
     @synchronized(self) {
         if (sharedEvernoteAuthTokenInstance_ == nil) {
             [[self alloc] init]; // ここでは代入していない
@@ -48,7 +49,8 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     return sharedEvernoteAuthTokenInstance_;
 }
 
-+(id)allocWithZone:(NSZone *)zone {
++(id)allocWithZone:(NSZone *)zone
+{
     @synchronized(self) {
         if (sharedEvernoteAuthTokenInstance_ == nil) {
             sharedEvernoteAuthTokenInstance_ = [super allocWithZone:zone];
@@ -58,27 +60,33 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     return nil; // 以降の割り当てではnilを返すようにする
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return self;
 }
 
-- (id)retain {
+- (id)retain
+{
     return self;
 }
 
-- (unsigned)retainCount {
+- (unsigned)retainCount
+{
     return UINT_MAX;  // 解放できないオブジェクトであることを示す
 }
 
-- (oneway void)release {
+- (oneway void)release
+{
     // 何もしない
 }
 
-- (id)autorelease {
+- (id)autorelease
+{
     return self;
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self != nil) {
         self.authToken = nil;
@@ -96,8 +104,8 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
                  Password:(NSString *)password
                ClientName:(NSString *)clientName
               ConsumerKey:(NSString *)consumerKey
-           ConsumerSecret:(NSString *)consumerSecret {
-    
+           ConsumerSecret:(NSString *)consumerSecret
+{
     self.authToken = nil;
     self.edamUser = nil;
     self.shardId = nil;

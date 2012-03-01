@@ -16,27 +16,42 @@
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "id.h"
 
-@interface PhotoUploader()
+@interface PhotoUploader ()
 
-@property (assign, readwrite) NSInteger currentIndex;
-@property (assign, readwrite) NSInteger totalCount;
+@property (assign, readwrite, nonatomic) NSInteger currentIndex;
+@property (assign, readwrite, nonatomic) NSInteger totalCount;
 
-@property (retain) ALAsset *currentAsset;
+- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader
+                         totalCount:(NSNumber *)totalCount;
 
-- (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount;
-- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
-- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
+- (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader
+                               asset:(ALAsset *)asset
+                               index:(NSNumber *)index
+                          totalCount:(NSNumber *)totalCount;
+
+- (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader
+                              asset:(ALAsset *)asset
+                              index:(NSNumber *)index
+                         totalCount:(NSNumber *)totalCount;
+
 - (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader;
-- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error;
+
+- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader
+                          error:(NSError *)error;
 
 @end
 
+
 @implementation PhotoUploader
+
+// instance valiables
+ALAssetsLibrary *assetsLibrary_;
+AssetURLStorage *assetUrlStorage_;
+id delegate_;
+ALAsset *currentAsset_;
 
 @synthesize currentIndex = currentIndex_;
 @synthesize totalCount = totalCount_;
-@synthesize delegate = delegate_;
-@synthesize currentAsset = currentAsset_;
 
 - (id)init
 {
@@ -183,7 +198,8 @@
     }
 
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:) withObjects:self, self.currentAsset, self.currentIndex, self.totalCount, totalBytesWritten, totalBytesExpectedToWrite];
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:) withObjects:self, 
+         currentAsset_, self.currentIndex, self.totalCount, totalBytesWritten, totalBytesExpectedToWrite];
     }
 }
 
