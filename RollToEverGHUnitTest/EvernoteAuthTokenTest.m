@@ -14,9 +14,6 @@
 #import "EvernoteNoteStoreClient.h"
 #import <GHUnitIOS/GHUnit.h> 
 
-// experiment
-#import "Evernote.h"
-
 @implementation EvernoteAuthTokenTest
 
 - (void)setUpClass {
@@ -63,19 +60,6 @@
 - (void)testEvernoteNoteStore {
     EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
     EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
-    GHAssertTrue([syncStatus uploadedIsSet], @"uploaded not set");
-    NSLog(@"----uploaded:%lld", [syncStatus uploaded]);
-}
-
-- (void)testEvernote {
-    NSString *userid   = [UserSettings sharedInstance].evernoteUserId;
-    NSString *password = [UserSettings sharedInstance].evernotePassword;
-
-    NSLog(@"evernote test");
-
-    Evernote *evernote = [[Evernote alloc] initWithUserId:userid Password:password];
-    [evernote connect];
-    EDAMSyncState *syncStatus = [[evernote noteStore] getSyncState:[evernote authToken]];
     GHAssertTrue([syncStatus uploadedIsSet], @"uploaded not set");
     NSLog(@"----uploaded:%lld", [syncStatus uploaded]);
 }

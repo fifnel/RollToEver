@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Evernote.h"
 
 @interface NotebookTableViewController : UITableViewController
-{
-@private
-    NSArray *notebooksList_;
-    NSInteger notebooksNum_;
-    Evernote *evernote_;
-}
 
 @end

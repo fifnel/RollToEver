@@ -1,5 +1,5 @@
 //
-//  Uploader.m
+//  PhotoUploader.m
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/13.
@@ -7,7 +7,6 @@
 //
 
 #import "PhotoUploader.h"
-#import "Evernote.h"
 #import "UserSettings.h"
 #import "AssetsLoader.h"
 #import "AssetURLStorage.h"

@@ -17,6 +17,9 @@
 
 @implementation NotebookTableViewController
 
+NSArray *notebooksList_;
+NSInteger notebooksNum_;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -103,8 +106,6 @@
     [super viewDidDisappear:animated];
     [notebooksList_ release];
     notebooksList_ = nil;
-    [evernote_ release];
-    evernote_ = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

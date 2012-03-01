@@ -10,6 +10,7 @@
 
 @interface AccountSettingViewController : UIViewController <UITextFieldDelegate>
 {
+@private
     IBOutlet UITextField *userId;
     IBOutlet UITextField *password;
 }

@@ -1,5 +1,5 @@
 //
-//  Uploader.h
+//  PhotoUploader.h
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/13.
