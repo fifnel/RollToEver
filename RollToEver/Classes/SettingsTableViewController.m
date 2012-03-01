@@ -121,13 +121,29 @@
         case 3: { // リセット
             switch (row) {
                 case 0: { // 全登録
-                    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"既存の写真をすべて送信対象から外しますか？\n実行すると既存の写真のすべてがアップロード対象外となります。" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:@"送信対象から外す" otherButtonTitles:nil];
+                    UIActionSheet *actionSheet =
+                        [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingViewAllRegistTitle",
+                                                                               @"All Regists Title for SettingView")
+                                                    delegate:self
+                                           cancelButtonTitle:NSLocalizedString(@"Cancel",
+                                                                               @"Cancel")
+                                      destructiveButtonTitle:NSLocalizedString(@"SettingViewAllRegistDoIt",
+                                                                               @"All Regists Operation for SettingView")
+                                           otherButtonTitles:nil];
                     [actionSheet setTag:0];
                     [actionSheet showInView:self.navigationController.view];
                     break;
                 }
                 case 1: { // 全削除
-                    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"これまでの送信記録をクリアしますか？\n実行すると既存の写真すべてが次回送信時のアップロード対象となります。" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:@"クリアする" otherButtonTitles:nil];
+                    UIActionSheet *actionSheet =
+                    [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingViewClearHistoryTitle",
+                                                                           @"Clear History Title for SettingView")
+                                                    delegate:self
+                                       cancelButtonTitle:NSLocalizedString(@"Cancel",
+                                                                           @"Cancel")
+                                  destructiveButtonTitle:NSLocalizedString(@"SettingViewClearHistoryDoIt",
+                                                                           @"Clear History Operation for SettingView")
+                                           otherButtonTitles:nil];
                     [actionSheet setTag:1];
                     [actionSheet showInView:self.navigationController.view];
                     break;

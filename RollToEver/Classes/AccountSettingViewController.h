@@ -13,6 +13,7 @@
     IBOutlet UITextField *userId;
     IBOutlet UITextField *password;
 }
-- (IBAction)testConnection:(id)sender;
+
+- (IBAction)loginEvernote:(id)sender;
 
 @end

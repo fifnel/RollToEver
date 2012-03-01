@@ -88,7 +88,7 @@
 - (void)updatePhotoCount
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-	hud.labelText = NSLocalizedString(@"MainViewLoading", "NowLoading for MainView");
+	hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];

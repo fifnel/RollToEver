@@ -8,9 +8,10 @@
 
 #import "AccountSettingViewController.h"
 
-#import "Evernote.h"
+#import "EvernoteAuthToken.h"
 #import "UserSettings.h"
-#import "SettingsTableViewController.h"
+#import "id.h"
+#import "MBProgressHUD.h"
 
 @implementation AccountSettingViewController
 
@@ -68,8 +69,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
-    [[UserSettings sharedInstance] setEvernotePassword:password.text];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -78,34 +77,57 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [userId release];
     [password release];
     [super dealloc];
 }
 
-- (IBAction)testConnection:(id)sender {
-    Evernote *evernote = nil;
-    @try {
-        evernote = [[Evernote alloc]
-                    initWithUserId:userId.text
-                    Password:password.text];
-        [evernote connect];
-    }
-    @catch (EDAMUserException * e) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error Evernote connect: error code %i", [e errorCode]];
-        UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-        
+- (IBAction)loginEvernote:(id)sender
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	hud.labelText = NSLocalizedString(@"AccountSettingLogin", @"Login for AccountSetting");
+
+    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userId.text
+                                                            Password:password.text
+                                                          ClientName:APPLICATIONNAME
+                                                         ConsumerKey:CONSUMERKEY
+                                                      ConsumerSecret:CONSUMERSECRET];
+    
+    NSString *alertTitle = NSLocalizedString(@"AccountSettingLoginTitle", @"Login title for AccountSetting");
+    if (ret) {
+        // 成功
+        [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
+        [[UserSettings sharedInstance] setEvernotePassword:password.text];
+        [[UserSettings sharedInstance] setEvernoteNotebookName:@""];
+        [[UserSettings sharedInstance] setEvernoteNotebookGUID:@""];
+
+        UIAlertView *alertDone =
+            [[UIAlertView alloc] initWithTitle:alertTitle
+                                       message:NSLocalizedString(@"AccountSettingLoginSucceeded", @"Login succeeded for AccountSetting")
+                                      delegate:self
+                             cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                             otherButtonTitles: nil];
         [alertDone show];
         [alertDone release];
-        return;
+        // 保存する
+    } else {
+        // 失敗
+        UIAlertView *alertDone =
+        [[UIAlertView alloc] initWithTitle:alertTitle
+                                   message:NSLocalizedString(@"AccountSettingLoginFailed", @"Login failed for AccountSetting")
+                                  delegate:self
+                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                         otherButtonTitles: nil];
+        [alertDone show];
+        [alertDone release];
     }
-    @finally {
-        [evernote release];
-    }
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [textField resignFirstResponder];
     
     return YES;

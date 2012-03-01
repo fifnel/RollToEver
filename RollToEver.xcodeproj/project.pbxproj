@@ -538,10 +538,10 @@
 				C039CE0514F68BD500948DC6 /* ViewController.m */,
 				C039CE2614F6911700948DC6 /* UploadViewController.h */,
 				C039CE2714F6911700948DC6 /* UploadViewController.m */,
-				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
-				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDFC14F68BD500948DC6 /* SettingsTableViewController.h */,
 				C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */,
+				C039CDE714F68BD400948DC6 /* AccountSettingViewController.h */,
+				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */,
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
 			);

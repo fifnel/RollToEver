@@ -10,6 +10,10 @@
 
 #import "SettingsTableViewController.h"
 #import "UserSettings.h"
+#import "EvernoteAuthToken.h"
+#import "EvernoteNoteStoreClient.h"
+#import "id.h"
+#import "MBProgressHUD.h"
 
 @implementation NotebookTableViewController
 
@@ -53,30 +57,45 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (evernote_ == nil) {
-        @try {
-            evernote_ = [[Evernote alloc]
-                         initWithUserId:[UserSettings sharedInstance].evernoteUserId
-                         Password:[UserSettings sharedInstance].evernotePassword];
-            notebooksList_ = [evernote_ listNotebooks];
-            notebooksNum_ = [notebooksList_ count];
-        }
-        @catch (EDAMUserException * e) {
-            evernote_ = nil;
-            NSString *errorMessage = [NSString stringWithFormat:@"Error listing note: error code %i", [e errorCode]];
-            UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle: @"Evernote" message: errorMessage delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-            
-            [alertDone show];
-            [alertDone release];
-            return;
-        }
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	hud.labelText = NSLocalizedString(@"Loading", @"Now Loading");
+    
+    // Evernoteにログインしてなかったらとりあえずログイン
+    if ([EvernoteAuthToken sharedInstance].authToken == nil) {
+        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
+        NSString *password = [UserSettings sharedInstance].evernotePassword;
+        bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
+                                                                Password:password
+                                                              ClientName:APPLICATIONNAME
+                                                             ConsumerKey:CONSUMERKEY
+                                                          ConsumerSecret:CONSUMERSECRET];
+        if (!ret) {
+            NSString *title = NSLocalizedString(@"NotebookSettingLoginErrorTitle", @"Login error Title for NotebookSetting");
+            NSString *errorMessage = NSLocalizedString(@"NotebookSettingLoginError", @"Login error for NotebookSetting");
+            UIAlertView *alertDone =
+                [[UIAlertView alloc] initWithTitle:title
+                                           message:errorMessage
+                                          delegate:self
+                                 cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                                 otherButtonTitles: nil];
+            [alertDone show];
+            [alertDone release];
+            return;
+        }
+    }
+    
+    EvernoteNoteStoreClient *client = [[EvernoteNoteStoreClient alloc] init];
+    NSString *authToken = [EvernoteAuthToken sharedInstance].authToken;
+    notebooksList_ = [[NSArray alloc] initWithArray:[[client noteStoreClient] listNotebooks:authToken]];
+    notebooksNum_ = [notebooksList_ count];
+    [[self tableView] reloadData];
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -108,7 +127,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Choose Notebook";
+    return NSLocalizedString(@"NotebookSettingTitle", @"Table Title for NotebookSetting");
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
