@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-{
-}
 
 @property (assign, nonatomic, readonly) NSInteger photoCount;
 @property (retain, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
+- (IBAction)refreshPhotoCount:(id)sender;
+@property (retain, nonatomic) IBOutlet UIButton *uploadButton;
 
 @end

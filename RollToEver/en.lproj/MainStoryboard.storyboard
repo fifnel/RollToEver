@@ -14,11 +14,11 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jNP-Fh-p8T">
-                                <rect key="frame" x="65" y="106" width="190" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jNP-Fh-p8T">
+                                <rect key="frame" x="5" y="145" width="311" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Upload">
+                                <state key="normal" image="uploadbutton.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="4FQ-SX-xWf">
-                                <rect key="frame" x="20" y="151" width="280" height="66"/>
+                                <rect key="frame" x="20" y="330" width="280" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -40,6 +40,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="RollToEver" id="u3c-wP-ues">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="ObW-Xm-O9I">
+                            <connections>
+                                <action selector="refreshPhotoCount:" destination="2" id="AwU-ce-H27"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="OB2-nM-eax">
                             <connections>
                                 <segue destination="egA-0H-0ko" kind="push" id="8Wz-TO-thc"/>
@@ -48,6 +53,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="photoCountInfo" destination="4FQ-SX-xWf" id="9Yf-lY-yb4"/>
+                        <outlet property="uploadButton" destination="jNP-Fh-p8T" id="lhv-hE-JY8"/>
                     </connections>
                 </viewController>
             </objects>
@@ -109,7 +115,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="EvernoteCycleProgress" destination="GJX-f6-ehn" id="ymz-u4-Zte"/>
@@ -484,6 +490,47 @@
             <point key="canvasLocation" x="732" y="-147"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="uploadbutton.png" width="311" height="74"/>
+    </resources>
+    <classes>
+        <class className="AccountSettingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="testConnection:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NotebookTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="evernoteAccountCell_" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="notebookNameCell_" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="UploadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="EvernoteCycleProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="EvernoteCycleText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="UploadingText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

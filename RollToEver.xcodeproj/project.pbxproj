@@ -52,6 +52,8 @@
 		C000DDD614EAB6A100DDD8C8 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */; };
 		C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C000DD8414E8E87100DDD8C8 /* MD5.c */; };
 		C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
+		C0192E8914FFC43400DEC1F7 /* uploadbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C0192E8814FFC43400DEC1F7 /* uploadbutton.png */; };
+		C0192E8A14FFC43400DEC1F7 /* uploadbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C0192E8814FFC43400DEC1F7 /* uploadbutton.png */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -214,6 +216,7 @@
 		C000DDA314E8E87100DDD8C8 /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
 		C000DDA414E8E87100DDD8C8 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
 		C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C0192E8814FFC43400DEC1F7 /* uploadbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uploadbutton.png; path = RollToEver/Resources/uploadbutton.png; sourceTree = "<group>"; };
 		C039B10014DF79D300F4169E /* RollToEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C039B10414DF79D300F4169E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C039B10614DF79D300F4169E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -669,6 +672,7 @@
 		C0E85A0A14F52EE300B3A1B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C0192E8814FFC43400DEC1F7 /* uploadbutton.png */,
 				C0E85A0C14F52EF900B3A1B4 /* Splashes */,
 				C0E85A0B14F52EEE00B3A1B4 /* Icons */,
 			);
@@ -816,6 +820,7 @@
 				C039CDE514F68B9E00948DC6 /* Icon@2x.png in Resources */,
 				C039CDE614F68B9E00948DC6 /* iTunesArtwork in Resources */,
 				C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */,
+				C0192E8914FFC43400DEC1F7 /* uploadbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +838,7 @@
 			files = (
 				C0BC74D614E6CCFD003B0611 /* InfoPlist.strings in Resources */,
 				C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */,
+				C0192E8A14FFC43400DEC1F7 /* uploadbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,14 +13,13 @@
 
 @interface ViewController()
 
-- (void)assetsCountDidFinish;
-
 @property (assign, nonatomic, readwrite) NSInteger photoCount;
 @property (retain, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
 @end
 
 @implementation ViewController
+@synthesize uploadButton;
 
 @synthesize photoCount = photoCount_;
 @synthesize photoCountInfo = photoCountInfo_;
@@ -41,23 +40,15 @@
 
 - (void)viewDidUnload
 {
+    [self setUploadButton:nil];
     [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-	hud.labelText = @"Loading";
+    [uploadButton setEnabled:NO];
+    [self updatePhotoCount];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
-        NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
-        photoCount_ = [assets count];
-        [assetsLoader release];
-        
-        [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
-    });
-    
     [super viewWillAppear:animated];
 }
 
@@ -85,15 +76,40 @@
 - (void)dealloc {
     self.photoCountInfo = nil;
 
+    [uploadButton release];
     [super dealloc];
+}
+
+
+- (IBAction)refreshPhotoCount:(id)sender {
+    [self updatePhotoCount];
+}
+
+- (void)updatePhotoCount
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	hud.labelText = NSLocalizedString(@"MainViewLoading", "NowLoading for MainView");
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
+        NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
+        photoCount_ = [assets count];
+        [assetsLoader release];
+        
+        [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
+    });
 }
 
 - (void)assetsCountDidFinish {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-
-    
-    NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), photoCount_];
-    photoCountInfo_.text = photoCountStr;
+    if (photoCount_ > 0) {
+        NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), photoCount_];
+        photoCountInfo_.text = photoCountStr;
+        [uploadButton setEnabled:YES];
+    } else {
+        photoCountInfo_.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
+        [uploadButton setEnabled:NO];
+    }
 }
 
 @end
