@@ -29,8 +29,8 @@
                                     <segue destination="70Y-Hc-k9U" kind="modal" id="DXR-zt-vqg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="アップロード対象ファイルが ｎ個みつかりました" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="4FQ-SX-xWf">
-                                <rect key="frame" x="41" y="151" width="238" height="76"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="4FQ-SX-xWf">
+                                <rect key="frame" x="20" y="151" width="280" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -484,43 +484,6 @@
             <point key="canvasLocation" x="732" y="-147"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AccountSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="testConnection:"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NotebookTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="evernoteAccountCell_" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="notebookNameCell_" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="UploadViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="EvernoteCycleProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="EvernoteCycleText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="UploadingText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

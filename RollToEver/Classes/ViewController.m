@@ -91,7 +91,9 @@
 - (void)assetsCountDidFinish {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 
-    photoCountInfo_.text = [NSString stringWithFormat:@"%d枚の写真がみつかりました", photoCount_];
+    
+    NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), photoCount_];
+    photoCountInfo_.text = photoCountStr;
 }
 
 @end

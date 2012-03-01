@@ -113,6 +113,8 @@
 		C039CE3E14F89DD100948DC6 /* AssetsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF014F68BD400948DC6 /* AssetsEnumerator.m */; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
+		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
+		C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -281,6 +283,8 @@
 		C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteUserStoreClient.m; path = RollToEver/Classes/EvernoteUserStoreClient.m; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
 		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
+		C060505F14FF38FF001A41B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C060506114FF3909001A41B7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C074D16714ED46310077C201 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C074D16914ED46360077C201 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C074D16F14ED47FE0077C201 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -478,6 +482,7 @@
 			children = (
 				C0E85A0A14F52EE300B3A1B4 /* Resources */,
 				C000DD6E14E8E3F500DDD8C8 /* Libraries */,
+				C039B10B14DF79D300F4169E /* Supporting Files */,
 				C039B10A14DF79D300F4169E /* RollToEverViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,
 				C039B12814DF79D400F4169E /* RollToEverTests */,
@@ -536,7 +541,6 @@
 				C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */,
 				C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */,
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
-				C039B10B14DF79D300F4169E /* Supporting Files */,
 			);
 			name = RollToEverViewControllers;
 			path = RollToEver;
@@ -545,6 +549,7 @@
 		C039B10B14DF79D300F4169E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C060506014FF38FF001A41B7 /* Localizable.strings */,
 				C039CDF514F68BD400948DC6 /* main.m */,
 				C039B10C14DF79D300F4169E /* RollToEver-Info.plist */,
 				C039B10D14DF79D300F4169E /* InfoPlist.strings */,
@@ -552,6 +557,7 @@
 				C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */,
 			);
 			name = "Supporting Files";
+			path = RollToEver;
 			sourceTree = "<group>";
 		};
 		C039B12814DF79D400F4169E /* RollToEverTests */ = {
@@ -776,6 +782,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
 			);
 			mainGroup = C039B0F514DF79D300F4169E;
 			productRefGroup = C039B10114DF79D300F4169E /* Products */;
@@ -808,6 +815,7 @@
 				C039CDE414F68B9E00948DC6 /* Icon.png in Resources */,
 				C039CDE514F68B9E00948DC6 /* Icon@2x.png in Resources */,
 				C039CDE614F68B9E00948DC6 /* iTunesArtwork in Resources */,
+				C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0BC74D614E6CCFD003B0611 /* InfoPlist.strings in Resources */,
+				C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,6 +1012,15 @@
 				C039B12C14DF79D400F4169E /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C060506014FF38FF001A41B7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C060505F14FF38FF001A41B7 /* en */,
+				C060506114FF3909001A41B7 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */ = {
