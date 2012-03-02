@@ -10,9 +10,7 @@
 
 @interface UploadViewController : UIViewController
 
-@property (retain, nonatomic, readonly) NSOperationQueue *operationQueue;
-
-@property (retain, nonatomic) IBOutlet UILabel *UploadingText;
+@property (retain, nonatomic) IBOutlet UILabel *UploadingCount;
 @property (retain, nonatomic) IBOutlet UIImageView *UploadingImage;
 @property (retain, nonatomic) IBOutlet UIProgressView *UploadingProgress;
 

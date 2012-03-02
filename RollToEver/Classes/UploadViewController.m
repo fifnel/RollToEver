@@ -23,8 +23,8 @@
 
 @implementation UploadViewController
 
-@synthesize UploadingText;
 @synthesize UploadingImage;
+@synthesize UploadingCount;
 @synthesize UploadingProgress;
 @synthesize EvernoteCycleText;
 @synthesize EvernoteCycleProgress;
@@ -48,7 +48,7 @@
 
 - (void)viewDidUnload
 {
-    [self setUploadingText:nil];
+    [self setUploadingCount:nil];
     [self setUploadingImage:nil];
     [self setUploadingProgress:nil];
     [self setEvernoteCycleText:nil];
@@ -76,7 +76,7 @@
 
 - (void)dealloc
 {
-    [UploadingText release];
+    [UploadingCount release];
     [UploadingImage release];
     [UploadingProgress release];
     [EvernoteCycleText release];
@@ -104,7 +104,7 @@
 {
     [UploadingProgress setProgress:0.0f];
     [UploadingImage setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
-    [UploadingText setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
+    [UploadingCount setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
 }
 
 // アップロード中
@@ -156,8 +156,23 @@
     EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
     EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
     EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
-    [EvernoteCycleProgress setProgress:(float)syncStatus.uploaded/(float)accounting.uploadLimit];
-    NSString *text = [NSString stringWithFormat:@"%lldKiB / %lldKiB", syncStatus.uploaded/1024, accounting.uploadLimit/1024];
+    
+    int64_t uploaded = syncStatus.uploaded;
+    int64_t limit = accounting.uploadLimit;
+    int64_t remain = limit - uploaded;
+    float remaining_ratio = (float)remain/(float)limit;
+    
+    [EvernoteCycleProgress setProgress:remaining_ratio];
+    if (remaining_ratio < 0.1f) {
+        [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
+    } else if (remaining_ratio < 0.2f) {
+        [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
+    } else {
+        [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
+    }
+    NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
+                      NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
+                      remain/1024/1024];
     [EvernoteCycleText setText:text];
 }
 

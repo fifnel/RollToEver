@@ -76,29 +76,22 @@
                                 </items>
                             </navigationBar>
                             <progressView opaque="NO" contentMode="scaleToFill" id="vsz-7c-Y87">
-                                <rect key="frame" x="40" y="236" width="240" height="9"/>
+                                <rect key="frame" x="50" y="300" width="220" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="bsE-Fi-pJg">
-                                <rect key="frame" x="40" y="100" width="240" height="128"/>
+                                <rect key="frame" x="50" y="72" width="220" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" id="GJX-f6-ehn">
-                                <rect key="frame" x="40" y="380" width="240" height="9"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" id="GJX-f6-ehn">
+                                <rect key="frame" x="50" y="377" width="220" height="11"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="IqF-ty-wEH">
-                                <rect key="frame" x="20" y="61" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="999MB Remaining" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
+                                <rect key="frame" x="50" y="390" width="220" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
-                                <rect key="frame" x="40" y="351" width="240" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -114,15 +107,29 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Usage This Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mIB-NS-uEe">
+                                <rect key="frame" x="50" y="349" width="220" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33 / 120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8DR-Qu-xmn">
+                                <rect key="frame" x="25" y="47" width="280" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="EvernoteCycleProgress" destination="GJX-f6-ehn" id="ymz-u4-Zte"/>
                         <outlet property="EvernoteCycleText" destination="hHS-2E-sll" id="TJh-aG-6Pf"/>
+                        <outlet property="UploadingCount" destination="8DR-Qu-xmn" id="ckI-sp-LY6"/>
                         <outlet property="UploadingImage" destination="bsE-Fi-pJg" id="hmF-rE-2Yb"/>
                         <outlet property="UploadingProgress" destination="vsz-7c-Y87" id="665-JW-DeO"/>
-                        <outlet property="UploadingText" destination="IqF-ty-wEH" id="xLT-0J-4tV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -426,7 +433,7 @@
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="deJ-wi-fOh">
-                                <rect key="frame" x="27" y="122" width="273" height="37"/>
+                                <rect key="frame" x="27" y="138" width="273" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login">
@@ -518,6 +525,7 @@
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="outlet" name="EvernoteCycleProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="EvernoteCycleText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="UploadingCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="UploadingText" candidateClass="UILabel"/>
