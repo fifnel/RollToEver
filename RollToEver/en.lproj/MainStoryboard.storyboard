@@ -133,7 +133,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1501" y="-435"/>
+            <point key="canvasLocation" x="1719" y="-371"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="jdd-tP-ehb">
@@ -352,6 +352,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Rf8-Ie-31l" kind="push" id="Rj3-kj-hnR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RWC-Nz-VHt">
                                         <rect key="frame" x="0.0" y="694" width="320" height="45"/>
@@ -371,6 +374,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="FWR-S6-LAO" kind="push" id="QcG-IM-lFf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -387,6 +393,152 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1719" y="287"/>
+        </scene>
+        <!--View Controller - Title-->
+        <scene sceneID="1g2-ry-Usw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqE-5R-5oB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="FWR-S6-LAO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kLD-VO-6aA">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Xne-t3-WjA"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2897" y="1002"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="E8J-gR-Hmc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UCg-Ou-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Rf8-Ie-31l" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aIv-at-5Vs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="t1z-Jr-swD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Evernote API SDK
+http://www.evernote.com/about/developer/api/
+
+Copyright (c) 2007-2011 by Evernote Corporation, All rights reserved.
+
+Use of the source code and binary libraries included in this package is permitted under the following terms:
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.    
+
+----
+
+jdg/MBProgressHUD
+https://github.com/jdg/MBProgressHUD
+
+Copyright (c) 2011 Matej Bukovinski
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+----
+
+carlbrown/PDKeychainBindingsController
+https://github.com/carlbrown/PDKeychainBindingsController
+
+Copyright (C) 2010-2011 by Carl Brown of PDAgent, LLC.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+----
+
+Caged/httpriot
+https://github.com/Caged/httpriot
+
+NSObject+InvocationUtils.h
+HTTPRiot
+
+Copyright (c) 2009 Justin Palmer &lt;justin@labratrevenge.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AKX-x4-c2C"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2319" y="985"/>
         </scene>
         <!--Account Setting View Controller-->
         <scene sceneID="Bes-QM-mrQ">
@@ -457,7 +609,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2297" y="-5"/>
+            <point key="canvasLocation" x="2319" y="-405"/>
         </scene>
         <!--Notebook Table View Controller-->
         <scene sceneID="E5G-p0-DfS">
@@ -476,7 +628,7 @@
                     <navigationItem key="navigationItem" id="JKs-cV-xzT"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2297" y="569"/>
+            <point key="canvasLocation" x="2319" y="297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dYS-D8-fZO">
@@ -528,7 +680,6 @@
                 <relationship kind="outlet" name="UploadingCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="UploadingText" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
