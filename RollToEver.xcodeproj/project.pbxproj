@@ -133,6 +133,7 @@
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
 		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
@@ -177,7 +178,7 @@
 		C000DD7D14E8E87100DDD8C8 /* Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Types.m; sourceTree = "<group>"; };
 		C000DD7E14E8E87100DDD8C8 /* UserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStore.h; sourceTree = "<group>"; };
 		C000DD7F14E8E87100DDD8C8 /* UserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStore.m; sourceTree = "<group>"; };
-		C000DD8214E8E87100DDD8C8 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id.h; sourceTree = "<group>"; };
+		C000DD8214E8E87100DDD8C8 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = Libraries/Evernote/id.h; sourceTree = "<group>"; };
 		C000DD8314E8E87100DDD8C8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C000DD8414E8E87100DDD8C8 /* MD5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MD5.c; sourceTree = "<group>"; };
 		C000DD8514E8E87100DDD8C8 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
@@ -298,6 +299,8 @@
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
+		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
 		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
 		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
 		C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -382,7 +385,6 @@
 			children = (
 				C000DD7514E8E87100DDD8C8 /* edam */,
 				C000DD8A14E8E87100DDD8C8 /* thrift */,
-				C000DD8214E8E87100DDD8C8 /* id.h */,
 				C000DD8314E8E87100DDD8C8 /* LICENSE.txt */,
 				C000DD8414E8E87100DDD8C8 /* MD5.c */,
 				C000DD8514E8E87100DDD8C8 /* MD5.h */,
@@ -529,6 +531,8 @@
 				C039CDE814F68BD400948DC6 /* AccountSettingViewController.m */,
 				C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */,
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
+				C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */,
+				C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */,
 			);
 			name = RollToEverViewControllers;
 			path = RollToEver;
@@ -537,6 +541,7 @@
 		C039B10B14DF79D300F4169E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C000DD8214E8E87100DDD8C8 /* id.h */,
 				C060506014FF38FF001A41B7 /* Localizable.strings */,
 				C039CDF514F68BD400948DC6 /* main.m */,
 				C039B10C14DF79D300F4169E /* RollToEver-Info.plist */,
@@ -873,6 +878,7 @@
 				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 				C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
+				C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

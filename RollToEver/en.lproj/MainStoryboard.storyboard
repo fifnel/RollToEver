@@ -394,17 +394,55 @@
             </objects>
             <point key="canvasLocation" x="1719" y="287"/>
         </scene>
-        <!--View Controller - Title-->
+        <!--About View Controller View Controller - Title-->
         <scene sceneID="1g2-ry-Usw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CqE-5R-5oB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="FWR-S6-LAO" sceneMemberID="viewController">
+                <viewController id="FWR-S6-LAO" customClass="AboutViewControllerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kLD-VO-6aA">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RollToEver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rw5-z1-JoX">
+                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ver.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HYW-a3-Xmg">
+                                <rect key="frame" x="20" y="56" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Default@2x.png" id="Hq3-IP-iht">
+                                <rect key="frame" x="40" y="85" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="tt1-uW-beI">
+                                <rect key="frame" x="40" y="253" width="240" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <string key="text">Copyright (C) 2012 
+by fifnel (Y.Watanabe)
+
+Web : http://fifnel.com/
+Mail : fifnel@gmail.com
+Twitter : fifnel</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Xne-t3-WjA"/>
+                    <connections>
+                        <outlet property="applicationName" destination="rw5-z1-JoX" id="xng-I9-vfW"/>
+                        <outlet property="applicationVersion" destination="HYW-a3-Xmg" id="VhB-AJ-1oL"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2897" y="1002"/>
@@ -650,47 +688,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </scene>
     </scenes>
     <resources>
+        <image name="Default@2x.png" width="640" height="960"/>
         <image name="uploadbutton.png" width="311" height="74"/>
     </resources>
-    <classes>
-        <class className="AccountSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginEvernote:"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NotebookTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="evernoteAccountCell_" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="notebookNameCell_" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="UploadViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="EvernoteCycleProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="EvernoteCycleText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="UploadingCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPhotoCount:"/>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
