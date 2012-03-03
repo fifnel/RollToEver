@@ -197,8 +197,14 @@ ALAsset *currentAsset_;
     }
 
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:) withObjects:self, 
-         currentAsset_, self.currentIndex, self.totalCount, totalBytesWritten, totalBytesExpectedToWrite];
+        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)
+                                   withObjects:self, 
+                                    currentAsset_,
+                                    [NSNumber numberWithInt:currentIndex_],
+                                    [NSNumber numberWithInt:totalCount_],
+                                    [NSNumber numberWithInt:totalBytesWritten],
+                                    [NSNumber numberWithInt:totalBytesExpectedToWrite],
+                                    nil];
     }
 }
 
