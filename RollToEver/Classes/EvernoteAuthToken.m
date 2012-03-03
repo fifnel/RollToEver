@@ -137,9 +137,9 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
         NSLog(@"errorcode = %d", self.edamErrorCode);
         return false;
     }
-    @catch (TTransportException *exception) {
+    @catch (NSException *exception) {
         self.transportError = YES;
-        NSLog(@"transport error");
+        NSLog(@"EvernoteAuthToken exception:%@", [exception reason]);
         return false;
     }
     if (authResult == nil ||

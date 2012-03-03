@@ -16,9 +16,6 @@
 
 - (id)initWithDelegate:(id)delegate;
 
-@property (assign, readonly, nonatomic) NSInteger currentIndex;
-@property (assign, readonly, nonatomic) NSInteger totalCount;
-
 @end
 
 @interface NSObject(PhotoUploaderDelegate)

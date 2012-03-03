@@ -17,9 +17,6 @@
 
 @interface PhotoUploader ()
 
-@property (assign, readwrite, nonatomic) NSInteger currentIndex;
-@property (assign, readwrite, nonatomic) NSInteger totalCount;
-
 - (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader
                          totalCount:(NSNumber *)totalCount;
 
@@ -48,9 +45,8 @@ ALAssetsLibrary *assetsLibrary_;
 AssetURLStorage *assetUrlStorage_;
 id delegate_;
 ALAsset *currentAsset_;
-
-@synthesize currentIndex = currentIndex_;
-@synthesize totalCount = totalCount_;
+NSInteger currentIndex_;
+NSInteger totalCount_;
 
 - (id)init
 {
@@ -82,6 +78,7 @@ ALAsset *currentAsset_;
 
     urlStorage = [[[AssetURLStorage alloc] init] autorelease];
     currentIndex_ = 0;
+    currentAsset_ = nil;
     totalCount_ = 0;
 
     if ([EvernoteAuthToken sharedInstance].authToken == nil) {
@@ -105,8 +102,7 @@ ALAsset *currentAsset_;
         return;
     }
     totalCount_ = [urlList count];
-    
-    [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:self.totalCount]];
+    [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:totalCount_]];
     
     EvernoteNoteStoreClient *noteStoreClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:self] autorelease];
     NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
@@ -126,14 +122,30 @@ ALAsset *currentAsset_;
             [self PhotoUploaderErrorAsync:self error:nil];
             continue;
         }
+        currentIndex_ = i;
         currentAsset_ = asset;
 
-        [self PhotoUploaderWillUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
-        
-        [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
+        [self PhotoUploaderWillUploadAsync:self
+                                     asset:asset
+                                     index:[NSNumber numberWithInt:i]
+                                totalCount:[NSNumber numberWithInt:totalCount_]];
+        @try {
+            [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"PhotoUploader exception:%@", [exception reason]);
+            [self PhotoUploaderErrorAsync:self error:nil];
+            currentAsset_ = nil;
+            break;
+        }
+        @finally {
+        }
         [urlStorage insertURL:url];
 
-        [self PhotoUploaderDidUploadAsync:self asset:asset index:[NSNumber numberWithInt:i] totalCount:[NSNumber numberWithInt:self.totalCount]];
+        [self PhotoUploaderDidUploadAsync:self
+                                    asset:asset
+                                    index:[NSNumber numberWithInt:i]
+                               totalCount:[NSNumber numberWithInt:totalCount_]];
     }
     
     [self PhotoUploaderDidFinishAsync:self];

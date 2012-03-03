@@ -70,17 +70,7 @@
     [note setCreated:[date timeIntervalSince1970]*1000];
 
     // 送信
-    @try {
-        [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];
-    }
-    @catch (EDAMUserException *exception) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error saving note: error code %i", [exception errorCode]];
-        NSLog(@"%@", errorMessage);
-        @throw exception;
-    }
-    @catch (TTransportException *exception) {
-        @throw exception;
-    }
+    [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];
 }
 
 @end
