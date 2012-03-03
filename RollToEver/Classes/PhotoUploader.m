@@ -136,9 +136,7 @@ NSInteger totalCount_;
             NSLog(@"PhotoUploader exception:%@", [exception reason]);
             [self PhotoUploaderErrorAsync:self error:nil];
             currentAsset_ = nil;
-            break;
-        }
-        @finally {
+            return;
         }
         [urlStorage insertURL:url];
 
