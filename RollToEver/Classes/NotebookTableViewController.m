@@ -89,6 +89,10 @@ NSInteger notebooksNum_;
                                  otherButtonTitles: nil];
             [alertDone show];
             [alertDone release];
+            
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            [[self navigationController] popViewControllerAnimated:YES];
+
             return;
         }
     }
