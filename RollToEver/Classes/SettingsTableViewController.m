@@ -132,6 +132,7 @@
                                            otherButtonTitles:nil];
                     [actionSheet setTag:0];
                     [actionSheet showInView:self.navigationController.view];
+                    [actionSheet release];
                     break;
                 }
                 case 1: { // 全削除
@@ -146,6 +147,7 @@
                                            otherButtonTitles:nil];
                     [actionSheet setTag:1];
                     [actionSheet showInView:self.navigationController.view];
+                    [actionSheet release];
                     break;
                 }
             }

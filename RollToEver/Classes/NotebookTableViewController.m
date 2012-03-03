@@ -93,7 +93,7 @@ NSInteger notebooksNum_;
         }
     }
     
-    EvernoteNoteStoreClient *client = [[EvernoteNoteStoreClient alloc] init];
+    EvernoteNoteStoreClient *client = [[[EvernoteNoteStoreClient alloc] init] autorelease];
     NSString *authToken = [EvernoteAuthToken sharedInstance].authToken;
     notebooksList_ = [[NSArray alloc] initWithArray:[[client noteStoreClient] listNotebooks:authToken]];
     notebooksNum_ = [notebooksList_ count];

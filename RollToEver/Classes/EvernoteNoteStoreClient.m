@@ -30,7 +30,7 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
     return [self initWithDelegate:nil];
 }
 
-- (id) initWithDelegate:(id)delegate
+- (id)initWithDelegate:(id)delegate
 {
     self = [super init];
     if (self) {
@@ -50,12 +50,17 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
 
         // クライアントの初期化
         THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000] autorelease];
+        httpClient.delegate = delegate;
         TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-        self.noteStoreClient = [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
-        
-        httpClient = delegate;
+        noteStoreClient_ = [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    self.noteStoreClient = nil;
+    [super dealloc];
 }
 
 @end

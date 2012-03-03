@@ -98,7 +98,7 @@ ALAsset *currentAsset_;
         }
     }
 
-    AssetsLoader *loader = [[AssetsLoader alloc] init];
+    AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
     NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
     if (urlList == nil) {
         [self PhotoUploaderErrorAsync:self error:nil];
@@ -108,7 +108,7 @@ ALAsset *currentAsset_;
     
     [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:self.totalCount]];
     
-    EvernoteNoteStoreClient *noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
+    EvernoteNoteStoreClient *noteStoreClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:self] autorelease];
     NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
     NSInteger photoSize = [UserSettings sharedInstance].photoSize;
     

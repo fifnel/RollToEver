@@ -152,9 +152,9 @@
 // Evernote転送残量表示の更新
 - (void)updateEvernoteCycle
 {
-    EvernoteUserStoreClient *userClient = [[EvernoteUserStoreClient alloc] initWithDelegate:nil];
+    EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
     EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
-    EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
+    EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
     EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
     
     int64_t uploaded = syncStatus.uploaded;

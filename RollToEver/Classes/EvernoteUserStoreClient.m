@@ -35,12 +35,17 @@ static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user"
         // クライアントの初期化
         NSURL *url = [[[NSURL alloc] initWithString:userStoreUri] autorelease];
         THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url] autorelease];
-        TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-        self.userStoreClient = [[EDAMUserStoreClient alloc] initWithProtocol:protocol];
-        
         httpClient.delegate = delegate;
+        TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
+        userStoreClient_ = [[EDAMUserStoreClient alloc] initWithProtocol:protocol];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    self.userStoreClient = nil;
+    [super dealloc];
 }
 
 @end
