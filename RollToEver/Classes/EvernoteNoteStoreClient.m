@@ -17,7 +17,7 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
 
 @interface EvernoteNoteStoreClient ()
 
-@property (retain, readwrite) EDAMNoteStoreClient *noteStoreClient;
+@property (assign, readwrite) EDAMNoteStoreClient *noteStoreClient;
 
 @end
 
@@ -59,7 +59,8 @@ static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/n
 
 - (void)dealloc
 {
-    self.noteStoreClient = nil;
+    [noteStoreClient_ release];
+    noteStoreClient_ = nil;
     [super dealloc];
 }
 

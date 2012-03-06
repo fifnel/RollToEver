@@ -12,7 +12,6 @@
 @implementation THTTPAsyncClient
 
 // instance valiables
-NSURLConnection *urlConnection_;
 NSMutableData *responseData_;
 NSURLResponse *response_;
 BOOL completed_;
@@ -31,11 +30,11 @@ NSError *requestError_;
     }
     completed_ = NO;
     [responseData_ setLength:0];
-    urlConnection_ = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
-    
+    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
     while (!completed_) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
+    [urlConnection release];
     
     [mRequestData setLength: 0];
     

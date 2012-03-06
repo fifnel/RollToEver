@@ -15,13 +15,14 @@ static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user"
 
 @interface EvernoteUserStoreClient ()
 
-@property (retain, nonatomic, readwrite) EDAMUserStoreClient *userStoreClient;
+@property (assign, nonatomic, readwrite) EDAMUserStoreClient *userStoreClient;
 
 @end
 
 @implementation EvernoteUserStoreClient
 
 @synthesize userStoreClient = userStoreClient_;
+
 
 - (id)init
 {
@@ -44,7 +45,8 @@ static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user"
 
 - (void)dealloc
 {
-    self.userStoreClient = nil;
+    [userStoreClient_ release];
+    userStoreClient_ = nil;
     [super dealloc];
 }
 

@@ -113,7 +113,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     self.edamErrorCodeIsSet = NO;
     self.transportError = NO;
 
-    EvernoteUserStoreClient *userStoreClient = [[EvernoteUserStoreClient alloc] init];
+    EvernoteUserStoreClient *userStoreClient = [[[EvernoteUserStoreClient alloc] init] autorelease];
 
     
     EDAMAuthenticationResult *authResult = nil;
