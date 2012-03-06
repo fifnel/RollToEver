@@ -14,6 +14,8 @@
 #import "NSObject+InvocationUtils.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "id.h"
+#import "Errors.h"
+
 
 @interface PhotoUploader ()
 
@@ -33,7 +35,7 @@
 - (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader;
 
 - (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader
-                          error:(NSError *)error;
+                          error:(ApplicationError *)error;
 
 @end
 
@@ -81,72 +83,75 @@ NSInteger totalCount_;
     currentAsset_ = nil;
     totalCount_ = 0;
 
-    if ([EvernoteAuthToken sharedInstance].authToken == nil) {
-        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
-        NSString *password = [UserSettings sharedInstance].evernotePassword;
-        bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                                Password:password
+    @try {
+        if ([EvernoteAuthToken sharedInstance].authToken == nil) {
+            NSString *userid = [UserSettings sharedInstance].evernoteUserId;
+            NSString *password = [UserSettings sharedInstance].evernotePassword;
+            [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
+                                                         Password:password
                                                               ClientName:APPLICATIONNAME
-                                                             ConsumerKey:CONSUMERKEY
-                                                          ConsumerSecret:CONSUMERSECRET];
-        if (!ret) {
+                                                      ConsumerKey:CONSUMERKEY
+                                                   ConsumerSecret:CONSUMERSECRET];
+        }
+
+        AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
+        NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
+        if (urlList == nil) {
             [self PhotoUploaderErrorAsync:self error:nil];
             return;
         }
-    }
+        totalCount_ = [urlList count];
+        [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:totalCount_]];
+        
+        EvernoteNoteStoreClient *noteStoreClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:self] autorelease];
+        NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
+        NSInteger photoSize = [UserSettings sharedInstance].photoSize;
+        
+        for (NSInteger i=0; i<totalCount_; i++) {
+            
+            // キャンセルチェック
+            if ([self isCancelled]) {
+                [self PhotoUploaderCancelAsync:self];
+                return;
+            }
+            
+            NSString *url = [urlList objectAtIndex:i];
+            ALAsset *asset = [loader loadAssetURLString:url];
+            if (asset == nil) {
+                [self PhotoUploaderErrorAsync:self error:nil];
+                continue;
+            }
+            currentIndex_ = i;
+            currentAsset_ = asset;
+            
+            [self PhotoUploaderWillUploadAsync:self
+                                         asset:asset
+                                         index:[NSNumber numberWithInt:i]
+                                    totalCount:[NSNumber numberWithInt:totalCount_]];
+            [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
+            [urlStorage insertURL:url];
 
-    AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
-    NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
-    if (urlList == nil) {
-        [self PhotoUploaderErrorAsync:self error:nil];
+            [self PhotoUploaderDidUploadAsync:self
+                                        asset:asset
+                                        index:[NSNumber numberWithInt:i]
+                                   totalCount:[NSNumber numberWithInt:totalCount_]];
+        }        
+        [self PhotoUploaderDidFinishAsync:self];
+    }
+    @catch (EDAMUserException *exception) {
+        NSLog(@"PhotoUploader EDAMUser exception:%@", [exception reason]);
+        ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_EVERNOTE Param:[exception errorCode]];
+        [self PhotoUploaderErrorAsync:self error:error];
+        currentAsset_ = nil;
         return;
     }
-    totalCount_ = [urlList count];
-    [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:totalCount_]];
-    
-    EvernoteNoteStoreClient *noteStoreClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:self] autorelease];
-    NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
-    NSInteger photoSize = [UserSettings sharedInstance].photoSize;
-    
-    for (NSInteger i=0; i<totalCount_; i++) {
-        
-        // キャンセルチェック
-        if ([self isCancelled]) {
-            [self PhotoUploaderCancelAsync:self];
-            return;
-        }
-        
-        NSString *url = [urlList objectAtIndex:i];
-        ALAsset *asset = [loader loadAssetURLString:url];
-        if (asset == nil) {
-            [self PhotoUploaderErrorAsync:self error:nil];
-            continue;
-        }
-        currentIndex_ = i;
-        currentAsset_ = asset;
-
-        [self PhotoUploaderWillUploadAsync:self
-                                     asset:asset
-                                     index:[NSNumber numberWithInt:i]
-                                totalCount:[NSNumber numberWithInt:totalCount_]];
-        @try {
-            [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
-        }
-        @catch (NSException *exception) {
-            NSLog(@"PhotoUploader exception:%@", [exception reason]);
-            [self PhotoUploaderErrorAsync:self error:nil];
-            currentAsset_ = nil;
-            return;
-        }
-        [urlStorage insertURL:url];
-
-        [self PhotoUploaderDidUploadAsync:self
-                                    asset:asset
-                                    index:[NSNumber numberWithInt:i]
-                               totalCount:[NSNumber numberWithInt:totalCount_]];
+    @catch (NSException *exception) {
+        NSLog(@"PhotoUploader exception:%@", [exception reason]);
+        ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
+        [self PhotoUploaderErrorAsync:self error:error];
+        currentAsset_ = nil;
+        return;
     }
-    
-    [self PhotoUploaderDidFinishAsync:self];
 }
                             
 #pragma mark - delegate call
@@ -181,7 +186,7 @@ NSInteger totalCount_;
     
 }
 
-- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(NSError *)error
+- (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(ApplicationError *)error;
 {
     if ([delegate_ respondsToSelector:@selector(PhotoUploaderError:error:)]) {
         [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderError:error:) withObjects:photoUploader, error, nil];

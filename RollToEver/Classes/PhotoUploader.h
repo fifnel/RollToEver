@@ -11,6 +11,8 @@
 #import <AssetsLibrary/ALAsset.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
 #import "AssetURLStorage.h"
+#import "ApplicationError.h"
+
 
 @interface PhotoUploader : NSOperation
 
@@ -36,7 +38,7 @@
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader;
 
 // エラー終了
-- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error;
+- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(ApplicationError *)error;
 
 // キャンセルされた
 - (void)PhotoUploaderCanceled:(PhotoUploader *)photoUploader;

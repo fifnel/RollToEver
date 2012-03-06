@@ -12,6 +12,8 @@
 #import "EvernoteUserStoreClient.h"
 #import "EvernoteNoteStoreClient.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
+#import "ApplicationError.h"
+
 
 @interface UploadViewController ()
 
@@ -128,11 +130,9 @@
 }
 
 // エラー
-- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(NSError *)error
+- (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(ApplicationError *)error
 {
-    NSString *errorMsg = [NSString stringWithFormat:@"UploadError\nTransport=%d\nCode=%d",
-                          [EvernoteAuthToken sharedInstance].transportError,
-                          [EvernoteAuthToken sharedInstance].edamErrorCode];
+    NSString *errorMsg = [error errorFormattedString];
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
     [alert show];
 }
@@ -152,28 +152,33 @@
 // Evernote転送残量表示の更新
 - (void)updateEvernoteCycle
 {
-    EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
-    EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
-    EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
-    EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
-    
-    int64_t uploaded = syncStatus.uploaded;
-    int64_t limit = accounting.uploadLimit;
-    int64_t remain = limit - uploaded;
-    float remaining_ratio = (float)remain/(float)limit;
-    
-    [EvernoteCycleProgress setProgress:remaining_ratio];
-    if (remaining_ratio < 0.1f) {
-        [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
-    } else if (remaining_ratio < 0.2f) {
-        [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
-    } else {
-        [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
+    @try {
+        EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
+        EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
+        EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
+        EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
+        
+        int64_t uploaded = syncStatus.uploaded;
+        int64_t limit = accounting.uploadLimit;
+        int64_t remain = limit - uploaded;
+        float remaining_ratio = (float)remain/(float)limit;
+        
+        [EvernoteCycleProgress setProgress:remaining_ratio];
+        if (remaining_ratio < 0.1f) {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
+        } else if (remaining_ratio < 0.2f) {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
+        } else {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
+        }
+        NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
+                          NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
+                          remain/1024/1024];
+        [EvernoteCycleText setText:text];
     }
-    NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
-                      NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
-                      remain/1024/1024];
-    [EvernoteCycleText setText:text];
+    @catch (NSException *exception) {
+        return;
+    }
 }
 
 @end

@@ -12,6 +12,8 @@
 #import "UserSettings.h"
 #import "id.h"
 #import "MBProgressHUD.h"
+#import "ApplicationError.h"
+
 
 @implementation AccountSettingViewController
 
@@ -89,41 +91,44 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 	hud.labelText = NSLocalizedString(@"AccountSettingLogin", @"Login for AccountSetting");
 
-    bool ret = [[EvernoteAuthToken sharedInstance] connectWithUserId:userId.text
-                                                            Password:password.text
-                                                          ClientName:APPLICATIONNAME
-                                                         ConsumerKey:CONSUMERKEY
-                                                      ConsumerSecret:CONSUMERSECRET];
-    
     NSString *alertTitle = NSLocalizedString(@"AccountSettingLoginTitle", @"Login title for AccountSetting");
-    if (ret) {
-        // 成功
+    @try {
+        [[EvernoteAuthToken sharedInstance] connectWithUserId:userId.text
+                                                     Password:password.text
+                                                   ClientName:APPLICATIONNAME
+                                                  ConsumerKey:CONSUMERKEY
+                                               ConsumerSecret:CONSUMERSECRET];
+        
         [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
         [[UserSettings sharedInstance] setEvernotePassword:password.text];
         [[UserSettings sharedInstance] setEvernoteNotebookName:@""];
         [[UserSettings sharedInstance] setEvernoteNotebookGUID:@""];
-
-        UIAlertView *alertDone =
-            [[UIAlertView alloc] initWithTitle:alertTitle
-                                       message:NSLocalizedString(@"AccountSettingLoginSucceeded", @"Login succeeded for AccountSetting")
-                                      delegate:self
-                             cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                             otherButtonTitles: nil];
-        [alertDone show];
-        [alertDone release];
-        // 保存する
-    } else {
-        // 失敗
+        
         UIAlertView *alertDone =
         [[UIAlertView alloc] initWithTitle:alertTitle
-                                   message:NSLocalizedString(@"AccountSettingLoginFailed", @"Login failed for AccountSetting")
+                                   message:NSLocalizedString(@"AccountSettingLoginSucceeded", @"Login succeeded for AccountSetting")
                                   delegate:self
                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                          otherButtonTitles: nil];
         [alertDone show];
         [alertDone release];
     }
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    @catch (NSException *exception) {
+        NSLog(@"PhotoUploader exception:%@", [exception reason]);
+        UIAlertView *alertDone =
+        [[UIAlertView alloc] initWithTitle:alertTitle
+                                   message:NSLocalizedString(@"AccountSettingLoginFailed", @"Login failed for AccountSetting")
+                                  delegate:nil
+                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                         otherButtonTitles: nil];
+        [alertDone show];
+        [alertDone release];
+
+        return;
+    }
+    @finally {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -131,6 +136,11 @@
     [textField resignFirstResponder];
     
     return YES;
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end

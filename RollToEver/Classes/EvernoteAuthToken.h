@@ -13,7 +13,7 @@
 
 + (EvernoteAuthToken *)sharedInstance;
 
-- (bool)connectWithUserId:(NSString *)userId
+- (void)connectWithUserId:(NSString *)userId
                  Password:(NSString *)password
                ClientName:(NSString *)clientName
               ConsumerKey:(NSString *)consumerKey

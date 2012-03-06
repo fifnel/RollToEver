@@ -100,7 +100,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     return self;
 }
 
-- (bool)connectWithUserId:(NSString *)userId
+- (void)connectWithUserId:(NSString *)userId
                  Password:(NSString *)password
                ClientName:(NSString *)clientName
               ConsumerKey:(NSString *)consumerKey
@@ -123,7 +123,8 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
                           :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
                           :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
         if (!versionOk) {
-            return false;
+            EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+            @throw e;
         }
 
         authResult = [[userStoreClient userStoreClient] authenticate:userId
@@ -135,30 +136,30 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
         self.edamErrorCodeIsSet = exception.errorCodeIsSet;
         self.edamErrorCode = exception.errorCode;
         NSLog(@"errorcode = %d", self.edamErrorCode);
-        return false;
+        @throw exception;
     }
     @catch (NSException *exception) {
         self.transportError = YES;
         NSLog(@"EvernoteAuthToken exception:%@", [exception reason]);
-        return false;
+        @throw exception;
     }
     if (authResult == nil ||
         ![authResult authenticationTokenIsSet] ||
         ![authResult userIsSet] ) {
-        return false;
+        EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+        @throw e;
     }
     EDAMUser *user = [authResult user];
     if (![user shardIdIsSet]) {
         
     }
     if (![authResult authenticationTokenIsSet]) {
-        return false;
+        EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+        @throw e;
     }
     self.authToken = [authResult authenticationToken];
     self.edamUser = user;
     self.shardId = [user shardId];
-    
-    return true;
 }
 
 @end
