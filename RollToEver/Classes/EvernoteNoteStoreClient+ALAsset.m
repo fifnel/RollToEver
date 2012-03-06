@@ -59,7 +59,7 @@
     [imageResource setAttributes:imageAttributes];
 
     // We are transforming the resource into a array to attach it to the note
-    NSArray *resources = [[NSArray alloc] initWithObjects:imageResource, nil];
+    NSArray *resources = [[[NSArray alloc] initWithObjects:imageResource, nil] autorelease];
 
     // 最小限のイメージ表示用ENML
     NSString *ENML = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note><en-media type=\"image/jpeg\" hash=\"%@\"/></en-note>", hash];
