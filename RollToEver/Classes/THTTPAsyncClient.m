@@ -19,17 +19,15 @@ NSError *requestError_;
 
 @synthesize delegate = delegate_;
 
-
 // リクエストをして結果を受信する（ブロックする）
 - (void) flush
 {
     [mRequest setHTTPBody: mRequestData]; // not sure if it copies the data
     
-    if (responseData_ == nil) {
-        responseData_ = [[NSMutableData alloc] init];
-    }
     completed_ = NO;
-    [responseData_ setLength:0];
+    responseData_ = [[NSMutableData alloc] init];
+    response_ = nil;
+
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
     while (!completed_) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -58,6 +56,9 @@ NSError *requestError_;
     [mResponseData release];
     mResponseData = [responseData_ retain];
     mResponseDataOffset = 0;
+
+    [response_ release];
+    [responseData_ release];
 } 
 
 #pragma mark - NSURLConnection delegate
@@ -112,7 +113,7 @@ NSError *requestError_;
         [delegate_ connection:connection didFailWithError:error];
     }
     completed_ = YES;
-    requestError_ = [error retain];
+//    requestError_ = [error retain];
 }
 
 @end
