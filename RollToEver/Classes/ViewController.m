@@ -23,6 +23,7 @@
 
 @synthesize photoCount = photoCount_;
 @synthesize photoCountInfo = photoCountInfo_;
+@synthesize skipUpdatePhotoCount = skipUpdatePhotoCount_;
 
 - (void)didReceiveMemoryWarning
 {
@@ -36,6 +37,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    skipUpdatePhotoCount_ = NO;
 }
 
 - (void)viewDidUnload
@@ -46,8 +48,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [uploadButton setEnabled:NO];
-    [self updatePhotoCount];
+    if (!skipUpdatePhotoCount_) {
+        [uploadButton setEnabled:NO];
+        [self updatePhotoCount];
+    } else {
+        [self assetsCountDidFinish];
+    }
+    skipUpdatePhotoCount_ = NO;
 
     [super viewWillAppear:animated];
 }

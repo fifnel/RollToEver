@@ -8,10 +8,18 @@
 
 #import "SettingsTableViewController.h"
 
+#import "ViewController.h"
+
 #import "UserSettings.h"
 #import "AssetURLStorage.h"
 #import "AssetsLoader+Utils.h"
 #import "MBProgressHUD.h"
+
+@interface SettingsTableViewController()
+
+- (void)setParentSkipUpdatePhotoCount:(BOOL)flag;
+
+@end
 
 @implementation SettingsTableViewController
 
@@ -82,6 +90,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self setParentSkipUpdatePhotoCount:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -168,6 +178,7 @@
                 AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
                 [loader AllRegistToStorage];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+                [self setParentSkipUpdatePhotoCount:NO];
             }
             break;
         }
@@ -177,6 +188,8 @@
                 AssetURLStorage *storage = [[[AssetURLStorage alloc] init] autorelease];
                 [storage deleteAllURLs];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+                [self setParentSkipUpdatePhotoCount:NO];
+
             }
             break;
         }
@@ -185,6 +198,11 @@
     }
 }
 
-
+- (void)setParentSkipUpdatePhotoCount:(BOOL)flag
+{
+    NSInteger parentIndex = [self.navigationController.viewControllers count]-2;
+    ViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
+    parentViewController.skipUpdatePhotoCount = flag;
+}
 
 @end

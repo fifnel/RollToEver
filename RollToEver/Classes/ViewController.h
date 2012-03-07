@@ -14,5 +14,6 @@
 @property (retain, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
 - (IBAction)refreshPhotoCount:(id)sender;
 @property (retain, nonatomic) IBOutlet UIButton *uploadButton;
+@property (assign, nonatomic) BOOL skipUpdatePhotoCount;
 
 @end
