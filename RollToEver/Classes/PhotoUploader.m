@@ -84,15 +84,13 @@ NSInteger totalCount_;
     totalCount_ = 0;
     
     @try {
-        if ([EvernoteAuthToken sharedInstance].authToken == nil) {
-            NSString *userid = [UserSettings sharedInstance].evernoteUserId;
-            NSString *password = [UserSettings sharedInstance].evernotePassword;
-            [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                         Password:password
-                                                       ClientName:APPLICATIONNAME
-                                                      ConsumerKey:CONSUMERKEY
-                                                   ConsumerSecret:CONSUMERSECRET];
-        }
+        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
+        NSString *password = [UserSettings sharedInstance].evernotePassword;
+        [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
+                                                     Password:password
+                                                   ClientName:APPLICATIONNAME
+                                                  ConsumerKey:CONSUMERKEY
+                                               ConsumerSecret:CONSUMERSECRET];
         
         AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
         NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
