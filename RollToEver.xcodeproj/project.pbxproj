@@ -133,6 +133,7 @@
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FA0EF1150877DF00BF7CEA /* blank_image.png */; };
 		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
 		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
@@ -300,6 +301,7 @@
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
 		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 		C0E85A0A14F52EE300B3A1B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C0FA0EF1150877DF00BF7CEA /* blank_image.png */,
 				C00AA8681506FE5900415DA7 /* Icon@2x.png */,
 				C00AA8661506FE4D00415DA7 /* Icon.png */,
 				C066C6E01506EF1900D1188B /* logo.png */,
@@ -795,6 +798,7 @@
 				C066C6E11506EF1900D1188B /* logo.png in Resources */,
 				C00AA8671506FE4D00415DA7 /* Icon.png in Resources */,
 				C00AA8691506FE5900415DA7 /* Icon@2x.png in Resources */,
+				C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

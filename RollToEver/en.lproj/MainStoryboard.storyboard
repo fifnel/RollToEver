@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2177" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SXe-MM-VPt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SXe-MM-VPt">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4300" defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
         <!--View Controller - RollToEver-->
@@ -79,7 +80,7 @@
                                 <rect key="frame" x="50" y="300" width="220" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="bsE-Fi-pJg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blank_image.png" id="bsE-Fi-pJg">
                                 <rect key="frame" x="50" y="72" width="220" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -688,6 +689,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </scene>
     </scenes>
     <resources>
+        <image name="blank_image.png" width="220" height="220"/>
         <image name="logo.png" width="480" height="400"/>
         <image name="uploadbutton.png" width="620" height="146"/>
     </resources>

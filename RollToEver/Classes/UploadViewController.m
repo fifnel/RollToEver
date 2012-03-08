@@ -13,6 +13,8 @@
 #import "EvernoteNoteStoreClient.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "ApplicationError.h"
+#import "MBProgressHUD.h"
+
 
 
 @interface UploadViewController ()
@@ -67,7 +69,10 @@
     PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
     [operationQueue addOperation:uploader];
     [uploader release];
-
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
+    
     [super viewWillAppear:animated];
 }
 
@@ -98,6 +103,8 @@
 // アップロードのループ開始
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
 {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
     [self updateEvernoteCycle];
 }
 
