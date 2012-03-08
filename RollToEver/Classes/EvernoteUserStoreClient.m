@@ -11,7 +11,11 @@
 #import "TBinaryProtocol.h"
 #import "UserStore.h"
 
+#if DEBUG==1
 static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
+#else
+static NSString * const userStoreUri = @"https://www.evernote.com/edam/user";
+#endif
 
 @interface EvernoteUserStoreClient ()
 

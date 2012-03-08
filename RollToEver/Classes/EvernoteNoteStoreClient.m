@@ -13,7 +13,11 @@
 #import "NoteStore.h"
 #import "id.h"
 
+#if DEBUG==1
 static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
+#else
+static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/"; 
+#endif
 
 @interface EvernoteNoteStoreClient ()
 
