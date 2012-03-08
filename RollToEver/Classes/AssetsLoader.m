@@ -120,7 +120,11 @@ ALAssetsLibrary *assetsLibrary_;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
     [assetsLibrary_ assetForURL:url resultBlock:^(ALAsset *asset) {
-        result = [asset retain];
+        if (result == nil) {
+            // 一応複数見つかってしまった場合を考慮して
+            // 余計な物までretainされてメモリリークを引き起こさないようにしている
+            result = [asset retain];
+        }
         dispatch_semaphore_signal(sema);
     } failureBlock:^(NSError *error) {
         assetError = [error retain];
