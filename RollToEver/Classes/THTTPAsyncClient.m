@@ -12,12 +12,21 @@
 @implementation THTTPAsyncClient
 
 // instance valiables
+NSURLConnection *urlConnection_;
 NSMutableData *responseData_;
 NSURLResponse *response_;
 BOOL completed_;
 NSError *requestError_;
 
 @synthesize delegate = delegate_;
+
+// 送受信をキャンセルする
+- (void)cancel
+{
+    [urlConnection_ cancel];
+    completed_ = YES;
+}
+
 
 // リクエストをして結果を受信する（ブロックする）
 - (void) flush
@@ -28,11 +37,12 @@ NSError *requestError_;
     responseData_ = [[NSMutableData alloc] init];
     response_ = nil;
 
-    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
+    urlConnection_ = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
     while (!completed_) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
-    [urlConnection release];
+    [urlConnection_ release];
+    urlConnection_ = nil;
     
     [mRequestData setLength: 0];
     
@@ -64,53 +74,59 @@ NSError *requestError_;
 #pragma mark - NSURLConnection delegate
 
 // リクエスト送信前
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
+- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse
+{
 //    NSLog(@"willSendRequest");
-    if ([delegate_ respondsToSelector:@selector(connection:willSendRequest:redirectResponse:)]) {
-        [delegate_ connection:connection willSendRequest:request redirectResponse:redirectResponse];
+    if ([delegate_ respondsToSelector:@selector(connection:client:willSendRequest:redirectResponse:)]) {
+        [delegate_ connection:connection client:self willSendRequest:request redirectResponse:redirectResponse];
     }
     return request;
 }
 
 // データ送信後
-- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
 //    NSLog(@"didSendBodyData:%d/%d/%d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
-    if ([delegate_ respondsToSelector:@selector(connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
-        [delegate_ connection:connection didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
+    if ([delegate_ respondsToSelector:@selector(connection:client:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
+        [delegate_ connection:connection client:self didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
     }
 }
 
 // レスポンス受信後
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
 //    NSLog(@"didReceiveResponse");
     response_ = [response retain];
-    if ([delegate_ respondsToSelector:@selector(connection:didReceiveResponse:)]) {
-        [delegate_ connection:connection didReceiveResponse:response];
+    if ([delegate_ respondsToSelector:@selector(connection:client:didReceiveResponse:)]) {
+        [delegate_ connection:connection client:self didReceiveResponse:response];
     }
     
 }
 
 // データ受信後
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
 //    NSLog(@"didReceived");
     [responseData_ appendData:data];
-    if ([delegate_ respondsToSelector:@selector(connection:didReceiveData:)]) {
-        [delegate_ connection:connection didReceiveData:data];
+    if ([delegate_ respondsToSelector:@selector(connection:client:didReceiveData:)]) {
+        [delegate_ connection:connection client:self didReceiveData:data];
     }
 }
 
 // リクエスト終了
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    if ([delegate_ respondsToSelector:@selector(connectionDidFinishLoading:)]) {
-        [delegate_ connectionDidFinishLoading:connection];
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    if ([delegate_ respondsToSelector:@selector(connectionDidFinishLoading:client:)]) {
+        [delegate_ connectionDidFinishLoading:connection client:self];
     }
     completed_ = YES;
 }
 
 // 失敗
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    if ([delegate_ respondsToSelector:@selector(connection:didFailWithError:)]) {
-        [delegate_ connection:connection didFailWithError:error];
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    if ([delegate_ respondsToSelector:@selector(connection:client:didFailWithError:)]) {
+        [delegate_ connection:connection client:self didFailWithError:error];
     }
     completed_ = YES;
 //    requestError_ = [error retain];

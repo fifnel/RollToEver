@@ -15,6 +15,8 @@
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "id.h"
 #import "Errors.h"
+#import "THTTPAsyncClient.h"
+
 
 
 @interface PhotoUploader ()
@@ -83,6 +85,8 @@ NSInteger totalCount_;
     currentAsset_ = nil;
     totalCount_ = 0;
     
+    EvernoteNoteStoreClient *noteStoreClient = nil;
+    
     @try {
         NSString *userid = [UserSettings sharedInstance].evernoteUserId;
         NSString *password = [UserSettings sharedInstance].evernotePassword;
@@ -101,17 +105,12 @@ NSInteger totalCount_;
         totalCount_ = [urlList count];
         [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:totalCount_]];
         
-        EvernoteNoteStoreClient *noteStoreClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:self] autorelease];
+        noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
         NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
         NSInteger photoSize = [UserSettings sharedInstance].photoSize;
         
         for (NSInteger i=0; i<totalCount_; i++) {
             @autoreleasepool {
-                // キャンセルチェック
-                if ([self isCancelled]) {
-                    [self PhotoUploaderCancelAsync:self];
-                    return;
-                }
                 NSString *url = [urlList objectAtIndex:i];
                 ALAsset *asset = [loader loadAssetURLString:url];
                 if (asset == nil) {
@@ -126,6 +125,10 @@ NSInteger totalCount_;
                                              index:[NSNumber numberWithInt:i]
                                         totalCount:[NSNumber numberWithInt:totalCount_]];
                 [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
+                if ([self isCancelled]) {
+                    [self PhotoUploaderCancelAsync:self];
+                    return;
+                }
                 [urlStorage insertURL:url];
                 
                 [self PhotoUploaderDidUploadAsync:self
@@ -139,17 +142,32 @@ NSInteger totalCount_;
     }
     @catch (EDAMUserException *exception) {
         NSLog(@"PhotoUploader EDAMUser exception:%@", [exception reason]);
-        ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_EVERNOTE Param:[exception errorCode]];
-        [self PhotoUploaderErrorAsync:self error:error];
-        currentAsset_ = nil;
+        if ([self isCancelled]) {
+            [self PhotoUploaderCancelAsync:self];
+        } else {
+            ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_EVERNOTE Param:[exception errorCode]];
+            [self PhotoUploaderErrorAsync:self error:error];
+            [error release];
+            currentAsset_ = nil;
+        }
         return;
     }
     @catch (NSException *exception) {
         NSLog(@"PhotoUploader exception:%@", [exception reason]);
-        ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
-        [self PhotoUploaderErrorAsync:self error:error];
-        currentAsset_ = nil;
+        if ([self isCancelled]) {
+            [self PhotoUploaderCancelAsync:self];
+        } else {
+            ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
+            [self PhotoUploaderErrorAsync:self error:error];
+            [error release];
+            currentAsset_ = nil;
+        }
         return;
+    }
+    @finally {
+        // THTTPAsyncClientを確実にReleaseさせたいので明示的に呼ぶ
+        // releaseされればコネクションが残ることはないはず
+        [noteStoreClient release];
     }
 }
 
@@ -199,14 +217,14 @@ NSInteger totalCount_;
     }
 }
 
-#pragma mark - NSURLConnection delegate
+#pragma mark - THTTPAsyncClient delegate
 
-- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+- (void)connection:(NSURLConnection *)connection client:(THTTPAsyncClient *)client didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
     // キャンセルチェック
     if ([self isCancelled]) {
-        [connection cancel];
-        [self PhotoUploaderCancelAsync:self];
+        [client cancel];
+        // delegate呼び出しは処理ループ側でやっている
         return;
     }
     
