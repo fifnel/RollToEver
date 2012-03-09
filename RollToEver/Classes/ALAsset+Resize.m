@@ -118,7 +118,7 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     if (width==0 || height==0) {
         return nil;
     }
-    float ratio = 0.0f;
+    float ratio = 1.0f;
     if (maxPixel > 0) {
         ratio = sqrtf((float)maxPixel / (float)(width*height));
     }
