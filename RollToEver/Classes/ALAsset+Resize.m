@@ -104,8 +104,12 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
 // maxPixelが0以下の場合はオリジナルサイズのまま返す
 - (NSData *)resizedImageData:(NSInteger)maxPixel
 {
+    static NSString *META_ROOT_ORIENTATION = @"Orientation";
+    static NSString *META_TIFF             = @"{TIFF}";
+    static NSString *META_TIFF_ORIENTATION = @"Orientation";
+    
     ALAssetRepresentation *rep = [self defaultRepresentation];
-    NSDictionary *metaData = [rep metadata];
+    NSMutableDictionary *metaData = [[NSMutableDictionary alloc] initWithDictionary:[rep metadata]];
     CGImageRef fullResolution = [rep fullResolutionImage];
 
     // リサイズ・回転処理
@@ -126,29 +130,21 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     UIImage *resizedImage = scaleAndRotateImage(fullResolution, orientation, ratio);
     
     // メタデータ書き込み(Orientationだけは元画像を回転加工済みなので1に固定する)
-    [metaData setValue:[NSNumber numberWithInt:1] forKey:@"Orientation"];
-    [[metaData valueForKey:@"{TIFF}"] setValue:[NSNumber numberWithInt:1] forKey:@"Orientation"];
+    if ([metaData valueForKey:META_ROOT_ORIENTATION] != nil) {
+        [metaData setValue:[NSNumber numberWithInt:1] forKey:META_ROOT_ORIENTATION];
+    }
+    if ([metaData valueForKey:META_TIFF] != nil) {
+        if ([metaData valueForKey:META_TIFF_ORIENTATION] != nil) {
+            [metaData setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
+        }
+    }
     NSMutableData *resizedImageData = [[[NSMutableData alloc] init] autorelease];
     CGImageDestinationRef destination = CGImageDestinationCreateWithData((CFMutableDataRef)resizedImageData, kUTTypeJPEG, 1, NULL);
     CGImageDestinationAddImage(destination, [resizedImage CGImage], (CFDictionaryRef)metaData);
     CGImageDestinationFinalize(destination);
     CFRelease(destination);
     
-    /*
-     #if 0
-     // これだとExifおちる
-     UIImage *uiImg = [[UIImage alloc] initWithData:imageSrc];
-     UIImageWriteToSavedPhotosAlbum(uiImg, nil, nil, nil);
-     #else
-     // これだとExifかきこめる
-     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-     CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData((CFDataRef)imageSrc);
-     CGImageRef cgImage = CGImageCreateWithJPEGDataProvider(imgDataProvider, nil, true, kCGRenderingIntentDefault);
-     [assetsLibrary writeImageToSavedPhotosAlbum:cgImage metadata:meta completionBlock:nil];
-     
-     // assetsLibraryのreleaseできてない、テストなのでとりあえずリークさせとく
-     #endif
-     */
+    [metaData release];
     
     return resizedImageData;
 }
