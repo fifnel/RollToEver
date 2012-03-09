@@ -112,7 +112,8 @@
 - (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
 {
     [UploadingProgress setProgress:0.0f];
-    [UploadingImage setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
+    ALAssetRepresentation *rep = [asset defaultRepresentation];
+    [UploadingImage setImage:[UIImage imageWithCGImage:[rep fullScreenImage]]];
     [UploadingCount setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
 }
 
