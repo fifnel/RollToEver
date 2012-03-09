@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/ADBannerView.h>
 
 @interface ViewController : UIViewController
 
@@ -15,5 +16,7 @@
 - (IBAction)refreshPhotoCount:(id)sender;
 @property (retain, nonatomic) IBOutlet UIButton *uploadButton;
 @property (assign, nonatomic) BOOL skipUpdatePhotoCount;
+@property (retain, nonatomic) IBOutlet ADBannerView *adBanner;
+
 
 @end

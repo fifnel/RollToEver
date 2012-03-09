@@ -15,12 +15,11 @@
 #import "ApplicationError.h"
 #import "MBProgressHUD.h"
 
-
-
 @interface UploadViewController ()
 
 @property (retain, nonatomic, readwrite) NSOperationQueue *operationQueue;
 
+- (void)adjustAdBanner;
 - (void)updateEvernoteCycle;
 
 @end
@@ -32,7 +31,53 @@
 @synthesize UploadingProgress;
 @synthesize EvernoteCycleText;
 @synthesize EvernoteCycleProgress;
+@synthesize adBanner;
 @synthesize operationQueue;
+
+MBProgressHUD *hud_;
+
+// 広告バナー位置調整
+- (void)adjustAdBanner
+{
+    [adBanner removeFromSuperview];
+    [self.view addSubview:adBanner];
+    adBanner.frame = CGRectMake(0,
+                                self.view.frame.size.height - 44 - adBanner.frame.size.height,
+                                self.view.frame.size.width,
+                                adBanner.frame.size.height);
+}
+
+// Evernote転送残量表示の更新
+- (void)updateEvernoteCycle
+{
+    @try {
+        EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
+        EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
+        EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
+        EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
+        
+        int64_t uploaded = syncStatus.uploaded;
+        int64_t limit = accounting.uploadLimit;
+        int64_t remain = limit - uploaded;
+        float remaining_ratio = (float)remain/(float)limit;
+        
+        [EvernoteCycleProgress setProgress:remaining_ratio];
+        if (remaining_ratio < 0.1f) {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
+        } else if (remaining_ratio < 0.2f) {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
+        } else {
+            [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
+        }
+        NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
+                          NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
+                          remain/1024/1024];
+        [EvernoteCycleText setText:text];
+    }
+    @catch (NSException *exception) {
+        return;
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +93,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     operationQueue = [[NSOperationQueue alloc] init];
+    if (hud_ != nil) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        hud_ = nil;
+    }
 }
 
 - (void)viewDidUnload
@@ -58,20 +107,28 @@
     [self setEvernoteCycleText:nil];
     [self setEvernoteCycleProgress:nil];
     [self setOperationQueue:nil];
+    [self setAdBanner:nil];
+    if (hud_ != nil) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        hud_ = nil;
+    }
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [UploadingProgress setProgress:0.0f];
-    
-    PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
-    [operationQueue addOperation:uploader];
-    [uploader release];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-	hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
+    if ([operationQueue operationCount] == 0) {
+        [UploadingProgress setProgress:0.0f];
+        
+        PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
+        [operationQueue addOperation:uploader];
+        [uploader release];
+        
+        hud_ = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud_.labelText = NSLocalizedString(@"Loading", "Now Loading");
+        [self adjustAdBanner];
+    }
     
     [super viewWillAppear:animated];
 }
@@ -89,6 +146,7 @@
     [EvernoteCycleText release];
     [EvernoteCycleProgress release];
     [operationQueue release];
+    [adBanner release];
     [super dealloc];
 }
 
@@ -104,7 +162,7 @@
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
+    hud_ = nil;
     [self updateEvernoteCycle];
 }
 
@@ -155,38 +213,6 @@
 -(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self dismissModalViewControllerAnimated:YES];
-}
-
-// Evernote転送残量表示の更新
-- (void)updateEvernoteCycle
-{
-    @try {
-        EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
-        EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
-        EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
-        EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
-        
-        int64_t uploaded = syncStatus.uploaded;
-        int64_t limit = accounting.uploadLimit;
-        int64_t remain = limit - uploaded;
-        float remaining_ratio = (float)remain/(float)limit;
-        
-        [EvernoteCycleProgress setProgress:remaining_ratio];
-        if (remaining_ratio < 0.1f) {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
-        } else if (remaining_ratio < 0.2f) {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
-        } else {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
-        }
-        NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
-                          NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
-                          remain/1024/1024];
-        [EvernoteCycleText setText:text];
-    }
-    @catch (NSException *exception) {
-        return;
-    }
 }
 
 @end

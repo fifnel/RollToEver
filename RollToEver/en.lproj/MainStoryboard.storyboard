@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="4FQ-SX-xWf">
-                                <rect key="frame" x="20" y="330" width="280" height="66"/>
+                                <rect key="frame" x="20" y="261" width="280" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -53,10 +53,22 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="adBanner" destination="ig6-Sy-NIP" id="u3G-kS-YXT"/>
                         <outlet property="photoCountInfo" destination="4FQ-SX-xWf" id="9Yf-lY-yb4"/>
                         <outlet property="uploadButton" destination="jNP-Fh-p8T" id="lhv-hE-JY8"/>
                     </connections>
                 </viewController>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ig6-Sy-NIP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <requiredContentSizeIdentifiers>
+                        <string>ADBannerContentSizeLandscape</string>
+                        <string>ADBannerContentSizePortrait</string>
+                    </requiredContentSizeIdentifiers>
+                    <connections>
+                        <outlet property="delegate" destination="2" id="aso-u8-uA4"/>
+                    </connections>
+                </adBannerView>
             </objects>
             <point key="canvasLocation" x="1069" y="-147"/>
         </scene>
@@ -76,21 +88,17 @@
                                     <navigationItem title="RollToEver" id="qXc-An-icM"/>
                                 </items>
                             </navigationBar>
-                            <progressView opaque="NO" contentMode="scaleToFill" id="vsz-7c-Y87">
-                                <rect key="frame" x="50" y="300" width="220" height="9"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blank_image.png" id="bsE-Fi-pJg">
-                                <rect key="frame" x="50" y="72" width="220" height="220"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="blank_image.png" id="bsE-Fi-pJg">
+                                <rect key="frame" x="50" y="75" width="220" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" id="GJX-f6-ehn">
-                                <rect key="frame" x="50" y="377" width="220" height="11"/>
+                                <rect key="frame" x="50" y="335" width="220" height="11"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="hHS-2E-sll">
-                                <rect key="frame" x="50" y="390" width="220" height="19"/>
+                                <rect key="frame" x="85" y="344" width="220" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -109,9 +117,9 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="今月の利用可能サイズ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mIB-NS-uEe">
-                                <rect key="frame" x="50" y="349" width="220" height="21"/>
+                                <rect key="frame" x="50" y="308" width="220" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -122,6 +130,18 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VgB-aO-ceo">
+                                <rect key="frame" x="0.0" y="366" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <requiredContentSizeIdentifiers>
+                                    <string>ADBannerContentSizeLandscape</string>
+                                    <string>ADBannerContentSizePortrait</string>
+                                </requiredContentSizeIdentifiers>
+                            </adBannerView>
+                            <progressView opaque="NO" contentMode="scaleToFill" id="vsz-7c-Y87">
+                                <rect key="frame" x="76" y="233" width="169" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
@@ -131,6 +151,7 @@
                         <outlet property="UploadingCount" destination="8DR-Qu-xmn" id="ckI-sp-LY6"/>
                         <outlet property="UploadingImage" destination="bsE-Fi-pJg" id="hmF-rE-2Yb"/>
                         <outlet property="UploadingProgress" destination="vsz-7c-Y87" id="665-JW-DeO"/>
+                        <outlet property="adBanner" destination="VgB-aO-ceo" id="wWX-68-PTo"/>
                     </connections>
                 </viewController>
             </objects>
@@ -734,6 +755,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
             </relationships>
