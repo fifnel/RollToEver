@@ -9,13 +9,10 @@
 #import "AboutViewControllerViewController.h"
 #import "id.h"
 
-@interface AboutViewControllerViewController ()
-
-@end
-
 @implementation AboutViewControllerViewController
-@synthesize applicationName;
-@synthesize applicationVersion;
+
+@synthesize applicationName    = _applicationName;
+@synthesize applicationVersion = _applicationVersion;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +28,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [applicationName setText:APPLICATIONNAME];
+    [_applicationName setText:APPLICATIONNAME];
     NSString *ver = [NSString stringWithFormat:@"Ver. %@", APPLICATIONVERSION];
-    [applicationVersion setText:ver];
+    [_applicationVersion setText:ver];
 }
 
 - (void)viewDidUnload
@@ -49,9 +46,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc {
-    [applicationName release];
-    [applicationVersion release];
-    [super dealloc];
-}
 @end

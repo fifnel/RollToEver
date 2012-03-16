@@ -10,65 +10,61 @@
 #import "TTransportException.h"
 
 @implementation THTTPAsyncClient
+{
+    BOOL  _completed;
 
-// instance valiables
-NSURLConnection *urlConnection_;
-NSMutableData *responseData_;
-NSURLResponse *response_;
-BOOL completed_;
-NSError *requestError_;
+    __strong NSURLConnection   *_urlConnection;
+    __strong NSMutableData     *_responseData;
+    __strong NSURLResponse     *_response;
+    __strong NSError           *_requestError;
+}
 
-@synthesize delegate = delegate_;
+@synthesize delegate = _delegate;
 
 // 送受信をキャンセルする
 - (void)cancel
 {
-    [urlConnection_ cancel];
-    completed_ = YES;
+    [_urlConnection cancel];
+    _completed = YES;
 }
 
 
 // リクエストをして結果を受信する（ブロックする）
-- (void) flush
+- (void)flush
 {
     [mRequest setHTTPBody: mRequestData]; // not sure if it copies the data
     
-    completed_ = NO;
-    responseData_ = [[NSMutableData alloc] init];
-    response_ = nil;
+    _completed = NO;
+    _responseData = [[NSMutableData alloc] init];
+    _response = nil;
 
-    urlConnection_ = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
-    while (!completed_) {
+    _urlConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self startImmediately:YES];
+    while (!_completed) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
-    [urlConnection_ release];
-    urlConnection_ = nil;
+    _urlConnection = nil;
     
     [mRequestData setLength: 0];
     
-    if (responseData_ == nil) {
+    if (_responseData == nil) {
         @throw [TTransportException exceptionWithName: @"TTransportException"
                                                reason: @"Could not make HTTP request"
-                                                error: requestError_];
+                                                error: _requestError];
     }
-    if (![response_ isKindOfClass: [NSHTTPURLResponse class]]) {
+    if (![_response isKindOfClass: [NSHTTPURLResponse class]]) {
         @throw [TTransportException exceptionWithName: @"TTransportException"
                                                reason: [NSString stringWithFormat: @"Unexpected NSURLResponse type: %@",
-                                                        NSStringFromClass([response_ class])]];
+                                                        NSStringFromClass([_response class])]];
     }
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response_;
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)_response;
     if ([httpResponse statusCode] != 200) {
         @throw [TTransportException exceptionWithName: @"TTransportException"
                                                reason: [NSString stringWithFormat: @"Bad response from HTTP server: %d",
                                                         [httpResponse statusCode]]];
     }
 
-    [mResponseData release];
-    mResponseData = [responseData_ retain];
+    mResponseData = _responseData;
     mResponseDataOffset = 0;
-
-    [response_ release];
-    [responseData_ release];
 } 
 
 #pragma mark - NSURLConnection delegate
@@ -77,8 +73,8 @@ NSError *requestError_;
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse
 {
 //    NSLog(@"willSendRequest");
-    if ([delegate_ respondsToSelector:@selector(connection:client:willSendRequest:redirectResponse:)]) {
-        [delegate_ connection:connection client:self willSendRequest:request redirectResponse:redirectResponse];
+    if ([_delegate respondsToSelector:@selector(connection:client:willSendRequest:redirectResponse:)]) {
+        [_delegate connection:connection client:self willSendRequest:request redirectResponse:redirectResponse];
     }
     return request;
 }
@@ -87,8 +83,8 @@ NSError *requestError_;
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
 //    NSLog(@"didSendBodyData:%d/%d/%d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
-    if ([delegate_ respondsToSelector:@selector(connection:client:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
-        [delegate_ connection:connection client:self didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
+    if ([_delegate respondsToSelector:@selector(connection:client:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:)]) {
+        [_delegate connection:connection client:self didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];
     }
 }
 
@@ -96,9 +92,9 @@ NSError *requestError_;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
 //    NSLog(@"didReceiveResponse");
-    response_ = [response retain];
-    if ([delegate_ respondsToSelector:@selector(connection:client:didReceiveResponse:)]) {
-        [delegate_ connection:connection client:self didReceiveResponse:response];
+    _response = response;
+    if ([_delegate respondsToSelector:@selector(connection:client:didReceiveResponse:)]) {
+        [_delegate connection:connection client:self didReceiveResponse:response];
     }
     
 }
@@ -107,29 +103,28 @@ NSError *requestError_;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
 //    NSLog(@"didReceived");
-    [responseData_ appendData:data];
-    if ([delegate_ respondsToSelector:@selector(connection:client:didReceiveData:)]) {
-        [delegate_ connection:connection client:self didReceiveData:data];
+    [_responseData appendData:data];
+    if ([_delegate respondsToSelector:@selector(connection:client:didReceiveData:)]) {
+        [_delegate connection:connection client:self didReceiveData:data];
     }
 }
 
 // リクエスト終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    if ([delegate_ respondsToSelector:@selector(connectionDidFinishLoading:client:)]) {
-        [delegate_ connectionDidFinishLoading:connection client:self];
+    if ([_delegate respondsToSelector:@selector(connectionDidFinishLoading:client:)]) {
+        [_delegate connectionDidFinishLoading:connection client:self];
     }
-    completed_ = YES;
+    _completed = YES;
 }
 
 // 失敗
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    if ([delegate_ respondsToSelector:@selector(connection:client:didFailWithError:)]) {
-        [delegate_ connection:connection client:self didFailWithError:error];
+    if ([_delegate respondsToSelector:@selector(connection:client:didFailWithError:)]) {
+        [_delegate connection:connection client:self didFailWithError:error];
     }
-    completed_ = YES;
-//    requestError_ = [error retain];
+    _completed = YES;
 }
 
 @end

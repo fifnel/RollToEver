@@ -409,8 +409,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="4Mt-kI-SaD"/>
                     <connections>
-                        <outlet property="evernoteAccountCell_" destination="PXN-7P-w0b" id="cdB-ew-kz8"/>
-                        <outlet property="notebookNameCell_" destination="kJV-Mk-oZ2" id="QYJ-D4-h7G"/>
+                        <outlet property="evernoteAccountCell" destination="PXN-7P-w0b" id="VQK-fB-TbI"/>
+                        <outlet property="notebookNameCell" destination="kJV-Mk-oZ2" id="ksq-mT-eJj"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -736,8 +736,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <class className="SettingsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="evernoteAccountCell_" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="notebookNameCell_" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="UploadViewController" superclassName="UIViewController">
@@ -749,6 +749,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 <relationship kind="outlet" name="UploadingCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="UploadingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="UploadingProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">

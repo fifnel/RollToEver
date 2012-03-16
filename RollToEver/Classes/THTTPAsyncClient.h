@@ -11,7 +11,7 @@
 
 @interface THTTPAsyncClient : THTTPClient<NSURLConnectionDelegate>
 
-@property(retain) id delegate;
+@property(weak, nonatomic) id delegate;
 
 - (void)cancel;
 

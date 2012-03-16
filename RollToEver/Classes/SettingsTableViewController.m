@@ -21,7 +21,11 @@
 
 @end
 
+
 @implementation SettingsTableViewController
+
+@synthesize evernoteAccountCell = _evernoteAccountCell;
+@synthesize notebookNameCell = _notebookNameCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,12 +34,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)dealloc {
-    [notebookNameCell_ release];
-    [evernoteAccountCell_ release];
-    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,8 +59,8 @@
 
 - (void)viewDidUnload
 {
-    notebookNameCell_ = nil;
-    evernoteAccountCell_ = nil;
+    _notebookNameCell = nil;
+    _evernoteAccountCell = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -76,10 +74,10 @@
     NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
     
     if (evernoteAccount) {
-        [[evernoteAccountCell_ textLabel] setText:evernoteAccount];
+        [[_evernoteAccountCell textLabel] setText:evernoteAccount];
     }
     if (notebookName) {
-        [[notebookNameCell_ textLabel] setText:notebookName];
+        [[_notebookNameCell textLabel] setText:notebookName];
     }
     
     NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
@@ -142,7 +140,6 @@
                                            otherButtonTitles:nil];
                     [actionSheet setTag:0];
                     [actionSheet showInView:self.navigationController.view];
-                    [actionSheet release];
                     break;
                 }
                 case 1: { // 全削除
@@ -157,7 +154,6 @@
                                            otherButtonTitles:nil];
                     [actionSheet setTag:1];
                     [actionSheet showInView:self.navigationController.view];
-                    [actionSheet release];
                     break;
                 }
             }
@@ -175,7 +171,7 @@
         case 0: { // 全登録
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
+                AssetsLoader *loader = [[AssetsLoader alloc] init];
                 [loader AllRegistToStorage];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
@@ -185,7 +181,7 @@
         case 1: { // 全削除
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                AssetURLStorage *storage = [[[AssetURLStorage alloc] init] autorelease];
+                AssetURLStorage *storage = [[AssetURLStorage alloc] init];
                 [storage deleteAllURLs];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];

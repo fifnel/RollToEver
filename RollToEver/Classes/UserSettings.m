@@ -6,67 +6,13 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-/*
- 参考
- Cocoa Fundamentals Guide: シングルトンインスタンスの作成
- https://developer.apple.com/jp/documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaObjects/chapter_3_section_10.html
- */
-
 #import "UserSettings.h"
 #import "PDKeychainBindings.h"
+#import "GCDSingleton.h"
 
 @implementation UserSettings
 
-
-#pragma mark - Lifetime methods override for Singleton
-
-static UserSettings *sharedUserSettingsInstance = nil;
-
-+(UserSettings *)sharedInstance
-{
-    @synchronized(self) {
-        if (sharedUserSettingsInstance == nil) {
-            [[self alloc] init]; // ここでは代入していない
-        }        
-    }
-    return sharedUserSettingsInstance;
-}
-
-+(id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (sharedUserSettingsInstance == nil) {
-            sharedUserSettingsInstance = [super allocWithZone:zone];
-            return sharedUserSettingsInstance;  // 最初の割り当てで代入し、返す
-        }
-    }
-    return nil; // 以降の割り当てではnilを返すようにする
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  // 解放できないオブジェクトであることを示す
-}
-
-- (oneway void)release
-{
-    // 何もしない
-}
-
-- (id)autorelease
-{
-    return self;
-}
+SINGLETON_GCD(UserSettings);
 
 #pragma  mark - propertyes methods
 

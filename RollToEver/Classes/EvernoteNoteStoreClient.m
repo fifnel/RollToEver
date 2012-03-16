@@ -13,7 +13,7 @@
 #import "NoteStore.h"
 #import "id.h"
 
-#if DEBUG==1
+#if 0
 static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
 #else
 static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/"; 
@@ -21,13 +21,14 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
 
 @interface EvernoteNoteStoreClient ()
 
-@property (assign, readwrite) EDAMNoteStoreClient *noteStoreClient;
+@property (strong, nonatomic, readwrite) EDAMNoteStoreClient *noteStoreClient;
 
 @end
 
+
 @implementation EvernoteNoteStoreClient
 
-@synthesize noteStoreClient = noteStoreClient_;
+@synthesize noteStoreClient = _noteStoreClient;
 
 - (id)init
 {
@@ -41,7 +42,7 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
         // URL作成
         NSString *shardId = [EvernoteAuthToken sharedInstance].shardId;
         NSString *urlString = [NSString stringWithFormat:@"%@%@", noteStoreUriBase, shardId];
-        NSURL *url = [[[NSURL alloc] initWithString:urlString] autorelease];
+        NSURL *url = [[NSURL alloc] initWithString:urlString];
         
         // UserAgent作成
         UIDevice *device = [UIDevice currentDevice];
@@ -53,19 +54,13 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
                                [device systemVersion]]; 
 
         // クライアントの初期化
-        THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000] autorelease];
+        THTTPAsyncClient *httpClient = [[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000];
         httpClient.delegate = delegate;
-        TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-        noteStoreClient_ = [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
+        TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:httpClient];
+        _noteStoreClient = [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
     }
+    
     return self;
-}
-
-- (void)dealloc
-{
-    [noteStoreClient_ release];
-    noteStoreClient_ = nil;
-    [super dealloc];
 }
 
 @end

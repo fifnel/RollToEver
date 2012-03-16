@@ -11,12 +11,13 @@
 
 @interface ViewController : UIViewController
 
-@property (assign, nonatomic, readonly) NSInteger photoCount;
-@property (retain, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
 - (IBAction)refreshPhotoCount:(id)sender;
-@property (retain, nonatomic) IBOutlet UIButton *uploadButton;
-@property (assign, nonatomic) BOOL skipUpdatePhotoCount;
-@property (retain, nonatomic) IBOutlet ADBannerView *adBanner;
 
+@property (strong, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
+@property (strong, nonatomic) IBOutlet UIButton *uploadButton;
+@property (strong, nonatomic) IBOutlet ADBannerView *adBanner;
+
+@property (assign, nonatomic, readonly) NSInteger photoCount;
+@property (assign, nonatomic) BOOL skipUpdatePhotoCount;
 
 @end

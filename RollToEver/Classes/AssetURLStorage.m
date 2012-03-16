@@ -45,7 +45,7 @@
  */
 - (NSArray *)getManagedObjectsURL:(NSString *)url
 {
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
    

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AboutViewControllerViewController : UIViewController
-@property (retain, nonatomic) IBOutlet UILabel *applicationName;
-@property (retain, nonatomic) IBOutlet UILabel *applicationVersion;
+
+@property (strong, nonatomic) IBOutlet UILabel *applicationName;
+@property (strong, nonatomic) IBOutlet UILabel *applicationVersion;
 
 @end

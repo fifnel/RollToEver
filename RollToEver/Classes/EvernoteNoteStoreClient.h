@@ -11,7 +11,7 @@
 
 @interface EvernoteNoteStoreClient : NSObject
 
-@property (assign, readonly) EDAMNoteStoreClient *noteStoreClient;
+@property (strong, nonatomic, readonly) EDAMNoteStoreClient *noteStoreClient;
 
 - (id) initWithDelegate:(id)delegate;
 

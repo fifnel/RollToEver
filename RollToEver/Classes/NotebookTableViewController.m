@@ -7,7 +7,6 @@
 //
 
 #import "NotebookTableViewController.h"
-
 #import "SettingsTableViewController.h"
 #import "UserSettings.h"
 #import "EvernoteAuthToken.h"
@@ -16,9 +15,10 @@
 #import "MBProgressHUD.h"
 
 @implementation NotebookTableViewController
-
-NSArray *notebooksList_;
-NSInteger notebooksNum_;
+{
+    __strong NSArray *_notebooksList;
+    NSInteger _notebooksNum;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -81,10 +81,10 @@ NSInteger notebooksNum_;
                                                    ConsumerSecret:CONSUMERSECRET];
         }
         
-        EvernoteNoteStoreClient *client = [[[EvernoteNoteStoreClient alloc] init] autorelease];
+        EvernoteNoteStoreClient *client = [[EvernoteNoteStoreClient alloc] init];
         NSString *authToken = [EvernoteAuthToken sharedInstance].authToken;
-        notebooksList_ = [[NSArray alloc] initWithArray:[[client noteStoreClient] listNotebooks:authToken]];
-        notebooksNum_ = [notebooksList_ count];
+        _notebooksList = [[NSArray alloc] initWithArray:[[client noteStoreClient] listNotebooks:authToken]];
+        _notebooksNum = [_notebooksList count];
         [[self tableView] reloadData];
         
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
@@ -102,7 +102,6 @@ NSInteger notebooksNum_;
                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                          otherButtonTitles: nil];
         [alertDone show];
-        [alertDone release];
         
         [[self navigationController] popViewControllerAnimated:YES];
         
@@ -113,8 +112,7 @@ NSInteger notebooksNum_;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [notebooksList_ release];
-    notebooksList_ = nil;
+    _notebooksList = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -132,7 +130,7 @@ NSInteger notebooksNum_;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return notebooksNum_;
+    return _notebooksNum;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -146,10 +144,10 @@ NSInteger notebooksNum_;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
-    EDAMNotebook *notebook = (EDAMNotebook *)[notebooksList_ objectAtIndex:[indexPath row]];
+    EDAMNotebook *notebook = (EDAMNotebook *)[_notebooksList objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[notebook name]];
     
     return cell;
@@ -162,7 +160,7 @@ NSInteger notebooksNum_;
 {
     // 呼び出し元のコントローラーを無理矢理取得する
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    EDAMNotebook *notebook = (EDAMNotebook *)[notebooksList_ objectAtIndex:[indexPath row]];
+    EDAMNotebook *notebook = (EDAMNotebook *)[_notebooksList objectAtIndex:[indexPath row]];
     [[UserSettings sharedInstance] setEvernoteNotebookName:notebook.name];
     [[UserSettings sharedInstance] setEvernoteNotebookGUID:notebook.guid];
     

@@ -17,6 +17,9 @@
 
 @implementation AccountSettingViewController
 
+@synthesize userId = _userId;
+@synthesize password = _password;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,16 +51,14 @@
 {
     [super viewDidLoad];
     
-    userId.delegate = self;
-    password.delegate = self;
+    _userId.delegate = self;
+    _password.delegate = self;
 }
 
 - (void)viewDidUnload
 {
-    [userId release];
-    userId = nil;
-    [password release];
-    password = nil;
+    _userId = nil;
+    _password = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -65,8 +66,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [userId setText:[UserSettings sharedInstance].evernoteUserId];
-    [password setText:[UserSettings sharedInstance].evernotePassword];
+    [_userId setText:[UserSettings sharedInstance].evernoteUserId];
+    [_password setText:[UserSettings sharedInstance].evernotePassword];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -79,13 +80,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc
-{
-    [userId release];
-    [password release];
-    [super dealloc];
-}
-
 - (IBAction)loginEvernote:(id)sender
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -93,14 +87,14 @@
 
     NSString *alertTitle = NSLocalizedString(@"AccountSettingLoginTitle", @"Login title for AccountSetting");
     @try {
-        [[EvernoteAuthToken sharedInstance] connectWithUserId:userId.text
-                                                     Password:password.text
+        [[EvernoteAuthToken sharedInstance] connectWithUserId:_userId.text
+                                                     Password:_password.text
                                                    ClientName:APPLICATIONNAME
                                                   ConsumerKey:CONSUMERKEY
                                                ConsumerSecret:CONSUMERSECRET];
         
-        [[UserSettings sharedInstance] setEvernoteUserId:userId.text];
-        [[UserSettings sharedInstance] setEvernotePassword:password.text];
+        [[UserSettings sharedInstance] setEvernoteUserId:_userId.text];
+        [[UserSettings sharedInstance] setEvernotePassword:_password.text];
         [[UserSettings sharedInstance] setEvernoteNotebookName:@""];
         [[UserSettings sharedInstance] setEvernoteNotebookGUID:@""];
         
@@ -111,7 +105,6 @@
                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                          otherButtonTitles: nil];
         [alertDone show];
-        [alertDone release];
     }
     @catch (NSException *exception) {
         NSLog(@"PhotoUploader exception:%@", [exception reason]);
@@ -122,7 +115,6 @@
                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                          otherButtonTitles: nil];
         [alertDone show];
-        [alertDone release];
 
         return;
     }

@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController<UIActionSheetDelegate>
-{
-@private
-    IBOutlet UITableViewCell *evernoteAccountCell_;
-    IBOutlet UITableViewCell *notebookNameCell_;
-}
+
+@property (strong, nonatomic) IBOutlet UITableViewCell *evernoteAccountCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *notebookNameCell;
 
 @end

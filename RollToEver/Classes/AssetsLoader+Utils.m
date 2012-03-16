@@ -18,7 +18,6 @@
     for (NSString *url in urls) {
         [storage insertURL:url];
     }
-    [storage release];
 }
 
 @end

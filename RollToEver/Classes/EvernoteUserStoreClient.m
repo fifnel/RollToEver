@@ -11,7 +11,7 @@
 #import "TBinaryProtocol.h"
 #import "UserStore.h"
 
-#if DEBUG==1
+#if 0
 static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
 #else
 static NSString * const userStoreUri = @"https://www.evernote.com/edam/user";
@@ -19,13 +19,13 @@ static NSString * const userStoreUri = @"https://www.evernote.com/edam/user";
 
 @interface EvernoteUserStoreClient ()
 
-@property (assign, nonatomic, readwrite) EDAMUserStoreClient *userStoreClient;
+@property (strong, nonatomic, readwrite) EDAMUserStoreClient *userStoreClient;
 
 @end
 
 @implementation EvernoteUserStoreClient
 
-@synthesize userStoreClient = userStoreClient_;
+@synthesize userStoreClient = _userStoreClient;
 
 
 - (id)init
@@ -38,20 +38,14 @@ static NSString * const userStoreUri = @"https://www.evernote.com/edam/user";
     self = [super init];
     if (self) {
         // クライアントの初期化
-        NSURL *url = [[[NSURL alloc] initWithString:userStoreUri] autorelease];
-        THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url] autorelease];
+        NSURL *url = [[NSURL alloc] initWithString:userStoreUri];
+        THTTPAsyncClient *httpClient = [[THTTPAsyncClient alloc] initWithURL:url];
         httpClient.delegate = delegate;
-        TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-        userStoreClient_ = [[EDAMUserStoreClient alloc] initWithProtocol:protocol];
+        TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:httpClient];
+        _userStoreClient = [[EDAMUserStoreClient alloc] initWithProtocol:protocol];
     }
-    return self;
-}
 
-- (void)dealloc
-{
-    [userStoreClient_ release];
-    userStoreClient_ = nil;
-    [super dealloc];
+    return self;
 }
 
 @end

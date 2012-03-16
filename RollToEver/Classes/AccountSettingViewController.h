@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AccountSettingViewController : UIViewController <UITextFieldDelegate>
-{
-@private
-    IBOutlet UITextField *userId;
-    IBOutlet UITextField *password;
-}
+
+@property (strong, nonatomic) IBOutlet UITextField *userId;
+@property (strong, nonatomic) IBOutlet UITextField *password;
 
 - (IBAction)loginEvernote:(id)sender;
 

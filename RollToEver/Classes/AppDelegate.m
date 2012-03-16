@@ -14,19 +14,10 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize managedObjectContext = managedObjectContext_;
-@synthesize managedObjectModel = managedObjectModel_;
-@synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
-
-- (void)dealloc
-{
-    [_window release];
-    [managedObjectContext_ release];
-    [managedObjectModel_ release];
-    [persistentStoreCoordinator_ release];
-    [super dealloc];
-}
+@synthesize window                      = _window;
+@synthesize managedObjectContext        = _managedObjectContext;
+@synthesize managedObjectModel          = _managedObjectModel;
+@synthesize persistentStoreCoordinator  = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -112,18 +103,18 @@
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (managedObjectContext_ != nil)
+    if (_managedObjectContext != nil)
     {
-        return managedObjectContext_;
+        return _managedObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        managedObjectContext_ = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext_ setPersistentStoreCoordinator:coordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
-    return managedObjectContext_;
+    return _managedObjectContext;
 }
 
 /**
@@ -132,13 +123,13 @@
  */
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (managedObjectModel_ != nil)
+    if (_managedObjectModel != nil)
     {
-        return managedObjectModel_;
+        return _managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"RollToEver" withExtension:@"momd"];
-    managedObjectModel_ = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return managedObjectModel_;
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
 }
 
 /**
@@ -147,16 +138,16 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (persistentStoreCoordinator_ != nil)
+    if (_persistentStoreCoordinator != nil)
     {
-        return persistentStoreCoordinator_;
+        return _persistentStoreCoordinator;
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"RollToEver.sqlite"];
     
     NSError *error = nil;
-    persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![persistentStoreCoordinator_ addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
@@ -185,7 +176,7 @@
         abort();
     }    
     
-    return persistentStoreCoordinator_;
+    return _persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory

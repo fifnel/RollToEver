@@ -15,31 +15,35 @@
 @interface ViewController()
 
 @property (assign, nonatomic, readwrite) NSInteger photoCount;
-@property (retain, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
+@property (strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
 - (void)adjustAdBanner;
 
 @end
 
+
 @implementation ViewController
-@synthesize uploadButton;
+{
+    __strong MBProgressHUD *_hud;
+}
 
-@synthesize photoCount = photoCount_;
-@synthesize photoCountInfo = photoCountInfo_;
-@synthesize skipUpdatePhotoCount = skipUpdatePhotoCount_;
-@synthesize adBanner;
+@synthesize photoCount           = _photoCount;
+@synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
 
-MBProgressHUD *hud_;
+@synthesize uploadButton    = _uploadButton;
+@synthesize photoCountInfo  = _photoCountInfo;
+@synthesize adBanner        = _adBanner;
+
 
 // 広告バナー位置調整
 - (void)adjustAdBanner
 {
-    [adBanner removeFromSuperview];
-    [self.navigationController.view addSubview:adBanner];
-    adBanner.frame = CGRectMake(0,
-                                20+44+self.view.frame.size.height - adBanner.frame.size.height,
+    [_adBanner removeFromSuperview];
+    [self.navigationController.view addSubview:_adBanner];
+    _adBanner.frame = CGRectMake(0,
+                                20+44+self.view.frame.size.height - _adBanner.frame.size.height,
                                 self.view.frame.size.width,
-                                adBanner.frame.size.height);
+                                _adBanner.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,10 +58,10 @@ MBProgressHUD *hud_;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    skipUpdatePhotoCount_ = NO;
-    if (hud_ != nil) {
+    _skipUpdatePhotoCount = NO;
+    if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        hud_ = nil;
+        _hud = nil;
     }
 }
 
@@ -65,9 +69,9 @@ MBProgressHUD *hud_;
 {
     [self setUploadButton:nil];
     [self setAdBanner:nil];
-    if (hud_ != nil) {
+    if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        hud_ = nil;
+        _hud = nil;
     }
     [super viewDidUnload];
 }
@@ -81,14 +85,14 @@ MBProgressHUD *hud_;
 {
     [super viewDidAppear:animated];
 
-    if (!hud_) {
-        if (!skipUpdatePhotoCount_) {
-            [uploadButton setEnabled:NO];
+    if (!_hud) {
+        if (!_skipUpdatePhotoCount) {
+            [_uploadButton setEnabled:NO];
             [self updatePhotoCount];
         } else {
             [self assetsCountDidFinish];
         }
-        skipUpdatePhotoCount_ = NO;
+        _skipUpdatePhotoCount = NO;
     } else {
         [self adjustAdBanner];
     }
@@ -97,7 +101,7 @@ MBProgressHUD *hud_;
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-    [adBanner removeFromSuperview];
+    [_adBanner removeFromSuperview];
 
 }
 
@@ -112,31 +116,21 @@ MBProgressHUD *hud_;
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void)dealloc {
-    self.photoCountInfo = nil;
-
-    [uploadButton release];
-    [adBanner release];
-    [super dealloc];
-}
-
-
 - (IBAction)refreshPhotoCount:(id)sender {
     [self updatePhotoCount];
 }
 
 - (void)updatePhotoCount
 {
-    hud_ = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-	hud_.labelText = NSLocalizedString(@"Loading", "Now Loading");
+    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+	_hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
 
     [self adjustAdBanner];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
         NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
-        photoCount_ = [assets count];
-        [assetsLoader release];
+        _photoCount = [assets count];
         
         [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
     });
@@ -145,23 +139,23 @@ MBProgressHUD *hud_;
 - (void)assetsCountDidFinish {
     [self adjustAdBanner];
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-    hud_ = nil;
+    _hud = nil;
 
     [self adjustAdBanner];
 
-    if (photoCount_ > 0) {
-        NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), photoCount_];
-        photoCountInfo_.text = photoCountStr;
-        [uploadButton setEnabled:YES];
+    if (_photoCount > 0) {
+        NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), _photoCount];
+        _photoCountInfo.text = photoCountStr;
+        [_uploadButton setEnabled:YES];
     } else {
-        photoCountInfo_.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
-        [uploadButton setEnabled:NO];
+        _photoCountInfo.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
+        [_uploadButton setEnabled:NO];
     }
 }
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
-    if (hud_ == nil) {
+    if (_hud == nil) {
         self.skipUpdatePhotoCount = YES;
     }
     return YES;

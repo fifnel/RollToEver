@@ -25,6 +25,9 @@
 @end
 
 @implementation UploadViewController
+{
+    MBProgressHUD *_hud;
+}
 
 @synthesize UploadingImage;
 @synthesize UploadingCount;
@@ -34,7 +37,6 @@
 @synthesize adBanner;
 @synthesize operationQueue;
 
-MBProgressHUD *hud_;
 
 // 広告バナー位置調整
 - (void)adjustAdBanner
@@ -51,10 +53,10 @@ MBProgressHUD *hud_;
 - (void)updateEvernoteCycle
 {
     @try {
-        EvernoteUserStoreClient *userClient = [[[EvernoteUserStoreClient alloc] initWithDelegate:nil] autorelease];
-        EDAMAccounting *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
-        EvernoteNoteStoreClient *noteClient = [[[EvernoteNoteStoreClient alloc] initWithDelegate:nil] autorelease];
-        EDAMSyncState *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
+        EvernoteUserStoreClient *userClient = [[EvernoteUserStoreClient alloc] initWithDelegate:nil];
+        EDAMAccounting          *accounting = [[userClient.userStoreClient getUser:[EvernoteAuthToken sharedInstance].authToken] accounting];
+        EvernoteNoteStoreClient *noteClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:nil];
+        EDAMSyncState           *syncStatus = [noteClient.noteStoreClient getSyncState:[EvernoteAuthToken sharedInstance].authToken];
         
         int64_t uploaded = syncStatus.uploaded;
         int64_t limit = accounting.uploadLimit;
@@ -93,9 +95,9 @@ MBProgressHUD *hud_;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     operationQueue = [[NSOperationQueue alloc] init];
-    if (hud_ != nil) {
+    if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        hud_ = nil;
+        _hud = nil;
     }
 }
 
@@ -108,9 +110,9 @@ MBProgressHUD *hud_;
     [self setEvernoteCycleProgress:nil];
     [self setOperationQueue:nil];
     [self setAdBanner:nil];
-    if (hud_ != nil) {
+    if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        hud_ = nil;
+        _hud = nil;
     }
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -123,10 +125,9 @@ MBProgressHUD *hud_;
         
         PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
         [operationQueue addOperation:uploader];
-        [uploader release];
         
-        hud_ = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud_.labelText = NSLocalizedString(@"Loading", "Now Loading");
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
         [self adjustAdBanner];
     }
     
@@ -136,18 +137,6 @@ MBProgressHUD *hud_;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)dealloc
-{
-    [UploadingCount release];
-    [UploadingImage release];
-    [UploadingProgress release];
-    [EvernoteCycleText release];
-    [EvernoteCycleProgress release];
-    [operationQueue release];
-    [adBanner release];
-    [super dealloc];
 }
 
 // キャンセルボタン
@@ -162,7 +151,7 @@ MBProgressHUD *hud_;
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    hud_ = nil;
+    _hud = nil;
     [self updateEvernoteCycle];
 }
 
@@ -191,7 +180,7 @@ MBProgressHUD *hud_;
 // アップロードのループ終了
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader
 {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alert show];
 }
 
@@ -199,7 +188,7 @@ MBProgressHUD *hud_;
 - (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(ApplicationError *)error
 {
     NSString *errorMsg = [error errorFormattedString];
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil] autorelease];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alert show];
 }
 

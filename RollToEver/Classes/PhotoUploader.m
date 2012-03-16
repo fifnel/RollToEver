@@ -18,7 +18,6 @@
 #import "THTTPAsyncClient.h"
 
 
-
 @interface PhotoUploader ()
 
 - (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader
@@ -43,14 +42,16 @@
 
 
 @implementation PhotoUploader
+{
+    __weak   id              _delegate;
 
-// instance valiables
-ALAssetsLibrary *assetsLibrary_;
-AssetURLStorage *assetUrlStorage_;
-id delegate_;
-ALAsset *currentAsset_;
-NSInteger currentIndex_;
-NSInteger totalCount_;
+    __strong AssetURLStorage *_assetUrlStorage;
+
+    __strong ALAssetsLibrary *_assetsLibrary;
+    __strong ALAsset         *_currentAsset_;
+             NSInteger       _currentIndex;
+             NSInteger       _totalCount;
+}
 
 - (id)init
 {
@@ -62,28 +63,21 @@ NSInteger totalCount_;
 {
     self = [super init];
     if (self != nil) {
-        assetsLibrary_ = [[ALAssetsLibrary alloc] init];
-        assetUrlStorage_ = [[AssetURLStorage alloc] init];
-        delegate_ = delegate;
+        _assetsLibrary = [[ALAssetsLibrary alloc] init];
+        _assetUrlStorage = [[AssetURLStorage alloc] init];
+        _delegate = delegate;
     }
     return self;
-}
-
-- (void)dealloc {
-    [assetsLibrary_ release];
-    [assetUrlStorage_ release];
-    
-    [super dealloc];
 }
 
 - (void)main
 {
     __block AssetURLStorage *urlStorage = nil;
     
-    urlStorage = [[[AssetURLStorage alloc] init] autorelease];
-    currentIndex_ = 0;
-    currentAsset_ = nil;
-    totalCount_ = 0;
+    urlStorage = [[AssetURLStorage alloc] init];
+    _currentIndex = 0;
+    _currentAsset_ = nil;
+    _totalCount = 0;
     
     EvernoteNoteStoreClient *noteStoreClient = nil;
     
@@ -96,20 +90,20 @@ NSInteger totalCount_;
                                                   ConsumerKey:CONSUMERKEY
                                                ConsumerSecret:CONSUMERSECRET];
         
-        AssetsLoader *loader = [[[AssetsLoader alloc] init] autorelease];
+        AssetsLoader *loader = [[AssetsLoader alloc] init];
         NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
         if (urlList == nil) {
             [self PhotoUploaderErrorAsync:self error:nil];
             return;
         }
-        totalCount_ = [urlList count];
-        [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:totalCount_]];
+        _totalCount = [urlList count];
+        [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:_totalCount]];
         
         noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
         NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
         NSInteger photoSize = [UserSettings sharedInstance].photoSize;
         
-        for (NSInteger i=0; i<totalCount_; i++) {
+        for (NSInteger i=0; i<_totalCount; i++) {
             @autoreleasepool {
                 NSString *url = [urlList objectAtIndex:i];
                 ALAsset *asset = [loader loadAssetURLString:url];
@@ -117,13 +111,13 @@ NSInteger totalCount_;
                     [self PhotoUploaderErrorAsync:self error:nil];
                     continue;
                 }
-                currentIndex_ = i;
-                currentAsset_ = asset;
+                _currentIndex = i;
+                _currentAsset_ = asset;
                 
                 [self PhotoUploaderWillUploadAsync:self
                                              asset:asset
                                              index:[NSNumber numberWithInt:i]
-                                        totalCount:[NSNumber numberWithInt:totalCount_]];
+                                        totalCount:[NSNumber numberWithInt:_totalCount]];
                 [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
                 if ([self isCancelled]) {
                     [self PhotoUploaderCancelAsync:self];
@@ -134,10 +128,10 @@ NSInteger totalCount_;
                 [self PhotoUploaderDidUploadAsync:self
                                             asset:asset
                                             index:[NSNumber numberWithInt:i]
-                                       totalCount:[NSNumber numberWithInt:totalCount_]];
+                                       totalCount:[NSNumber numberWithInt:_totalCount]];
             }
         }
-        currentAsset_ = nil;
+        _currentAsset_ = nil;
         [self PhotoUploaderDidFinishAsync:self];
     }
     @catch (EDAMUserException *exception) {
@@ -147,8 +141,7 @@ NSInteger totalCount_;
         } else {
             ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_EVERNOTE Param:[exception errorCode]];
             [self PhotoUploaderErrorAsync:self error:error];
-            [error release];
-            currentAsset_ = nil;
+            _currentAsset_ = nil;
         }
         return;
     }
@@ -159,15 +152,9 @@ NSInteger totalCount_;
         } else {
             ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
             [self PhotoUploaderErrorAsync:self error:error];
-            [error release];
-            currentAsset_ = nil;
+            _currentAsset_ = nil;
         }
         return;
-    }
-    @finally {
-        // THTTPAsyncClientを確実にReleaseさせたいので明示的に呼ぶ
-        // releaseされればコネクションが残ることはないはず
-        [noteStoreClient release];
     }
 }
 
@@ -175,45 +162,45 @@ NSInteger totalCount_;
 
 - (void)PhotoUploaderWillStartAsync:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillStart:totalCount:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillStart:totalCount:) withObjects:photoUploader, totalCount, nil];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderWillStart:totalCount:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderWillStart:totalCount:) withObjects:photoUploader, totalCount, nil];
     }
 }
 
 - (void)PhotoUploaderWillUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderWillUpload:asset:index:totalCount:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderWillUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderWillUpload:asset:index:totalCount:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderWillUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
 }
 
 - (void)PhotoUploaderDidUploadAsync:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidUpload:asset:index:totalCount:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderDidUpload:asset:index:totalCount:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderDidUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
     
 }
 
 - (void)PhotoUploaderDidFinishAsync:(PhotoUploader *)photoUploader
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderDidFinish:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderDidFinish:) withObjects:photoUploader, nil];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderDidFinish:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderDidFinish:) withObjects:photoUploader, nil];
     }
     
 }
 
 - (void)PhotoUploaderErrorAsync:(PhotoUploader *)photoUploader error:(ApplicationError *)error;
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderError:error:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderError:error:) withObjects:photoUploader, error, nil];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderError:error:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderError:error:) withObjects:photoUploader, error, nil];
     }
 }
 
 - (void)PhotoUploaderCancelAsync:(PhotoUploader *)photoUploader
 {
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderCanceled:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderCanceled:) withObject:photoUploader waitUntilDone:NO];
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderCanceled:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderCanceled:) withObject:photoUploader waitUntilDone:NO];
     }
 }
 
@@ -228,12 +215,12 @@ NSInteger totalCount_;
         return;
     }
     
-    if ([delegate_ respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
-        [delegate_ performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)
                                    withObjects:self, 
-         currentAsset_,
-         [NSNumber numberWithInt:currentIndex_],
-         [NSNumber numberWithInt:totalCount_],
+         _currentAsset_,
+         [NSNumber numberWithInt:_currentIndex],
+         [NSNumber numberWithInt:_totalCount],
          [NSNumber numberWithInt:totalBytesWritten],
          [NSNumber numberWithInt:totalBytesExpectedToWrite],
          nil];

@@ -10,7 +10,7 @@
 
 @interface UserSettings : NSObject
 
-+(UserSettings *)sharedInstance;
++ (UserSettings *)sharedInstance;
 
 - (NSString *)version;
 - (void)setVersion:(NSString *)version;

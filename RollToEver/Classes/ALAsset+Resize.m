@@ -138,13 +138,11 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
             [metaData setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
         }
     }
-    NSMutableData *resizedImageData = [[[NSMutableData alloc] init] autorelease];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((CFMutableDataRef)resizedImageData, kUTTypeJPEG, 1, NULL);
-    CGImageDestinationAddImage(destination, [resizedImage CGImage], (CFDictionaryRef)metaData);
+    NSMutableData *resizedImageData = [[NSMutableData alloc] init];
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)resizedImageData, kUTTypeJPEG, 1, NULL);
+    CGImageDestinationAddImage(destination, [resizedImage CGImage], (__bridge CFDictionaryRef)metaData);
     CGImageDestinationFinalize(destination);
     CFRelease(destination);
-    
-    [metaData release];
     
     return resizedImageData;
 }

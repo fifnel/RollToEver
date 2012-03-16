@@ -27,7 +27,7 @@
      */
 
     // ノートのタイトルのフォーマット用
-    NSDateFormatter *titleDateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *titleDateFormatter = [[NSDateFormatter alloc] init];
     [titleDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     // Rowデータを取得して実際のアップロード処理に投げる
@@ -37,7 +37,7 @@
     NSString *filename = [rep filename];
     
     // データを整理してnoteを作る
-    EDAMNote *note = [[[EDAMNote alloc] init] autorelease];
+    EDAMNote *note = [[EDAMNote alloc] init];
     note.title = [titleDateFormatter stringFromDate:date];
     note.notebookGuid = notebookGUID;
     
@@ -46,20 +46,20 @@
     hash = [hash substringWithRange:NSMakeRange(1, [hash length] - 2)];
     
     // 1) create the data EDAMData using the hash, the size and the data of the image
-    EDAMData *imageData = [[[EDAMData alloc] initWithBodyHash:[hash dataUsingEncoding: NSASCIIStringEncoding] size:[data length] body:data] autorelease];
+    EDAMData *imageData = [[EDAMData alloc] initWithBodyHash:[hash dataUsingEncoding: NSASCIIStringEncoding] size:[data length] body:data];
     
     // 2) Create an EDAMResourceAttributes object with other important attributes of the file
-    EDAMResourceAttributes *imageAttributes = [[[EDAMResourceAttributes alloc] init] autorelease];
+    EDAMResourceAttributes *imageAttributes = [[EDAMResourceAttributes alloc] init];
     [imageAttributes setFileName:filename];
 
     // 3) create an EDAMResource the hold the mime, the data and the attributes
-    EDAMResource *imageResource  = [[[EDAMResource alloc] init] autorelease];
+    EDAMResource *imageResource  = [[EDAMResource alloc] init];
     [imageResource setMime:@"image/jpeg"];
     [imageResource setData:imageData];
     [imageResource setAttributes:imageAttributes];
 
     // We are transforming the resource into a array to attach it to the note
-    NSArray *resources = [[[NSArray alloc] initWithObjects:imageResource, nil] autorelease];
+    NSArray *resources = [[NSArray alloc] initWithObjects:imageResource, nil];
 
     // 最小限のイメージ表示用ENML
     NSString *ENML = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note><en-media type=\"image/jpeg\" hash=\"%@\"/></en-note>", hash];

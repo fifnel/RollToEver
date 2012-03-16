@@ -11,13 +11,12 @@
 
 @interface UploadViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UILabel *UploadingCount;
-@property (retain, nonatomic) IBOutlet UIImageView *UploadingImage;
-@property (retain, nonatomic) IBOutlet UIProgressView *UploadingProgress;
-
-@property (retain, nonatomic) IBOutlet UILabel *EvernoteCycleText;
-@property (retain, nonatomic) IBOutlet UIProgressView *EvernoteCycleProgress;
-@property (retain, nonatomic) IBOutlet ADBannerView *adBanner;
+@property (strong, nonatomic) IBOutlet UILabel         *UploadingCount;
+@property (strong, nonatomic) IBOutlet UIImageView     *UploadingImage;
+@property (strong, nonatomic) IBOutlet UIProgressView  *UploadingProgress;
+@property (strong, nonatomic) IBOutlet UILabel         *EvernoteCycleText;
+@property (strong, nonatomic) IBOutlet UIProgressView  *EvernoteCycleProgress;
+@property (strong, nonatomic) IBOutlet ADBannerView    *adBanner;
 
 - (IBAction)cancel:(id)sender;
 

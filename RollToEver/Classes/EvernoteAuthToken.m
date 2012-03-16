@@ -15,12 +15,13 @@
 #import "NoteStore.h"
 #import "Errors.h"
 #import "TTransportException.h"
+#import "GCDSingleton.h"
 
 @interface EvernoteAuthToken ()
 
-@property (retain, nonatomic, readwrite) NSString *authToken;
-@property (retain, nonatomic, readwrite) NSString *shardId;
-@property (retain, nonatomic, readwrite) EDAMUser *edamUser;
+@property (strong, nonatomic, readwrite) NSString *authToken;
+@property (strong, nonatomic, readwrite) NSString *shardId;
+@property (strong, nonatomic, readwrite) EDAMUser *edamUser;
 
 @property (assign, nonatomic, readwrite) NSInteger edamErrorCode;
 @property (assign, nonatomic, readwrite) BOOL edamErrorCodeIsSet;
@@ -28,74 +29,25 @@
 
 @end
 
-static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
-
 @implementation EvernoteAuthToken
 
-@synthesize authToken = authToken_;
-@synthesize shardId = shardId_;
-@synthesize edamUser = edamUser_;
-@synthesize edamErrorCode = edamErrorCode_;
-@synthesize edamErrorCodeIsSet = edamErrorCodeIsSet_;
-@synthesize transportError = transportError_;
+SINGLETON_GCD(EvernoteAuthToken);
 
-+(EvernoteAuthToken *)sharedInstance
-{
-    @synchronized(self) {
-        if (sharedEvernoteAuthTokenInstance_ == nil) {
-            [[self alloc] init]; // ここでは代入していない
-        }
-    }
-    return sharedEvernoteAuthTokenInstance_;
-}
+@synthesize authToken     = _authToken;
+@synthesize shardId       = _shardId;
+@synthesize edamUser      = _edamUser;
 
-+(id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (sharedEvernoteAuthTokenInstance_ == nil) {
-            sharedEvernoteAuthTokenInstance_ = [super allocWithZone:zone];
-            return sharedEvernoteAuthTokenInstance_;  // 最初の割り当てで代入し、返す
-        }
-    }
-    return nil; // 以降の割り当てではnilを返すようにする
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  // 解放できないオブジェクトであることを示す
-}
-
-- (oneway void)release
-{
-    // 何もしない
-}
-
-- (id)autorelease
-{
-    return self;
-}
+@synthesize edamErrorCode      = _edamErrorCode;
+@synthesize edamErrorCodeIsSet = _edamErrorCodeIsSet;
+@synthesize transportError     = _transportError;
 
 - (id)init
 {
     self = [super init];
     if (self != nil) {
-        self.authToken = nil;
-        self.edamUser = nil;
-        self.shardId = nil;
-        
-        self.edamErrorCode = 0;
-        self.edamErrorCodeIsSet = NO;
-        self.transportError = NO;
+        _edamErrorCode = 0;
+        _edamErrorCodeIsSet = NO;
+        _transportError = NO;
     }
     return self;
 }
@@ -106,15 +58,14 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
               ConsumerKey:(NSString *)consumerKey
            ConsumerSecret:(NSString *)consumerSecret
 {
-    self.authToken = nil;
-    self.edamUser = nil;
-    self.shardId = nil;
-    self.edamErrorCode = 0;
+    self.authToken  = nil;
+    self.edamUser   = nil;
+    self.shardId    = nil;
+    self.edamErrorCode      = 0;
     self.edamErrorCodeIsSet = NO;
-    self.transportError = NO;
+    self.transportError     = NO;
 
-    EvernoteUserStoreClient *userStoreClient = [[[EvernoteUserStoreClient alloc] init] autorelease];
-
+    EvernoteUserStoreClient *userStoreClient = [[EvernoteUserStoreClient alloc] init];
     
     EDAMAuthenticationResult *authResult = nil;
     @try {
@@ -123,7 +74,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
                           :[EDAMUserStoreConstants EDAM_VERSION_MAJOR]
                           :[EDAMUserStoreConstants EDAM_VERSION_MINOR]];
         if (!versionOk) {
-            EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+            EDAMUserException *e = [[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil];
             @throw e;
         }
 
@@ -146,7 +97,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
     if (authResult == nil ||
         ![authResult authenticationTokenIsSet] ||
         ![authResult userIsSet] ) {
-        EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+        EDAMUserException *e = [[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil];
         @throw e;
     }
     EDAMUser *user = [authResult user];
@@ -154,7 +105,7 @@ static EvernoteAuthToken *sharedEvernoteAuthTokenInstance_ = nil;
         
     }
     if (![authResult authenticationTokenIsSet]) {
-        EDAMUserException *e = [[[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil] autorelease];
+        EDAMUserException *e = [[EDAMUserException alloc] initWithErrorCode:EDAMErrorCode_UNKNOWN parameter:nil];
         @throw e;
     }
     self.authToken = [authResult authenticationToken];

@@ -10,41 +10,35 @@
 #import "AssetURLStorage.h"
 
 @implementation AssetsLoader
-
-// instance valiables
-ALAssetsLibrary *assetsLibrary_;
+{
+    __strong ALAssetsLibrary *_assetsLibrary;
+}
 
 - (id)init
 {
     self = [super init];
     if (self != nil) {
-        assetsLibrary_ = [[ALAssetsLibrary alloc] init];
+        _assetsLibrary = [[ALAssetsLibrary alloc] init];
     }
     
     return self;
 }
 
-- (void)dealloc
-{
-    [assetsLibrary_ release];
-    [super dealloc];
-}
-
 // アセットURLのリストを取得する
 - (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude
 {
-    __block NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
+    __block NSMutableArray *result = [[NSMutableArray alloc] init];
     __block BOOL completed = NO;
     __block NSError *assetError = nil;
     __block AssetURLStorage *urlStorage = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
 
     if (exclude) {
-        urlStorage = [[[AssetURLStorage alloc] init] autorelease];
+        urlStorage = [[AssetURLStorage alloc] init];
     }
     
     // グループ内画像1枚ずつ呼び出される
-    ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
+    __block ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
     ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
         if (asset) {
             ALAssetRepresentation *rep = [asset defaultRepresentation];
@@ -60,7 +54,7 @@ ALAssetsLibrary *assetsLibrary_;
     };
     
     // グループごと呼び出される
-    ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
+    __block ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
     ^(ALAssetsGroup *group, BOOL *stop) {
         if (group) {
             [group setAssetsFilter:[ALAssetsFilter allPhotos]];
@@ -72,16 +66,16 @@ ALAssetsLibrary *assetsLibrary_;
     };
     
     // 列挙に失敗したときに呼び出される
-    ALAssetsLibraryAccessFailureBlock failureBlock = 
+    __block ALAssetsLibraryAccessFailureBlock failureBlock = 
     ^(NSError *error) {
         NSLog(@"error:%@", error);
-        assetError = [error retain];
+        assetError = error;
         completed = YES;
         dispatch_semaphore_signal(sema);
     };
     
     // 列挙開始
-    [assetsLibrary_ enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+    [_assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
                                   usingBlock:usingBlock
                                 failureBlock:failureBlock];
     
@@ -94,7 +88,6 @@ ALAssetsLibrary *assetsLibrary_;
         dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
     if (assetError) {
-        [assetError release];
         result = nil;
     }
     
@@ -119,18 +112,13 @@ ALAssetsLibrary *assetsLibrary_;
     __block NSError *assetError = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
-    [assetsLibrary_ assetForURL:url resultBlock:^(ALAsset *asset) {
-        if (result == nil) {
-            // 一応複数見つかってしまった場合を考慮して
-            // 余計な物までretainされてメモリリークを引き起こさないようにしている
-            result = [asset retain];
-        }
+    [_assetsLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
+        result = asset;
         dispatch_semaphore_signal(sema);
     } failureBlock:^(NSError *error) {
-        assetError = [error retain];
+        assetError = error;
         dispatch_semaphore_signal(sema);
     }];
-    
     
     if ([NSThread isMainThread]) {
         while (!result && !assetError) {
@@ -142,9 +130,8 @@ ALAssetsLibrary *assetsLibrary_;
     }
     
     dispatch_release(sema);
-    [assetError release];
     
-    return [result autorelease];
+    return result;
 }
 
 @end
