@@ -111,6 +111,8 @@
 		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C066C6E11506EF1900D1188B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C066C6E01506EF1900D1188B /* logo.png */; };
+		C0773F4F1514A26C00336E0C /* NSString+FileExtCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */; };
+		C0773F501514A26C00336E0C /* NSString+FileExtCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */; };
 		C07A6398150A23C9008E69D2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07A6397150A23C9008E69D2 /* iAd.framework */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
@@ -281,6 +283,8 @@
 		C074D17114ED48070077C201 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C074D17314ED48760077C201 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C0773F411513951E00336E0C /* GCDSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCDSingleton.h; path = RollToEver/Classes/GCDSingleton.h; sourceTree = "<group>"; };
+		C0773F4D1514A26B00336E0C /* NSString+FileExtCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FileExtCheck.h"; path = "RollToEver/Classes/NSString+FileExtCheck.h"; sourceTree = "<group>"; };
+		C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FileExtCheck.m"; path = "RollToEver/Classes/NSString+FileExtCheck.m"; sourceTree = "<group>"; };
 		C07A6397150A23C9008E69D2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
@@ -623,6 +627,8 @@
 				C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */,
 				C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */,
 				C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */,
+				C0773F4D1514A26B00336E0C /* NSString+FileExtCheck.h */,
+				C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */,
 			);
 			name = RollToEverUtilities;
 			sourceTree = "<group>";
@@ -891,6 +897,7 @@
 				C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
 				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
 				C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
+				C0773F4F1514A26C00336E0C /* NSString+FileExtCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,6 +964,7 @@
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 				C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
+				C0773F501514A26C00336E0C /* NSString+FileExtCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

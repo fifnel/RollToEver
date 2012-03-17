@@ -13,6 +13,7 @@
 #import "NSDataMD5Additions.h"
 #import "TTransportException.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
+#import "NSString+FileExtCheck.h"
 
 @implementation EvernoteNoteStoreClient (ALAsset)
 
@@ -35,7 +36,18 @@
     NSData *data = [asset resizedImageData:photoSize];
     NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
     NSString *filename = [rep filename];
-    
+
+    NSString *fileType = nil;
+    if ([filename hasExtension:@".jpg"]) {
+        fileType = @"jpeg";
+    } else if ([filename hasExtension:@".png"]) {
+        fileType = @"png";
+    } else {
+        // 未対応フォーマット
+        NSLog(@"unknown extension:%@", filename);
+        return;
+    }
+
     // データを整理してnoteを作る
     EDAMNote *note = [[EDAMNote alloc] init];
     note.title = [titleDateFormatter stringFromDate:date];
@@ -54,7 +66,7 @@
 
     // 3) create an EDAMResource the hold the mime, the data and the attributes
     EDAMResource *imageResource  = [[EDAMResource alloc] init];
-    [imageResource setMime:@"image/jpeg"];
+    [imageResource setMime:[NSString stringWithFormat:@"image/%@", fileType]];
     [imageResource setData:imageData];
     [imageResource setAttributes:imageAttributes];
 
@@ -62,7 +74,7 @@
     NSArray *resources = [[NSArray alloc] initWithObjects:imageResource, nil];
 
     // 最小限のイメージ表示用ENML
-    NSString *ENML = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note><en-media type=\"image/jpeg\" hash=\"%@\"/></en-note>", hash];
+    NSString *ENML = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note><en-media type=\"image/%@\" hash=\"%@\"/></en-note>", fileType, hash];
 
     // Adding the content & resources to the note
     [note setContent:ENML];

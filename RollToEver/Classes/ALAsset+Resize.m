@@ -10,6 +10,7 @@
 
 #import <ImageIO/imageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "NSString+FileExtCheck.h"
 
 UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float resizeRatio);
 
@@ -111,6 +112,17 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     ALAssetRepresentation *rep = [self defaultRepresentation];
     NSMutableDictionary *metaData = [[NSMutableDictionary alloc] initWithDictionary:[rep metadata]];
     CGImageRef fullResolution = [rep fullResolutionImage];
+    
+    CFStringRef fileType = nil;
+    NSString *filename = [rep filename];
+    if ([filename hasExtension:@".jpg"]) {
+        fileType = kUTTypeJPEG;
+    } else if ([filename hasExtension:@".png"]) {
+        fileType = kUTTypePNG;
+    } else {
+        // 未対応フォーマット
+        return nil;
+    }
 
     // リサイズ・回転処理
     size_t width  = CGImageGetWidth(fullResolution);
@@ -135,11 +147,12 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     }
     if ([metaData valueForKey:META_TIFF] != nil) {
         if ([metaData valueForKey:META_TIFF_ORIENTATION] != nil) {
-            [metaData setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
+            [[metaData valueForKey:META_TIFF] setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
+//            [metaData setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
         }
     }
     NSMutableData *resizedImageData = [[NSMutableData alloc] init];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)resizedImageData, kUTTypeJPEG, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)resizedImageData, fileType, 1, NULL);
     CGImageDestinationAddImage(destination, [resizedImage CGImage], (__bridge CFDictionaryRef)metaData);
     CGImageDestinationFinalize(destination);
     CFRelease(destination);
