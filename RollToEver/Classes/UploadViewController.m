@@ -29,24 +29,31 @@
     MBProgressHUD *_hud;
 }
 
-@synthesize UploadingImage;
-@synthesize UploadingCount;
-@synthesize UploadingProgress;
-@synthesize EvernoteCycleText;
-@synthesize EvernoteCycleProgress;
-@synthesize adBanner;
-@synthesize operationQueue;
+@synthesize uploadingImage          = _uploadingImage;
+@synthesize uploadingCount          = _uploadingCount;
+@synthesize uploadingProgress       = _uploadingProgress;
+@synthesize evernoteCycleText       = _evernoteCycleText;
+@synthesize evernoteCycleProgress   = _evernoteCycleProgress;
+@synthesize toolBar                 = _toolBar;
+@synthesize adBanner                = _adBanner;
+@synthesize operationQueue          = _operationQueue;
+@synthesize bannerIsVisible         = _bannerIsVisible;
 
 
 // 広告バナー位置調整
 - (void)adjustAdBanner
 {
-    [adBanner removeFromSuperview];
-    [self.view addSubview:adBanner];
-    adBanner.frame = CGRectMake(0,
-                                self.view.frame.size.height - 44 - adBanner.frame.size.height,
-                                self.view.frame.size.width,
-                                adBanner.frame.size.height);
+    CGFloat posY = self.view.frame.size.height;
+    if (_bannerIsVisible) {
+        posY -= _adBanner.frame.size.height;
+    }
+
+    [_adBanner removeFromSuperview];
+    [self.view addSubview:_adBanner];
+    _adBanner.frame = CGRectMake(0,
+                                 posY,
+                                 self.view.frame.size.width,
+                                 _adBanner.frame.size.height);
 }
 
 // Evernote転送残量表示の更新
@@ -63,18 +70,18 @@
         int64_t remain = limit - uploaded;
         float remaining_ratio = (float)remain/(float)limit;
         
-        [EvernoteCycleProgress setProgress:remaining_ratio];
+        [_evernoteCycleProgress setProgress:remaining_ratio];
         if (remaining_ratio < 0.1f) {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor redColor]];
+            [_evernoteCycleProgress setProgressTintColor:[UIColor redColor]];
         } else if (remaining_ratio < 0.2f) {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
+            [_evernoteCycleProgress setProgressTintColor:[UIColor yellowColor]];
         } else {
-            [EvernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
+            [_evernoteCycleProgress setProgressTintColor:[UIColor greenColor]];
         }
         NSString *text = [NSString stringWithFormat:@"%@ %lldMB",
                           NSLocalizedString(@"UploadingRemaining", @"Remaining for UploadView"),
                           remain/1024/1024];
-        [EvernoteCycleText setText:text];
+        [_evernoteCycleText setText:text];
     }
     @catch (NSException *exception) {
         return;
@@ -94,7 +101,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    operationQueue = [[NSOperationQueue alloc] init];
+    _operationQueue = [[NSOperationQueue alloc] init];
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
@@ -103,28 +110,22 @@
 
 - (void)viewDidUnload
 {
-    [self setUploadingCount:nil];
-    [self setUploadingImage:nil];
-    [self setUploadingProgress:nil];
-    [self setEvernoteCycleText:nil];
-    [self setEvernoteCycleProgress:nil];
-    [self setOperationQueue:nil];
-    [self setAdBanner:nil];
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+    [self setToolBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if ([operationQueue operationCount] == 0) {
-        [UploadingProgress setProgress:0.0f];
+    if ([_operationQueue operationCount] == 0) {
+        [_uploadingProgress setProgress:0.0f];
         
         PhotoUploader *uploader = [[PhotoUploader alloc] initWithDelegate:self];
-        [operationQueue addOperation:uploader];
+        [_operationQueue addOperation:uploader];
         
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
@@ -142,7 +143,7 @@
 // キャンセルボタン
 - (IBAction)cancel:(id)sender
 {
-    [operationQueue cancelAllOperations];
+    [_operationQueue cancelAllOperations];
 
     // dismissModalViewControllerAnimated の呼び出しはキャンセル後のdelegateから呼ぶ
 }
@@ -158,22 +159,22 @@
 // アップロード開始
 - (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
 {
-    [UploadingProgress setProgress:0.0f];
+    [_uploadingProgress setProgress:0.0f];
     ALAssetRepresentation *rep = [asset defaultRepresentation];
-    [UploadingImage setImage:[UIImage imageWithCGImage:[rep fullScreenImage]]];
-    [UploadingCount setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
+    [_uploadingImage setImage:[UIImage imageWithCGImage:[rep fullScreenImage]]];
+    [_uploadingCount setText:[NSString stringWithFormat:@"%d / %d", [index intValue]+1, [totalCount intValue]]];
 }
 
 // アップロード中
 - (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount uploadedSize:(NSNumber *)uploadedSize totalSize:(NSNumber *)totalSize
 {
-    [UploadingProgress setProgress:[uploadedSize floatValue]/[totalSize floatValue]];
+    [_uploadingProgress setProgress:[uploadedSize floatValue]/[totalSize floatValue]];
 }
 
 // アップロード完了
 - (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount
 {
-    [UploadingProgress setProgress:1.0f];
+    [_uploadingProgress setProgress:1.0f];
     [self updateEvernoteCycle];
 }
 
@@ -202,6 +203,35 @@
 -(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark _adBannerViewDelegate
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (self.bannerIsVisible) {
+		// すでにロードされている
+	} else    {
+		// 50ドット上にずらして画面を可視にする
+        [UIView beginAnimations:@"animate_adBannerOn" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
+        self.toolBar.frame = CGRectOffset(self.toolBar.frame, 0, -_adBanner.frame.size.height);
+        [UIView commitAnimations];
+        self.bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+	if (self.bannerIsVisible)
+	{
+		// 失敗したので画面外に出す
+		[UIView beginAnimations:@"animate_adBannerOff" context:NULL];
+		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
+        self.toolBar.frame = CGRectOffset(self.toolBar.frame, 0, _adBanner.frame.size.height);
+		[UIView commitAnimations];
+		self.bannerIsVisible = NO;
+	}
 }
 
 @end

@@ -21,7 +21,6 @@
 
 @end
 
-
 @implementation ViewController
 {
     __strong MBProgressHUD *_hud;
@@ -29,6 +28,7 @@
 
 @synthesize photoCount           = _photoCount;
 @synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
+@synthesize bannerIsVisible      = _bannerIsVisible;
 
 @synthesize uploadButton    = _uploadButton;
 @synthesize photoCountInfo  = _photoCountInfo;
@@ -38,10 +38,18 @@
 // 広告バナー位置調整
 - (void)adjustAdBanner
 {
+    CGFloat posY =
+            20/*status bar*/ +
+            44/*title bar*/ +
+            self.view.frame.size.height;
+    if (_bannerIsVisible) {
+        posY -= _adBanner.frame.size.height;
+    }
+    
     [_adBanner removeFromSuperview];
     [self.navigationController.view addSubview:_adBanner];
     _adBanner.frame = CGRectMake(0,
-                                20+44+self.view.frame.size.height - _adBanner.frame.size.height,
+                                 posY,
                                 self.view.frame.size.width,
                                 _adBanner.frame.size.height);
 }
@@ -136,6 +144,7 @@
     });
 }
 
+#pragma mark - AssetsLoader delegate
 - (void)assetsCountDidFinish {
     [self adjustAdBanner];
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
@@ -151,6 +160,33 @@
         _photoCountInfo.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
         [_uploadButton setEnabled:NO];
     }
+}
+
+#pragma mark ADBannerViewDelegate
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (self.bannerIsVisible) {
+		// すでにロードされている
+	} else    {
+		// 50ドット上にずらして画面を可視にする
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
+        [UIView commitAnimations];
+        self.bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+	if (self.bannerIsVisible)
+	{
+		// 失敗したので画面外に出す
+		[UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
+		[UIView commitAnimations];
+		self.bannerIsVisible = NO;
+	}
 }
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave

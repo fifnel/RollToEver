@@ -19,5 +19,6 @@
 
 @property (assign, nonatomic, readonly) NSInteger photoCount;
 @property (assign, nonatomic) BOOL skipUpdatePhotoCount;
+@property (assign, nonatomic) BOOL bannerIsVisible;
 
 @end
