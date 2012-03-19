@@ -285,6 +285,7 @@
 		C0773F411513951E00336E0C /* GCDSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCDSingleton.h; path = RollToEver/Classes/GCDSingleton.h; sourceTree = "<group>"; };
 		C0773F4D1514A26B00336E0C /* NSString+FileExtCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FileExtCheck.h"; path = "RollToEver/Classes/NSString+FileExtCheck.h"; sourceTree = "<group>"; };
 		C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FileExtCheck.m"; path = "RollToEver/Classes/NSString+FileExtCheck.m"; sourceTree = "<group>"; };
+		C0773F511514AB6200336E0C /* RollToEver.entitlements */ = {isa = PBXFileReference; path = RollToEver.entitlements; sourceTree = "<group>"; };
 		C07A6397150A23C9008E69D2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
@@ -553,6 +554,7 @@
 		C039B10B14DF79D300F4169E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C0773F511514AB6200336E0C /* RollToEver.entitlements */,
 				C000DD8214E8E87100DDD8C8 /* id.h */,
 				C060506014FF38FF001A41B7 /* Localizable.strings */,
 				C039CDF514F68BD400948DC6 /* main.m */,
