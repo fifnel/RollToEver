@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AssetsLoader.h"
+#import "UserSettings.h"
 #import "MBProgressHUD.h"
 #import <dispatch/dispatch.h>
 
@@ -70,6 +71,12 @@
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
+    }
+    
+    // アカウント情報が設定されていなかったら設定ページへ
+    if ([UserSettings sharedInstance].evernoteUserId == nil ||
+        [UserSettings sharedInstance].evernoteUserId == @"") {
+        [self performSegueWithIdentifier:@"settings" sender:self];
     }
 }
 

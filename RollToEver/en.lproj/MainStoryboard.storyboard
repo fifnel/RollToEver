@@ -3,7 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4300" defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--View Controller - RollToEver-->
@@ -48,7 +48,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="OB2-nM-eax">
                             <connections>
-                                <segue destination="egA-0H-0ko" kind="push" id="8Wz-TO-thc"/>
+                                <segue destination="egA-0H-0ko" kind="push" identifier="settings" id="8Wz-TO-thc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,7 +183,7 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="SsR-yA-RRr" kind="push" id="vMO-iJ-fqS"/>
+                                            <segue destination="SsR-yA-RRr" kind="push" identifier="accountsetting" id="vMO-iJ-fqS"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -718,55 +718,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <image name="logo.png" width="480" height="400"/>
         <image name="uploadbutton.png" width="620" height="146"/>
     </resources>
-    <classes>
-        <class className="AboutViewControllerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewControllerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="applicationName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AccountSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginEvernote:"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NotebookTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="UploadViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
-                <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPhotoCount:"/>
-                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
