@@ -94,7 +94,7 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 
 - (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID
 {
-    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:evernoteNotebookGUID];
+    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:EVERNOTE_NOTEBOOK_GUID];
 }
 
 static NSString *PHOTO_SIZE_INDEX = @"PHOTO_SIZE_INDEX";
