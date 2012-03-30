@@ -14,12 +14,13 @@
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "ApplicationError.h"
 #import "MBProgressHUD.h"
+#import "id.h"
+
 
 @interface UploadViewController ()
 
 @property (retain, nonatomic, readwrite) NSOperationQueue *operationQueue;
 
-- (void)adjustAdBanner;
 - (void)updateEvernoteCycle;
 
 @end
@@ -35,26 +36,11 @@
 @synthesize evernoteCycleText       = _evernoteCycleText;
 @synthesize evernoteCycleProgress   = _evernoteCycleProgress;
 @synthesize toolBar                 = _toolBar;
-@synthesize adBanner                = _adBanner;
 @synthesize operationQueue          = _operationQueue;
-@synthesize bannerIsVisible         = _bannerIsVisible;
+@synthesize enableiAd               = _enableiAd;
+@synthesize iadBanner                = _adBanner;
+@synthesize admobBanner             = _admobBanner;
 
-
-// 広告バナー位置調整
-- (void)adjustAdBanner
-{
-    CGFloat posY = self.view.frame.size.height;
-    if (_bannerIsVisible) {
-        posY -= _adBanner.frame.size.height;
-    }
-
-    [_adBanner removeFromSuperview];
-    [self.view addSubview:_adBanner];
-    _adBanner.frame = CGRectMake(0,
-                                 posY,
-                                 self.view.frame.size.width,
-                                 _adBanner.frame.size.height);
-}
 
 // Evernote転送残量表示の更新
 - (void)updateEvernoteCycle
@@ -106,6 +92,25 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+    
+    // AdMob(最初表示する)
+    _admobBanner = [[GADBannerView alloc]
+                    initWithFrame:CGRectMake(0,
+                                             self.view.frame.size.height-GAD_SIZE_320x50.height,
+                                             GAD_SIZE_320x50.width,
+                                             GAD_SIZE_320x50.height)];
+    _admobBanner.adUnitID = ADMOBPUBLISHERID;
+    _admobBanner.rootViewController = self;
+    [self.view addSubview:_admobBanner];
+    [_admobBanner loadRequest:[GADRequest request]];
+    
+    // iAd(最初隠す)
+    [_adBanner removeFromSuperview];
+    [self.view addSubview:_adBanner];
+    _adBanner.frame = CGRectMake(0,
+                                 self.view.frame.size.height,
+                                 self.view.frame.size.width,
+                                 _adBanner.frame.size.height);
 }
 
 - (void)viewDidUnload
@@ -129,7 +134,6 @@
         
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
-        [self adjustAdBanner];
     }
     
     [super viewWillAppear:animated];
@@ -145,6 +149,7 @@
 {
     [_operationQueue cancelAllOperations];
 
+    // [self dismissModalViewControllerAnimated:YES];
     // dismissModalViewControllerAnimated の呼び出しはキャンセル後のdelegateから呼ぶ
 }
 
@@ -209,28 +214,29 @@
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    if (self.bannerIsVisible) {
+    if (self.enableiAd) {
 		// すでにロードされている
-	} else    {
+	} else {
 		// 50ドット上にずらして画面を可視にする
         [UIView beginAnimations:@"animate_adBannerOn" context:NULL];
         banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
-        self.toolBar.frame = CGRectOffset(self.toolBar.frame, 0, -_adBanner.frame.size.height);
+        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, GAD_SIZE_320x50.height);
         [UIView commitAnimations];
-        self.bannerIsVisible = YES;
+        
+        self.enableiAd = YES;
     }
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-	if (self.bannerIsVisible)
-	{
+    if (self.enableiAd) {
 		// 失敗したので画面外に出す
 		[UIView beginAnimations:@"animate_adBannerOff" context:NULL];
 		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
-        self.toolBar.frame = CGRectOffset(self.toolBar.frame, 0, _adBanner.frame.size.height);
+        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, -GAD_SIZE_320x50.height);
 		[UIView commitAnimations];
-		self.bannerIsVisible = NO;
+        
+        self.enableiAd = NO;
 	}
 }
 

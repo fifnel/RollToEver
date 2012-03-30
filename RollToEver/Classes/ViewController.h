@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/ADBannerView.h>
+#import "GADBannerView.h"
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController<ADBannerViewDelegate>
 
 - (IBAction)refreshPhotoCount:(id)sender;
 
@@ -19,6 +21,8 @@
 
 @property (assign, nonatomic, readonly) NSInteger photoCount;
 @property (assign, nonatomic) BOOL skipUpdatePhotoCount;
-@property (assign, nonatomic) BOOL bannerIsVisible;
+@property (assign, nonatomic) BOOL enableiAd;
+
+@property (strong, nonatomic) GADBannerView *admobBanner;
 
 @end

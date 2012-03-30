@@ -11,14 +11,13 @@
 #import "UserSettings.h"
 #import "MBProgressHUD.h"
 #import <dispatch/dispatch.h>
+#import "id.h"
 
 
 @interface ViewController()
 
 @property (assign, nonatomic, readwrite) NSInteger photoCount;
 @property (strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
-
-- (void)adjustAdBanner;
 
 @end
 
@@ -29,31 +28,12 @@
 
 @synthesize photoCount           = _photoCount;
 @synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
-@synthesize bannerIsVisible      = _bannerIsVisible;
+@synthesize enableiAd            = _enableiAd;
 
 @synthesize uploadButton    = _uploadButton;
 @synthesize photoCountInfo  = _photoCountInfo;
 @synthesize adBanner        = _adBanner;
-
-
-// 広告バナー位置調整
-- (void)adjustAdBanner
-{
-    CGFloat posY =
-            20/*status bar*/ +
-            44/*title bar*/ +
-            self.view.frame.size.height;
-    if (_bannerIsVisible) {
-        posY -= _adBanner.frame.size.height;
-    }
-    
-    [_adBanner removeFromSuperview];
-    [self.navigationController.view addSubview:_adBanner];
-    _adBanner.frame = CGRectMake(0,
-                                 posY,
-                                self.view.frame.size.width,
-                                _adBanner.frame.size.height);
-}
+@synthesize admobBanner     = _admobBanner;
 
 - (void)didReceiveMemoryWarning
 {
@@ -72,6 +52,25 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+    
+    // AdMob(最初表示する)
+    _admobBanner = [[GADBannerView alloc]
+                    initWithFrame:CGRectMake(0,
+                                             self.view.frame.size.height-44-GAD_SIZE_320x50.height,
+                                             GAD_SIZE_320x50.width,
+                                             GAD_SIZE_320x50.height)];
+    _admobBanner.adUnitID = ADMOBPUBLISHERID;
+    _admobBanner.rootViewController = self;
+    [self.view addSubview:_admobBanner];
+    [_admobBanner loadRequest:[GADRequest request]];
+    
+    // iAd(最初隠す)
+    [_adBanner removeFromSuperview];
+    [self.view addSubview:_adBanner];
+    _adBanner.frame = CGRectMake(0,
+                                 self.view.frame.size.height-44,
+                                 self.view.frame.size.width,
+                                 _adBanner.frame.size.height);
     
     // アカウント情報が設定されていなかったら設定ページへ
     if ([UserSettings sharedInstance].evernoteUserId == nil ||
@@ -108,16 +107,12 @@
             [self assetsCountDidFinish];
         }
         _skipUpdatePhotoCount = NO;
-    } else {
-        [self adjustAdBanner];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-    [_adBanner removeFromSuperview];
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -140,8 +135,6 @@
     _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 	_hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
 
-    [self adjustAdBanner];
-
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
         NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
@@ -153,11 +146,8 @@
 
 #pragma mark - AssetsLoader delegate
 - (void)assetsCountDidFinish {
-    [self adjustAdBanner];
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     _hud = nil;
-
-    [self adjustAdBanner];
 
     if (_photoCount > 0) {
         NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), _photoCount];
@@ -170,29 +160,31 @@
 }
 
 #pragma mark ADBannerViewDelegate
-
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    if (self.bannerIsVisible) {
+    if (self.enableiAd) {
 		// すでにロードされている
-	} else    {
+	} else {
 		// 50ドット上にずらして画面を可視にする
-        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        [UIView beginAnimations:@"animate_adBannerOn" context:NULL];
         banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
+        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, GAD_SIZE_320x50.height);
         [UIView commitAnimations];
-        self.bannerIsVisible = YES;
+        
+        self.enableiAd = YES;
     }
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-	if (self.bannerIsVisible)
-	{
+    if (self.enableiAd) {
 		// 失敗したので画面外に出す
-		[UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+		[UIView beginAnimations:@"animate_adBannerOff" context:NULL];
 		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
+        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, -GAD_SIZE_320x50.height);
 		[UIView commitAnimations];
-		self.bannerIsVisible = NO;
+
+        self.enableiAd = NO;
 	}
 }
 
@@ -203,5 +195,4 @@
     }
     return YES;
 }
-
 @end

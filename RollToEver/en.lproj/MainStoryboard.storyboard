@@ -105,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IgA-zH-kch">
-                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="366" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="P6Y-tD-x9o"/>
@@ -138,9 +138,9 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="adBanner" destination="VgB-aO-ceo" id="wWX-68-PTo"/>
                         <outlet property="evernoteCycleProgress" destination="GJX-f6-ehn" id="G8r-AF-jIb"/>
                         <outlet property="evernoteCycleText" destination="hHS-2E-sll" id="w3W-1L-WiK"/>
+                        <outlet property="iadBanner" destination="VgB-aO-ceo" id="kNa-hT-hEY"/>
                         <outlet property="toolBar" destination="IgA-zH-kch" id="FeI-Tb-aEh"/>
                         <outlet property="uploadingCount" destination="8DR-Qu-xmn" id="yHM-EC-2H8"/>
                         <outlet property="uploadingImage" destination="bsE-Fi-pJg" id="vCp-MW-TI4"/>
@@ -718,6 +718,55 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <image name="logo.png" width="480" height="400"/>
         <image name="uploadbutton.png" width="620" height="146"/>
     </resources>
+    <classes>
+        <class className="AboutViewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="applicationName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AccountSettingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginEvernote:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NotebookTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="UploadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
+                <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
+                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

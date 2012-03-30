@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/ADBannerView.h>
+#import "GADBannerView.h"
 
-@interface UploadViewController : UIViewController
+@interface UploadViewController : UIViewController<ADBannerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel         *uploadingCount;
 @property (strong, nonatomic) IBOutlet UIImageView     *uploadingImage;
@@ -17,9 +18,10 @@
 @property (strong, nonatomic) IBOutlet UILabel         *evernoteCycleText;
 @property (strong, nonatomic) IBOutlet UIProgressView  *evernoteCycleProgress;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (strong, nonatomic) IBOutlet ADBannerView    *adBanner;
+@property (strong, nonatomic) IBOutlet ADBannerView    *iadBanner;
 
-@property (assign, nonatomic) BOOL bannerIsVisible;
+@property (strong, nonatomic) GADBannerView *admobBanner;
+@property (assign, nonatomic) BOOL enableiAd;
 
 - (IBAction)cancel:(id)sender;
 
