@@ -13,7 +13,7 @@
 #import "NoteStore.h"
 #import "id.h"
 
-#if 0
+#ifdef FOR_DEVEL
 static NSString * const noteStoreUriBase = @"https://sandbox.evernote.com/edam/note/"; 
 #else
 static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/"; 

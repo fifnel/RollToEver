@@ -10,8 +10,9 @@
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
 #import "UserStore.h"
+#import "id.h"
 
-#if 0
+#ifdef FOR_DEVEL
 static NSString * const userStoreUri = @"https://sandbox.evernote.com/edam/user";
 #else
 static NSString * const userStoreUri = @"https://www.evernote.com/edam/user";
