@@ -134,6 +134,9 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     if (maxPixel > 0) {
         ratio = sqrtf((float)maxPixel / (float)(width*height));
     }
+    if (ratio > 1.0f) {
+        ratio = 1.0f;
+    }
     NSString *orientationStr = [metaData valueForKey:@"Orientation"];
     int orientation = [orientationStr intValue];
     if (orientation == 0) {
