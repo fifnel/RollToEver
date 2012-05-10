@@ -13,34 +13,40 @@
 #import "AssetURLStorage.h"
 #import "ApplicationError.h"
 
-
+/**
+*  写真アップローダー.
+* NSOperationを使った非同期処理
+*/
 @interface PhotoUploader : NSOperation
 
 - (id)initWithDelegate:(id)delegate;
 
 @end
 
-@interface NSObject(PhotoUploaderDelegate)
+/**
+* 写真アップローダーのdelegate.
+*/
+@interface NSObject (PhotoUploaderDelegate)
 
-// アップロードループの開始
+/// アップロードループの開始
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount;
 
-// アップロードの開始
+/// アップロードの開始
 - (void)PhotoUploaderWillUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
 
-// アップロード中
+/// アップロード中
 - (void)PhotoUploaderUploading:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount uploadedSize:(NSNumber *)uploadedSize totalSize:(NSNumber *)totalSize;
 
-// アップロード終了
+/// アップロード終了
 - (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
 
-// アップロードループ終了
+/// アップロードループ終了
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader;
 
-// エラー終了
+/// エラー終了
 - (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(ApplicationError *)error;
 
-// キャンセルされた
+/// キャンセルされた
 - (void)PhotoUploaderCanceled:(PhotoUploader *)photoUploader;
 
 @end

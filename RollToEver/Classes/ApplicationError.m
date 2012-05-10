@@ -8,13 +8,18 @@
 
 #import "ApplicationError.h"
 
+/**
+* アプリケーションエラー
+*/
 @implementation ApplicationError
 
+/// エラーコード
 @synthesize errorCode = errorCode_;
+/// エラーパラメータ
 @synthesize errorParam = errorParam_;
 
-- (id)initWithErrorCode:(NSInteger)code Param:(NSInteger)param;
-{
+/// 初期化
+- (id)initWithErrorCode:(NSInteger)code Param:(NSInteger)param; {
     self = [super init];
     if (self) {
         errorCode_ = code;
@@ -23,20 +28,20 @@
     return self;
 }
 
-- (NSInteger)errorCode
-{
+/// エラーコード取得
+- (NSInteger)errorCode {
     return errorCode_;
 }
 
-- (NSInteger)errorParam
-{
+/// エラーパラメータ取得
+- (NSInteger)errorParam {
     return errorParam_;
 }
 
-- (NSString *)errorString
-{
+/// エラーコード取得
+- (NSString *)errorString {
     NSString *key = nil;
-    
+
     switch (errorCode_) {
         case ERROR_UNKNOWN:
             key = @"ErrorUnknown";
@@ -53,14 +58,14 @@
     return NSLocalizedString(key, @"ErrorMessage");
 }
 
-- (NSString *)errorFormattedString
-{
-    NSString *formattedString = 
-        [NSString stringWithFormat:@"%@\nCode=%d\nParam=%d\n",
-         [self errorString],
-         errorCode_,
-         errorParam_];
-    
+/// エラーコード文字列の生成
+- (NSString *)errorFormattedString {
+    NSString *formattedString =
+            [NSString stringWithFormat:@"%@\nCode=%d\nParam=%d\n",
+                                       [self errorString],
+                                       errorCode_,
+                                       errorParam_];
+
     return formattedString;
 }
 
