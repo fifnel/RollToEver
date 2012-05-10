@@ -124,10 +124,10 @@
 		C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C08AA32D1524C1DA004324DA /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C08AA32C1524C1DA004324DA /* libGoogleAdMobAds.a */; };
 		C08AA3391524C1EC004324DA /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C08AA3371524C1EC004324DA /* README.txt */; };
-		C08AA33B1524C390004324DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08AA33A1524C390004324DA /* AudioToolbox.framework */; };
-		C08AA33D1524C397004324DA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08AA33C1524C397004324DA /* MediaPlayer.framework */; };
-		C08AA33F1524C3A0004324DA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08AA33E1524C3A0004324DA /* MessageUI.framework */; };
 		C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
+		C0B604AC155BFF0C003DA7F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */; };
+		C0B604AD155BFF0C003DA7F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */; };
+		C0B604AE155BFF0C003DA7F3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604AA155BFECB003DA7F3 /* MessageUI.framework */; };
 		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -311,9 +311,9 @@
 		C08AA3341524C1EC004324DA /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
 		C08AA3351524C1EC004324DA /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		C08AA3371524C1EC004324DA /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		C08AA33A1524C390004324DA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C08AA33C1524C397004324DA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C08AA33E1524C3A0004324DA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C0B604AA155BFECB003DA7F3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollToEverGHUnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BC74D314E6CCFD003B0611 /* RollToEverGHUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverGHUnitTest-Info.plist"; sourceTree = "<group>"; };
 		C0BC74D514E6CCFD003B0611 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -343,9 +343,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */,
-				C08AA33F1524C3A0004324DA /* MessageUI.framework in Frameworks */,
-				C08AA33D1524C397004324DA /* MediaPlayer.framework in Frameworks */,
-				C08AA33B1524C390004324DA /* AudioToolbox.framework in Frameworks */,
 				C07A6398150A23C9008E69D2 /* iAd.framework in Frameworks */,
 				C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */,
 				C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */,
@@ -355,6 +352,9 @@
 				C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */,
 				C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */,
 				C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */,
+				C0B604AC155BFF0C003DA7F3 /* MediaPlayer.framework in Frameworks */,
+				C0B604AD155BFF0C003DA7F3 /* AudioToolbox.framework in Frameworks */,
+				C0B604AE155BFF0C003DA7F3 /* MessageUI.framework in Frameworks */,
 				C08AA32D1524C1DA004324DA /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,17 +506,13 @@
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
-				C08AA33E1524C3A0004324DA /* MessageUI.framework */,
-				C08AA33C1524C397004324DA /* MediaPlayer.framework */,
-				C08AA33A1524C390004324DA /* AudioToolbox.framework */,
-				C0E85A0A14F52EE300B3A1B4 /* Resources */,
+				C039B10A14DF79D300F4169E /* ViewControllers */,
+				C0BC743E14E5FEE0003B0611 /* Classes */,
+				C0B604B2155C0607003DA7F3 /* Tests */,
 				C000DD6E14E8E3F500DDD8C8 /* Libraries */,
-				C039B10B14DF79D300F4169E /* Supporting Files */,
-				C039B10A14DF79D300F4169E /* RollToEverViewControllers */,
-				C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */,
-				C039B12814DF79D400F4169E /* RollToEverTests */,
-				C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */,
 				C039B10314DF79D300F4169E /* Frameworks */,
+				C039B10B14DF79D300F4169E /* Supporting Files */,
+				C0E85A0A14F52EE300B3A1B4 /* Resources */,
 				C039B10114DF79D300F4169E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -551,11 +547,14 @@
 				C07A6397150A23C9008E69D2 /* iAd.framework */,
 				C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */,
 				C039B12214DF79D400F4169E /* SenTestingKit.framework */,
+				C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */,
+				C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */,
+				C0B604AA155BFECB003DA7F3 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C039B10A14DF79D300F4169E /* RollToEverViewControllers */ = {
+		C039B10A14DF79D300F4169E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C039B11614DF79D300F4169E /* MainStoryboard.storyboard */,
@@ -574,7 +573,7 @@
 				C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */,
 				C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */,
 			);
-			name = RollToEverViewControllers;
+			name = ViewControllers;
 			path = RollToEver;
 			sourceTree = "<group>";
 		};
@@ -643,38 +642,79 @@
 			path = RollToEver/Libraries/GoogleAdMobAdsSDKiOS;
 			sourceTree = "<group>";
 		};
-		C0BC743E14E5FEE0003B0611 /* RollToEverUtilities */ = {
+		C0B604A4155BFC52003DA7F3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				C0773F411513951E00336E0C /* GCDSingleton.h */,
-				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
-				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
-				C039CE0214F68BD500948DC6 /* UserSettings.h */,
-				C039CE0314F68BD500948DC6 /* UserSettings.m */,
-				C039CDF814F68BD500948DC6 /* PhotoUploader.h */,
-				C039CDF914F68BD500948DC6 /* PhotoUploader.m */,
-				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
-				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
-				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
-				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
+				C0773F4D1514A26B00336E0C /* NSString+FileExtCheck.h */,
+				C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */,
 				C039CDE914F68BD400948DC6 /* ALAsset+Resize.h */,
 				C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		C0B604AF155C01BD003DA7F3 /* Evernote */ = {
+			isa = PBXGroup;
+			children = (
+				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
+				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
 				C039CE2A14F7B32900948DC6 /* EvernoteAuthToken.h */,
 				C039CE2B14F7B32900948DC6 /* EvernoteAuthToken.m */,
 				C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */,
 				C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */,
 				C039CE3714F7EBE900948DC6 /* EvernoteUserStoreClient.h */,
 				C039CE3814F7EBEA00948DC6 /* EvernoteUserStoreClient.m */,
-				C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */,
-				C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */,
 				C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */,
 				C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */,
+			);
+			name = Evernote;
+			sourceTree = "<group>";
+		};
+		C0B604B0155C01FC003DA7F3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
+				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
+				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
+				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
+				C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */,
+				C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		C0B604B1155C049D003DA7F3 /* RollToEver */ = {
+			isa = PBXGroup;
+			children = (
+				C0B604B0155C01FC003DA7F3 /* Assets */,
+				C039CE0214F68BD500948DC6 /* UserSettings.h */,
+				C039CE0314F68BD500948DC6 /* UserSettings.m */,
+				C039CDF814F68BD500948DC6 /* PhotoUploader.h */,
+				C039CDF914F68BD500948DC6 /* PhotoUploader.m */,
 				C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */,
 				C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */,
-				C0773F4D1514A26B00336E0C /* NSString+FileExtCheck.h */,
-				C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */,
 			);
-			name = RollToEverUtilities;
+			name = RollToEver;
+			sourceTree = "<group>";
+		};
+		C0B604B2155C0607003DA7F3 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C039B12814DF79D400F4169E /* RollToEverTests */,
+				C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		C0BC743E14E5FEE0003B0611 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C0B604B1155C049D003DA7F3 /* RollToEver */,
+				C0B604AF155C01BD003DA7F3 /* Evernote */,
+				C0B604A4155BFC52003DA7F3 /* Utilities */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
@@ -1149,6 +1189,7 @@
 		C039B13514DF79D400F4169E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
 				INFOPLIST_FILE = "RollToEver/RollToEver-Info.plist";
@@ -1157,6 +1198,7 @@
 					"\"$(SRCROOT)/RollToEver/Libraries/GoogleAdMobAdsSDKiOS\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
