@@ -36,6 +36,21 @@
     
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSString* msg = [NSString stringWithFormat:@"[URL]%@\n[schame]%@\n[Query]%@", 
+                     [url absoluteString], [url scheme], [url query]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"debug"
+                                                    message:msg
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    
+    
+    [alert show]; 
+    
+    return YES;
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
