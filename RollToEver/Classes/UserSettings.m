@@ -14,7 +14,7 @@
 
 SINGLETON_GCD(UserSettings);
 
-#pragma  mark - propertyes methods
+#pragma  mark - properties methods
 
 static NSString *VERSION = @"Version";
 - (NSString *)version
