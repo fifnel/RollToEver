@@ -62,7 +62,7 @@
     __strong ALAssetsLibrary *_assetsLibrary;
 
     /// 現在処理中のアセット
-    __strong ALAsset *_currentAsset_;
+    __strong ALAsset *_currentAsset;
 
     /// 現在処理中インデックス
     NSInteger _currentIndex;
@@ -94,7 +94,7 @@
 
     urlStorage = [[AssetURLStorage alloc] init];
     _currentIndex = 0;
-    _currentAsset_ = nil;
+    _currentAsset = nil;
     _totalCount = 0;
 
     EvernoteNoteStoreClient *noteStoreClient = nil;
@@ -128,7 +128,7 @@
                     continue;
                 }
                 _currentIndex = i;
-                _currentAsset_ = asset;
+                _currentAsset = asset;
 
                 [self PhotoUploaderWillUploadAsync:self
                                              asset:asset
@@ -147,7 +147,7 @@
                                        totalCount:[NSNumber numberWithInt:_totalCount]];
             }
         }
-        _currentAsset_ = nil;
+        _currentAsset = nil;
         [self PhotoUploaderDidFinishAsync:self];
     }
     @catch (EDAMUserException *exception) {
@@ -157,7 +157,7 @@
         } else {
             ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_EVERNOTE Param:[exception errorCode]];
             [self PhotoUploaderErrorAsync:self error:error];
-            _currentAsset_ = nil;
+            _currentAsset = nil;
         }
         return;
     }
@@ -168,7 +168,7 @@
         } else {
             ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
             [self PhotoUploaderErrorAsync:self error:error];
-            _currentAsset_ = nil;
+            _currentAsset = nil;
         }
         return;
     }
@@ -234,7 +234,7 @@
     if ([_delegate respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
         [_delegate performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)
                                    withObjects:self,
-                                               _currentAsset_,
+                        _currentAsset,
                                                [NSNumber numberWithInt:_currentIndex],
                                                [NSNumber numberWithInt:_totalCount],
                                                [NSNumber numberWithInt:totalBytesWritten],
