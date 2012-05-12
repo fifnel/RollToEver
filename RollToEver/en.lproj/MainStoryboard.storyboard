@@ -184,7 +184,9 @@
                             <tableViewSection headerTitle="Photo Size" id="j6C-uP-lJ2">
                                 <string key="footerTitle">画像サイズはiPhone4Sで撮影した
 ファイルサイズが大きめの写真から
-導き出した参考値です。</string>
+導き出した参考値です。 設定した大きさより
+対象の画像が小さい場合は
+そのままのサイズになります。</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="98n-fA-7fj" detailTextLabel="odx-lG-2gG" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Fuq-Cw-nZF">
                                         <rect key="frame" x="0.0" y="230" width="320" height="45"/>
@@ -295,7 +297,7 @@
                             <tableViewSection headerTitle="Reset" id="fGP-cQ-GNf">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="sDp-m7-znS">
-                                        <rect key="frame" x="0.0" y="513" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="570" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -314,7 +316,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gbJ-Nf-7LD">
-                                        <rect key="frame" x="0.0" y="558" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="615" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -337,7 +339,7 @@
                             <tableViewSection headerTitle="About" id="X32-k7-B46">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XYq-9i-nnS">
-                                        <rect key="frame" x="0.0" y="649" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="706" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -359,7 +361,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RWC-Nz-VHt">
-                                        <rect key="frame" x="0.0" y="694" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="751" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
