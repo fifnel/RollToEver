@@ -10,6 +10,6 @@
 
 @interface AssetsLoader (Utils)
 
-- (void)AllRegistToStorage;
+- (void)AllRegisterToStorage;
 
 @end

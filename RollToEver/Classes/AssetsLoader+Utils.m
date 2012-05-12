@@ -11,7 +11,7 @@
 
 @implementation AssetsLoader (Utils)
 
-- (void)AllRegistToStorage
+- (void)AllRegisterToStorage
 {
     AssetURLStorage *storage = [[AssetURLStorage alloc] init];
     NSArray *urls = [self EnumerateURLExcludeDuplication:NO];

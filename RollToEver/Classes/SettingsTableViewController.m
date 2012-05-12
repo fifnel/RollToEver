@@ -172,7 +172,7 @@
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                 AssetsLoader *loader = [[AssetsLoader alloc] init];
-                [loader AllRegistToStorage];
+                [loader AllRegisterToStorage];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
             }
