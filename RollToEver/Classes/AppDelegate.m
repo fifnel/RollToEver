@@ -21,8 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     // バージョンチェック
     NSString *version = [UserSettings sharedInstance].version;
     if (version == nil) {
@@ -34,6 +32,10 @@
     }
     [UserSettings sharedInstance].version = APPLICATIONVERSION;
     
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return YES;
 }
 							
