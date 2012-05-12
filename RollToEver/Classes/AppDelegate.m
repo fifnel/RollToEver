@@ -21,8 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     // バージョンチェック
     NSString *version = [UserSettings sharedInstance].version;
     if (version == nil) {
@@ -38,17 +36,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    NSString* msg = [NSString stringWithFormat:@"[URL]%@\n[schame]%@\n[Query]%@", 
-                     [url absoluteString], [url scheme], [url query]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"debug"
-                                                    message:msg
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    
-    
-    [alert show]; 
-    
     return YES;
 }
 							
