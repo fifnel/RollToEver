@@ -326,6 +326,21 @@
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C0F8BBD4155E689D00381227 /* GADCustomEventBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventBanner.h; sourceTree = "<group>"; };
+		C0F8BBD5155E689D00381227 /* GADCustomEventBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventBannerDelegate.h; sourceTree = "<group>"; };
+		C0F8BBD6155E689D00381227 /* GADCustomEventExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventExtras.h; sourceTree = "<group>"; };
+		C0F8BBD7155E689D00381227 /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitial.h; sourceTree = "<group>"; };
+		C0F8BBD8155E689D00381227 /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitialDelegate.h; sourceTree = "<group>"; };
+		C0F8BBD9155E689D00381227 /* GADCustomEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
+		C0F8BBDA155E689D00381227 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		C0F8BBDB155E689D00381227 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		C0F8BBDC155E689D00381227 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		C0F8BBDD155E689D00381227 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		C0F8BBDE155E689D00381227 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		C0F8BBDF155E689D00381227 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		C0F8BBE0155E689D00381227 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		C0F8BBE1155E689D00381227 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		C0F8BBE2155E689D00381227 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
@@ -630,6 +645,16 @@
 		C08AA32F1524C1EC004324DA /* GoogleAdMobAdsSDKiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C0F8BBD3155E689D00381227 /* Mediation */,
+				C0F8BBDA155E689D00381227 /* GADAdMobExtras.h */,
+				C0F8BBDB155E689D00381227 /* GADAdNetworkExtras.h */,
+				C0F8BBDC155E689D00381227 /* GADAdSize.h */,
+				C0F8BBDD155E689D00381227 /* GADBannerView.h */,
+				C0F8BBDE155E689D00381227 /* GADBannerViewDelegate.h */,
+				C0F8BBDF155E689D00381227 /* GADInterstitial.h */,
+				C0F8BBE0155E689D00381227 /* GADInterstitialDelegate.h */,
+				C0F8BBE1155E689D00381227 /* GADRequest.h */,
+				C0F8BBE2155E689D00381227 /* GADRequestError.h */,
 				C08AA3301524C1EC004324DA /* GADBannerView.h */,
 				C08AA3311524C1EC004324DA /* GADBannerViewDelegate.h */,
 				C08AA3321524C1EC004324DA /* GADInterstitial.h */,
@@ -776,6 +801,19 @@
 				C039CDD414F68B9E00948DC6 /* Default@2x.png */,
 			);
 			name = Splashes;
+			sourceTree = "<group>";
+		};
+		C0F8BBD3155E689D00381227 /* Mediation */ = {
+			isa = PBXGroup;
+			children = (
+				C0F8BBD4155E689D00381227 /* GADCustomEventBanner.h */,
+				C0F8BBD5155E689D00381227 /* GADCustomEventBannerDelegate.h */,
+				C0F8BBD6155E689D00381227 /* GADCustomEventExtras.h */,
+				C0F8BBD7155E689D00381227 /* GADCustomEventInterstitial.h */,
+				C0F8BBD8155E689D00381227 /* GADCustomEventInterstitialDelegate.h */,
+				C0F8BBD9155E689D00381227 /* GADCustomEventRequest.h */,
+			);
+			path = Mediation;
 			sourceTree = "<group>";
 		};
 		C0FB6C6E14F932BE00ED0F0D /* MBProgressHUD */ = {
