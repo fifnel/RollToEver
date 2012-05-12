@@ -18,10 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel         *evernoteCycleText;
 @property (strong, nonatomic) IBOutlet UIProgressView  *evernoteCycleProgress;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (strong, nonatomic) IBOutlet ADBannerView    *iadBanner;
 
 @property (strong, nonatomic) GADBannerView *admobBanner;
-@property (assign, nonatomic) BOOL enableiAd;
 
 - (IBAction)cancel:(id)sender;
 

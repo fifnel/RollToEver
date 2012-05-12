@@ -28,11 +28,9 @@
 
 @synthesize photoCount           = _photoCount;
 @synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
-@synthesize enableiAd            = _enableiAd;
 
 @synthesize uploadButton    = _uploadButton;
 @synthesize photoCountInfo  = _photoCountInfo;
-@synthesize adBanner        = _adBanner;
 @synthesize admobBanner     = _admobBanner;
 
 - (void)didReceiveMemoryWarning
@@ -64,14 +62,6 @@
     [self.view addSubview:_admobBanner];
     [_admobBanner loadRequest:[GADRequest request]];
     
-    // iAd(最初隠す)
-    [_adBanner removeFromSuperview];
-    [self.view addSubview:_adBanner];
-    _adBanner.frame = CGRectMake(0,
-                                 self.view.frame.size.height-44,
-                                 self.view.frame.size.width,
-                                 _adBanner.frame.size.height);
-    
     // アカウント情報が設定されていなかったら設定ページへ
     if ([UserSettings sharedInstance].evernoteUserId == nil ||
         [UserSettings sharedInstance].evernoteUserId == @"") {
@@ -82,7 +72,6 @@
 - (void)viewDidUnload
 {
     [self setUploadButton:nil];
-    [self setAdBanner:nil];
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
@@ -159,40 +148,4 @@
     }
 }
 
-#pragma mark ADBannerViewDelegate
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    if (self.enableiAd) {
-		// すでにロードされている
-	} else {
-		// 50ドット上にずらして画面を可視にする
-        [UIView beginAnimations:@"animate_adBannerOn" context:NULL];
-        banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
-        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, GAD_SIZE_320x50.height);
-        [UIView commitAnimations];
-        
-        self.enableiAd = YES;
-    }
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    if (self.enableiAd) {
-		// 失敗したので画面外に出す
-		[UIView beginAnimations:@"animate_adBannerOff" context:NULL];
-		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
-        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, -GAD_SIZE_320x50.height);
-		[UIView commitAnimations];
-
-        self.enableiAd = NO;
-	}
-}
-
-- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
-{
-    if (_hud == nil) {
-        self.skipUpdatePhotoCount = YES;
-    }
-    return YES;
-}
 @end

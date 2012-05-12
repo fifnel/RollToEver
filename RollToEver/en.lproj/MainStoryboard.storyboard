@@ -53,22 +53,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="adBanner" destination="ig6-Sy-NIP" id="u3G-kS-YXT"/>
                         <outlet property="photoCountInfo" destination="4FQ-SX-xWf" id="9Yf-lY-yb4"/>
                         <outlet property="uploadButton" destination="jNP-Fh-p8T" id="lhv-hE-JY8"/>
                     </connections>
                 </viewController>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ig6-Sy-NIP">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <requiredContentSizeIdentifiers>
-                        <string>ADBannerContentSizeLandscape</string>
-                        <string>ADBannerContentSizePortrait</string>
-                    </requiredContentSizeIdentifiers>
-                    <connections>
-                        <outlet property="delegate" destination="2" id="aso-u8-uA4"/>
-                    </connections>
-                </adBannerView>
             </objects>
             <point key="canvasLocation" x="1069" y="-147"/>
         </scene>
@@ -89,7 +77,7 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="blank_image.png" id="bsE-Fi-pJg">
-                                <rect key="frame" x="50" y="75" width="220" height="220"/>
+                                <rect key="frame" x="50" y="54" width="220" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" id="GJX-f6-ehn">
@@ -124,14 +112,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8DR-Qu-xmn">
-                                <rect key="frame" x="25" y="47" width="280" height="20"/>
+                                <rect key="frame" x="20" y="260" width="280" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" id="vsz-7c-Y87">
-                                <rect key="frame" x="76" y="233" width="169" height="9"/>
+                                <rect key="frame" x="50" y="286" width="220" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                         </subviews>
@@ -140,24 +128,12 @@
                     <connections>
                         <outlet property="evernoteCycleProgress" destination="GJX-f6-ehn" id="G8r-AF-jIb"/>
                         <outlet property="evernoteCycleText" destination="hHS-2E-sll" id="w3W-1L-WiK"/>
-                        <outlet property="iadBanner" destination="VgB-aO-ceo" id="kNa-hT-hEY"/>
                         <outlet property="toolBar" destination="IgA-zH-kch" id="FeI-Tb-aEh"/>
                         <outlet property="uploadingCount" destination="8DR-Qu-xmn" id="yHM-EC-2H8"/>
                         <outlet property="uploadingImage" destination="bsE-Fi-pJg" id="vCp-MW-TI4"/>
                         <outlet property="uploadingProgress" destination="vsz-7c-Y87" id="UMB-J3-VLH"/>
                     </connections>
                 </viewController>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VgB-aO-ceo">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <requiredContentSizeIdentifiers>
-                        <string>ADBannerContentSizeLandscape</string>
-                        <string>ADBannerContentSizePortrait</string>
-                    </requiredContentSizeIdentifiers>
-                    <connections>
-                        <outlet property="delegate" destination="70Y-Hc-k9U" id="FrG-gl-jIJ"/>
-                    </connections>
-                </adBannerView>
             </objects>
             <point key="canvasLocation" x="1719" y="-371"/>
         </scene>
@@ -748,7 +724,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
@@ -761,7 +736,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refreshPhotoCount:"/>
-                <relationship kind="outlet" name="adBanner" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
             </relationships>

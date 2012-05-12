@@ -17,11 +17,9 @@
 
 @property (strong, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
 @property (strong, nonatomic) IBOutlet UIButton *uploadButton;
-@property (strong, nonatomic) IBOutlet ADBannerView *adBanner;
 
 @property (assign, nonatomic, readonly) NSInteger photoCount;
 @property (assign, nonatomic) BOOL skipUpdatePhotoCount;
-@property (assign, nonatomic) BOOL enableiAd;
 
 @property (strong, nonatomic) GADBannerView *admobBanner;
 

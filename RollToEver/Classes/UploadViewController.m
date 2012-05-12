@@ -37,8 +37,6 @@
 @synthesize evernoteCycleProgress   = _evernoteCycleProgress;
 @synthesize toolBar                 = _toolBar;
 @synthesize operationQueue          = _operationQueue;
-@synthesize enableiAd               = _enableiAd;
-@synthesize iadBanner                = _adBanner;
 @synthesize admobBanner             = _admobBanner;
 
 
@@ -103,14 +101,6 @@
     _admobBanner.rootViewController = self;
     [self.view addSubview:_admobBanner];
     [_admobBanner loadRequest:[GADRequest request]];
-    
-    // iAd(最初隠す)
-    [_adBanner removeFromSuperview];
-    [self.view addSubview:_adBanner];
-    _adBanner.frame = CGRectMake(0,
-                                 self.view.frame.size.height,
-                                 self.view.frame.size.width,
-                                 _adBanner.frame.size.height);
 }
 
 - (void)viewDidUnload
@@ -208,36 +198,6 @@
 -(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self dismissModalViewControllerAnimated:YES];
-}
-
-#pragma mark _adBannerViewDelegate
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    if (self.enableiAd) {
-		// すでにロードされている
-	} else {
-		// 50ドット上にずらして画面を可視にする
-        [UIView beginAnimations:@"animate_adBannerOn" context:NULL];
-        banner.frame = CGRectOffset(banner.frame, 0, -_adBanner.frame.size.height);
-        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, GAD_SIZE_320x50.height);
-        [UIView commitAnimations];
-        
-        self.enableiAd = YES;
-    }
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    if (self.enableiAd) {
-		// 失敗したので画面外に出す
-		[UIView beginAnimations:@"animate_adBannerOff" context:NULL];
-		banner.frame = CGRectOffset(banner.frame, 0, _adBanner.frame.size.height);
-        self.admobBanner.frame = CGRectOffset(self.admobBanner.frame, 0, -GAD_SIZE_320x50.height);
-		[UIView commitAnimations];
-        
-        self.enableiAd = NO;
-	}
 }
 
 @end
