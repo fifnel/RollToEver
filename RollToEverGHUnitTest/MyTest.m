@@ -40,7 +40,7 @@
     GHTestLog(@"I can log to the GHUnit test console: %@", string1);
     
     // Assert string1 is not NULL, with no custom error description
-    GHAssertNotNULL(string1, nil);
+    GHAssertNotNULL((__bridge void*)string1, nil);
     
     // Assert equal objects, add custom error description
     NSString *string2 = @"a string";

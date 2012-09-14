@@ -35,13 +35,6 @@
 @synthesize managedObjectModel = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
 
-- (void)dealloc {
-  [managedObjectContext_ release];
-  [managedObjectModel_ release];
-  [persistentStoreCoordinator_ release];
-  [super dealloc];
-}
-
 
 - (void)saveContext
 {
