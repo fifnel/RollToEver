@@ -114,6 +114,7 @@
 		C0773F4F1514A26C00336E0C /* NSString+FileExtCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */; };
 		C0773F501514A26C00336E0C /* NSString+FileExtCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */; };
 		C07A6398150A23C9008E69D2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07A6397150A23C9008E69D2 /* iAd.framework */; };
+		C07EE23016033AE1000EFA19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE22F16033AE1000EFA19 /* Default-568h@2x.png */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -293,6 +294,7 @@
 		C0773F4E1514A26B00336E0C /* NSString+FileExtCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FileExtCheck.m"; path = "RollToEver/Classes/NSString+FileExtCheck.m"; sourceTree = "<group>"; };
 		C0773F511514AB6200336E0C /* RollToEver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RollToEver.entitlements; sourceTree = "<group>"; };
 		C07A6397150A23C9008E69D2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		C07EE22F16033AE1000EFA19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "RollToEver/Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 			children = (
 				C039CDD314F68B9E00948DC6 /* Default.png */,
 				C039CDD414F68B9E00948DC6 /* Default@2x.png */,
+				C07EE22F16033AE1000EFA19 /* Default-568h@2x.png */,
 			);
 			name = Splashes;
 			sourceTree = "<group>";
@@ -889,7 +892,7 @@
 		C039B0F714DF79D300F4169E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = fifnel;
 			};
 			buildConfigurationList = C039B0FA14DF79D300F4169E /* Build configuration list for PBXProject "RollToEver" */;
@@ -934,6 +937,7 @@
 				C00AA8691506FE5900415DA7 /* Icon@2x.png in Resources */,
 				C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */,
 				C08AA3391524C1EC004324DA /* README.txt in Resources */,
+				C07EE23016033AE1000EFA19 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

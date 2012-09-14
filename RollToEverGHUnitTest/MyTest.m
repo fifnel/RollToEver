@@ -29,8 +29,8 @@
 }
 
 - (void)tearDown {
-    [assetUrlStorage_ release];
-    [urls_ release];
+    assetUrlStorage_ = nil;
+    urls_ = nil;
 }
 
 - (void)testStrings {
