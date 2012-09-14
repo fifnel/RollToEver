@@ -31,7 +31,6 @@
 
 @synthesize uploadButton    = _uploadButton;
 @synthesize photoCountInfo  = _photoCountInfo;
-@synthesize admobBanner     = _admobBanner;
 
 - (void)didReceiveMemoryWarning
 {
@@ -50,17 +49,6 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
-    
-    // AdMob(最初表示する)
-    _admobBanner = [[GADBannerView alloc]
-                    initWithFrame:CGRectMake(0,
-                                             self.view.frame.size.height-44-GAD_SIZE_320x50.height,
-                                             GAD_SIZE_320x50.width,
-                                             GAD_SIZE_320x50.height)];
-    _admobBanner.adUnitID = ADMOBPUBLISHERID;
-    _admobBanner.rootViewController = self;
-    [self.view addSubview:_admobBanner];
-    [_admobBanner loadRequest:[GADRequest request]];
     
     // アカウント情報が設定されていなかったら設定ページへ
     if ([UserSettings sharedInstance].evernoteUserId == nil ||

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/ADBannerView.h>
-#import "GADBannerView.h"
 
 @interface UploadViewController : UIViewController<ADBannerViewDelegate>
 
@@ -18,8 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel         *evernoteCycleText;
 @property (strong, nonatomic) IBOutlet UIProgressView  *evernoteCycleProgress;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
-
-@property (strong, nonatomic) GADBannerView *admobBanner;
 
 - (IBAction)cancel:(id)sender;
 

@@ -37,7 +37,6 @@
 @synthesize evernoteCycleProgress   = _evernoteCycleProgress;
 @synthesize toolBar                 = _toolBar;
 @synthesize operationQueue          = _operationQueue;
-@synthesize admobBanner             = _admobBanner;
 
 
 // Evernote転送残量表示の更新
@@ -90,17 +89,6 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
-    
-    // AdMob(最初表示する)
-    _admobBanner = [[GADBannerView alloc]
-                    initWithFrame:CGRectMake(0,
-                                             self.view.frame.size.height-GAD_SIZE_320x50.height,
-                                             GAD_SIZE_320x50.width,
-                                             GAD_SIZE_320x50.height)];
-    _admobBanner.adUnitID = ADMOBPUBLISHERID;
-    _admobBanner.rootViewController = self;
-    [self.view addSubview:_admobBanner];
-    [_admobBanner loadRequest:[GADRequest request]];
 }
 
 - (void)viewDidUnload
