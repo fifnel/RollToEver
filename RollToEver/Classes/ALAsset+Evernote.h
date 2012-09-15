@@ -21,7 +21,4 @@
 // ファイル名の取得
 - (NSString *)getFileName;
 
-// 拡張子の取得　ドットは含まず
-- (NSString *)getFileExtension;
-
 @end

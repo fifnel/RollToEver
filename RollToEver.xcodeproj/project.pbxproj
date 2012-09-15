@@ -162,9 +162,6 @@
 		C07EE315160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
 		C07EE316160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
 		C07EE317160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
-		C07EE31B16042656000EFA19 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C07EE31816042656000EFA19 /* LICENSE.txt */; };
-		C07EE31C16042656000EFA19 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C07EE31816042656000EFA19 /* LICENSE.txt */; };
-		C07EE31D16042656000EFA19 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C07EE31816042656000EFA19 /* LICENSE.txt */; };
 		C07EE31E16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE31F16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE32016042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
@@ -368,7 +365,6 @@
 		C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataMD5Additions.m; path = RollToEver/Libraries/Evernote/NSDataMD5Additions.m; sourceTree = "<group>"; };
 		C07EE310160425F3000EFA19 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "RollToEver/Libraries/Evernote/NSString+MD5.h"; sourceTree = "<group>"; };
 		C07EE311160425F3000EFA19 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "RollToEver/Libraries/Evernote/NSString+MD5.m"; sourceTree = "<group>"; };
-		C07EE31816042656000EFA19 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = RollToEver/Libraries/Evernote/LICENSE.txt; sourceTree = "<group>"; };
 		C07EE31916042656000EFA19 /* MD5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MD5.c; path = RollToEver/Libraries/Evernote/MD5.c; sourceTree = "<group>"; };
 		C07EE31A16042656000EFA19 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5.h; path = RollToEver/Libraries/Evernote/MD5.h; sourceTree = "<group>"; };
 		C07EE3211604288C000EFA19 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = RollToEver/Libraries/Evernote/id.h; sourceTree = "<group>"; };
@@ -476,23 +472,14 @@
 			path = RollToEver;
 			sourceTree = "<group>";
 		};
-		C000DD6E14E8E3F500DDD8C8 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				C07EE30C160425CF000EFA19 /* Evernote */,
-				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
+				C07EE3211604288C000EFA19 /* id.h */,
 				C07EE25B160403B5000EFA19 /* Submodules */,
 				C039B10A14DF79D300F4169E /* ViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* Classes */,
 				C0B604B2155C0607003DA7F3 /* Tests */,
-				C000DD6E14E8E3F500DDD8C8 /* Libraries */,
 				C039B10314DF79D300F4169E /* Frameworks */,
 				C039B10B14DF79D300F4169E /* Supporting Files */,
 				C0E85A0A14F52EE300B3A1B4 /* Resources */,
@@ -764,8 +751,6 @@
 		C07EE30C160425CF000EFA19 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
-				C07EE3211604288C000EFA19 /* id.h */,
-				C07EE31816042656000EFA19 /* LICENSE.txt */,
 				C07EE31916042656000EFA19 /* MD5.c */,
 				C07EE31A16042656000EFA19 /* MD5.h */,
 				C07EE30E160425F3000EFA19 /* NSDataMD5Additions.h */,
@@ -789,10 +774,16 @@
 			isa = PBXGroup;
 			children = (
 				C0773F411513951E00336E0C /* GCDSingleton.h */,
+				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
+				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
+				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
+				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
 				C039CDE914F68BD400948DC6 /* ALAsset+Resize.h */,
 				C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */,
 				C07EE33216049679000EFA19 /* ALAsset+Evernote.h */,
 				C07EE33316049679000EFA19 /* ALAsset+Evernote.m */,
+				C07EE30C160425CF000EFA19 /* Evernote */,
+				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -800,14 +791,10 @@
 		C0B604AF155C01BD003DA7F3 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
-				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
-				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
 				C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */,
 				C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */,
 				C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */,
 				C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */,
-				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
-				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
 			);
 			name = Evernote;
 			sourceTree = "<group>";
@@ -1027,7 +1014,6 @@
 				C07EE2501603FA30000EFA19 /* Default.png in Resources */,
 				C07EE2511603FA30000EFA19 /* Default-568h@2x.png in Resources */,
 				C07EE2521603FA30000EFA19 /* Default@2x.png in Resources */,
-				C07EE31B16042656000EFA19 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,7 +1022,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */,
-				C07EE31C16042656000EFA19 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,7 +1037,6 @@
 				C07EE2531603FA4E000EFA19 /* Default.png in Resources */,
 				C07EE2541603FA61000EFA19 /* Default-568h@2x.png in Resources */,
 				C07EE2551603FA69000EFA19 /* Default@2x.png in Resources */,
-				C07EE31D16042656000EFA19 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

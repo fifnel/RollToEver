@@ -7,8 +7,8 @@
 //
 
 #import "RollToEverTests.h"
-#import "EvernoteAuthToken.h"
 #import "UserSettings.h"
+#import "AssetsLoader.h"
 #import "id.h"
 
 @implementation RollToEverTests
@@ -25,6 +25,15 @@
     // Tear-down code here.
     
     [super tearDown];
+}
+
+- (void)testALAssetEvernote
+{
+    AssetsLoader *al = [[AssetsLoader alloc] init];
+    NSArray *assetList = [al EnumerateURLExcludeDuplication:NO];
+    for(NSString *url in assetList) {
+        NSLog(url);
+    }
 }
 
 - (void)testAuthToken

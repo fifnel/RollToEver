@@ -12,7 +12,6 @@
 #import "NSDataMD5Additions.h"
 #import "TTransportException.h"
 
-
 @implementation ALAsset (Evernote)
 
 
@@ -27,10 +26,10 @@
     NSDate *date = [self valueForProperty:ALAssetPropertyDate];
     
     NSString *fileType = nil;
-    NSString *fileExt = [self getFileExtension];
-    if ([fileExt isEqualToString:@"jpg"]) {
+    NSString *fileExt = [[self getFileName] pathExtension];
+    if ([fileExt caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
         fileType = @"jpeg";
-    } else if ([fileExt isEqualToString:@".png"]) {
+    } else if ([fileExt caseInsensitiveCompare:@".png"] == NSOrderedSame) {
         fileType = @"png";
     } else {
         // 未対応フォーマット
@@ -85,10 +84,10 @@
     CGImageRef fullResolution = [rep fullResolutionImage];
 
     CFStringRef fileType = nil;
-    NSString *fileExt = [self getFileExtension];
-    if ([fileExt isEqualToString:@"jpg"]) {
+    NSString *fileExt = [[self getFileName] pathExtension];
+    if ([fileExt caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
         fileType = kUTTypeJPEG;
-    } else if ([fileExt isEqualToString:@"png"]) {
+    } else if ([fileExt caseInsensitiveCompare:@"png"] == NSOrderedSame) {
         fileType = kUTTypePNG;
     } else {
         // 未対応フォーマット
@@ -139,16 +138,6 @@
 {
     ALAssetRepresentation *rep = [self defaultRepresentation];
     return [rep filename];
-}
-
-- (NSString *)getFileExtension
-{
-    NSArray *separatedString = [[self getFileName] componentsSeparatedByString:@"."];
-    if ([separatedString count] <= 0) {
-        return @"";
-    } else {
-        return separatedString[[separatedString count] - 1];
-    }
 }
 
 + (UIImage *)scaleAndRotateImage:(CGImageRef)imageRef orientation:(int)orientation resizeRatio:(float)resizeRatio
