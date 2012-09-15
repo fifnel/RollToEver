@@ -8,7 +8,6 @@
 
 #import "UploadViewController.h"
 #import "PhotoUploader.h"
-#import "EvernoteUserStoreClient.h"
 #import "EvernoteNoteStoreClient.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "ApplicationError.h"
