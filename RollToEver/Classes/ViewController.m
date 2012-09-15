@@ -11,6 +11,7 @@
 #import "UserSettings.h"
 #import "MBProgressHUD.h"
 #import <dispatch/dispatch.h>
+#import "EvernoteSDK.h"
 #import "id.h"
 
 
@@ -49,12 +50,25 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
-    
-    // アカウント情報が設定されていなかったら設定ページへ
-    if ([UserSettings sharedInstance].evernoteUserId == nil ||
-        [UserSettings sharedInstance].evernoteUserId == @"") {
-        [self performSegueWithIdentifier:@"settings" sender:self];
-    }
+
+    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
+    EvernoteSession *session = [EvernoteSession sharedSession];
+    [session authenticateWithViewController:self completionHandler:^(NSError *error) {
+        if (error || !session.isAuthenticated) {
+            NSLog(@"authentication failed.");
+            UIAlertView *alert = [
+                                  [UIAlertView alloc]
+                                  initWithTitle : @"Alert!"
+                                  message : @"authentication failed."
+                                  delegate : nil
+                                  cancelButtonTitle : @"OK"
+                                  otherButtonTitles : nil
+                                  ];
+            [alert show];
+        } else {
+            NSLog(@"authentication succeeded.");
+        }
+    }];
 }
 
 - (void)viewDidUnload

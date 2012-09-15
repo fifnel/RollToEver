@@ -12,19 +12,22 @@
 #import "id.h"
 #import "EvernoteUserStoreClient.h"
 #import "EvernoteNoteStoreClient.h"
-#import <GHUnitIOS/GHUnit.h> 
+#import <GHUnitIOS/GHUnit.h>
+#import "SettingsTableViewController.h"
 
 @implementation EvernoteAuthTokenTest
 
 - (void)setUpClass {
+    /*
     NSString *userid = [UserSettings sharedInstance].evernoteUserId;
     NSString *password = [UserSettings sharedInstance].evernotePassword;
 
     [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
                                                  Password:password
-                                               ClientName:APPLICATIONNAME
-                                              ConsumerKey:CONSUMERKEY
-                                           ConsumerSecret:CONSUMERSECRET];
+                                               ClientName:APPLICATION_NAME
+                                              ConsumerKey:CONSUMER_KEY
+                                           ConsumerSecret:CONSUMER_SECRET];
+     */
 }
 
 - (void)tearDownClass {

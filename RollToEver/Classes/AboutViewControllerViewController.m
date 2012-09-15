@@ -28,8 +28,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [_applicationName setText:APPLICATIONNAME];
-    NSString *ver = [NSString stringWithFormat:@"Ver. %@", APPLICATIONVERSION];
+    [_applicationName setText:APPLICATION_NAME];
+    NSString *ver = [NSString stringWithFormat:@"Ver. %@", APPLICATION_VERSION];
     [_applicationVersion setText:ver];
 }
 

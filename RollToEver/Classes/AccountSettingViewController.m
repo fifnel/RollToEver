@@ -89,9 +89,9 @@
     @try {
         [[EvernoteAuthToken sharedInstance] connectWithUserId:_userId.text
                                                      Password:_password.text
-                                                   ClientName:APPLICATIONNAME
-                                                  ConsumerKey:CONSUMERKEY
-                                               ConsumerSecret:CONSUMERSECRET];
+                                                   ClientName:APPLICATION_NAME
+                                                  ConsumerKey:CONSUMER_KEY
+                                               ConsumerSecret:CONSUMER_SECRET];
         
         [[UserSettings sharedInstance] setEvernoteUserId:_userId.text];
         [[UserSettings sharedInstance] setEvernotePassword:_password.text];
@@ -121,6 +121,29 @@
     @finally {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }
+}
+
+- (IBAction)runTest:(id)sender {
+    NSLog(@"runTest");
+    
+    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
+    EvernoteSession *session = [EvernoteSession sharedSession];
+    [session authenticateWithViewController:self completionHandler:^(NSError *error) {
+        if (error || !session.isAuthenticated) {
+            NSLog(@"authentication failed.");
+            // authentication failed :(
+            // show an alert, etc
+            // ...
+//            [session logout];
+        } else {
+            // authentication succeeded :)
+            // do something now that we're authenticated
+            // ...
+            NSLog(@"authentication succeeded.");
+//            [session ]
+        }
+    }];
+    [session logout];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

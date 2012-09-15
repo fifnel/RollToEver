@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *password;
 
 - (IBAction)loginEvernote:(id)sender;
+- (IBAction)runTest:(id)sender;
 
 @end

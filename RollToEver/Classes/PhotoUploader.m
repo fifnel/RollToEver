@@ -104,7 +104,7 @@
         NSString *password = [UserSettings sharedInstance].evernotePassword;
         [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
                                                      Password:password
-                                                   ClientName:APPLICATIONNAME ConsumerKey:CONSUMERKEY ConsumerSecret:CONSUMERSECRET];
+                                                   ClientName:APPLICATION_NAME ConsumerKey:CONSUMER_KEY ConsumerSecret:CONSUMER_SECRET];
 
         AssetsLoader *loader = [[AssetsLoader alloc] init];
         NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];

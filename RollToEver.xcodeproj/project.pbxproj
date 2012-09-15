@@ -232,7 +232,6 @@
 
 /* Begin PBXFileReference section */
 		C000DD6F14E8E43900DDD8C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		C000DD8214E8E87100DDD8C8 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = Libraries/Evernote/id.h; sourceTree = "<group>"; };
 		C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C00AA8661506FE4D00415DA7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C00AA8681506FE5900415DA7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -376,7 +375,6 @@
 		C07EE2B2160422E0000EFA19 /* EvernoteSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteSession.m; path = "Submodules/evernote-sdk-ios/evernote-sdk-ios/EvernoteSession.m"; sourceTree = "<group>"; };
 		C07EE2B3160422E0000EFA19 /* EvernoteUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EvernoteUserStore.h; path = "Submodules/evernote-sdk-ios/evernote-sdk-ios/EvernoteUserStore.h"; sourceTree = "<group>"; };
 		C07EE2B4160422E0000EFA19 /* EvernoteUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteUserStore.m; path = "Submodules/evernote-sdk-ios/evernote-sdk-ios/EvernoteUserStore.m"; sourceTree = "<group>"; };
-		C07EE30D160425F3000EFA19 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = RollToEver/Libraries/Evernote/id.h; sourceTree = "<group>"; };
 		C07EE30E160425F3000EFA19 /* NSDataMD5Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDataMD5Additions.h; path = RollToEver/Libraries/Evernote/NSDataMD5Additions.h; sourceTree = "<group>"; };
 		C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataMD5Additions.m; path = RollToEver/Libraries/Evernote/NSDataMD5Additions.m; sourceTree = "<group>"; };
 		C07EE310160425F3000EFA19 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "RollToEver/Libraries/Evernote/NSString+MD5.h"; sourceTree = "<group>"; };
@@ -384,6 +382,7 @@
 		C07EE31816042656000EFA19 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = RollToEver/Libraries/Evernote/LICENSE.txt; sourceTree = "<group>"; };
 		C07EE31916042656000EFA19 /* MD5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MD5.c; path = RollToEver/Libraries/Evernote/MD5.c; sourceTree = "<group>"; };
 		C07EE31A16042656000EFA19 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5.h; path = RollToEver/Libraries/Evernote/MD5.h; sourceTree = "<group>"; };
+		C07EE3211604288C000EFA19 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = RollToEver/Libraries/Evernote/id.h; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -572,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				C0773F511514AB6200336E0C /* RollToEver.entitlements */,
-				C000DD8214E8E87100DDD8C8 /* id.h */,
 				C060506014FF38FF001A41B7 /* Localizable.strings */,
 				C039CDF514F68BD400948DC6 /* main.m */,
 				C039B10C14DF79D300F4169E /* RollToEver-Info.plist */,
@@ -775,10 +773,10 @@
 		C07EE30C160425CF000EFA19 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
+				C07EE3211604288C000EFA19 /* id.h */,
 				C07EE31816042656000EFA19 /* LICENSE.txt */,
 				C07EE31916042656000EFA19 /* MD5.c */,
 				C07EE31A16042656000EFA19 /* MD5.h */,
-				C07EE30D160425F3000EFA19 /* id.h */,
 				C07EE30E160425F3000EFA19 /* NSDataMD5Additions.h */,
 				C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */,
 				C07EE310160425F3000EFA19 /* NSString+MD5.h */,

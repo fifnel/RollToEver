@@ -47,8 +47,8 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
         // UserAgent作成
         UIDevice *device = [UIDevice currentDevice];
         NSString *userAgent = [NSString stringWithFormat:@"%@/%@;%@(%@)/%@",
-                               APPLICATIONNAME,
-                               APPLICATIONVERSION,
+                               APPLICATION_NAME,
+                               APPLICATION_VERSION,
                                [device systemName],
                                [device model],
                                [device systemVersion]]; 

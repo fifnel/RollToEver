@@ -25,12 +25,12 @@
     NSString *version = [UserSettings sharedInstance].version;
     if (version == nil) {
         // 初回起動
-    } else if ([[UserSettings sharedInstance].version compare:APPLICATIONVERSION] != NSOrderedSame) {
+    } else if ([[UserSettings sharedInstance].version compare:APPLICATION_VERSION] != NSOrderedSame) {
         // バージョンアップの検出
     } else {
         // 前回と同じバージョン
     }
-    [UserSettings sharedInstance].version = APPLICATIONVERSION;
+    [UserSettings sharedInstance].version = APPLICATION_VERSION;
     
     return YES;
 }
