@@ -12,7 +12,8 @@
 
 @implementation EvernoteSession (Login)
 
-- (BOOL)loginWithViewController:(UIViewController *)viewController {
+- (BOOL)loginWithViewController:(UIViewController *)viewController
+{
     [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
 
     __block BOOL isSucceeded = NO;

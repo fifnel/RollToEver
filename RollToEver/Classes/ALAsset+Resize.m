@@ -10,7 +10,7 @@
 
 #import <ImageIO/imageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "NSString+FileExtCheck.h"
+//#import "NSString+FileExtCheck.h"
 
 UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float resizeRatio);
 
@@ -105,6 +105,7 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
 // maxPixelが0以下の場合はオリジナルサイズのまま返す
 - (NSData *)resizedImageData:(NSInteger)maxPixel
 {
+    /*
     static NSString *META_ROOT_ORIENTATION = @"Orientation";
     static NSString *META_TIFF             = @"{TIFF}";
     static NSString *META_TIFF_ORIENTATION = @"Orientation";
@@ -112,7 +113,6 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     ALAssetRepresentation *rep = [self defaultRepresentation];
     NSMutableDictionary *metaData = [[NSMutableDictionary alloc] initWithDictionary:[rep metadata]];
     CGImageRef fullResolution = [rep fullResolutionImage];
-    
     CFStringRef fileType = nil;
     NSString *filename = [rep filename];
     if ([filename hasExtension:@".jpg"]) {
@@ -123,6 +123,7 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
         // 未対応フォーマット
         return nil;
     }
+    
 
     // リサイズ・回転処理
     size_t width  = CGImageGetWidth(fullResolution);
@@ -159,8 +160,10 @@ UIImage *scaleAndRotateImage(CGImageRef originalImage, int orientation, float re
     CGImageDestinationAddImage(destination, [resizedImage CGImage], (__bridge CFDictionaryRef)metaData);
     CGImageDestinationFinalize(destination);
     CFRelease(destination);
-    
+
     return resizedImageData;
+     */
+    return nil;
 }
 
 @end

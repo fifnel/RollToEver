@@ -10,14 +10,11 @@
 
 #import "ALAsset+Resize.h"
 #import "NSDataMD5Additions.h"
-#import "TTransportException.h"
-#import <AssetsLibrary/ALAssetRepresentation.h>
-#import "NSString+FileExtCheck.h"
+//#import "NSString+FileExtCheck.h"
 
 @implementation EvernoteNoteStoreClient (ALAsset)
 
-- (void)createNoteFromAsset:(ALAsset *)asset PhotoSize:(NSInteger)photoSize NotebookGUID:(NSString *)notebookGUID
-{
+- (void)createNoteFromAsset:(ALAsset *)asset PhotoSize:(NSInteger)photoSize NotebookGUID:(NSString *)notebookGUID {
     /*
      NSLog(@"date=%@ type=%@ url=%@",
      [asset valueForProperty:ALAssetPropertyDate],
@@ -25,11 +22,11 @@
      [asset valueForProperty:ALAssetPropertyURLs]
      );
      */
-
+/*
     // ノートのタイトルのフォーマット用
     NSDateFormatter *titleDateFormatter = [[NSDateFormatter alloc] init];
     [titleDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
+
     // Rowデータを取得して実際のアップロード処理に投げる
     ALAssetRepresentation *rep = [asset defaultRepresentation];
     NSData *data = [asset resizedImageData:photoSize];
@@ -51,20 +48,20 @@
     EDAMNote *note = [[EDAMNote alloc] init];
     note.title = [titleDateFormatter stringFromDate:date];
     note.notebookGuid = notebookGUID;
-    
+
     // Calculating the md5
     NSString *hash = [[[data md5] description] stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash substringWithRange:NSMakeRange(1, [hash length] - 2)];
-    
+
     // 1) create the data EDAMData using the hash, the size and the data of the image
-    EDAMData *imageData = [[EDAMData alloc] initWithBodyHash:[hash dataUsingEncoding: NSASCIIStringEncoding] size:[data length] body:data];
-    
+    EDAMData *imageData = [[EDAMData alloc] initWithBodyHash:[hash dataUsingEncoding:NSASCIIStringEncoding] size:[data length] body:data];
+
     // 2) Create an EDAMResourceAttributes object with other important attributes of the file
     EDAMResourceAttributes *imageAttributes = [[EDAMResourceAttributes alloc] init];
     [imageAttributes setFileName:filename];
 
     // 3) create an EDAMResource the hold the mime, the data and the attributes
-    EDAMResource *imageResource  = [[EDAMResource alloc] init];
+    EDAMResource *imageResource = [[EDAMResource alloc] init];
     [imageResource setMime:[NSString stringWithFormat:@"image/%@", fileType]];
     [imageResource setData:imageData];
     [imageResource setAttributes:imageAttributes];
@@ -78,8 +75,8 @@
     // Adding the content & resources to the note
     [note setContent:ENML];
     [note setResources:resources];
-    [note setCreated:[date timeIntervalSince1970]*1000];
-
+    [note setCreated:[date timeIntervalSince1970] * 1000];
+*/
     // 送信
     // FIXME:コンパイル通らないのでとりあえずコメントアウト
 //    [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];

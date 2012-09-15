@@ -40,7 +40,7 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
     self = [super init];
     if (self) {
  /*       // URL作成
-        [[EvernoteSession sharedSession] userStore] getPublicUserInfo:<#(NSString *)#>
+        [[EvernoteSession sharedSession] userStore] getPublicUserInfo:(NSString *)
         NSString *shardId = [EvernoteAuthToken sharedInstance].shardId;
         NSString *urlString = [NSString stringWithFormat:@"%@%@", noteStoreUriBase, shardId];
         NSURL *url = [[NSURL alloc] initWithString:urlString];
