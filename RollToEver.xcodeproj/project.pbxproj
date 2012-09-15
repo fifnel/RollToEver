@@ -32,8 +32,6 @@
 		C039CDE214F68B9E00948DC6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD714F68B9E00948DC6 /* Icon-Small.png */; };
 		C039CDE314F68B9E00948DC6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD814F68B9E00948DC6 /* Icon-Small@2x.png */; };
 		C039CDE614F68B9E00948DC6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = C039CDDB14F68B9E00948DC6 /* iTunesArtwork */; };
-		C039CE0814F68BD500948DC6 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */; };
-		C039CE0914F68BD500948DC6 /* ALAsset+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */; };
 		C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
 		C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
 		C039CE1014F68BD500948DC6 /* AssetsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF214F68BD400948DC6 /* AssetsLoader.m */; };
@@ -250,8 +248,6 @@
 		C039CDD714F68B9E00948DC6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "RollToEver/Resources/Icon-Small.png"; sourceTree = "<group>"; };
 		C039CDD814F68B9E00948DC6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "RollToEver/Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		C039CDDB14F68B9E00948DC6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = RollToEver/Resources/iTunesArtwork; sourceTree = "<group>"; };
-		C039CDE914F68BD400948DC6 /* ALAsset+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAsset+Resize.h"; path = "RollToEver/Classes/ALAsset+Resize.h"; sourceTree = "<group>"; };
-		C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAsset+Resize.m"; path = "RollToEver/Classes/ALAsset+Resize.m"; sourceTree = "<group>"; };
 		C039CDED14F68BD400948DC6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		C039CDEE14F68BD400948DC6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		C039CDF114F68BD400948DC6 /* AssetsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsLoader.h; path = RollToEver/Classes/AssetsLoader.h; sourceTree = "<group>"; };
@@ -778,8 +774,6 @@
 				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
 				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
 				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
-				C039CDE914F68BD400948DC6 /* ALAsset+Resize.h */,
-				C039CDEA14F68BD400948DC6 /* ALAsset+Resize.m */,
 				C07EE33216049679000EFA19 /* ALAsset+Evernote.h */,
 				C07EE33316049679000EFA19 /* ALAsset+Evernote.m */,
 				C07EE30C160425CF000EFA19 /* Evernote */,
@@ -1067,7 +1061,6 @@
 				C07EE26C1604227C000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */,
 				C039CE1414F68BD500948DC6 /* main.m in Sources */,
-				C039CE0814F68BD500948DC6 /* ALAsset+Resize.m in Sources */,
 				C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */,
 				C039CE1014F68BD500948DC6 /* AssetsLoader.m in Sources */,
 				C039CE1214F68BD500948DC6 /* AssetURLStorage.m in Sources */,
@@ -1176,7 +1169,6 @@
 				C0BC74D814E6CCFD003B0611 /* main.m in Sources */,
 				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
-				C039CE0914F68BD500948DC6 /* ALAsset+Resize.m in Sources */,
 				C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */,
 				C039CE1114F68BD500948DC6 /* AssetsLoader.m in Sources */,
 				C039CE1314F68BD500948DC6 /* AssetURLStorage.m in Sources */,

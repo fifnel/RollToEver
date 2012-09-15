@@ -8,7 +8,7 @@
 
 #import "EvernoteNoteStoreClient+ALAsset.h"
 
-#import "ALAsset+Resize.h"
+//#import "ALAsset+Resize.h"
 #import "NSDataMD5Additions.h"
 //#import "NSString+FileExtCheck.h"
 
