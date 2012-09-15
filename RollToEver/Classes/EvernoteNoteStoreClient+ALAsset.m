@@ -8,7 +8,6 @@
 
 #import "EvernoteNoteStoreClient+ALAsset.h"
 
-#import "EvernoteAuthToken.h"
 #import "ALAsset+Resize.h"
 #import "NSDataMD5Additions.h"
 #import "TTransportException.h"
@@ -82,7 +81,8 @@
     [note setCreated:[date timeIntervalSince1970]*1000];
 
     // 送信
-    [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];
+    // FIXME:コンパイル通らないのでとりあえずコメントアウト
+//    [self.noteStoreClient createNote:[EvernoteAuthToken sharedInstance].authToken :note];
 }
 
 @end

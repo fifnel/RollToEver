@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "EvernoteAuthToken.h"
 #import "UserSettings.h"
 #import "id.h"
 #import <CoreData/CoreData.h>

@@ -9,7 +9,6 @@
 #import "PhotoUploader.h"
 #import "UserSettings.h"
 #import "AssetsLoader.h"
-#import "EvernoteAuthToken.h"
 #import "NSObject+InvocationUtils.h"
 #import "EvernoteNoteStoreClient+ALAsset.h"
 #import "id.h"
@@ -100,12 +99,6 @@
     EvernoteNoteStoreClient *noteStoreClient = nil;
 
     @try {
-        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
-        NSString *password = [UserSettings sharedInstance].evernotePassword;
-        [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                     Password:password
-                                                   ClientName:APPLICATION_NAME ConsumerKey:CONSUMER_KEY ConsumerSecret:CONSUMER_SECRET];
-
         AssetsLoader *loader = [[AssetsLoader alloc] init];
         NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
         if (urlList == nil) {

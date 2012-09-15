@@ -7,10 +7,10 @@
 //
 
 #import "EvernoteNoteStoreClient.h"
-#import "EvernoteAuthToken.h"
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
 #import "EvernoteNoteStore.h"
+#import "EvernoteSDK.h"
 #import "id.h"
 
 #ifdef FOR_DEVEL
@@ -39,7 +39,8 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
 {
     self = [super init];
     if (self) {
-        // URL作成
+ /*       // URL作成
+        [[EvernoteSession sharedSession] userStore] getPublicUserInfo:<#(NSString *)#>
         NSString *shardId = [EvernoteAuthToken sharedInstance].shardId;
         NSString *urlString = [NSString stringWithFormat:@"%@%@", noteStoreUriBase, shardId];
         NSURL *url = [[NSURL alloc] initWithString:urlString];
@@ -58,6 +59,7 @@ static NSString * const noteStoreUriBase = @"https://www.evernote.com/edam/note/
         httpClient.delegate = delegate;
         TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:httpClient];
         _noteStoreClient = [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
+  */
     }
     
     return self;
