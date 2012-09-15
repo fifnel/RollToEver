@@ -56,6 +56,9 @@
 		C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */; };
 		C039CE3514F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */; };
 		C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */; };
+		C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; };
+		C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
 		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
@@ -163,9 +166,9 @@
 		C07EE31E16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE31F16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE32016042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
-		C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
+		C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
-		C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
+		C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
@@ -273,6 +276,8 @@
 		C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteAuthTokenTest.m; sourceTree = "<group>"; };
 		C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EvernoteNoteStoreClient.h; path = RollToEver/Classes/EvernoteNoteStoreClient.h; sourceTree = "<group>"; };
 		C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteNoteStoreClient.m; path = RollToEver/Classes/EvernoteNoteStoreClient.m; sourceTree = "<group>"; };
+		C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+ProgressableClient.h"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.h"; sourceTree = "<group>"; };
+		C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+ProgressableClient.m"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.m"; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
 		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
 		C060505F14FF38FF001A41B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -774,6 +779,8 @@
 				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
 				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
 				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
+				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
+				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C07EE33216049679000EFA19 /* ALAsset+Evernote.h */,
 				C07EE33316049679000EFA19 /* ALAsset+Evernote.m */,
 				C07EE30C160425CF000EFA19 /* Evernote */,
@@ -1108,6 +1115,7 @@
 				C07EE31E16042656000EFA19 /* MD5.c in Sources */,
 				C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
 				C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
+				C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1161,7 @@
 				C07EE31F16042656000EFA19 /* MD5.c in Sources */,
 				C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
 				C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
+				C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,6 +1223,7 @@
 				C07EE32016042656000EFA19 /* MD5.c in Sources */,
 				C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
 				C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
+				C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
