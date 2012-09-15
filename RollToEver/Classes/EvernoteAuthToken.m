@@ -11,9 +11,8 @@
 #import "EvernoteUserStoreClient.h"
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
-#import "UserStore.h"
-#import "NoteStore.h"
-#import "Errors.h"
+#import "EvernoteUserStore.h"
+#import "EvernoteNoteStore.h"
 #import "TTransportException.h"
 #import "GCDSingleton.h"
 

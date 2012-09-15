@@ -9,7 +9,7 @@
 #import "EvernoteUserStoreClient.h"
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
-#import "UserStore.h"
+#import "EvernoteUserStore.h"
 #import "id.h"
 
 #ifdef FOR_DEVEL

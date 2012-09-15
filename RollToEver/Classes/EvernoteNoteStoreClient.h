@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NoteStore.h"
+#import "EvernoteNoteStore.h"
 
 @interface EvernoteNoteStoreClient : NSObject
 

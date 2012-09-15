@@ -10,7 +10,7 @@
 #import "EvernoteAuthToken.h"
 #import "THTTPAsyncClient.h"
 #import "TBinaryProtocol.h"
-#import "NoteStore.h"
+#import "EvernoteNoteStore.h"
 #import "id.h"
 
 #ifdef FOR_DEVEL
