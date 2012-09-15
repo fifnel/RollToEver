@@ -121,6 +121,8 @@
 		C07EE2531603FA4E000EFA19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE24D1603FA30000EFA19 /* Default.png */; };
 		C07EE2541603FA61000EFA19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE24E1603FA30000EFA19 /* Default-568h@2x.png */; };
 		C07EE2551603FA69000EFA19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE24F1603FA30000EFA19 /* Default@2x.png */; };
+		C07EE260160420BD000EFA19 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE25F160420BD000EFA19 /* MBProgressHUD.m */; };
+		C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE25F160420BD000EFA19 /* MBProgressHUD.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -152,9 +154,6 @@
 		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
-		C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
-		C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */; };
 		C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
 		C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
 		C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
@@ -299,6 +298,8 @@
 		C07EE24D1603FA30000EFA19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C07EE24E1603FA30000EFA19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C07EE24F1603FA30000EFA19 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C07EE25E160420BD000EFA19 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Submodules/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		C07EE25F160420BD000EFA19 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Submodules/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -330,8 +331,6 @@
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
 		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
 		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
-		C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteNoteStoreClient+ALAsset.h"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.h"; sourceTree = "<group>"; };
 		C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteNoteStoreClient+ALAsset.m"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -404,7 +403,6 @@
 		C000DD6E14E8E3F500DDD8C8 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C0FB6C6E14F932BE00ED0F0D /* MBProgressHUD */,
 				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
 				C000DD7414E8E87100DDD8C8 /* Evernote */,
 				C000DD6D14E8E3E500DDD8C8 /* PDKeyChain */,
@@ -503,6 +501,7 @@
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
+				C07EE25B160403B5000EFA19 /* Submodules */,
 				C039B10A14DF79D300F4169E /* ViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* Classes */,
 				C0B604B2155C0607003DA7F3 /* Tests */,
@@ -613,6 +612,23 @@
 				C039B12B14DF79D400F4169E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C07EE25B160403B5000EFA19 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				C07EE25D16041BBF000EFA19 /* MBProgressHUD */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		C07EE25D16041BBF000EFA19 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C07EE25E160420BD000EFA19 /* MBProgressHUD.h */,
+				C07EE25F160420BD000EFA19 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
@@ -759,16 +775,6 @@
 				C07EE24F1603FA30000EFA19 /* Default@2x.png */,
 			);
 			name = Splashes;
-			sourceTree = "<group>";
-		};
-		C0FB6C6E14F932BE00ED0F0D /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				C0FB6C6F14F932BE00ED0F0D /* MBProgressHUD.h */,
-				C0FB6C7014F932BE00ED0F0D /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			path = RollToEver/Libraries/MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -969,8 +975,8 @@
 				C000DDB614E8E87100DDD8C8 /* TTransportException.m in Sources */,
 				C000DDB714E8E87100DDD8C8 /* TSharedProcessorFactory.m in Sources */,
 				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
-				C0FB6C7214F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 				C0773F4F1514A26C00336E0C /* NSString+FileExtCheck.m in Sources */,
+				C07EE260160420BD000EFA19 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,7 +990,6 @@
 				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
 				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 				C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
-				C0FB6C7314F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 				C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,6 +999,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C000DDD814EAB6DA00DDD8C8 /* MD5.c in Sources */,
+				C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */,
 				C000DDC614EAB6A100DDD8C8 /* EDAMLimits.m in Sources */,
 				C000DDC714EAB6A100DDD8C8 /* Errors.m in Sources */,
 				C000DDC814EAB6A100DDD8C8 /* NoteStore.m in Sources */,
@@ -1036,7 +1042,6 @@
 				C039CE3A14F7EBEA00948DC6 /* EvernoteUserStoreClient.m in Sources */,
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C07EE2461603F839000EFA19 /* ApplicationError.m in Sources */,
-				C0FB6C7414F932BE00ED0F0D /* MBProgressHUD.m in Sources */,
 				C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 				C0773F501514A26C00336E0C /* NSString+FileExtCheck.m in Sources */,
 			);
