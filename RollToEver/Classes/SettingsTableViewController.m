@@ -15,9 +15,9 @@
 #import "AssetsLoader+Utils.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
-#import "id.h"
+#import "EvernoteSession+Login.h"
 
-@interface SettingsTableViewController()
+@interface SettingsTableViewController ()
 
 - (void)setParentSkipUpdatePhotoCount:(BOOL)flag;
 
@@ -29,8 +29,7 @@
 @synthesize evernoteAccountCell = _evernoteAccountCell;
 @synthesize notebookNameCell = _notebookNameCell;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -38,20 +37,18 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if ([[EvernoteSession sharedSession] isAuthenticated]) {
         self.evernoteLinkCell.textLabel.text = @"Logout";
     } else {
@@ -59,8 +56,7 @@
     }
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     _notebookNameCell = nil;
     _evernoteAccountCell = nil;
     [self setEvernoteLinkCell:nil];
@@ -69,86 +65,64 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     NSString *evernoteAccount = [UserSettings sharedInstance].evernoteUserId;
     NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
-    
+
     if (evernoteAccount) {
         [[_evernoteAccountCell textLabel] setText:evernoteAccount];
     }
     if (notebookName) {
         [[_notebookNameCell textLabel] setText:notebookName];
     }
-    
+
     NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
     UITableViewCell *photoSizeCell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:photoSizeIndex inSection:2]];
     [photoSizeCell setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     [self setParentSkipUpdatePhotoCount:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = [indexPath row];
     NSInteger section = [indexPath section];
     NSLog(@"row=%d selection=%d", row, section);
-    
+
     switch (section) {
         case 0: { // Evernoteログイン・ログアウト
             if ([[EvernoteSession sharedSession] isAuthenticated]) {
                 self.evernoteLinkCell.textLabel.text = @"Login";
                 [[EvernoteSession sharedSession] logout];
             } else {
-                [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
-                EvernoteSession *session = [EvernoteSession sharedSession];
-                [session authenticateWithViewController:self completionHandler:^(NSError *error) {
-                    if (error || !session.isAuthenticated) {
-                        NSLog(@"authentication failed.");
-                        UIAlertView *alert = [
-                                              [UIAlertView alloc]
-                                              initWithTitle : @"Alert!"
-                                              message : @"authentication failed."
-                                              delegate : nil
-                                              cancelButtonTitle : @"OK"
-                                              otherButtonTitles : nil
-                                              ];
-                        [alert show];
-                    } else {
-                        NSLog(@"authentication succeeded.");
-                        self.evernoteLinkCell.textLabel.text = @"Logout";
-                    }
-                }];
+                if ([[EvernoteSession sharedSession] loginWithViewController:self]) {
+                    self.evernoteLinkCell.textLabel.text = @"Logout";
+                }
             }
             break;
         }
         case 2: { // 画像サイズ
-            for (NSInteger i=0; i<4; i++) {
+            for (NSInteger i = 0; i < 4; i++) {
                 NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:section];
                 [[tableView cellForRowAtIndexPath:ip] setAccessoryType:UITableViewCellAccessoryNone];
             }
@@ -159,29 +133,25 @@
         case 3: { // リセット
             switch (row) {
                 case 0: { // 全登録
-                    UIActionSheet *actionSheet =
-                        [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingViewAllRegistTitle",
-                                                                               @"All Regists Title for SettingView")
-                                                    delegate:self
-                                           cancelButtonTitle:NSLocalizedString(@"Cancel",
-                                                                               @"Cancel")
-                                      destructiveButtonTitle:NSLocalizedString(@"SettingViewAllRegistDoIt",
-                                                                               @"All Regists Operation for SettingView")
-                                           otherButtonTitles:nil];
+                    UIActionSheet *actionSheet;
+                    actionSheet = [[UIActionSheet alloc]
+                            initWithTitle:NSLocalizedString(@"SettingViewAllRegistTitle", @"All Regists Title for SettingView")
+                                 delegate:self
+                        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                   destructiveButtonTitle:NSLocalizedString(@"SettingViewAllRegistDoIt", @"All Regists Operation for SettingView")
+                        otherButtonTitles:nil];
                     [actionSheet setTag:0];
                     [actionSheet showInView:self.navigationController.view];
                     break;
                 }
                 case 1: { // 全削除
-                    UIActionSheet *actionSheet =
-                    [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingViewClearHistoryTitle",
-                                                                           @"Clear History Title for SettingView")
-                                                    delegate:self
-                                       cancelButtonTitle:NSLocalizedString(@"Cancel",
-                                                                           @"Cancel")
-                                  destructiveButtonTitle:NSLocalizedString(@"SettingViewClearHistoryDoIt",
-                                                                           @"Clear History Operation for SettingView")
-                                           otherButtonTitles:nil];
+                    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                            initWithTitle:NSLocalizedString(@"SettingViewClearHistoryTitle",@"Clear History Title for SettingView")
+                                 delegate:self
+                        cancelButtonTitle:NSLocalizedString(@"Cancel",
+                                    @"Cancel")
+                   destructiveButtonTitle:NSLocalizedString(@"SettingViewClearHistoryDoIt", @"Clear History Operation for SettingView")
+                        otherButtonTitles:nil];
                     [actionSheet setTag:1];
                     [actionSheet showInView:self.navigationController.view];
                     break;
@@ -195,8 +165,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch ([actionSheet tag]) {
         case 0: { // 全登録
             if (buttonIndex == 0) {
@@ -224,9 +193,8 @@
     }
 }
 
-- (void)setParentSkipUpdatePhotoCount:(BOOL)flag
-{
-    NSInteger parentIndex = [self.navigationController.viewControllers count]-2;
+- (void)setParentSkipUpdatePhotoCount:(BOOL)flag {
+    NSInteger parentIndex = [self.navigationController.viewControllers count] - 2;
     ViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
     parentViewController.skipUpdatePhotoCount = flag;
 }

@@ -8,71 +8,48 @@
 
 #import "ViewController.h"
 #import "AssetsLoader.h"
-#import "UserSettings.h"
 #import "MBProgressHUD.h"
-#import <dispatch/dispatch.h>
 #import "EvernoteSDK.h"
-#import "id.h"
+#import "EvernoteSession+Login.h"
 
 
-@interface ViewController()
+@interface ViewController ()
 
-@property (assign, nonatomic, readwrite) NSInteger photoCount;
-@property (strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
+@property(assign, nonatomic, readwrite) NSInteger photoCount;
+@property(strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
 @end
 
-@implementation ViewController
-{
+@implementation ViewController {
     __strong MBProgressHUD *_hud;
 }
 
-@synthesize photoCount           = _photoCount;
+@synthesize photoCount = _photoCount;
 @synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
 
-@synthesize uploadButton    = _uploadButton;
-@synthesize photoCountInfo  = _photoCountInfo;
+@synthesize uploadButton = _uploadButton;
+@synthesize photoCountInfo = _photoCountInfo;
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     _skipUpdatePhotoCount = NO;
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
 
-    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    [session authenticateWithViewController:self completionHandler:^(NSError *error) {
-        if (error || !session.isAuthenticated) {
-            NSLog(@"authentication failed.");
-            UIAlertView *alert = [
-                                  [UIAlertView alloc]
-                                  initWithTitle : @"Alert!"
-                                  message : @"authentication failed."
-                                  delegate : nil
-                                  cancelButtonTitle : @"OK"
-                                  otherButtonTitles : nil
-                                  ];
-            [alert show];
-        } else {
-            NSLog(@"authentication succeeded.");
-        }
-    }];
+    [[EvernoteSession sharedSession] loginWithViewController:self];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setUploadButton:nil];
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
@@ -81,13 +58,11 @@
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
     if (!_hud) {
@@ -101,18 +76,15 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -121,16 +93,15 @@
     [self updatePhotoCount];
 }
 
-- (void)updatePhotoCount
-{
+- (void)updatePhotoCount {
     _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-	_hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
+    _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
         NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
         _photoCount = [assets count];
-        
+
         [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
     });
 }
