@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableViewCell *evernoteAccountCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *notebookNameCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *evernoteLinkCell;
 
 @end

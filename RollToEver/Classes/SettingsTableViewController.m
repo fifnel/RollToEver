@@ -14,6 +14,8 @@
 #import "AssetURLStorage.h"
 #import "AssetsLoader+Utils.h"
 #import "MBProgressHUD.h"
+#import "EvernoteSDK.h"
+#import "id.h"
 
 @interface SettingsTableViewController()
 
@@ -49,11 +51,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // アカウント情報が設定されていなかったら設定ページへ
-    if ([UserSettings sharedInstance].evernoteUserId == nil ||
-        [UserSettings sharedInstance].evernoteUserId == @"") {
-        [self performSegueWithIdentifier:@"accountsetting" sender:self];
+    
+    if ([[EvernoteSession sharedSession] isAuthenticated]) {
+        self.evernoteLinkCell.textLabel.text = @"Logout";
+    } else {
+        self.evernoteLinkCell.textLabel.text = @"Login";
     }
 }
 
@@ -61,6 +63,7 @@
 {
     _notebookNameCell = nil;
     _evernoteAccountCell = nil;
+    [self setEvernoteLinkCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -117,6 +120,33 @@
     NSLog(@"row=%d selection=%d", row, section);
     
     switch (section) {
+        case 0: { // Evernoteログイン・ログアウト
+            if ([[EvernoteSession sharedSession] isAuthenticated]) {
+                self.evernoteLinkCell.textLabel.text = @"Login";
+                [[EvernoteSession sharedSession] logout];
+            } else {
+                [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
+                EvernoteSession *session = [EvernoteSession sharedSession];
+                [session authenticateWithViewController:self completionHandler:^(NSError *error) {
+                    if (error || !session.isAuthenticated) {
+                        NSLog(@"authentication failed.");
+                        UIAlertView *alert = [
+                                              [UIAlertView alloc]
+                                              initWithTitle : @"Alert!"
+                                              message : @"authentication failed."
+                                              delegate : nil
+                                              cancelButtonTitle : @"OK"
+                                              otherButtonTitles : nil
+                                              ];
+                        [alert show];
+                    } else {
+                        NSLog(@"authentication succeeded.");
+                        self.evernoteLinkCell.textLabel.text = @"Logout";
+                    }
+                }];
+            }
+            break;
+        }
         case 2: { // 画像サイズ
             for (NSInteger i=0; i<4; i++) {
                 NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:section];
