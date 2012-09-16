@@ -1,26 +1,26 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/06.
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "AssetsLoader.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
 
 
-@interface ViewController ()
+@interface MainViewController ()
 
 @property(assign, nonatomic, readwrite) NSInteger photoCount;
 @property(strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
 @end
 
-@implementation ViewController {
+@implementation MainViewController {
     __strong MBProgressHUD *_hud;
 }
 

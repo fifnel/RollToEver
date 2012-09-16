@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/06.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <iAd/ADBannerView.h>
 
-@interface ViewController : UIViewController<ADBannerViewDelegate>
+@interface MainViewController : UIViewController<ADBannerViewDelegate>
 
 - (IBAction)refreshPhotoCount:(id)sender;
 

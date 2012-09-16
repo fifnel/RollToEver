@@ -8,7 +8,7 @@
 
 #import "SettingsTableViewController.h"
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
 #import "UserSettings.h"
 #import "AssetURLStorage.h"
@@ -187,7 +187,7 @@
 
 - (void)setParentSkipUpdatePhotoCount:(BOOL)flag {
     NSInteger parentIndex = [self.navigationController.viewControllers count] - 2;
-    ViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
+    MainViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
     parentViewController.skipUpdatePhotoCount = flag;
 }
 

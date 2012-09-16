@@ -49,8 +49,8 @@
 		C039CE1F14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */; };
 		C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0314F68BD500948DC6 /* UserSettings.m */; };
 		C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0314F68BD500948DC6 /* UserSettings.m */; };
-		C039CE2414F68BD500948DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* ViewController.m */; };
-		C039CE2514F68BD500948DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* ViewController.m */; };
+		C039CE2414F68BD500948DC6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* MainViewController.m */; };
+		C039CE2514F68BD500948DC6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* MainViewController.m */; };
 		C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */; };
@@ -264,8 +264,8 @@
 		C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THTTPAsyncClient.m; path = RollToEver/Classes/THTTPAsyncClient.m; sourceTree = "<group>"; };
 		C039CE0214F68BD500948DC6 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSettings.h; path = RollToEver/Classes/UserSettings.h; sourceTree = "<group>"; };
 		C039CE0314F68BD500948DC6 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSettings.m; path = RollToEver/Classes/UserSettings.m; sourceTree = "<group>"; };
-		C039CE0414F68BD500948DC6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Classes/ViewController.h; sourceTree = "<group>"; };
-		C039CE0514F68BD500948DC6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Classes/ViewController.m; sourceTree = "<group>"; };
+		C039CE0414F68BD500948DC6 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		C039CE0514F68BD500948DC6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		C039CE2614F6911700948DC6 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadViewController.h; path = Classes/UploadViewController.h; sourceTree = "<group>"; };
 		C039CE2714F6911700948DC6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadViewController.m; path = Classes/UploadViewController.m; sourceTree = "<group>"; };
 		C039CE3014F7E2B000948DC6 /* EvernoteAuthTokenTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteAuthTokenTest.h; sourceTree = "<group>"; };
@@ -525,8 +525,8 @@
 				C039B11614DF79D300F4169E /* MainStoryboard.storyboard */,
 				C039CDED14F68BD400948DC6 /* AppDelegate.h */,
 				C039CDEE14F68BD400948DC6 /* AppDelegate.m */,
-				C039CE0414F68BD500948DC6 /* ViewController.h */,
-				C039CE0514F68BD500948DC6 /* ViewController.m */,
+				C039CE0414F68BD500948DC6 /* MainViewController.h */,
+				C039CE0514F68BD500948DC6 /* MainViewController.m */,
 				C039CE2614F6911700948DC6 /* UploadViewController.h */,
 				C039CE2714F6911700948DC6 /* UploadViewController.m */,
 				C039CDFC14F68BD500948DC6 /* SettingsTableViewController.h */,
@@ -1060,7 +1060,7 @@
 				C039CE1C14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,
 				C039CE1E14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */,
 				C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */,
-				C039CE2414F68BD500948DC6 /* ViewController.m in Sources */,
+				C039CE2414F68BD500948DC6 /* MainViewController.m in Sources */,
 				C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */,
 				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */,
@@ -1168,7 +1168,7 @@
 				C039CE1D14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,
 				C039CE1F14F68BD500948DC6 /* THTTPAsyncClient.m in Sources */,
 				C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */,
-				C039CE2514F68BD500948DC6 /* ViewController.m in Sources */,
+				C039CE2514F68BD500948DC6 /* MainViewController.m in Sources */,
 				C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */,
 				C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */,
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,

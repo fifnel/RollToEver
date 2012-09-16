@@ -6,10 +6,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller - RollToEver-->
+        <!--Main View Controller - RollToEver-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -673,13 +673,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="testModeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="NotebookTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
         </class>
         <class className="SettingsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="evernoteLinkCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
             </relationships>
@@ -697,15 +705,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPhotoCount:"/>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="testModeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
