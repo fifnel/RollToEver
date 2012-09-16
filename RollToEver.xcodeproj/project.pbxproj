@@ -785,13 +785,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		C0B604AF155C01BD003DA7F3 /* Evernote */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Evernote;
-			sourceTree = "<group>";
-		};
 		C0B604B0155C01FC003DA7F3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,7 +825,6 @@
 			isa = PBXGroup;
 			children = (
 				C0B604B1155C049D003DA7F3 /* RollToEver */,
-				C0B604AF155C01BD003DA7F3 /* Evernote */,
 				C0B604A4155BFC52003DA7F3 /* Utilities */,
 			);
 			name = Classes;
