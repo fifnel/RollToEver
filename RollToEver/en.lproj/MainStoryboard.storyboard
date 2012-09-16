@@ -430,7 +430,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="4Mt-kI-SaD"/>
                     <connections>
-                        <outlet property="evernoteAccountCell" destination="PXN-7P-w0b" id="VQK-fB-TbI"/>
                         <outlet property="evernoteLinkCell" destination="PXN-7P-w0b" id="Tc9-2m-iiF"/>
                         <outlet property="notebookNameCell" destination="kJV-Mk-oZ2" id="ksq-mT-eJj"/>
                     </connections>
@@ -666,6 +665,50 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <image name="logo.png" width="480" height="400"/>
         <image name="uploadbutton.png" width="620" height="146"/>
     </resources>
+    <classes>
+        <class className="AboutViewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="applicationName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NotebookTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="evernoteLinkCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TestViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestViewController.h"/>
+        </class>
+        <class className="UploadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="testModeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

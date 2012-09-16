@@ -26,9 +26,6 @@
 
 @implementation SettingsTableViewController
 
-@synthesize evernoteAccountCell = _evernoteAccountCell;
-@synthesize notebookNameCell = _notebookNameCell;
-
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -57,8 +54,7 @@
 }
 
 - (void)viewDidUnload {
-    _notebookNameCell = nil;
-    _evernoteAccountCell = nil;
+    [self setNotebookNameCell:nil];
     [self setEvernoteLinkCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -68,12 +64,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    NSString *evernoteAccount = [UserSettings sharedInstance].evernoteUserId;
     NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
 
-    if (evernoteAccount) {
-        [[_evernoteAccountCell textLabel] setText:evernoteAccount];
-    }
     if (notebookName) {
         [[_notebookNameCell textLabel] setText:notebookName];
     }
