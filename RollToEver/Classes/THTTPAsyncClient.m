@@ -9,17 +9,14 @@
 #import "THTTPAsyncClient.h"
 #import "TTransportException.h"
 
-@implementation THTTPAsyncClient
-{
-    BOOL  _completed;
+@implementation THTTPAsyncClient {
+    BOOL _completed;
 
-    __strong NSURLConnection   *_urlConnection;
-    __strong NSMutableData     *_responseData;
-    __strong NSURLResponse     *_response;
-    __strong NSError           *_requestError;
+    __strong NSURLConnection *_urlConnection;
+    __strong NSMutableData *_responseData;
+    __strong NSURLResponse *_response;
+    __strong NSError *_requestError;
 }
-
-@synthesize delegate = _delegate;
 
 // 送受信をキャンセルする
 - (void)cancel
@@ -32,8 +29,8 @@
 // リクエストをして結果を受信する（ブロックする）
 - (void)flush
 {
-    [mRequest setHTTPBody: mRequestData]; // not sure if it copies the data
-    
+    [mRequest setHTTPBody:mRequestData]; // not sure if it copies the data
+
     _completed = NO;
     _responseData = [[NSMutableData alloc] init];
     _response = nil;
@@ -43,29 +40,29 @@
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
     _urlConnection = nil;
-    
-    [mRequestData setLength: 0];
-    
+
+    [mRequestData setLength:0];
+
     if (_responseData == nil) {
-        @throw [TTransportException exceptionWithName: @"TTransportException"
-                                               reason: @"Could not make HTTP request"
-                                                error: _requestError];
+        @throw [TTransportException exceptionWithName:@"TTransportException"
+                                               reason:@"Could not make HTTP request"
+                                                error:_requestError];
     }
-    if (![_response isKindOfClass: [NSHTTPURLResponse class]]) {
-        @throw [TTransportException exceptionWithName: @"TTransportException"
-                                               reason: [NSString stringWithFormat: @"Unexpected NSURLResponse type: %@",
-                                                        NSStringFromClass([_response class])]];
+    if (![_response isKindOfClass:[NSHTTPURLResponse class]]) {
+        @throw [TTransportException exceptionWithName:@"TTransportException"
+                                               reason:[NSString stringWithFormat:@"Unexpected NSURLResponse type: %@",
+                                                                                 NSStringFromClass([_response class])]];
     }
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)_response;
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) _response;
     if ([httpResponse statusCode] != 200) {
-        @throw [TTransportException exceptionWithName: @"TTransportException"
-                                               reason: [NSString stringWithFormat: @"Bad response from HTTP server: %d",
-                                                        [httpResponse statusCode]]];
+        @throw [TTransportException exceptionWithName:@"TTransportException"
+                                               reason:[NSString stringWithFormat:@"Bad response from HTTP server: %d",
+                                                                                 [httpResponse statusCode]]];
     }
 
     mResponseData = _responseData;
     mResponseDataOffset = 0;
-} 
+}
 
 #pragma mark - NSURLConnection delegate
 
@@ -96,7 +93,7 @@
     if ([_delegate respondsToSelector:@selector(connection:client:didReceiveResponse:)]) {
         [_delegate connection:connection client:self didReceiveResponse:response];
     }
-    
+
 }
 
 // データ受信後

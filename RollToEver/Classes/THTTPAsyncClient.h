@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "THTTPClient.h"
 
-@interface THTTPAsyncClient : THTTPClient<NSURLConnectionDelegate>
+@interface THTTPAsyncClient : THTTPClient <NSURLConnectionDelegate>
 
-@property(weak, nonatomic) id delegate;
+@property(weak, nonatomic, readwrite) id delegate;
 
 - (void)cancel;
 
 @end
 
 
-@interface NSObject(THTTPAsyncClientDelegate)
+@interface NSObject (THTTPAsyncClientDelegate)
 
 // リクエスト送信前
 - (NSURLRequest *)connection:(NSURLConnection *)connection
@@ -30,7 +30,7 @@
 - (void)connection:(NSURLConnection *)connection
             client:(THTTPAsyncClient *)client
    didSendBodyData:(NSInteger)bytesWritten
- totalBytesWritten:(NSInteger)totalBytesWritten
+        totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 
 // レスポンス受信後
