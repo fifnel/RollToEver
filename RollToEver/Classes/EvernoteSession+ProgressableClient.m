@@ -29,7 +29,7 @@
 
 - (EDAMNoteStoreClient *)noteStoreWithDelegate:(id)delegate
 {
-    NSURL *url = [NSURL URLWithString:[self userStoreUrl]];
+    NSURL *url = [NSURL URLWithString:[self noteStoreUrl]];
     THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:[self getUserAgent] timeout:15000] autorelease];
     httpClient.delegate = delegate;
     TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
