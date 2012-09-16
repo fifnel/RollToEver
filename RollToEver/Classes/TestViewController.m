@@ -8,6 +8,8 @@
 
 #import "TestViewController.h"
 #import "EvernoteSDK.h"
+#import "ALAsset+Evernote.h"
+#import "AssetsLoader.h"
 
 @interface TestViewController ()
 
@@ -70,7 +72,10 @@
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"EvernoteSendTest";
+            cell.textLabel.text = @"testSendEvernote";
+            break;
+        case 1:
+            cell.textLabel.text = @"testSendPhotoToEvernote";
             break;
         default:
             cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
@@ -90,7 +95,9 @@
         case 0:
             [self testSendEvernote];
             break;
-            
+        case 1:
+            [self testSendPhotoToEvernote];
+            break;
         default:{
             UIAlertView *alert = [
                                   [UIAlertView alloc]
@@ -125,5 +132,42 @@
     
     NSLog(@"Note was saved.");
 }
+
+- (void)testSendPhotoToEvernote
+{
+    AssetsLoader *al = [[AssetsLoader alloc] init];
+    NSArray *urlList = [al EnumerateURLExcludeDuplication:NO];
+    if ([urlList count] <= 0) {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"Alert!"
+                              message : @"Photo not exist"
+                              delegate : self
+                              cancelButtonTitle : @"Cancel"
+                              otherButtonTitles : @"OK", @"aaa", nil
+                              ];
+        [alert show];
+    }
+    NSString *url = urlList[0];
+    ALAsset *asset = [al loadAssetURLString:url];
+    EDAMNote *note = [asset createEDAMNote:nil photoSize:0];
+//    note.title = @"note.title";
+//    note.content = @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note>note.content2</en-note>";
+    
+    EvernoteNoteStore *noteStore = [EvernoteNoteStore noteStore];
+    
+    @try {
+        [noteStore createNote:note success:^(EDAMNote *note) {} failure:^(NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }
+    @catch (EDAMUserException *e) {
+        return;
+    }
+    
+    NSLog(@"Note was saved.");
+}
+
+
 
 @end
