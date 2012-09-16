@@ -28,18 +28,6 @@
 /// 初回起動フラグ設定
 - (void)setIsFirstTime:(NSString *)isFirstTime;
 
-/// EvernoteユーザーID取得
-- (NSString *)evernoteUserId;
-
-/// EvernoteユーザーID設定
-- (void)setEvernoteUserId:(NSString *)evernoteUserId;
-
-/// Evernoteパスワード取得
-- (NSString *)evernotePassword;
-
-/// Evernoteパスワード設定
-- (void)setEvernotePassword:(NSString *)evernotePassword;
-
 /// Evernoteノートブック名取得
 - (NSString *)evernoteNotebookName;
 

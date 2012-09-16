@@ -9,9 +9,7 @@
 #import "NotebookTableViewController.h"
 #import "SettingsTableViewController.h"
 #import "UserSettings.h"
-#import "EvernoteAuthToken.h"
-#import "EvernoteNoteStoreClient.h"
-#import "id.h"
+#import "EvernoteSDK.h"
 #import "MBProgressHUD.h"
 
 @implementation NotebookTableViewController
@@ -69,28 +67,14 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Loading", @"Now Loading");
     
-    @try {
-        // Evernoteにログインしてなかったらとりあえずログイン
-        if ([EvernoteAuthToken sharedInstance].authToken == nil) {
-            NSString *userid = [UserSettings sharedInstance].evernoteUserId;
-            NSString *password = [UserSettings sharedInstance].evernotePassword;
-            [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                         Password:password
-                                                       ClientName:APPLICATION_NAME
-                                                      ConsumerKey:CONSUMER_KEY
-                                                   ConsumerSecret:CONSUMER_SECRET];
-        }
-        
-        EvernoteNoteStoreClient *client = [[EvernoteNoteStoreClient alloc] init];
-        NSString *authToken = [EvernoteAuthToken sharedInstance].authToken;
-        _notebooksList = [[NSArray alloc] initWithArray:[[client noteStoreClient] listNotebooks:authToken]];
+    EvernoteNoteStore *noteStore = [EvernoteNoteStore noteStore];
+    [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
+        _notebooksList = notebooks;
         _notebooksNum = [_notebooksList count];
         [[self tableView] reloadData];
         
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-    }
-    @catch (NSException *exception) {
-        // popViewControllerAnimated　より先に呼ばないと消えてくれない
+    } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 
         NSString *title = NSLocalizedString(@"NotebookSettingLoginErrorTitle", @"Login error Title for NotebookSetting");
@@ -102,11 +86,9 @@
                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                          otherButtonTitles: nil];
         [alertDone show];
-        
+
         [[self navigationController] popViewControllerAnimated:YES];
-        
-        return;
-    }
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

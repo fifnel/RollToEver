@@ -36,6 +36,21 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zma-cW-JQV">
+                                <rect key="frame" x="205" y="353" width="95" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="TestMode">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0fQ-UV-hTa" kind="modal" id="ce8-U0-Y8T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
@@ -53,12 +68,31 @@
                     </navigationItem>
                     <connections>
                         <outlet property="photoCountInfo" destination="4FQ-SX-xWf" id="9Yf-lY-yb4"/>
+                        <outlet property="testModeButton" destination="zma-cW-JQV" id="o1u-qc-3Aq"/>
                         <outlet property="uploadButton" destination="jNP-Fh-p8T" id="lhv-hE-JY8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1069" y="-147"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="RHJ-Tg-yHl">
+            <objects>
+                <tableViewController id="0fQ-UV-hTa" customClass="TestViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EhX-IH-uIe">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="0fQ-UV-hTa" id="ICL-Nh-ga7"/>
+                            <outlet property="delegate" destination="0fQ-UV-hTa" id="66u-3c-2OI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4j-Lp-7zz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1069" y="511"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="zMi-eD-0Ox">
@@ -396,7 +430,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="4Mt-kI-SaD"/>
                     <connections>
-                        <outlet property="evernoteAccountCell" destination="PXN-7P-w0b" id="VQK-fB-TbI"/>
                         <outlet property="evernoteLinkCell" destination="PXN-7P-w0b" id="Tc9-2m-iiF"/>
                         <outlet property="notebookNameCell" destination="kJV-Mk-oZ2" id="ksq-mT-eJj"/>
                     </connections>
@@ -632,6 +665,50 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <image name="logo.png" width="480" height="400"/>
         <image name="uploadbutton.png" width="620" height="146"/>
     </resources>
+    <classes>
+        <class className="AboutViewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="applicationName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NotebookTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotebookTableViewController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="evernoteAccountCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="evernoteLinkCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TestViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestViewController.h"/>
+        </class>
+        <class className="UploadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPhotoCount:"/>
+                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="testModeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

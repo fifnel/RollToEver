@@ -9,11 +9,12 @@
 #import "PhotoUploader.h"
 #import "UserSettings.h"
 #import "AssetsLoader.h"
-#import "EvernoteAuthToken.h"
 #import "NSObject+InvocationUtils.h"
-#import "EvernoteNoteStoreClient+ALAsset.h"
 #import "id.h"
 #import "THTTPAsyncClient.h"
+#import "EvernoteSDK.h"
+#import "EvernoteSession+ProgressableClient.h"
+#import "ALAsset+Evernote.h"
 
 /**
 * 写真アップローダーdelegate.
@@ -97,15 +98,9 @@
     _currentAsset = nil;
     _totalCount = 0;
 
-    EvernoteNoteStoreClient *noteStoreClient = nil;
+    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreWithDelegate:self];
 
     @try {
-        NSString *userid = [UserSettings sharedInstance].evernoteUserId;
-        NSString *password = [UserSettings sharedInstance].evernotePassword;
-        [[EvernoteAuthToken sharedInstance] connectWithUserId:userid
-                                                     Password:password
-                                                   ClientName:APPLICATION_NAME ConsumerKey:CONSUMER_KEY ConsumerSecret:CONSUMER_SECRET];
-
         AssetsLoader *loader = [[AssetsLoader alloc] init];
         NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
         if (urlList == nil) {
@@ -115,7 +110,6 @@
         _totalCount = [urlList count];
         [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:_totalCount]];
 
-        noteStoreClient = [[EvernoteNoteStoreClient alloc] initWithDelegate:self];
         NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
         NSInteger photoSize = [UserSettings sharedInstance].photoSize;
 
@@ -134,7 +128,8 @@
                                              asset:asset
                                              index:[NSNumber numberWithInt:i]
                                         totalCount:[NSNumber numberWithInt:_totalCount]];
-                [noteStoreClient createNoteFromAsset:asset PhotoSize:photoSize NotebookGUID:notebookGUID];
+                EDAMNote *note = [asset createEDAMNote:notebookGUID photoSize:photoSize];
+                [noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note];
                 if ([self isCancelled]) {
                     [self PhotoUploaderCancelAsync:self];
                     return;

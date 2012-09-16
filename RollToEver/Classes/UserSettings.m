@@ -46,40 +46,6 @@ static NSString *ISFIRSTTIME = @"IsFirstTime";
     [[NSUserDefaults standardUserDefaults] setValue:isFirstTime forKey:ISFIRSTTIME];
 }
 
-/// EvernoteユーザーIDのキー
-static NSString *EVERNOTE_USER_ID = @"EvernoteUserID";
-
-/// EvernoteユーザーID取得
-- (NSString *)evernoteUserId {
-    NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_USER_ID];
-    if (ret != nil) {
-        return [NSString stringWithString:ret];
-    }
-    return nil;
-}
-
-/// EvernoteユーザーID設定
-- (void)setEvernoteUserId:(NSString *)evernoteUserId {
-    [[PDKeychainBindings sharedKeychainBindings] setString:evernoteUserId forKey:EVERNOTE_USER_ID];
-}
-
-/// Evernotパスワードのキー
-static NSString *EVERNOTE_PASSWORD = @"EvernotePassword";
-
-/// Evernoteパスワード取得
-- (NSString *)evernotePassword {
-    NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_PASSWORD];
-    if (ret != nil) {
-        return [NSString stringWithString:ret];
-    }
-    return nil;
-}
-
-/// Evernoteパスワード設定
-- (void)setEvernotePassword:(NSString *)evernotePassword {
-    [[PDKeychainBindings sharedKeychainBindings] setString:evernotePassword forKey:EVERNOTE_PASSWORD];
-}
-
 /// Evernoteノートブック名のキー
 static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
 
