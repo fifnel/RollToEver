@@ -7,7 +7,6 @@
 //
 
 #import "EvernoteSession+ProgressableClient.h"
-#import "EvernoteSDK.h"
 #import "Thrift.h"
 #import "THTTPAsyncClient.h"
 #import "id.h"
@@ -18,12 +17,12 @@
 {
     UIDevice *device = [UIDevice currentDevice];
     NSString *userAgent = [NSString stringWithFormat:@"%@/%@;%@(%@)/%@",
-                           APPLICATION_NAME,
-                           APPLICATION_VERSION,
-                           [device systemName],
-                           [device model],
-                           [device systemVersion]];
-    
+                                                     APPLICATION_NAME,
+                                                     APPLICATION_VERSION,
+                                                     [device systemName],
+                                                     [device model],
+                                                     [device systemVersion]];
+
     return userAgent;
 }
 
