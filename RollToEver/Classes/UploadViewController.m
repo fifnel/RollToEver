@@ -8,8 +8,6 @@
 
 #import "UploadViewController.h"
 #import "PhotoUploader.h"
-#import "EvernoteNoteStoreClient.h"
-#import "EvernoteNoteStoreClient+ALAsset.h"
 #import "ApplicationError.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"

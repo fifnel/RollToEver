@@ -54,8 +54,6 @@
 		C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */; };
-		C039CE3514F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */; };
-		C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */; };
 		C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; };
 		C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -203,9 +201,6 @@
 		C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
 		C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */; };
-		C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
-		C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
-		C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,8 +269,6 @@
 		C039CE2714F6911700948DC6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadViewController.m; path = Classes/UploadViewController.m; sourceTree = "<group>"; };
 		C039CE3014F7E2B000948DC6 /* EvernoteAuthTokenTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteAuthTokenTest.h; sourceTree = "<group>"; };
 		C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteAuthTokenTest.m; sourceTree = "<group>"; };
-		C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EvernoteNoteStoreClient.h; path = RollToEver/Classes/EvernoteNoteStoreClient.h; sourceTree = "<group>"; };
-		C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvernoteNoteStoreClient.m; path = RollToEver/Classes/EvernoteNoteStoreClient.m; sourceTree = "<group>"; };
 		C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+ProgressableClient.h"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.h"; sourceTree = "<group>"; };
 		C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+ProgressableClient.m"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.m"; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
@@ -404,8 +397,6 @@
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
 		C0FB6C6514F8C9FC00ED0F0D /* AssetsLoader+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetsLoader+Utils.h"; path = "RollToEver/Classes/AssetsLoader+Utils.h"; sourceTree = "<group>"; };
 		C0FB6C6614F8C9FC00ED0F0D /* AssetsLoader+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetsLoader+Utils.m"; path = "RollToEver/Classes/AssetsLoader+Utils.m"; sourceTree = "<group>"; };
-		C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteNoteStoreClient+ALAsset.h"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.h"; sourceTree = "<group>"; };
-		C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteNoteStoreClient+ALAsset.m"; path = "RollToEver/Classes/EvernoteNoteStoreClient+ALAsset.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -792,10 +783,6 @@
 		C0B604AF155C01BD003DA7F3 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
-				C039CE3314F7EBD300948DC6 /* EvernoteNoteStoreClient.h */,
-				C039CE3414F7EBD300948DC6 /* EvernoteNoteStoreClient.m */,
-				C0FB6C7814F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.h */,
-				C0FB6C7914F93B5700ED0F0D /* EvernoteNoteStoreClient+ALAsset.m */,
 			);
 			name = Evernote;
 			sourceTree = "<group>";
@@ -1078,9 +1065,7 @@
 				C039CE2214F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2414F68BD500948DC6 /* ViewController.m in Sources */,
 				C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */,
-				C039CE3514F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C0FB6C6714F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
-				C0FB6C7A14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 				C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */,
 				C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */,
 				C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
@@ -1128,7 +1113,6 @@
 				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
 				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 				C0FB6C6814F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
-				C0FB6C7B14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 				C07EE267160421D4000EFA19 /* PDKeychainBindings.m in Sources */,
 				C07EE268160421D4000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C07EE2B6160422E0000EFA19 /* GCOAuth.m in Sources */,
@@ -1189,10 +1173,8 @@
 				C039CE2514F68BD500948DC6 /* ViewController.m in Sources */,
 				C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */,
 				C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */,
-				C039CE3614F7EBD300948DC6 /* EvernoteNoteStoreClient.m in Sources */,
 				C0FB6C6914F8C9FC00ED0F0D /* AssetsLoader+Utils.m in Sources */,
 				C07EE2461603F839000EFA19 /* ApplicationError.m in Sources */,
-				C0FB6C7C14F93B5800ED0F0D /* EvernoteNoteStoreClient+ALAsset.m in Sources */,
 				C07EE2B7160422E0000EFA19 /* GCOAuth.m in Sources */,
 				C07EE2BD160422E0000EFA19 /* NSData+Base64.m in Sources */,
 				C07EE2C3160422E0000EFA19 /* NSString+URLEncoding.m in Sources */,

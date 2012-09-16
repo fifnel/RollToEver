@@ -9,7 +9,6 @@
 #import "NotebookTableViewController.h"
 #import "SettingsTableViewController.h"
 #import "UserSettings.h"
-#import "EvernoteNoteStoreClient.h"
 #import "EvernoteSDK.h"
 #import "MBProgressHUD.h"
 

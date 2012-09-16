@@ -9,7 +9,6 @@
 #import "EvernoteAuthTokenTest.h"
 #import "UserSettings.h"
 #import "id.h"
-#import "EvernoteNoteStoreClient.h"
 #import <GHUnitIOS/GHUnit.h>
 #import "SettingsTableViewController.h"
 #import "AssetsLoader.h"
