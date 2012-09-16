@@ -57,6 +57,7 @@
 		C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; };
 		C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C03EF55E16056BEB000703BD /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF55D16056BEB000703BD /* TestViewController.m */; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */; };
 		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
@@ -271,6 +272,8 @@
 		C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteAuthTokenTest.m; sourceTree = "<group>"; };
 		C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+ProgressableClient.h"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.h"; sourceTree = "<group>"; };
 		C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+ProgressableClient.m"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.m"; sourceTree = "<group>"; };
+		C03EF55C16056BEB000703BD /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = Classes/TestViewController.h; sourceTree = "<group>"; };
+		C03EF55D16056BEB000703BD /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = Classes/TestViewController.m; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
 		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
 		C060505F14FF38FF001A41B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -532,6 +535,8 @@
 				C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */,
 				C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */,
 				C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */,
+				C03EF55C16056BEB000703BD /* TestViewController.h */,
+				C03EF55D16056BEB000703BD /* TestViewController.m */,
 			);
 			name = ViewControllers;
 			path = RollToEver;
@@ -1101,6 +1106,7 @@
 				C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
 				C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
+				C03EF55E16056BEB000703BD /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

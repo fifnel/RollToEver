@@ -37,9 +37,17 @@
 
 #pragma mark - View lifecycle
 
+- (BOOL)isSimulator
+{
+    return [[[UIDevice currentDevice] model] hasSuffix:@"Simulator"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    if ([self isSimulator] == NO) {
+        self.testModeButton.hidden = YES;
+    }
     _skipUpdatePhotoCount = NO;
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
@@ -55,6 +63,7 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+    [self setTestModeButton:nil];
     [super viewDidUnload];
 }
 
