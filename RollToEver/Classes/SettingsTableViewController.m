@@ -48,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     if ([[EvernoteSession sharedSession] isAuthenticated]) {
         self.evernoteLinkCell.textLabel.text = @"Logout";
     } else {
@@ -63,7 +63,7 @@
     NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
     UITableViewCell *photoSizeCell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:photoSizeIndex inSection:2]];
     [photoSizeCell setAccessoryType:UITableViewCellAccessoryCheckmark];
-    
+
     BOOL killIdleSleepFlag = [UserSettings sharedInstance].killIdleSleepFlag;
     self.killIdleSleepSwitch.on = killIdleSleepFlag;
 }
@@ -186,7 +186,8 @@
     parentViewController.skipUpdatePhotoCount = flag;
 }
 
-- (IBAction)changeKillIdleSleepSwitchValue:(id)sender {
+- (IBAction)changeKillIdleSleepSwitchValue:(id)sender
+{
     [[UserSettings sharedInstance] setKillIdleSleepFlag:self.killIdleSleepSwitch.on];
 }
 

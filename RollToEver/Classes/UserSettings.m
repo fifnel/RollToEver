@@ -24,12 +24,14 @@ SINGLETON_GCD(UserSettings);
 static NSString *VERSION = @"Version";
 
 /// バージョン番号の取得
-- (NSString *)version {
+- (NSString *)version
+{
     return [[NSUserDefaults standardUserDefaults] stringForKey:VERSION];
 }
 
 /// バージョン番号の設定
-- (void)setVersion:(NSString *)version {
+- (void)setVersion:(NSString *)version
+{
     [[NSUserDefaults standardUserDefaults] setValue:version forKey:VERSION];
 }
 
@@ -37,12 +39,14 @@ static NSString *VERSION = @"Version";
 static NSString *ISFIRSTTIME = @"IsFirstTime";
 
 /// 初回起動フラグの取得
-- (NSString *)isFirstTime {
+- (NSString *)isFirstTime
+{
     return [[NSUserDefaults standardUserDefaults] stringForKey:ISFIRSTTIME];
 }
 
 /// 初回起動フラグの設定
-- (void)setIsFirstTime:(NSString *)isFirstTime {
+- (void)setIsFirstTime:(NSString *)isFirstTime
+{
     [[NSUserDefaults standardUserDefaults] setValue:isFirstTime forKey:ISFIRSTTIME];
 }
 
@@ -50,7 +54,8 @@ static NSString *ISFIRSTTIME = @"IsFirstTime";
 static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
 
 /// Evernoteノートブック名取得
-- (NSString *)evernoteNotebookName {
+- (NSString *)evernoteNotebookName
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_NAME];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -59,7 +64,8 @@ static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
 }
 
 /// Evernoteノートブック名設定
-- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName {
+- (void)setEvernoteNotebookName:(NSString *)evernoteNotebookName
+{
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookName forKey:EVERNOTE_NOTEBOOK_NAME];
 }
 
@@ -67,7 +73,8 @@ static NSString *EVERNOTE_NOTEBOOK_NAME = @"EvernoteNotebookName";
 static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 
 /// EvernoteノートブックGUID取得
-- (NSString *)evernoteNotebookGUID {
+- (NSString *)evernoteNotebookGUID
+{
     NSString *ret = [[PDKeychainBindings sharedKeychainBindings] stringForKey:EVERNOTE_NOTEBOOK_GUID];
     if (ret != nil) {
         return [NSString stringWithString:ret];
@@ -76,7 +83,8 @@ static NSString *EVERNOTE_NOTEBOOK_GUID = @"EvernoteNotebookGUID";
 }
 
 /// EvernoteノートブックGUID設定
-- (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID {
+- (void)setEvernoteNotebookGUID:(NSString *)evernoteNotebookGUID
+{
     [[PDKeychainBindings sharedKeychainBindings] setString:evernoteNotebookGUID forKey:EVERNOTE_NOTEBOOK_GUID];
 }
 
@@ -87,18 +95,21 @@ static NSString *PHOTO_SIZE_INDEX = @"PHOTO_SIZE_INDEX";
 static const NSInteger photoSize_[] = {0, 1224 * 1632, 480 * 640, 240 * 320};
 
 /// 写真サイズIndex取得
-- (NSInteger)photoSizeIndex {
+- (NSInteger)photoSizeIndex
+{
     return [[[NSUserDefaults standardUserDefaults] stringForKey:PHOTO_SIZE_INDEX] integerValue];
 }
 
 /// 写真サイズIndex設定
-- (void)setPhotoSizeIndex:(NSInteger)photoSizeIndex {
+- (void)setPhotoSizeIndex:(NSInteger)photoSizeIndex
+{
     NSString *str = [NSString stringWithFormat:@"%d", photoSizeIndex];
     [[NSUserDefaults standardUserDefaults] setValue:str forKey:PHOTO_SIZE_INDEX];
 }
 
 /// 写真サイズ取得
-- (NSInteger)photoSize {
+- (NSInteger)photoSize
+{
     NSInteger index = [self photoSizeIndex];
     if (index < 0 || index >= sizeof(photoSize_) / sizeof(NSInteger)) {
         return 0;
@@ -111,13 +122,15 @@ static const NSInteger photoSize_[] = {0, 1224 * 1632, 480 * 640, 240 * 320};
 static NSString *KILL_IDLE_SLEEP_FLAG = @"KILL_IDLE_SLEEP_FLAG";
 
 /// 動作中スリープオプション取得
-- (BOOL)killIdleSleepFlag {
+- (BOOL)killIdleSleepFlag
+{
     return [[[NSUserDefaults standardUserDefaults] stringForKey:KILL_IDLE_SLEEP_FLAG] boolValue];
-    
+
 }
 
 /// 動作中スリープオプション設定
-- (void)setKillIdleSleepFlag:(BOOL)flag {
+- (void)setKillIdleSleepFlag:(BOOL)flag
+{
     NSString *str = [NSString stringWithFormat:@"%d", flag];
     [[NSUserDefaults standardUserDefaults] setValue:str forKey:KILL_IDLE_SLEEP_FLAG];
 }
