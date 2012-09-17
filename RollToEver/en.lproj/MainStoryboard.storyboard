@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jNP-Fh-p8T">
-                                <rect key="frame" x="5" y="145" width="311" height="74"/>
+                                <rect key="frame" x="5" y="171" width="311" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="uploadbutton.png">
@@ -126,7 +126,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IgA-zH-kch">
-                                <rect key="frame" x="0.0" y="366" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="P6Y-tD-x9o"/>
@@ -669,15 +669,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <class className="AboutViewControllerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewControllerViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="applicationName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="applicationVersion" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="applicationNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="applicationVersionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refreshPhotoCount:"/>
-                <relationship kind="outlet" name="photoCountInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="photoCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="testModeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
             </relationships>
@@ -699,10 +699,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UploadViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="evernoteCycleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="evernoteCycleProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="evernoteCycleText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="uploadingCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadingCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="uploadingProgress" candidateClass="UIProgressView"/>
             </relationships>
