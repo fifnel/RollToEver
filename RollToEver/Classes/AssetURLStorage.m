@@ -11,12 +11,9 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 
-@interface AssetURLStorage()
+@interface AssetURLStorage ()
 
-- (NSArray *)getManagedObjects;
-- (NSArray *)getManagedObjectsURL:(NSString *)url;
-
-@property (readonly, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
+@property(readonly, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -48,13 +45,13 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
-   
+
     if (url != nil) {
         NSString *predicateCommand = [NSString stringWithFormat:@"url='%@'", url];
-        NSPredicate  *predicate = [NSPredicate predicateWithFormat:predicateCommand];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateCommand];
         [request setPredicate:predicate];
     }
-    
+
     NSError *error = nil;
     NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
     if (error) {
@@ -85,13 +82,13 @@
 - (BOOL)insertURL:(NSString *)url
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
-    
+
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     [newManagedObject setValue:url forKey:@"url"];
-    
+
     NSError *error = nil;
     if ([self.managedObjectContext save:&error]) {
-        NSLog(@"insertURL:%@",url);
+        NSLog(@"insertURL:%@", url);
         return YES;
     } else {
         NSLog(@"(insertURL:)Unresolved error %@, %@", error, [error userInfo]);
@@ -121,11 +118,11 @@
     if (array == nil) {
         return;
     }
-    
-    for (int i=0, end=[array count]; i<end; i++) {
-        [self.managedObjectContext deleteObject:(NSManagedObject *)[array objectAtIndex:i]];
+
+    for (int i = 0, end = [array count]; i < end; i++) {
+        [self.managedObjectContext deleteObject:(NSManagedObject *) [array objectAtIndex:i]];
     }
-    NSLog(@"deleteURL:%@",url);
+    NSLog(@"deleteURL:%@", url);
 
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
@@ -139,13 +136,13 @@
 - (void)deleteAllURLs
 {
     NSArray *urls = [self getManagedObjects];
-    for (int i=0, end=[urls count]; i<end; i++) {
+    for (int i = 0, end = [urls count]; i < end; i++) {
         NSManagedObject *obj = [urls objectAtIndex:i];
         NSString *url = [obj valueForKey:@"url"];
         NSLog(@"delete url=%@", url);
         [self.managedObjectContext deleteObject:obj];
     }
-    
+
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);

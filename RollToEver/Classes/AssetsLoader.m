@@ -9,8 +9,7 @@
 #import "AssetsLoader.h"
 #import "AssetURLStorage.h"
 
-@implementation AssetsLoader
-{
+@implementation AssetsLoader {
     __strong ALAssetsLibrary *_assetsLibrary;
 }
 
@@ -20,7 +19,7 @@
     if (self != nil) {
         _assetsLibrary = [[ALAssetsLibrary alloc] init];
     }
-    
+
     return self;
 }
 
@@ -36,49 +35,49 @@
     if (exclude) {
         urlStorage = [[AssetURLStorage alloc] init];
     }
-    
+
     // グループ内画像1枚ずつ呼び出される
     __block ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
-    ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
-        if (asset) {
-            ALAssetRepresentation *rep = [asset defaultRepresentation];
-            NSString *url = [rep.url absoluteString];
-            if (exclude) {
-                if (![urlStorage isExistURL:url]) {
-                    [result addObject:url];
+            ^(ALAsset *asset, NSUInteger index, BOOL *stop) {
+                if (asset) {
+                    ALAssetRepresentation *rep = [asset defaultRepresentation];
+                    NSString *url = [rep.url absoluteString];
+                    if (exclude) {
+                        if (![urlStorage isExistURL:url]) {
+                            [result addObject:url];
+                        }
+                    } else {
+                        [result addObject:url];
+                    }
                 }
-            } else {
-                [result addObject:url];
-            }
-        }
-    };
-    
+            };
+
     // グループごと呼び出される
     __block ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
-    ^(ALAssetsGroup *group, BOOL *stop) {
-        if (group) {
-            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-            [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
-        } else {
-            completed = YES;
-            dispatch_semaphore_signal(sema);
-        }
-    };
-    
+            ^(ALAssetsGroup *group, BOOL *stop) {
+                if (group) {
+                    [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                    [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
+                } else {
+                    completed = YES;
+                    dispatch_semaphore_signal(sema);
+                }
+            };
+
     // 列挙に失敗したときに呼び出される
-    __block ALAssetsLibraryAccessFailureBlock failureBlock = 
-    ^(NSError *error) {
-        NSLog(@"error:%@", error);
-        assetError = error;
-        completed = YES;
-        dispatch_semaphore_signal(sema);
-    };
-    
+    __block ALAssetsLibraryAccessFailureBlock failureBlock =
+            ^(NSError *error) {
+                NSLog(@"error:%@", error);
+                assetError = error;
+                completed = YES;
+                dispatch_semaphore_signal(sema);
+            };
+
     // 列挙開始
     [_assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
                                   usingBlock:usingBlock
                                 failureBlock:failureBlock];
-    
+
     if ([NSThread isMainThread]) {
         while (!completed && !assetError) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -90,7 +89,7 @@
     if (assetError) {
         result = nil;
     }
-    
+
     return result;
 }
 
@@ -111,15 +110,15 @@
     __block ALAsset *result = nil;
     __block NSError *assetError = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    
+
     [_assetsLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
         result = asset;
         dispatch_semaphore_signal(sema);
-    } failureBlock:^(NSError *error) {
+    }              failureBlock:^(NSError *error) {
         assetError = error;
         dispatch_semaphore_signal(sema);
     }];
-    
+
     if ([NSThread isMainThread]) {
         while (!result && !assetError) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -128,9 +127,9 @@
     else {
         dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     }
-    
+
     dispatch_release(sema);
-    
+
     return result;
 }
 
