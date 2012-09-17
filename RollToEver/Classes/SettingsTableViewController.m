@@ -10,8 +10,9 @@
 
 #import "MainViewController.h"
 #import "UserSettings.h"
+#import "AssetsLoader.h"
+
 #import "AssetURLStorage.h"
-#import "AssetsLoader+Utils.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
@@ -154,7 +155,8 @@
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                 AssetsLoader *loader = [[AssetsLoader alloc] init];
-                [loader AllRegisterToStorage];
+                AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+                [storage insertURLs:[loader EnumerateURLExcludeDuplication:NO]];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
             }

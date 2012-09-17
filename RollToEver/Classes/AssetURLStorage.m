@@ -100,6 +100,19 @@
 }
 
 /**
+ 複数のURLの追加
+ */
+- (BOOL)insertURLs:(NSArray *)urlList
+{
+    for (NSString *url in urlList) {
+        if ([self insertURL:url] == NO) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+/**
  URLの削除
  */
 - (void)deleteURL:(NSString *)url
