@@ -23,7 +23,8 @@
     __strong MBProgressHUD *_hud;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
@@ -35,7 +36,8 @@
     return [[[UIDevice currentDevice] model] hasSuffix:@"Simulator"];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     if ([self isSimulator] == NO) {
@@ -50,7 +52,8 @@
     [[EvernoteSession sharedSession] loginWithViewController:self];
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
@@ -58,11 +61,13 @@
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
 
     if (!_hud) {
@@ -76,24 +81,29 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)refreshPhotoCount:(id)sender {
+- (IBAction)refreshPhotoCount:(id)sender
+{
     [self updatePhotoCount];
 }
 
-- (void)updatePhotoCount {
+- (void)updatePhotoCount
+{
     _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
 
@@ -107,7 +117,8 @@
 }
 
 #pragma mark - AssetsLoader delegate
-- (void)assetsCountDidFinish {
+- (void)assetsCountDidFinish
+{
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     _hud = nil;
 

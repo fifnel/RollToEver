@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <iAd/ADBannerView.h>
 
-@interface UploadViewController : UIViewController<ADBannerViewDelegate>
+@interface UploadViewController : UIViewController <ADBannerViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel         *uploadingCount;
-@property (strong, nonatomic) IBOutlet UIImageView     *uploadingImage;
-@property (strong, nonatomic) IBOutlet UIProgressView  *uploadingProgress;
-@property (strong, nonatomic) IBOutlet UILabel         *evernoteCycleText;
-@property (strong, nonatomic) IBOutlet UIProgressView  *evernoteCycleProgress;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property(weak, nonatomic) IBOutlet UILabel *uploadingCountLabel;
+@property(weak, nonatomic) IBOutlet UIImageView *uploadingImage;
+@property(weak, nonatomic) IBOutlet UIProgressView *uploadingProgress;
+@property(weak, nonatomic) IBOutlet UILabel *evernoteCycleLabel;
+@property(weak, nonatomic) IBOutlet UIProgressView *evernoteCycleProgress;
+@property(weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)cancel:(id)sender;
 

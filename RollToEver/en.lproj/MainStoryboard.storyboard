@@ -159,10 +159,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="evernoteCycleLabel" destination="hHS-2E-sll" id="Xbx-3d-koc"/>
                         <outlet property="evernoteCycleProgress" destination="GJX-f6-ehn" id="G8r-AF-jIb"/>
-                        <outlet property="evernoteCycleText" destination="hHS-2E-sll" id="w3W-1L-WiK"/>
                         <outlet property="toolBar" destination="IgA-zH-kch" id="FeI-Tb-aEh"/>
-                        <outlet property="uploadingCount" destination="8DR-Qu-xmn" id="yHM-EC-2H8"/>
+                        <outlet property="uploadingCountLabel" destination="8DR-Qu-xmn" id="TWu-cl-RXG"/>
                         <outlet property="uploadingImage" destination="bsE-Fi-pJg" id="vCp-MW-TI4"/>
                         <outlet property="uploadingProgress" destination="vsz-7c-Y87" id="UMB-J3-VLH"/>
                     </connections>
