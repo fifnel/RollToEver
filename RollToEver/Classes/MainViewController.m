@@ -16,19 +16,12 @@
 @interface MainViewController ()
 
 @property(assign, nonatomic, readwrite) NSInteger photoCount;
-@property(strong, nonatomic, readwrite) IBOutlet UILabel *photoCountInfo;
 
 @end
 
 @implementation MainViewController {
     __strong MBProgressHUD *_hud;
 }
-
-@synthesize photoCount = _photoCount;
-@synthesize skipUpdatePhotoCount = _skipUpdatePhotoCount;
-
-@synthesize uploadButton = _uploadButton;
-@synthesize photoCountInfo = _photoCountInfo;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -58,12 +51,10 @@
 }
 
 - (void)viewDidUnload {
-    [self setUploadButton:nil];
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
-    [self setTestModeButton:nil];
     [super viewDidUnload];
 }
 
@@ -109,7 +100,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
         NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
-        _photoCount = [assets count];
+        self.photoCount = [assets count];
 
         [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
     });
@@ -120,12 +111,12 @@
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     _hud = nil;
 
-    if (_photoCount > 0) {
-        NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), _photoCount];
-        _photoCountInfo.text = photoCountStr;
+    if (self.photoCount > 0) {
+        NSString *photoCountStr = [NSString stringWithFormat:NSLocalizedString(@"MainViewPhotoCount", @"Photo Count for MainView"), self.photoCount];
+        self.photoCountLabel.text = photoCountStr;
         [_uploadButton setEnabled:YES];
     } else {
-        _photoCountInfo.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
+        self.photoCountLabel.text = NSLocalizedString(@"MainViewPhotoNotFound", @"Photo Not Found for MainView");
         [_uploadButton setEnabled:NO];
     }
 }

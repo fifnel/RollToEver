@@ -67,7 +67,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="photoCountInfo" destination="4FQ-SX-xWf" id="9Yf-lY-yb4"/>
+                        <outlet property="photoCountLabel" destination="4FQ-SX-xWf" id="gds-qO-Zzc"/>
                         <outlet property="testModeButton" destination="zma-cW-JQV" id="o1u-qc-3Aq"/>
                         <outlet property="uploadButton" destination="jNP-Fh-p8T" id="lhv-hE-JY8"/>
                     </connections>

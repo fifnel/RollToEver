@@ -13,8 +13,8 @@
 
 - (IBAction)refreshPhotoCount:(id)sender;
 
-@property (strong, nonatomic, readonly) IBOutlet UILabel *photoCountInfo;
-@property (strong, nonatomic) IBOutlet UIButton *uploadButton;
+@property (weak, nonatomic) IBOutlet UILabel *photoCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 @property (weak, nonatomic) IBOutlet UIButton *testModeButton;
 
 @property (assign, nonatomic, readonly) NSInteger photoCount;
