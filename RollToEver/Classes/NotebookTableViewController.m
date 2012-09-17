@@ -7,13 +7,11 @@
 //
 
 #import "NotebookTableViewController.h"
-#import "SettingsTableViewController.h"
 #import "UserSettings.h"
 #import "EvernoteSDK.h"
 #import "MBProgressHUD.h"
 
-@implementation NotebookTableViewController
-{
+@implementation NotebookTableViewController {
     __strong NSArray *_notebooksList;
     NSInteger _notebooksNum;
 }
@@ -29,10 +27,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -40,19 +35,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,28 +50,27 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-	hud.labelText = NSLocalizedString(@"Loading", @"Now Loading");
-    
+    hud.labelText = NSLocalizedString(@"Loading", @"Now Loading");
+
     EvernoteNoteStore *noteStore = [EvernoteNoteStore noteStore];
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
         _notebooksList = notebooks;
         _notebooksNum = [_notebooksList count];
         [[self tableView] reloadData];
-        
+
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-    } failure:^(NSError *error) {
+    }                           failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 
         NSString *title = NSLocalizedString(@"NotebookSettingLoginErrorTitle", @"Login error Title for NotebookSetting");
         NSString *errorMessage = NSLocalizedString(@"NotebookSettingLoginError", @"Login error for NotebookSetting");
         UIAlertView *alertDone =
-        [[UIAlertView alloc] initWithTitle:title
-                                   message:errorMessage
-                                  delegate:self
-                         cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                         otherButtonTitles: nil];
+                [[UIAlertView alloc] initWithTitle:title
+                                           message:errorMessage
+                                          delegate:self
+                                 cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil];
         [alertDone show];
 
         [[self navigationController] popViewControllerAnimated:YES];
@@ -123,15 +109,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
-    EDAMNotebook *notebook = (EDAMNotebook *)[_notebooksList objectAtIndex:[indexPath row]];
+    EDAMNotebook *notebook = (EDAMNotebook *) [_notebooksList objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[notebook name]];
-    
+
     return cell;
 }
 
@@ -142,10 +128,10 @@
 {
     // 呼び出し元のコントローラーを無理矢理取得する
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    EDAMNotebook *notebook = (EDAMNotebook *)[_notebooksList objectAtIndex:[indexPath row]];
+    EDAMNotebook *notebook = (EDAMNotebook *) [_notebooksList objectAtIndex:[indexPath row]];
     [[UserSettings sharedInstance] setEvernoteNotebookName:notebook.name];
     [[UserSettings sharedInstance] setEvernoteNotebookGUID:notebook.guid];
-    
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

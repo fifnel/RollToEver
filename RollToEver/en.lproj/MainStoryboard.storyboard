@@ -483,8 +483,8 @@ Twitter : fifnel</string>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="Xne-t3-WjA"/>
                     <connections>
-                        <outlet property="applicationName" destination="rw5-z1-JoX" id="xng-I9-vfW"/>
-                        <outlet property="applicationVersion" destination="HYW-a3-Xmg" id="VhB-AJ-1oL"/>
+                        <outlet property="applicationNameLabel" destination="rw5-z1-JoX" id="rjw-49-m2q"/>
+                        <outlet property="applicationVersionLabel" destination="HYW-a3-Xmg" id="cw3-CE-EZJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CqE-5R-5oB" userLabel="First Responder" sceneMemberID="firstResponder"/>

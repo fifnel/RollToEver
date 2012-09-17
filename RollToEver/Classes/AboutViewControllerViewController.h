@@ -10,7 +10,7 @@
 
 @interface AboutViewControllerViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *applicationName;
-@property (strong, nonatomic) IBOutlet UILabel *applicationVersion;
+@property(weak, nonatomic) IBOutlet UILabel *applicationNameLabel;
+@property(weak, nonatomic) IBOutlet UILabel *applicationVersionLabel;
 
 @end
