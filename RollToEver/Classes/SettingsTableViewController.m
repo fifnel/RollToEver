@@ -9,7 +9,6 @@
 #import "SettingsTableViewController.h"
 
 #import "MainViewController.h"
-
 #import "UserSettings.h"
 #import "AssetURLStorage.h"
 #import "AssetsLoader+Utils.h"
@@ -17,33 +16,25 @@
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
 
-@interface SettingsTableViewController ()
-
-- (void)setParentSkipUpdatePhotoCount:(BOOL)flag;
-
-@end
-
-
 @implementation SettingsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     if ([[EvernoteSession sharedSession] isAuthenticated]) {
@@ -53,21 +44,21 @@
     }
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setNotebookNameCell:nil];
     [self setEvernoteLinkCell:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
 
     if (notebookName) {
-        [[_notebookNameCell textLabel] setText:notebookName];
+        [[self.notebookNameCell textLabel] setText:notebookName];
     }
 
     NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
@@ -75,28 +66,33 @@
     [photoSizeCell setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
 
     [self setParentSkipUpdatePhotoCount:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger row = [indexPath row];
     NSInteger section = [indexPath section];
     NSLog(@"row=%d selection=%d", row, section);
@@ -127,23 +123,17 @@
                 case 0: { // 全登録
                     UIActionSheet *actionSheet;
                     actionSheet = [[UIActionSheet alloc]
-                            initWithTitle:NSLocalizedString(@"SettingViewAllRegistTitle", @"All Regists Title for SettingView")
-                                 delegate:self
-                        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
-                   destructiveButtonTitle:NSLocalizedString(@"SettingViewAllRegistDoIt", @"All Regists Operation for SettingView")
-                        otherButtonTitles:nil];
+                            initWithTitle:NSLocalizedString(@"SettingViewAllRegistTitle", @"All Regists Title for SettingView") delegate:self
+                        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:NSLocalizedString(@"SettingViewAllRegistDoIt", @"All Regists Operation for SettingView") otherButtonTitles:nil];
                     [actionSheet setTag:0];
                     [actionSheet showInView:self.navigationController.view];
                     break;
                 }
                 case 1: { // 全削除
                     UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                            initWithTitle:NSLocalizedString(@"SettingViewClearHistoryTitle",@"Clear History Title for SettingView")
-                                 delegate:self
-                        cancelButtonTitle:NSLocalizedString(@"Cancel",
-                                    @"Cancel")
-                   destructiveButtonTitle:NSLocalizedString(@"SettingViewClearHistoryDoIt", @"Clear History Operation for SettingView")
-                        otherButtonTitles:nil];
+                            initWithTitle:NSLocalizedString(@"SettingViewClearHistoryTitle", @"Clear History Title for SettingView") delegate:self
+                            cancelButtonTitle:NSLocalizedString(@"Cancel",
+                            @"Cancel") destructiveButtonTitle:NSLocalizedString(@"SettingViewClearHistoryDoIt", @"Clear History Operation for SettingView") otherButtonTitles:nil];
                     [actionSheet setTag:1];
                     [actionSheet showInView:self.navigationController.view];
                     break;
@@ -157,7 +147,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     switch ([actionSheet tag]) {
         case 0: { // 全登録
             if (buttonIndex == 0) {
@@ -185,7 +176,8 @@
     }
 }
 
-- (void)setParentSkipUpdatePhotoCount:(BOOL)flag {
+- (void)setParentSkipUpdatePhotoCount:(BOOL)flag
+{
     NSInteger parentIndex = [self.navigationController.viewControllers count] - 2;
     MainViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
     parentViewController.skipUpdatePhotoCount = flag;

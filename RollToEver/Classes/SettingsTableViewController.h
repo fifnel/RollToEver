@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsTableViewController : UITableViewController<UIActionSheetDelegate>
+@interface SettingsTableViewController : UITableViewController <UIActionSheetDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *evernoteLinkCell;
-@property (strong, nonatomic) IBOutlet UITableViewCell *notebookNameCell;
+@property(weak, nonatomic) IBOutlet UITableViewCell *evernoteLinkCell;
+@property(weak, nonatomic) IBOutlet UITableViewCell *notebookNameCell;
 
 @end
