@@ -107,4 +107,19 @@ static const NSInteger photoSize_[] = {0, 1224 * 1632, 480 * 640, 240 * 320};
     }
 }
 
+/// 動作中スリープオプションのキー
+static NSString *KILL_IDLE_SLEEP_FLAG = @"KILL_IDLE_SLEEP_FLAG";
+
+/// 動作中スリープオプション取得
+- (BOOL)killIdleSleepFlag {
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:KILL_IDLE_SLEEP_FLAG] boolValue];
+    
+}
+
+/// 動作中スリープオプション設定
+- (void)setKillIdleSleepFlag:(BOOL)flag {
+    NSString *str = [NSString stringWithFormat:@"%d", flag];
+    [[NSUserDefaults standardUserDefaults] setValue:str forKey:KILL_IDLE_SLEEP_FLAG];
+}
+
 @end
