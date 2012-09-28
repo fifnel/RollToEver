@@ -13,36 +13,21 @@
 */
 @implementation ApplicationError
 
-/// エラーコード
-@synthesize errorCode = errorCode_;
-/// エラーパラメータ
-@synthesize errorParam = errorParam_;
-
 /// 初期化
 - (id)initWithErrorCode:(NSInteger)code Param:(NSInteger)param; {
     self = [super init];
     if (self) {
-        errorCode_ = code;
-        errorParam_ = param;
+        _errorCode = code;
+        _errorParam = param;
     }
     return self;
-}
-
-/// エラーコード取得
-- (NSInteger)errorCode {
-    return errorCode_;
-}
-
-/// エラーパラメータ取得
-- (NSInteger)errorParam {
-    return errorParam_;
 }
 
 /// エラーコード取得
 - (NSString *)errorString {
     NSString *key = nil;
 
-    switch (errorCode_) {
+    switch (_errorCode) {
         case ERROR_UNKNOWN:
             key = @"ErrorUnknown";
             break;
@@ -63,8 +48,8 @@
     NSString *formattedString =
             [NSString stringWithFormat:@"%@\nCode=%d\nParam=%d\n",
                                        [self errorString],
-                                       errorCode_,
-                                       errorParam_];
+                                       _errorCode,
+                                       _errorParam];
 
     return formattedString;
 }
