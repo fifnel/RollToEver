@@ -40,9 +40,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    if ([self isSimulator] == NO) {
-        self.testModeButton.hidden = YES;
-    }
+#ifndef FOR_DEVEL
+    self.testModeButton.hidden = YES;
+#endif
     _skipUpdatePhotoCount = NO;
     if (_hud != nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
