@@ -780,21 +780,13 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		C0B604B0155C01FC003DA7F3 /* Assets */ = {
+		C0B604B1155C049D003DA7F3 /* RollToEver */ = {
 			isa = PBXGroup;
 			children = (
 				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
 				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
 				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
 				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		C0B604B1155C049D003DA7F3 /* RollToEver */ = {
-			isa = PBXGroup;
-			children = (
-				C0B604B0155C01FC003DA7F3 /* Assets */,
 				C039CE0214F68BD500948DC6 /* UserSettings.h */,
 				C039CE0314F68BD500948DC6 /* UserSettings.m */,
 				C039CDF814F68BD500948DC6 /* PhotoUploader.h */,
