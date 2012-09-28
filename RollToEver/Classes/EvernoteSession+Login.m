@@ -24,8 +24,8 @@
             NSLog(@"authentication failed.");
             UIAlertView *alert = [
                     [UIAlertView alloc]
-                    initWithTitle :@"Alert!"
-                          message :@"authentication failed."
+                    initWithTitle :NSLocalizedString(@"AccountSettingLoginTitle", @"Evernote Login")
+                          message :NSLocalizedString(@"AccountSettingLoginFailed", "Login failed")
                          delegate :nil cancelButtonTitle :@"OK"
                 otherButtonTitles :nil];
             [alert show];
