@@ -12,3 +12,19 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+// NSLogとNSAssertをリリース時に無効化する - iPhoneアプリ開発まっしぐら★ - iPhoneアプリ開発グループ
+// http://iphone-dev.g.hatena.ne.jp/tokorom/20091203/1263144421
+#if !defined(NS_BLOCK_ASSERTIONS)
+
+#if !defined(NSLog)
+#define NSLog( m, args... ) NSLog( m, ##args )
+#endif
+
+#else
+
+#if !defined(NSLog)
+#define NSLog( m, args... )
+#endif
+
+#endif

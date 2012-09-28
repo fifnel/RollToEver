@@ -138,8 +138,7 @@
     NSArray *urls = [self getManagedObjects];
     for (int i = 0, end = [urls count]; i < end; i++) {
         NSManagedObject *obj = [urls objectAtIndex:i];
-        NSString *url = [obj valueForKey:@"url"];
-        NSLog(@"delete url=%@", url);
+        NSLog(@"delete url=%@", [obj valueForKey:@"url"]);
         [self.managedObjectContext deleteObject:obj];
     }
 
