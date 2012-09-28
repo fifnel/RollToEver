@@ -333,10 +333,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Options" footerTitle="このオプションをONにする場合、画像枚数が多い場合は電源ケーブルを挿した状態で利用することをお勧めします。アップロード動作中以外は通常のスリープ動作に戻ります。" id="1s9-RE-Syu">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QIv-wZ-l9G">
+                                        <rect key="frame" x="0.0" y="580" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="動作中スリープしない" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ib6-FE-pu0">
+                                                    <rect key="frame" x="20" y="11" width="260" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="3p9-qa-JRr">
+                                                    <rect key="frame" x="203" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="changeKillIdleSleepSwitchValue:" destination="egA-0H-0ko" eventType="valueChanged" id="Re8-hH-6mJ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Reset" id="fGP-cQ-GNf">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="sDp-m7-znS">
-                                        <rect key="frame" x="0.0" y="580" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="779" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -355,7 +385,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gbJ-Nf-7LD">
-                                        <rect key="frame" x="0.0" y="625" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="824" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -378,7 +408,7 @@
                             <tableViewSection headerTitle="About" id="X32-k7-B46">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XYq-9i-nnS">
-                                        <rect key="frame" x="0.0" y="716" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="915" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -400,7 +430,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RWC-Nz-VHt">
-                                        <rect key="frame" x="0.0" y="761" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="960" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -431,6 +461,7 @@
                     <navigationItem key="navigationItem" id="4Mt-kI-SaD"/>
                     <connections>
                         <outlet property="evernoteLinkCell" destination="PXN-7P-w0b" id="Tc9-2m-iiF"/>
+                        <outlet property="killIdleSleepSwitch" destination="3p9-qa-JRr" id="47s-Ai-bX4"/>
                         <outlet property="notebookNameCell" destination="kJV-Mk-oZ2" id="ksq-mT-eJj"/>
                     </connections>
                 </tableViewController>
@@ -688,7 +719,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <class className="SettingsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeKillIdleSleepSwitchValue:"/>
                 <relationship kind="outlet" name="evernoteLinkCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="killIdleSleepSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="notebookNameCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>

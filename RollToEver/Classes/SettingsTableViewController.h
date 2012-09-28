@@ -12,5 +12,8 @@
 
 @property(weak, nonatomic) IBOutlet UITableViewCell *evernoteLinkCell;
 @property(weak, nonatomic) IBOutlet UITableViewCell *notebookNameCell;
+@property(weak, nonatomic) IBOutlet UISwitch *killIdleSleepSwitch;
+
+- (IBAction)changeKillIdleSleepSwitchValue:(id)sender;
 
 @end

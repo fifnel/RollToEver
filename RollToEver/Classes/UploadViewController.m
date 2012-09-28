@@ -8,6 +8,7 @@
 
 #import "UploadViewController.h"
 #import "PhotoUploader.h"
+#import "UserSettings.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 
@@ -89,7 +90,7 @@
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
     }
-
+    
     [super viewWillAppear:animated];
 }
 
@@ -110,6 +111,10 @@
 // アップロードのループ開始
 - (void)PhotoUploaderWillStart:(PhotoUploader *)photoUploader totalCount:(NSNumber *)totalCount
 {
+    if ([[UserSettings sharedInstance] killIdleSleepFlag]) {
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    }
+    
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     _hud = nil;
     [self updateEvernoteCycle];
@@ -140,6 +145,7 @@
 // アップロードのループ終了
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader
 {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alert show];
 }
@@ -147,6 +153,7 @@
 // エラー
 - (void)PhotoUploaderError:(PhotoUploader *)photoUploader error:(ApplicationError *)error
 {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     NSString *errorMsg = [error errorFormattedString];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alert show];
@@ -155,6 +162,7 @@
 // キャンセル
 - (void)PhotoUploaderCanceled:(PhotoUploader *)photoUploader
 {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     [self dismissModalViewControllerAnimated:YES];
 }
 

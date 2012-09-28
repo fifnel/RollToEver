@@ -38,17 +38,10 @@
 {
     [super viewDidLoad];
 
-    if ([[EvernoteSession sharedSession] isAuthenticated]) {
-        self.evernoteLinkCell.textLabel.text = @"Logout";
-    } else {
-        self.evernoteLinkCell.textLabel.text = @"Login";
-    }
 }
 
 - (void)viewDidUnload
 {
-    [self setNotebookNameCell:nil];
-    [self setEvernoteLinkCell:nil];
     [super viewDidUnload];
 }
 
@@ -56,8 +49,13 @@
 {
     [super viewWillAppear:animated];
 
-    NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
+    if ([[EvernoteSession sharedSession] isAuthenticated]) {
+        self.evernoteLinkCell.textLabel.text = @"Logout";
+    } else {
+        self.evernoteLinkCell.textLabel.text = @"Login";
+    }
 
+    NSString *notebookName = [UserSettings sharedInstance].evernoteNotebookName;
     if (notebookName) {
         [[self.notebookNameCell textLabel] setText:notebookName];
     }
@@ -65,6 +63,9 @@
     NSInteger photoSizeIndex = [UserSettings sharedInstance].photoSizeIndex;
     UITableViewCell *photoSizeCell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:photoSizeIndex inSection:2]];
     [photoSizeCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+
+    BOOL killIdleSleepFlag = [UserSettings sharedInstance].killIdleSleepFlag;
+    self.killIdleSleepSwitch.on = killIdleSleepFlag;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,7 +120,7 @@
             [UserSettings sharedInstance].photoSizeIndex = row;
             break;
         }
-        case 3: { // リセット
+        case 4: { // リセット
             switch (row) {
                 case 0: { // 全登録
                     UIActionSheet *actionSheet;
@@ -183,6 +184,11 @@
     NSInteger parentIndex = [self.navigationController.viewControllers count] - 2;
     MainViewController *parentViewController = [self.navigationController.viewControllers objectAtIndex:parentIndex];
     parentViewController.skipUpdatePhotoCount = flag;
+}
+
+- (IBAction)changeKillIdleSleepSwitchValue:(id)sender
+{
+    [[UserSettings sharedInstance] setKillIdleSleepFlag:self.killIdleSleepSwitch.on];
 }
 
 @end

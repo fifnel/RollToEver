@@ -49,5 +49,11 @@
 /// 写真サイズ取得
 - (NSInteger)photoSize;
 
+/// 動作中スリープオプション取得
+- (BOOL)killIdleSleepFlag;
+
+/// 動作中スリープオプション設定
+- (void)setKillIdleSleepFlag:(BOOL)flag;
+
 @end
 
