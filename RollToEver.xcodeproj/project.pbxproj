@@ -18,7 +18,6 @@
 		C0192E8B14FFDB6B00DEC1F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
-		C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
 		C039B10F14DF79D300F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B10D14DF79D300F4169E /* InfoPlist.strings */; };
 		C039B11814DF79D300F4169E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C039B11614DF79D300F4169E /* MainStoryboard.storyboard */; };
 		C039B12314DF79D400F4169E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B12214DF79D400F4169E /* SenTestingKit.framework */; };
@@ -63,7 +62,6 @@
 		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C066C6E11506EF1900D1188B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C066C6E01506EF1900D1188B /* logo.png */; };
-		C07A6398150A23C9008E69D2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07A6397150A23C9008E69D2 /* iAd.framework */; };
 		C07EE2461603F839000EFA19 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C07EE2471603F84F000EFA19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8661506FE4D00415DA7 /* Icon.png */; };
 		C07EE2481603F854000EFA19 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8681506FE5900415DA7 /* Icon@2x.png */; };
@@ -175,14 +173,12 @@
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0833FFA14E3947000DB4144 /* CoreDataTest.m */; };
+		C08582371616CF6100D0092B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
 		C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */; };
 		C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
 		C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
-		C0B604AC155BFF0C003DA7F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */; };
-		C0B604AD155BFF0C003DA7F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */; };
-		C0B604AE155BFF0C003DA7F3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B604AA155BFECB003DA7F3 /* MessageUI.framework */; };
 		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -402,8 +398,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08582371616CF6100D0092B /* CoreGraphics.framework in Frameworks */,
 				C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */,
-				C07A6398150A23C9008E69D2 /* iAd.framework in Frameworks */,
 				C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */,
 				C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */,
 				C000DD7114E8E44500DDD8C8 /* Security.framework in Frameworks */,
@@ -411,10 +407,6 @@
 				C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */,
 				C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */,
 				C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */,
-				C039B10914DF79D300F4169E /* CoreGraphics.framework in Frameworks */,
-				C0B604AC155BFF0C003DA7F3 /* MediaPlayer.framework in Frameworks */,
-				C0B604AD155BFF0C003DA7F3 /* AudioToolbox.framework in Frameworks */,
-				C0B604AE155BFF0C003DA7F3 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
