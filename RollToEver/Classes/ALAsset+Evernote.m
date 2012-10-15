@@ -28,7 +28,7 @@
     NSString *fileExt = [[self getFileName] pathExtension];
     if ([fileExt caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
         fileType = @"jpeg";
-    } else if ([fileExt caseInsensitiveCompare:@".png"] == NSOrderedSame) {
+    } else if ([fileExt caseInsensitiveCompare:@"png"] == NSOrderedSame) {
         fileType = @"png";
     } else {
         // 未対応フォーマット
