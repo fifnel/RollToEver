@@ -40,6 +40,9 @@
 /// アップロード終了
 - (void)PhotoUploaderDidUpload:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount;
 
+/// アップロードスキップ
+- (void)PhotoUploaderDidSkipped:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount reasonException:(NSException *)exception;
+
 /// アップロードループ終了
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader;
 

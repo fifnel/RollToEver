@@ -15,6 +15,8 @@
 @implementation UploadViewController {
     NSOperationQueue *_operationQueue;
     MBProgressHUD *_hud;
+    
+    NSMutableArray *_skipReasonMessages;
 }
 
 // Evernote転送残量表示の更新
@@ -75,6 +77,7 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+    _skipReasonMessages = nil;
 
     [super viewDidUnload];
 }
@@ -117,6 +120,8 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     _hud = nil;
+    _skipReasonMessages = [[NSMutableArray alloc] init];
+
     [self updateEvernoteCycle];
 }
 
@@ -142,11 +147,29 @@
     [self updateEvernoteCycle];
 }
 
+// アップロードスキップ
+- (void)PhotoUploaderDidSkipped:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount reasonException:(NSException *)exception
+{
+    [self.uploadingProgress setProgress:1.0f];
+    
+    NSString* message = [NSString stringWithFormat:@"%@:%@", exception.name, exception.reason];
+    [_skipReasonMessages addObject:message];
+}
+
 // アップロードのループ終了
 - (void)PhotoUploaderDidFinish:(PhotoUploader *)photoUploader
 {
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    UIAlertView *alert;
+    if ([_skipReasonMessages count] > 0) {
+        NSString* reasonMessage = @"Upload Completed\n\n**** Skip Photo Report ****";
+        for(NSString *reason in _skipReasonMessages) {
+            reasonMessage = [NSString stringWithFormat:@"%@\n%@", reasonMessage, reason];
+        }
+        alert = [[UIAlertView alloc] initWithTitle:@"Finish" message:reasonMessage delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    } else {
+        alert = [[UIAlertView alloc] initWithTitle:@"Finish" message:@"Upload Completed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    }
     [alert show];
 }
 

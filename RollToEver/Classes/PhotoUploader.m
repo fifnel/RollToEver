@@ -125,17 +125,28 @@
                 _currentIndex = i;
                 _currentAsset = asset;
 
-                [self PhotoUploaderWillUploadAsync:self
-                                             asset:asset
-                                             index:[NSNumber numberWithInt:i]
-                                        totalCount:[NSNumber numberWithInt:_totalCount]];
-                EDAMNote *note = [asset createEDAMNote:notebookGUID photoSize:photoSize];
-                [noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note];
-                if ([self isCancelled]) {
-                    [self PhotoUploaderCancelAsync:self];
-                    return;
+                @try {
+                    [self PhotoUploaderWillUploadAsync:self
+                                                 asset:asset
+                                                 index:[NSNumber numberWithInt:i]
+                                            totalCount:[NSNumber numberWithInt:_totalCount]];
+                    EDAMNote *note = [asset createEDAMNote:notebookGUID photoSize:photoSize];
+                    [noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note];
+                    if ([self isCancelled]) {
+                        [self PhotoUploaderCancelAsync:self];
+                        return;
+                    }
+                    [urlStorage insertURL:url];
                 }
-                [urlStorage insertURL:url];
+                @catch (UnsupportedFormatException *exception) {
+                    NSLog(@"UnsupportedFormatException:%@", [exception reason]);
+                    [self PhotoUploaderDidSkipped:self
+                                            asset:asset
+                                            index:[NSNumber numberWithInt:i]
+                                       totalCount:[NSNumber numberWithInt:_totalCount]
+                                  reasonException:exception];
+                    continue;
+                }
 
                 [self PhotoUploaderDidUploadAsync:self
                                             asset:asset
@@ -144,18 +155,7 @@
             }
         }
         _currentAsset = nil;
-        [self PhotoUploaderDidFinishAsync:self];
-    }
-    @catch (UnsupportedFormatException *exception) {
-        NSLog(@"UnsupportedFormatException:%@", [exception reason]);
-        if ([self isCancelled]) {
-            [self PhotoUploaderCancelAsync:self];
-        } else {
-            ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
-            [self PhotoUploaderErrorAsync:self error:error];
-            _currentAsset = nil;
-        }
-        return;
+        [self PhotoUploaderDidFinishAsync:self]; // TODO なにかしらエラーを貯めておいてdelegateにおくるか
     }
     @catch (EDAMUserException *exception) {
         NSLog(@"PhotoUploader EDAMUser exception:%@", [exception reason]);
@@ -203,6 +203,13 @@
         [_delegate performSelectorOnMainThread:@selector(PhotoUploaderDidUpload:asset:index:totalCount:) withObjects:photoUploader, asset, index, totalCount, nil];
     }
 
+}
+
+/// アップロードスキップ
+- (void)PhotoUploaderDidSkipped:(PhotoUploader *)photoUploader asset:(ALAsset *)asset index:(NSNumber *)index totalCount:(NSNumber *)totalCount reasonException:(NSException *)exception {
+    if ([_delegate respondsToSelector:@selector(PhotoUploaderDidSkipped:asset:index:totalCount:reasonException:)]) {
+        [_delegate performSelectorOnMainThread:@selector(PhotoUploaderDidSkipped:asset:index:totalCount:reasonException:) withObjects:photoUploader, asset, index, totalCount, exception, nil];
+    }
 }
 
 /// アップロードループ終了
