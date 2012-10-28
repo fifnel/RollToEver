@@ -30,6 +30,8 @@
         fileType = @"jpeg";
     } else if ([fileExt caseInsensitiveCompare:@"png"] == NSOrderedSame) {
         fileType = @"png";
+    } else if ([fileExt caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
+        fileType = @"gif";
     } else {
         // 未対応フォーマット
         NSLog(@"unknown extension:%@", [self getFileName]);
@@ -88,6 +90,8 @@
         fileType = kUTTypeJPEG;
     } else if ([fileExt caseInsensitiveCompare:@"png"] == NSOrderedSame) {
         fileType = kUTTypePNG;
+    } else if ([fileExt caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
+        fileType = kUTTypeGIF;
     } else {
         // 未対応フォーマット
         return nil;
