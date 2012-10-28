@@ -189,6 +189,7 @@
 		C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */; };
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
+		C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
@@ -387,6 +388,8 @@
 		C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewTest.m; sourceTree = "<group>"; };
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
+		C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnsupportedFormatException.h; path = RollToEver/Classes/UnsupportedFormatException.h; sourceTree = "<group>"; };
+		C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnsupportedFormatException.m; path = RollToEver/Classes/UnsupportedFormatException.m; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
@@ -785,6 +788,8 @@
 				C039CDF914F68BD500948DC6 /* PhotoUploader.m */,
 				C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */,
 				C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */,
+				C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */,
+				C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */,
 			);
 			name = RollToEver;
 			sourceTree = "<group>";
@@ -1075,6 +1080,7 @@
 				C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C03EF55E16056BEB000703BD /* TestViewController.m in Sources */,
+				C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "EvernoteSDK.h"
 #import "EvernoteSession+ProgressableClient.h"
 #import "ALAsset+Evernote.h"
+#import "UnsupportedFormatException.h"
 
 /**
 * 写真アップローダーdelegate.
@@ -144,6 +145,17 @@
         }
         _currentAsset = nil;
         [self PhotoUploaderDidFinishAsync:self];
+    }
+    @catch (UnsupportedFormatException *exception) {
+        NSLog(@"UnsupportedFormatException:%@", [exception reason]);
+        if ([self isCancelled]) {
+            [self PhotoUploaderCancelAsync:self];
+        } else {
+            ApplicationError *error = [[ApplicationError alloc] initWithErrorCode:ERROR_TRANSPORT Param:0];
+            [self PhotoUploaderErrorAsync:self error:error];
+            _currentAsset = nil;
+        }
+        return;
     }
     @catch (EDAMUserException *exception) {
         NSLog(@"PhotoUploader EDAMUser exception:%@", [exception reason]);

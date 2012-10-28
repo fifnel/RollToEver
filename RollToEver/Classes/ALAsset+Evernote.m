@@ -10,6 +10,7 @@
 #import <ImageIO/imageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "NSDataMD5Additions.h"
+#import "UnsupportedFormatException.h"
 
 @implementation ALAsset (Evernote)
 
@@ -35,7 +36,7 @@
     } else {
         // 未対応フォーマット
         NSLog(@"unknown extension:%@", [self getFileName]);
-        return nil;
+        @throw [UnsupportedFormatException exceptionWithFormatName:fileExt];
     }
 
     // データを整理してnoteを作る
@@ -94,7 +95,7 @@
         fileType = kUTTypeGIF;
     } else {
         // 未対応フォーマット
-        return nil;
+        @throw [UnsupportedFormatException exceptionWithFormatName:fileExt];
     }
 
     // リサイズ・回転処理
