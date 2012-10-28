@@ -6,9 +6,10 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
+#import "Config.h"
+
 #import "AppDelegate.h"
 #import "UserSettings.h"
-#import "id.h"
 #import <CoreData/CoreData.h>
 
 @interface AppDelegate ()

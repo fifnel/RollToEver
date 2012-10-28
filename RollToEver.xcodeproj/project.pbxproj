@@ -190,6 +190,7 @@
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
+		C0D8A92C163D6142002FC719 /* PrivateConfig.h.sample in Resources */ = {isa = PBXBuildFile; fileRef = C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */; };
 		C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
@@ -264,6 +265,7 @@
 		C039CE2714F6911700948DC6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadViewController.m; path = Classes/UploadViewController.m; sourceTree = "<group>"; };
 		C039CE3014F7E2B000948DC6 /* EvernoteAuthTokenTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteAuthTokenTest.h; sourceTree = "<group>"; };
 		C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteAuthTokenTest.m; sourceTree = "<group>"; };
+		C03DC274163D63D2004D3B75 /* PrivateConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateConfig.h; sourceTree = "<group>"; };
 		C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+ProgressableClient.h"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.h"; sourceTree = "<group>"; };
 		C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+ProgressableClient.m"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.m"; sourceTree = "<group>"; };
 		C03EF55C16056BEB000703BD /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = Classes/TestViewController.h; sourceTree = "<group>"; };
@@ -358,7 +360,6 @@
 		C07EE311160425F3000EFA19 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "RollToEver/Libraries/Evernote/NSString+MD5.m"; sourceTree = "<group>"; };
 		C07EE31916042656000EFA19 /* MD5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MD5.c; path = RollToEver/Libraries/Evernote/MD5.c; sourceTree = "<group>"; };
 		C07EE31A16042656000EFA19 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5.h; path = RollToEver/Libraries/Evernote/MD5.h; sourceTree = "<group>"; };
-		C07EE3211604288C000EFA19 /* id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id.h; path = RollToEver/Libraries/Evernote/id.h; sourceTree = "<group>"; };
 		C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+Login.h"; path = "RollToEver/Classes/EvernoteSession+Login.h"; sourceTree = "<group>"; };
 		C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+Login.m"; path = "RollToEver/Classes/EvernoteSession+Login.m"; sourceTree = "<group>"; };
 		C07EE33216049679000EFA19 /* ALAsset+Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAsset+Evernote.h"; path = "RollToEver/Classes/ALAsset+Evernote.h"; sourceTree = "<group>"; };
@@ -390,6 +391,8 @@
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnsupportedFormatException.h; path = RollToEver/Classes/UnsupportedFormatException.h; sourceTree = "<group>"; };
 		C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnsupportedFormatException.m; path = RollToEver/Classes/UnsupportedFormatException.m; sourceTree = "<group>"; };
+		C0D8A92A163D605F002FC719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrivateConfig.h.sample; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
@@ -460,7 +463,9 @@
 		C039B0F514DF79D300F4169E = {
 			isa = PBXGroup;
 			children = (
-				C07EE3211604288C000EFA19 /* id.h */,
+				C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */,
+				C03DC274163D63D2004D3B75 /* PrivateConfig.h */,
+				C0D8A92A163D605F002FC719 /* Config.h */,
 				C07EE25B160403B5000EFA19 /* Submodules */,
 				C039B10A14DF79D300F4169E /* ViewControllers */,
 				C0BC743E14E5FEE0003B0611 /* Classes */,
@@ -981,6 +986,7 @@
 				C07EE2501603FA30000EFA19 /* Default.png in Resources */,
 				C07EE2511603FA30000EFA19 /* Default-568h@2x.png in Resources */,
 				C07EE2521603FA30000EFA19 /* Default@2x.png in Resources */,
+				C0D8A92C163D6142002FC719 /* PrivateConfig.h.sample in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

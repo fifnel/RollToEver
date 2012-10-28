@@ -6,9 +6,9 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-#import "EvernoteSession+Login.h"
+#import "Config.h"
 
-#import "id.h"
+#import "EvernoteSession+Login.h"
 
 @implementation EvernoteSession (Login)
 

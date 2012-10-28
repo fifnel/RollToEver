@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-#ifndef FOR_DEVEL
+#ifndef ENABLE_TEST_MODE
     self.testModeButton.hidden = YES;
 #endif
     _skipUpdatePhotoCount = NO;

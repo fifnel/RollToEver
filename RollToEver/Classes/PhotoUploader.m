@@ -6,11 +6,12 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
+#import "Config.h"
+
 #import "PhotoUploader.h"
 #import "UserSettings.h"
 #import "AssetsLoader.h"
 #import "NSObject+InvocationUtils.h"
-#import "id.h"
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+ProgressableClient.h"
@@ -155,7 +156,7 @@
             }
         }
         _currentAsset = nil;
-        [self PhotoUploaderDidFinishAsync:self]; // TODO なにかしらエラーを貯めておいてdelegateにおくるか
+        [self PhotoUploaderDidFinishAsync:self];
     }
     @catch (EDAMUserException *exception) {
         NSLog(@"PhotoUploader EDAMUser exception:%@", [exception reason]);
@@ -237,7 +238,11 @@
 #pragma mark - THTTPAsyncClient delegate
 
 /// 送信終了
-- (void)connection:(NSURLConnection *)connection client:(THTTPAsyncClient *)client didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+- (void)connection:(NSURLConnection *)connection
+            client:(THTTPAsyncClient *)client
+   didSendBodyData:(NSInteger)bytesWritten
+ totalBytesWritten:(NSInteger)totalBytesWritten
+totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     // キャンセルチェック
     if ([self isCancelled]) {
         [client cancel];
@@ -248,12 +253,12 @@
     if ([_delegate respondsToSelector:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)]) {
         [_delegate performSelectorOnMainThread:@selector(PhotoUploaderUploading:asset:index:totalCount:uploadedSize:totalSize:)
                                    withObjects:self,
-                        _currentAsset,
-                                               [NSNumber numberWithInt:_currentIndex],
-                                               [NSNumber numberWithInt:_totalCount],
-                                               [NSNumber numberWithInt:totalBytesWritten],
-                                               [NSNumber numberWithInt:totalBytesExpectedToWrite],
-                                               nil];
+         _currentAsset,
+         [NSNumber numberWithInt:_currentIndex],
+         [NSNumber numberWithInt:_totalCount],
+         [NSNumber numberWithInt:totalBytesWritten],
+         [NSNumber numberWithInt:totalBytesExpectedToWrite],
+         nil];
     }
 }
 

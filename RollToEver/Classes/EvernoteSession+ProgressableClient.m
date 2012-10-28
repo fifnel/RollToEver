@@ -6,10 +6,11 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
+#import "Config.h"
+
 #import "EvernoteSession+ProgressableClient.h"
 #import "Thrift.h"
 #import "THTTPAsyncClient.h"
-#import "id.h"
 
 @implementation EvernoteSession (ProgressableClient)
 

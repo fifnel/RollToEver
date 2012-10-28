@@ -6,8 +6,9 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
+#import "Config.h"
+
 #import "AboutViewControllerViewController.h"
-#import "id.h"
 
 @implementation AboutViewControllerViewController
 

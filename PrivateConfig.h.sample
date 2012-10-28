@@ -1,0 +1,26 @@
+//
+//  PrivateConfig.h.sample
+//  RollToEver
+//
+//  Created by fifnel on 2012/10/28.
+//  Copyright (c) 2012年 fifnel. All rights reserved.
+//
+
+// このファイルは PrivateConfig.h にリネームした上で、内容を適宜書き換えて利用して下さい
+// このファイルはすべてのソースで#importされているわけではないので注意して下さい
+
+#ifndef RollToEver_PrivateConfig_h
+#define RollToEver_PrivateConfig_h
+
+// Evernote接続先をSANDBOXにする
+#define USE_EVERNOTE_SANDBOX
+
+// テストモードを有効にする（最初の画面にテストモードへ移行するボタンが表示される）
+#define ENABLE_TEST_MODE
+
+// EvernoteのOAuth情報
+// ※注意※　不特定多数に見られないよう、githubなどへのアップの際は注意してください
+#define CONSUMER_KEY        @"consumer_key_sample"
+#define CONSUMER_SECRET     @"consumer_secret_sample"
+
+#endif

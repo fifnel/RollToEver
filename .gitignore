@@ -3,3 +3,4 @@ RollToEver.xcodeproj/project.xcworkspace
 id.h
 RollToEver/Libraries/GoogleAdMobAdsSDKiOS
 .idea
+PrivateConfig.h
