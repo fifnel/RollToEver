@@ -52,7 +52,6 @@
 		C039CE2514F68BD500948DC6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE0514F68BD500948DC6 /* MainViewController.m */; };
 		C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
-		C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */; };
 		C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; };
 		C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -170,6 +169,8 @@
 		C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
+		C0828E5016BE7B1100C3B7ED /* ALAssertTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */; };
+		C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -187,7 +188,6 @@
 		C0BC74D814E6CCFD003B0611 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74D714E6CCFD003B0611 /* main.m */; };
 		C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */; };
 		C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74E914E6CE2B003B0611 /* MyTest.m */; };
-		C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */; };
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
@@ -264,8 +264,6 @@
 		C039CE0514F68BD500948DC6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		C039CE2614F6911700948DC6 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadViewController.h; path = Classes/UploadViewController.h; sourceTree = "<group>"; };
 		C039CE2714F6911700948DC6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadViewController.m; path = Classes/UploadViewController.m; sourceTree = "<group>"; };
-		C039CE3014F7E2B000948DC6 /* EvernoteAuthTokenTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteAuthTokenTest.h; sourceTree = "<group>"; };
-		C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteAuthTokenTest.m; sourceTree = "<group>"; };
 		C03DC274163D63D2004D3B75 /* PrivateConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateConfig.h; sourceTree = "<group>"; };
 		C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+ProgressableClient.h"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.h"; sourceTree = "<group>"; };
 		C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+ProgressableClient.m"; path = "RollToEver/Classes/EvernoteSession+ProgressableClient.m"; sourceTree = "<group>"; };
@@ -365,6 +363,9 @@
 		C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+Login.m"; path = "RollToEver/Classes/EvernoteSession+Login.m"; sourceTree = "<group>"; };
 		C07EE33216049679000EFA19 /* ALAsset+Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAsset+Evernote.h"; path = "RollToEver/Classes/ALAsset+Evernote.h"; sourceTree = "<group>"; };
 		C07EE33316049679000EFA19 /* ALAsset+Evernote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAsset+Evernote.m"; path = "RollToEver/Classes/ALAsset+Evernote.m"; sourceTree = "<group>"; };
+		C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssertTest.m; sourceTree = "<group>"; };
+		C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetTestUtility.h; sourceTree = "<group>"; };
+		C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTestUtility.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -385,8 +386,6 @@
 		C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEverGHUnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = RollToEverGHUnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
 		C0BC74E914E6CE2B003B0611 /* MyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
-		C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewTest.h; sourceTree = "<group>"; };
-		C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewTest.m; sourceTree = "<group>"; };
 		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
 		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnsupportedFormatException.h; path = RollToEver/Classes/UnsupportedFormatException.h; sourceTree = "<group>"; };
@@ -752,6 +751,15 @@
 			name = Evernote;
 			sourceTree = "<group>";
 		};
+		C0828E5416BE7F7E00C3B7ED /* NoRefactor */ = {
+			isa = PBXGroup;
+			children = (
+				C0B604B1155C049D003DA7F3 /* RollToEver */,
+				C0B604A4155BFC52003DA7F3 /* Utilities */,
+			);
+			name = NoRefactor;
+			sourceTree = "<group>";
+		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,8 +818,7 @@
 		C0BC743E14E5FEE0003B0611 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C0B604B1155C049D003DA7F3 /* RollToEver */,
-				C0B604A4155BFC52003DA7F3 /* Utilities */,
+				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -820,11 +827,10 @@
 			isa = PBXGroup;
 			children = (
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
-				C0BC74EA14E6CE2B003B0611 /* MyViewTest.h */,
-				C0BC74EB14E6CE2B003B0611 /* MyViewTest.m */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
-				C039CE3014F7E2B000948DC6 /* EvernoteAuthTokenTest.h */,
-				C039CE3114F7E2B000948DC6 /* EvernoteAuthTokenTest.m */,
+				C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */,
+				C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */,
+				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -1142,7 +1148,6 @@
 				C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */,
 				C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */,
 				C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */,
-				C0BC74ED14E6CE48003B0611 /* MyViewTest.m in Sources */,
 				C0BC74D814E6CCFD003B0611 /* main.m in Sources */,
 				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
@@ -1156,7 +1161,6 @@
 				C039CE2314F68BD500948DC6 /* UserSettings.m in Sources */,
 				C039CE2514F68BD500948DC6 /* MainViewController.m in Sources */,
 				C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */,
-				C039CE3214F7E2B000948DC6 /* EvernoteAuthTokenTest.m in Sources */,
 				C07EE2461603F839000EFA19 /* ApplicationError.m in Sources */,
 				C07EE2B7160422E0000EFA19 /* GCOAuth.m in Sources */,
 				C07EE2BD160422E0000EFA19 /* NSData+Base64.m in Sources */,
@@ -1190,6 +1194,8 @@
 				C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */,
+				C0828E5016BE7B1100C3B7ED /* ALAssertTest.m in Sources */,
+				C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
