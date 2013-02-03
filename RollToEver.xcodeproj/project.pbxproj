@@ -169,7 +169,7 @@
 		C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
-		C0828E5016BE7B1100C3B7ED /* ALAssertTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */; };
+		C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */; };
 		C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
@@ -363,7 +363,7 @@
 		C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+Login.m"; path = "RollToEver/Classes/EvernoteSession+Login.m"; sourceTree = "<group>"; };
 		C07EE33216049679000EFA19 /* ALAsset+Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAsset+Evernote.h"; path = "RollToEver/Classes/ALAsset+Evernote.h"; sourceTree = "<group>"; };
 		C07EE33316049679000EFA19 /* ALAsset+Evernote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAsset+Evernote.m"; path = "RollToEver/Classes/ALAsset+Evernote.m"; sourceTree = "<group>"; };
-		C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssertTest.m; sourceTree = "<group>"; };
+		C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTestUtilTest.m; sourceTree = "<group>"; };
 		C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetTestUtility.h; sourceTree = "<group>"; };
 		C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTestUtility.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -828,7 +828,7 @@
 			children = (
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
-				C0828E4F16BE7B1100C3B7ED /* ALAssertTest.m */,
+				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
 				C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */,
 				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
 			);
@@ -1194,7 +1194,7 @@
 				C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */,
-				C0828E5016BE7B1100C3B7ED /* ALAssertTest.m in Sources */,
+				C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */,
 				C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

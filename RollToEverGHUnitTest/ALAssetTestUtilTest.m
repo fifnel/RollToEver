@@ -45,6 +45,21 @@
     GHAssertNotNil(asset, @"tiff not found");
 }
 
+- (void)testGetNil {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:nil];
+    GHAssertNil(asset, @"testGetNil");
+}
+
+- (void)testGetEmpty {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@""];
+    GHAssertNil(asset, @"testGetEmpty");
+}
+
+- (void)testGetUnknwn {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"abc"];
+    GHAssertNil(asset, @"testGetUnknown");
+}
+
 - (void)testSimpleFail {
 	GHAssertTrue(NO, nil);
 }
