@@ -8,7 +8,6 @@
 
 #import "EvernoteAuthTokenTest.h"
 #import "UserSettings.h"
-#import "id.h"
 #import <GHUnitIOS/GHUnit.h>
 #import "SettingsTableViewController.h"
 #import "AssetsLoader.h"
@@ -30,6 +29,7 @@
 }
 
 - (void)testAlAsset {
+    /*
     AssetsLoader *al = [[AssetsLoader alloc] init];
     NSArray *assetList = [al EnumerateURLExcludeDuplication:NO];
     for(NSString *url in assetList) {
@@ -38,6 +38,7 @@
         EDAMNote *note = [asset createEDAMNote:@"GUID" photoSize:0];
         NSLog(@"%@", note);
     }
+     */
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import <GHUnitIOS/GHUnit.h> 
-#import "ViewController.h"
 
 @interface MyViewTest : GHViewTestCase { }
 @end

@@ -169,6 +169,7 @@
 		C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
+		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -374,7 +375,6 @@
 		C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+InvocationUtils.m"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
 		C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationError.h; path = RollToEver/Classes/ApplicationError.h; sourceTree = "<group>"; };
 		C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationError.m; path = RollToEver/Classes/ApplicationError.m; sourceTree = "<group>"; };
-		C08AA32C1524C1DA004324DA /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = RollToEver/Libraries/GoogleAdMobAdsSDKiOS/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C0B604AA155BFECB003DA7F3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -490,7 +490,6 @@
 		C039B10314DF79D300F4169E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C08AA32C1524C1DA004324DA /* libGoogleAdMobAds.a */,
 				C074D17114ED48070077C201 /* libz.dylib */,
 				C074D16F14ED47FE0077C201 /* libxml2.dylib */,
 				C0E85A2814F6799300B3A1B4 /* ImageIO.framework */,
@@ -1190,6 +1189,7 @@
 				C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
 				C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
+				C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
