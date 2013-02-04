@@ -13,26 +13,80 @@
 
 @implementation ALAsset (Resize)
 
-- (NSString *)getFileName
+- (NSString *)filename
 {
     ALAssetRepresentation *rep = [self defaultRepresentation];
     return [rep filename];
 }
 
-- (NSString *)getFileExtension
+- (NSString *)fileExtension
 {
-    return [[self getFileName] pathExtension];
+    return [[self filename] pathExtension];
 }
 
-- (CFStringRef)getUTType
+- (CFStringRef)UTType
 {
-    NSString *extension = [self getFileExtension];
+    NSString *extension = [self fileExtension];
     CFStringRef fileType = [ALAsset stringToUTType:extension];
     if (!fileType) {
         @throw [UnsupportedFormatException exceptionWithFormatName:extension];
     }
     
     return fileType;
+}
+
+- (float)resizeRatio:(NSInteger)maxPixel
+{
+    ALAssetRepresentation *rep = [self defaultRepresentation];
+    CGImageRef fullResolution = [rep fullResolutionImage];
+
+    size_t width = CGImageGetWidth(fullResolution);
+    size_t height = CGImageGetHeight(fullResolution);
+    if (width == 0 || height == 0) {
+        @throw [UnsupportedFormatException exceptionWithFormatName:@""]; // FIXME 正しい例外を投げるようにする
+    }
+
+    float ratio = 1.0f;
+    if (maxPixel > 0) {
+        ratio = sqrtf((float) maxPixel / (float) (width * height));
+    }
+    if (ratio > 1.0f) {
+        ratio = 1.0f;
+    }
+    
+    return ratio;
+}
+
+- (float)orientation
+{
+    ALAssetRepresentation *rep = [self defaultRepresentation];
+    NSString *orientationStr = [[rep metadata] valueForKey:@"Orientation"];
+    int orientation = [orientationStr intValue];
+    if (orientation == 0) {
+        orientation = 1;
+    }
+    return orientation;
+}
+
+- (NSDictionary *)fixedMetadata
+{
+    static NSString *META_ROOT_ORIENTATION = @"Orientation";
+    static NSString *META_TIFF             = @"{TIFF}";
+    static NSString *META_TIFF_ORIENTATION = @"Orientation";
+
+    ALAssetRepresentation *rep = [self defaultRepresentation];
+    NSMutableDictionary *metaData = [[NSMutableDictionary alloc] initWithDictionary:[rep metadata]];
+
+    if ([metaData valueForKey:META_ROOT_ORIENTATION] != nil) {
+        [metaData setValue:[NSNumber numberWithInt:1] forKey:META_ROOT_ORIENTATION];
+    }
+    if ([metaData valueForKey:META_TIFF] != nil) {
+        if ([metaData valueForKey:META_TIFF_ORIENTATION] != nil) {
+            [[metaData valueForKey:META_TIFF] setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
+        }
+    }
+
+    return metaData;
 }
 
 + (CFStringRef)stringToUTType:(NSString *)extension
@@ -51,51 +105,25 @@
     }
 }
 
+// TODO 関数名変える
+// 中で変換処理が行われることが想像できる名前が良い 
+// transformとか 
 - (NSData *)resizedImageData:(NSInteger)maxPixel
 {
-    static NSString *META_ROOT_ORIENTATION = @"Orientation";
-    static NSString *META_TIFF = @"{TIFF}";
-    static NSString *META_TIFF_ORIENTATION = @"Orientation";
-    
     ALAssetRepresentation *rep = [self defaultRepresentation];
-    NSMutableDictionary *metaData = [[NSMutableDictionary alloc] initWithDictionary:[rep metadata]];
-    CGImageRef fullResolution = [rep fullResolutionImage];
 
-    CFStringRef fileType = [self getUTType];
-    
     // リサイズ・回転処理
-    size_t width = CGImageGetWidth(fullResolution);
-    size_t height = CGImageGetHeight(fullResolution);
-    if (width == 0 || height == 0) {
-        return nil;
-    }
-    float ratio = 1.0f;
-    if (maxPixel > 0) {
-        ratio = sqrtf((float) maxPixel / (float) (width * height));
-    }
-    if (ratio > 1.0f) {
-        ratio = 1.0f;
-    }
-    NSString *orientationStr = [metaData valueForKey:@"Orientation"];
-    int orientation = [orientationStr intValue];
-    if (orientation == 0) {
-        orientation = 1;
-    }
-    UIImage *resizedImage = [ALAsset scaleAndRotateImage:(CGImageRef) fullResolution orientation:(int) orientation resizeRatio:(float) ratio];
+    CGImageRef fullResolution = [rep fullResolutionImage];
+    int orientation           = [self orientation];
+    float ratio               = [self resizeRatio:maxPixel];
+    UIImage *resizedImage     = [ALAsset scaleAndRotateImage:(CGImageRef) fullResolution orientation:(int) orientation resizeRatio:(float) ratio];
     
-    
-    // メタデータ書き込み(Orientationだけは元画像を回転加工済みなので1に固定する)
-    if ([metaData valueForKey:META_ROOT_ORIENTATION] != nil) {
-        [metaData setValue:[NSNumber numberWithInt:1] forKey:META_ROOT_ORIENTATION];
-    }
-    if ([metaData valueForKey:META_TIFF] != nil) {
-        if ([metaData valueForKey:META_TIFF_ORIENTATION] != nil) {
-            [[metaData valueForKey:META_TIFF] setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
-            //            [metaData setValue:[NSNumber numberWithInt:1] forKey:META_TIFF_ORIENTATION];
-        }
-    }
+    // 書き戻し用のメタデータ組み立て (Orientationだけは元画像を回転加工済みなので1に固定する)
+    NSDictionary *metaData = [self fixedMetadata];
+
+    // リサイズ済み画像データとメタデータを合体して新しいイメージデータを生成する 
     NSMutableData *resizedImageData = [[NSMutableData alloc] init];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef) resizedImageData, fileType, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef) resizedImageData, [self UTType], 1, NULL);
     CGImageDestinationAddImage(destination, [resizedImage CGImage], (__bridge CFDictionaryRef) metaData);
     CGImageDestinationFinalize(destination);
     CFRelease(destination);
