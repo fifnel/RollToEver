@@ -6,6 +6,14 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
+/*
+ TODO
+ createEDAMNoteはEDAMNoteのカテゴリ(staticメソッド)にする
+ getextほしい
+ geturlも
+ ついでにcreateFromUrlもあるといいなぁ　それはalassetslibraryのユーティリティクラスに任せるか
+ */
+
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "EvernoteSDK.h"
 
