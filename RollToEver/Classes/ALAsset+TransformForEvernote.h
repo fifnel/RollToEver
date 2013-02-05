@@ -10,23 +10,26 @@
 
 @interface ALAsset (TransformForEvernote)
 
-    // ファイル名の取得
-    - (NSString *)filename;
+// ファイル名の取得
+- (NSString *)filename;
 
-    // ファイルの拡張子の取得
-    - (NSString *)fileExtension;
+// ファイルの拡張子の取得
+- (NSString *)fileExtension;
 
-    // UTType(CGImage生成時のフォーマット指定)の取得 
-    - (CFStringRef)UTType;
+// UTType(CGImage生成時のフォーマット指定)の取得
+- (CFStringRef)UTType;
 
-    // リサイズ比率の取得
-    - (float)resizeRatio:(NSInteger)maxPixel;
+// MIMEタイプの取得
+- (NSString *)MIMEType;
 
-    // 回転方向の取得
-    - (float)orientation;
+// リサイズ比率の取得
+- (float)resizeRatio:(NSInteger)maxPixel;
 
-    // アセット内の写真をEvernote向けに変換して生データを返す
-    // maxPixelが0以下の場合はオリジナルサイズのまま返す
-    - (NSData *)transformForEvernote:(NSInteger)maxPixel;
+// 回転方向の取得
+- (float)orientation;
+
+// アセット内の写真をEvernote向けに変換して生データを返す
+// maxPixelが0以下の場合はオリジナルサイズのまま返す
+- (NSData *)transformForEvernote:(NSInteger)maxPixel;
 
 @end

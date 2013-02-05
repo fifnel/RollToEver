@@ -27,12 +27,23 @@
 - (CFStringRef)UTType
 {
     NSString *extension = [self fileExtension];
-    CFStringRef fileType = [ALAsset stringToUTType:extension];
-    if (!fileType) {
+    CFStringRef utType = [ALAsset stringToUTType:extension];
+    if (!utType) {
         @throw [UnsupportedFormatException exceptionWithFormatName:extension];
     }
     
-    return fileType;
+    return utType;
+}
+
+- (NSString *)MIMEType
+{
+    NSString *extension = [self fileExtension];
+    NSString *mimeType = [ALAsset stringToMIMEType:extension];
+    if (!mimeType) {
+        @throw [UnsupportedFormatException exceptionWithFormatName:extension];
+    }
+    
+    return mimeType;
 }
 
 - (float)resizeRatio:(NSInteger)maxPixel
@@ -133,6 +144,24 @@
         return NULL;
     }
 }
+
+// 拡張子文字列をMIME向け文字列に変換する
++ (NSString *)stringToMIMEType:(NSString *)extension
+{
+    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
+    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
+    if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
+        return @"image/jpeg";
+    } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
+        return @"image/png";
+    } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
+        return @"image/gif";
+    } else {
+        // 未対応フォーマット
+        return nil;
+    }
+}
+
 
 // 拡縮と回転（EXIFの向きをUpにして画像の向きを直す)
 + (UIImage *)scaleAndRotateImage:(CGImageRef)imageRef orientation:(int)orientation resizeRatio:(float)resizeRatio
