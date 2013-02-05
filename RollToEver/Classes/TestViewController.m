@@ -8,7 +8,8 @@
 
 #import "TestViewController.h"
 #import "EvernoteSDK.h"
-#import "ALAsset+Evernote.h"
+#import "ALAsset+TransformForEvernote.h"
+#import "EDAMNote+CreateFromALAsset.h"
 #import "AssetsLoader.h"
 
 @interface TestViewController ()
@@ -150,7 +151,7 @@
     }
     NSString *url = urlList[0];
     ALAsset *asset = [al loadAssetURLString:url];
-    EDAMNote *note = [asset createEDAMNote:nil photoSize:0];
+    EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:0];
 //    note.title = @"note.title";
 //    note.content = @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note>note.content2</en-note>";
     

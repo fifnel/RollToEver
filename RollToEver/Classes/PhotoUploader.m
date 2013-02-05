@@ -15,7 +15,8 @@
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+ProgressableClient.h"
-#import "ALAsset+Evernote.h"
+#import "ALAsset+TransformForEvernote.h"
+#import "EDAMNote+CreateFromALAsset.h"
 #import "UnsupportedFormatException.h"
 
 /**
@@ -131,7 +132,7 @@
                                                  asset:asset
                                                  index:[NSNumber numberWithInt:i]
                                             totalCount:[NSNumber numberWithInt:_totalCount]];
-                    EDAMNote *note = [asset createEDAMNote:notebookGUID photoSize:photoSize];
+                    EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:notebookGUID photoSize:photoSize];
                     [noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note];
                     if ([self isCancelled]) {
                         [self PhotoUploaderCancelAsync:self];

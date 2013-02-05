@@ -165,9 +165,6 @@
 		C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
 		C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
-		C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
-		C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE33316049679000EFA19 /* ALAsset+Evernote.m */; };
 		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */; };
 		C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */; };
@@ -367,8 +364,6 @@
 		C07EE31A16042656000EFA19 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5.h; path = RollToEver/Libraries/Evernote/MD5.h; sourceTree = "<group>"; };
 		C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EvernoteSession+Login.h"; path = "RollToEver/Classes/EvernoteSession+Login.h"; sourceTree = "<group>"; };
 		C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EvernoteSession+Login.m"; path = "RollToEver/Classes/EvernoteSession+Login.m"; sourceTree = "<group>"; };
-		C07EE33216049679000EFA19 /* ALAsset+Evernote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAsset+Evernote.h"; path = "RollToEver/Classes/ALAsset+Evernote.h"; sourceTree = "<group>"; };
-		C07EE33316049679000EFA19 /* ALAsset+Evernote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAsset+Evernote.m"; path = "RollToEver/Classes/ALAsset+Evernote.m"; sourceTree = "<group>"; };
 		C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTestUtilTest.m; sourceTree = "<group>"; };
 		C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetTestUtility.h; sourceTree = "<group>"; };
 		C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTestUtility.m; sourceTree = "<group>"; };
@@ -785,8 +780,6 @@
 		C0828E5616BF297A00C3B7ED /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				C07EE33216049679000EFA19 /* ALAsset+Evernote.h */,
-				C07EE33316049679000EFA19 /* ALAsset+Evernote.m */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
@@ -1118,7 +1111,6 @@
 				C07EE315160425F3000EFA19 /* NSString+MD5.m in Sources */,
 				C07EE31E16042656000EFA19 /* MD5.c in Sources */,
 				C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
-				C07EE3341604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C03EF55E16056BEB000703BD /* TestViewController.m in Sources */,
 				C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */,
@@ -1166,7 +1158,6 @@
 				C07EE316160425F3000EFA19 /* NSString+MD5.m in Sources */,
 				C07EE31F16042656000EFA19 /* MD5.c in Sources */,
 				C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
-				C07EE3351604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C0828E6216BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
 				C0828E6D16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
@@ -1225,7 +1216,6 @@
 				C07EE317160425F3000EFA19 /* NSString+MD5.m in Sources */,
 				C07EE32016042656000EFA19 /* MD5.c in Sources */,
 				C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
-				C07EE3361604967A000EFA19 /* ALAsset+Evernote.m in Sources */,
 				C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */,
 				C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */,
 				C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */,
