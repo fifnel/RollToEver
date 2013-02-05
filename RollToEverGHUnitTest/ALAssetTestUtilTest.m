@@ -10,13 +10,13 @@
 //#import <OCMock/OCMock.h>
 #import "ALAssetTestUtility.h"
  
-@interface ALAssertTest : GHTestCase
+@interface ALAssetTestUtilityTest : GHTestCase
 {
     __strong ALAssetTestUtility *_assetsUtility;
 }
 @end
  
-@implementation ALAssertTest
+@implementation ALAssetTestUtilityTest
 
 //Method called before each tests
 - (void) setUp
@@ -40,9 +40,24 @@
     GHAssertNotNil(asset, @"gif not found");
 }
 
+- (void)testGetPng {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"png"];
+    GHAssertNotNil(asset, @"png not found");
+}
+
+- (void)testGetJpg2000 {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"jp2"];
+    GHAssertNotNil(asset, @"jpeg2000 not found");
+}
+
 - (void)testGetTiff {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"tif"];
     GHAssertNotNil(asset, @"tiff not found");
+}
+
+- (void)testGetUnkown {
+    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"hoge"];
+    GHAssertNil(asset, @"unknown(hoge) asset found");
 }
 
 - (void)testGetNil {
@@ -60,8 +75,4 @@
     GHAssertNil(asset, @"testGetUnknown");
 }
 
-- (void)testSimpleFail {
-	GHAssertTrue(NO, nil);
-}
- 
 @end

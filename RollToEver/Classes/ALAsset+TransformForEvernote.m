@@ -22,7 +22,7 @@
 
 - (NSString *)fileExtension
 {
-    return [[self filename] pathExtension];
+    return [[[self filename] pathExtension] lowercaseString];
 }
 
 - (CFStringRef)UTType

@@ -13,7 +13,7 @@
 // ファイル名の取得
 - (NSString *)filename;
 
-// ファイルの拡張子の取得
+// ファイルの拡張子の取得(lowercaseに変換します)
 - (NSString *)fileExtension;
 
 // UTType(CGImage生成時のフォーマット指定)の取得

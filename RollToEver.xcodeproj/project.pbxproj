@@ -177,6 +177,7 @@
 		C0828E7116C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
+		C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7416C158F800C3B7ED /* ALAssetTest.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -376,6 +377,7 @@
 		C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDAMNote+CreateFromALAsset.m"; path = "RollToEver/Classes/EDAMNote+CreateFromALAsset.m"; sourceTree = "<group>"; };
 		C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollToEverCommonException.h; path = RollToEver/Classes/RollToEverCommonException.h; sourceTree = "<group>"; };
 		C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RollToEverCommonException.m; path = RollToEver/Classes/RollToEverCommonException.m; sourceTree = "<group>"; };
+		C0828E7416C158F800C3B7ED /* ALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTest.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -793,6 +795,15 @@
 			name = Deprecated;
 			sourceTree = "<group>";
 		};
+		C0828E7616C15E5900C3B7ED /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */,
+				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,11 +867,11 @@
 		C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
-				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
 				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
-				C0828E5116BE7E3B00C3B7ED /* ALAssetTestUtility.h */,
-				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
+				C0828E7416C158F800C3B7ED /* ALAssetTest.m */,
+				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
+				C0828E7616C15E5900C3B7ED /* Utility */,
+				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -1232,6 +1243,7 @@
 				C0828E6316BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
 				C0828E6E16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
+				C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
