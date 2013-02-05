@@ -24,7 +24,6 @@
 		C039B12414DF79D400F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B12B14DF79D400F4169E /* InfoPlist.strings */; };
-		C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C039B12F14DF79D400F4169E /* RollToEverTests.m */; };
 		C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C039CDE014F68B9E00948DC6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD514F68B9E00948DC6 /* Icon-72.png */; };
 		C039CDE114F68B9E00948DC6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD614F68B9E00948DC6 /* Icon-Small-50.png */; };
@@ -53,7 +52,7 @@
 		C039CE2814F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C039CE2914F6911700948DC6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CE2714F6911700948DC6 /* UploadViewController.m */; };
 		C03EF5491604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; };
+		C03EF54A1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C03EF54B1604CAAD000703BD /* EvernoteSession+ProgressableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C03EF55E16056BEB000703BD /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03EF55D16056BEB000703BD /* TestViewController.m */; };
 		C04F82DB14E7A00A00C9D1FE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
@@ -163,7 +162,7 @@
 		C07EE31F16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE32016042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
+		C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */; };
@@ -178,12 +177,15 @@
 		C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7416C158F800C3B7ED /* ALAssetTest.m */; };
+		C0828E7D16C1C2C900C3B7ED /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0828E7E16C1C2E300C3B7ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
+		C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
+		C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
+		C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8216C1C35600C3B7ED /* SampleTest.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
-		C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0833FFA14E3947000DB4144 /* CoreDataTest.m */; };
 		C08582371616CF6100D0092B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
-		C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */; };
 		C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
 		C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
@@ -196,7 +198,6 @@
 		C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */; };
 		C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74E914E6CE2B003B0611 /* MyTest.m */; };
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
-		C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */; };
 		C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0D8A92C163D6142002FC719 /* PrivateConfig.h.sample in Resources */ = {isa = PBXBuildFile; fileRef = C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */; };
 		C0E85A2714F6798000B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
@@ -242,8 +243,6 @@
 		C039B12214DF79D400F4169E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C039B12A14DF79D400F4169E /* RollToEverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverTests-Info.plist"; sourceTree = "<group>"; };
 		C039B12C14DF79D400F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C039B12E14DF79D400F4169E /* RollToEverTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RollToEverTests.h; sourceTree = "<group>"; };
-		C039B12F14DF79D400F4169E /* RollToEverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RollToEverTests.m; sourceTree = "<group>"; };
 		C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C039CDD514F68B9E00948DC6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "RollToEver/Resources/Icon-72.png"; sourceTree = "<group>"; };
 		C039CDD614F68B9E00948DC6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "RollToEver/Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -378,12 +377,10 @@
 		C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollToEverCommonException.h; path = RollToEver/Classes/RollToEverCommonException.h; sourceTree = "<group>"; };
 		C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RollToEverCommonException.m; path = RollToEver/Classes/RollToEverCommonException.m; sourceTree = "<group>"; };
 		C0828E7416C158F800C3B7ED /* ALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTest.m; sourceTree = "<group>"; };
+		C0828E8116C1C35600C3B7ED /* SampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTest.h; sourceTree = "<group>"; };
+		C0828E8216C1C35600C3B7ED /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
-		C0833FF914E3947000DB4144 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
-		C0833FFA14E3947000DB4144 /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
-		C08634FA14EFFC63003A5E13 /* AssetsLoaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsLoaderTest.h; sourceTree = "<group>"; };
-		C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsLoaderTest.m; sourceTree = "<group>"; };
 		C0881FAA14F29FAD00818BAE /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+InvocationUtils.h"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
 		C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+InvocationUtils.m"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
 		C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationError.h; path = RollToEver/Classes/ApplicationError.h; sourceTree = "<group>"; };
@@ -398,8 +395,6 @@
 		C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEverGHUnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = RollToEverGHUnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
 		C0BC74E914E6CE2B003B0611 /* MyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
-		C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTest.h; sourceTree = "<group>"; };
-		C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
 		C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnsupportedFormatException.h; path = RollToEver/Classes/UnsupportedFormatException.h; sourceTree = "<group>"; };
 		C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnsupportedFormatException.m; path = RollToEver/Classes/UnsupportedFormatException.m; sourceTree = "<group>"; };
 		C0D8A92A163D605F002FC719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -432,11 +427,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0192E8B14FFDB6B00DEC1F7 /* CoreGraphics.framework in Frameworks */,
-				C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */,
+				C0828E7E16C1C2E300C3B7ED /* SystemConfiguration.framework in Frameworks */,
+				C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */,
+				C0828E7D16C1C2C900C3B7ED /* MobileCoreServices.framework in Frameworks */,
+				C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */,
 				C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */,
-				C039B12314DF79D400F4169E /* SenTestingKit.framework in Frameworks */,
+				C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */,
 				C039B12414DF79D400F4169E /* UIKit.framework in Frameworks */,
 				C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */,
+				C039B12314DF79D400F4169E /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,15 +564,9 @@
 		C039B12814DF79D400F4169E /* RollToEverTests */ = {
 			isa = PBXGroup;
 			children = (
-				C039B12E14DF79D400F4169E /* RollToEverTests.h */,
-				C039B12F14DF79D400F4169E /* RollToEverTests.m */,
-				C08634FA14EFFC63003A5E13 /* AssetsLoaderTest.h */,
-				C08634FB14EFFC63003A5E13 /* AssetsLoaderTest.m */,
-				C0C23B1A14E2710E00507D08 /* UserSettingsTest.h */,
-				C0C23B1B14E2710E00507D08 /* UserSettingsTest.m */,
-				C0833FF914E3947000DB4144 /* CoreDataTest.h */,
-				C0833FFA14E3947000DB4144 /* CoreDataTest.m */,
 				C039B12914DF79D400F4169E /* Supporting Files */,
+				C0828E8116C1C35600C3B7ED /* SampleTest.h */,
+				C0828E8216C1C35600C3B7ED /* SampleTest.m */,
 			);
 			path = RollToEverTests;
 			sourceTree = "<group>";
@@ -775,14 +768,6 @@
 		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
-				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
-				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
-				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
-				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
-				C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */,
-				C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */,
-				C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */,
-				C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 			);
 			name = Refactoring;
@@ -802,6 +787,21 @@
 				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		C0828E7716C1BCAF00C3B7ED /* OK */ = {
+			isa = PBXGroup;
+			children = (
+				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
+				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
+				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
+				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
+				C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */,
+				C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */,
+				C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */,
+				C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */,
+			);
+			name = OK;
 			sourceTree = "<group>";
 		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
@@ -858,6 +858,7 @@
 		C0BC743E14E5FEE0003B0611 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C0828E7716C1BCAF00C3B7ED /* OK */,
 				C0828E5516BEB7DE00C3B7ED /* Refactoring */,
 				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
 			);
@@ -1142,10 +1143,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0833FFC14E3949100DB4144 /* CoreDataTest.m in Sources */,
-				C039B13014DF79D400F4169E /* RollToEverTests.m in Sources */,
-				C0C23B1C14E2710E00507D08 /* UserSettingsTest.m in Sources */,
-				C08634FC14EFFC63003A5E13 /* AssetsLoaderTest.m in Sources */,
 				C07EE267160421D4000EFA19 /* PDKeychainBindings.m in Sources */,
 				C07EE268160421D4000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C07EE2B6160422E0000EFA19 /* GCOAuth.m in Sources */,
@@ -1181,6 +1178,7 @@
 				C0828E6216BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
 				C0828E6D16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
+				C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
