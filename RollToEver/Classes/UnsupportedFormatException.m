@@ -10,7 +10,7 @@
 
 @implementation UnsupportedFormatException
 
-+ (id) exceptionWithFormatName: (NSString *)formatName
++ (id)exceptionWithFormatName:(NSString *)formatName
 {
     return [super exceptionWithName:@"UnsupportedFormatException" reason:formatName userInfo:nil];
 }

@@ -9,6 +9,7 @@
 #import "ALAsset+TransformForEvernote.h"
 #import <ImageIO/imageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "RollToEverCommonException.h"
 #import "UnsupportedFormatException.h"
 
 @implementation ALAsset (TransformForEvernote)
@@ -54,7 +55,8 @@
     size_t width = CGImageGetWidth(fullResolution);
     size_t height = CGImageGetHeight(fullResolution);
     if (width == 0 || height == 0) {
-        @throw [UnsupportedFormatException exceptionWithFormatName:@""]; // FIXME 正しい例外を投げるようにする
+        @throw [RollToEverCommonException
+                    exceptionWithFormatName:[NSString stringWithFormat:@"invalid size:width=%ld height=%ld", width, height]];
     }
 
     float ratio = 1.0f;
