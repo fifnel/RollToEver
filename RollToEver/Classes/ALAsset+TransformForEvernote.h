@@ -1,5 +1,5 @@
 //
-//  ALAsset+Resize.h
+//  ALAsset+TransformForEvernote.h
 //  RollToEver
 //
 //  Created by fifnel on 2013/02/04.
@@ -8,7 +8,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface ALAsset (Resize)
+@interface ALAsset (TransformForEvernote)
 
 // アセット内の写真をリサイズして生データを返す
 // maxPixelが0以下の場合はオリジナルサイズのまま返す

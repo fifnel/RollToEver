@@ -1,17 +1,17 @@
 //
-//  ALAsset+Resize.m
+//  ALAsset+TransformForEvernote.m
 //  RollToEver
 //
 //  Created by fifnel on 2013/02/04.
 //  Copyright (c) 2013年 fifnel. All rights reserved.
 //
 
-#import "ALAsset+Resize.h"
+#import "ALAsset+TransformForEvernote.h"
 #import <ImageIO/imageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UnsupportedFormatException.h"
 
-@implementation ALAsset (Resize)
+@implementation ALAsset (TransformForEvernote)
 
 - (NSString *)filename
 {
