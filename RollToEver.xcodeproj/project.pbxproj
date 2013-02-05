@@ -182,6 +182,7 @@
 		C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
 		C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8216C1C35600C3B7ED /* SampleTest.m */; };
+		C0828E8616C1C6C800C3B7ED /* EDAMNoteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -379,6 +380,7 @@
 		C0828E7416C158F800C3B7ED /* ALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTest.m; sourceTree = "<group>"; };
 		C0828E8116C1C35600C3B7ED /* SampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTest.h; sourceTree = "<group>"; };
 		C0828E8216C1C35600C3B7ED /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
+		C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMNoteTest.m; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0881FAA14F29FAD00818BAE /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+InvocationUtils.h"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
@@ -870,6 +872,7 @@
 			children = (
 				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
 				C0828E7416C158F800C3B7ED /* ALAssetTest.m */,
+				C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */,
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
@@ -1186,6 +1189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0828E8616C1C6C800C3B7ED /* EDAMNoteTest.m in Sources */,
 				C07EE2691604222E000EFA19 /* PDKeychainBindings.m in Sources */,
 				C07EE26A1604222E000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */,

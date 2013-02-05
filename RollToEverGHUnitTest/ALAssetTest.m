@@ -12,13 +12,13 @@
 #import "ALAssetTestUtility.h"
 #import "ALAsset+TransformForEvernote.h"
  
-@interface ALAssetTest : GHTestCase
-{
-    __strong ALAssetTestUtility *_assetsUtility;
-}
+@interface ALAssetTest : GHTestCase { }
 @end
  
 @implementation ALAssetTest
+{
+    __strong ALAssetTestUtility *_assetsUtility;
+}
 
 //Method called before each tests
 - (void) setUp
