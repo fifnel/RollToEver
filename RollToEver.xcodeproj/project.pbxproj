@@ -183,6 +183,9 @@
 		C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
 		C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8216C1C35600C3B7ED /* SampleTest.m */; };
 		C0828E8616C1C6C800C3B7ED /* EDAMNoteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */; };
+		C0828E8916C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
+		C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
+		C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
@@ -381,6 +384,8 @@
 		C0828E8116C1C35600C3B7ED /* SampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTest.h; sourceTree = "<group>"; };
 		C0828E8216C1C35600C3B7ED /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
 		C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMNoteTest.m; sourceTree = "<group>"; };
+		C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+BlockingUtility.h"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.h"; sourceTree = "<group>"; };
+		C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+BlockingUtility.m"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.m"; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0833FF714E393A500DB4144 /* RollToEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollToEver.xcdatamodel; sourceTree = "<group>"; };
 		C0881FAA14F29FAD00818BAE /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+InvocationUtils.h"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
@@ -771,6 +776,8 @@
 			isa = PBXGroup;
 			children = (
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
+				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
+				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
 			);
 			name = Refactoring;
 			sourceTree = "<group>";
@@ -778,6 +785,8 @@
 		C0828E5616BF297A00C3B7ED /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
+				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
@@ -834,8 +843,6 @@
 		C0B604B1155C049D003DA7F3 /* RollToEver */ = {
 			isa = PBXGroup;
 			children = (
-				C039CDF114F68BD400948DC6 /* AssetsLoader.h */,
-				C039CDF214F68BD400948DC6 /* AssetsLoader.m */,
 				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
 				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
 				C039CE0214F68BD500948DC6 /* UserSettings.h */,
@@ -1139,6 +1146,7 @@
 				C0828E6116BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
 				C0828E6C16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7116C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
+				C0828E8916C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,6 +1190,7 @@
 				C0828E6D16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
 				C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */,
+				C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,6 +1255,7 @@
 				C0828E6E16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
 				C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */,
+				C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
