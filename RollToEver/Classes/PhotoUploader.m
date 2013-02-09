@@ -10,7 +10,7 @@
 
 #import "PhotoUploader.h"
 #import "UserSettings.h"
-#import "AssetsLoader.h"
+#import "ALAssetsLibrary+BlockingUtility.h"
 #import "NSObject+InvocationUtils.h"
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"
@@ -104,13 +104,13 @@
     EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreWithDelegate:self];
 
     @try {
-        AssetsLoader *loader = [[AssetsLoader alloc] init];
-        NSArray *urlList = [loader EnumerateURLExcludeDuplication:YES];
-        if (urlList == nil) {
+        ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+        NSArray *filteredAssetURLList = [assetsLibrary filteredAssetsURLList];
+        if (filteredAssetURLList == nil) {
             [self PhotoUploaderErrorAsync:self error:nil];
             return;
         }
-        _totalCount = [urlList count];
+        _totalCount = [filteredAssetURLList count];
         [self PhotoUploaderWillStartAsync:self totalCount:[NSNumber numberWithInt:_totalCount]];
 
         NSString *notebookGUID = [UserSettings sharedInstance].evernoteNotebookGUID;
@@ -118,8 +118,8 @@
 
         for (NSInteger i = 0; i < _totalCount; i++) {
             @autoreleasepool {
-                NSString *url = [urlList objectAtIndex:i];
-                ALAsset *asset = [loader loadAssetURLString:url];
+                NSString *url = [filteredAssetURLList objectAtIndex:i];
+                ALAsset *asset = [assetsLibrary loadAssetFromURLString:url];
                 if (asset == nil) {
                     [self PhotoUploaderErrorAsync:self error:nil];
                     continue;

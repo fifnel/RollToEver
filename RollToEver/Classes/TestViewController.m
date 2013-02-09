@@ -10,7 +10,7 @@
 #import "EvernoteSDK.h"
 #import "ALAsset+TransformForEvernote.h"
 #import "EDAMNote+CreateFromALAsset.h"
-#import "AssetsLoader.h"
+#import "ALAssetsLibrary+BlockingUtility.h"
 
 @interface TestViewController ()
 
@@ -136,8 +136,8 @@
 
 - (void)testSendPhotoToEvernote
 {
-    AssetsLoader *al = [[AssetsLoader alloc] init];
-    NSArray *urlList = [al EnumerateURLExcludeDuplication:NO];
+    ALAssetsLibrary *al = [[ALAssetsLibrary alloc] init];
+    NSArray *urlList = [al assetsURLList];
     if ([urlList count] <= 0) {
         UIAlertView *alert = [
                               [UIAlertView alloc]
@@ -150,7 +150,7 @@
         [alert show];
     }
     NSString *url = urlList[0];
-    ALAsset *asset = [al loadAssetURLString:url];
+    ALAsset *asset = [al loadAssetFromURLString:url];
     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:0];
 //    note.title = @"note.title";
 //    note.content = @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note>note.content2</en-note>";

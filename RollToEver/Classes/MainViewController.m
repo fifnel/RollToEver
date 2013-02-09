@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "AssetsLoader.h"
+#import "ALAssetsLibrary+BlockingUtility.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
@@ -108,15 +108,14 @@
     _hud.labelText = NSLocalizedString(@"Loading", "Now Loading");
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        AssetsLoader *assetsLoader = [[AssetsLoader alloc] init];
-        NSArray *assets = [assetsLoader EnumerateURLExcludeDuplication:YES];
-        self.photoCount = [assets count];
+        ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+        NSArray *filteredAssetURLList = [assetsLibrary filteredAssetsURLList];
+        self.photoCount = [filteredAssetURLList count];
 
         [self performSelectorOnMainThread:@selector(assetsCountDidFinish) withObject:nil waitUntilDone:YES];
     });
 }
 
-#pragma mark - AssetsLoader delegate
 - (void)assetsCountDidFinish
 {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];

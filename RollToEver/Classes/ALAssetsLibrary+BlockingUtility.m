@@ -71,7 +71,7 @@
     return result;
 }
 
-- (NSArray *)filterdAssetsURLList
+- (NSArray *)filteredAssetsURLList
 {
     AssetURLStorage *storage = [[AssetURLStorage alloc] init];
     

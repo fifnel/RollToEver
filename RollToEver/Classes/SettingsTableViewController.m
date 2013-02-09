@@ -10,7 +10,8 @@
 
 #import "MainViewController.h"
 #import "UserSettings.h"
-#import "AssetsLoader.h"
+#import "ALAssetsLibrary+BlockingUtility.h"
+#import "AssetURLStorage.h"
 
 #import "AssetURLStorage.h"
 #import "MBProgressHUD.h"
@@ -155,9 +156,10 @@
         case 0: { // 全登録
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                AssetsLoader *loader = [[AssetsLoader alloc] init];
+                
+                ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
                 AssetURLStorage *storage = [[AssetURLStorage alloc] init];
-                [storage insertURLs:[loader EnumerateURLExcludeDuplication:NO]];
+                [storage insertURLs:[assetsLibrary filteredAssetsURLList]];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
             }

@@ -59,12 +59,12 @@
     
     [storage deleteAllURLs];
 
-    NSArray *preFilterdList = [_assetsLibrary filterdAssetsURLList];
+    NSArray *preFilterdList = [_assetsLibrary filteredAssetsURLList];
     
     __block NSString *excludeURL = [list objectAtIndex:0];
     [storage insertURL:excludeURL];
 
-    NSArray *postFilterdList = [_assetsLibrary filterdAssetsURLList];
+    NSArray *postFilterdList = [_assetsLibrary filteredAssetsURLList];
     
     GHAssertEquals([preFilterdList count], [postFilterdList count]+1, @"filter is not work");
 }
