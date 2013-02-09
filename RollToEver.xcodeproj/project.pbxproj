@@ -177,13 +177,13 @@
 		C0828E7116C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
-		C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7416C158F800C3B7ED /* ALAssetTest.m */; };
+		C0828E7516C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */; };
 		C0828E7D16C1C2C900C3B7ED /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 		C0828E7E16C1C2E300C3B7ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
 		C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
 		C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8216C1C35600C3B7ED /* SampleTest.m */; };
-		C0828E8616C1C6C800C3B7ED /* EDAMNoteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */; };
+		C0828E8616C1C6C800C3B7ED /* EDAMNote+CreateFromALAssetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */; };
 		C0828E8916C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
 		C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
 		C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
@@ -382,10 +382,10 @@
 		C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDAMNote+CreateFromALAsset.m"; path = "RollToEver/Classes/EDAMNote+CreateFromALAsset.m"; sourceTree = "<group>"; };
 		C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollToEverCommonException.h; path = RollToEver/Classes/RollToEverCommonException.h; sourceTree = "<group>"; };
 		C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RollToEverCommonException.m; path = RollToEver/Classes/RollToEverCommonException.m; sourceTree = "<group>"; };
-		C0828E7416C158F800C3B7ED /* ALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetTest.m; sourceTree = "<group>"; };
+		C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+TransformForEvernoteTest.m"; sourceTree = "<group>"; };
 		C0828E8116C1C35600C3B7ED /* SampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTest.h; sourceTree = "<group>"; };
 		C0828E8216C1C35600C3B7ED /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
-		C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMNoteTest.m; sourceTree = "<group>"; };
+		C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMNote+CreateFromALAssetTest.m"; sourceTree = "<group>"; };
 		C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+BlockingUtility.h"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.h"; sourceTree = "<group>"; };
 		C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+BlockingUtility.m"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.m"; sourceTree = "<group>"; };
 		C0833FF214E392A700DB4144 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -888,8 +888,8 @@
 			isa = PBXGroup;
 			children = (
 				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
-				C0828E7416C158F800C3B7ED /* ALAssetTest.m */,
-				C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */,
+				C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */,
+				C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */,
 				C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */,
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
@@ -1209,7 +1209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0828E8616C1C6C800C3B7ED /* EDAMNoteTest.m in Sources */,
+				C0828E8616C1C6C800C3B7ED /* EDAMNote+CreateFromALAssetTest.m in Sources */,
 				C07EE2691604222E000EFA19 /* PDKeychainBindings.m in Sources */,
 				C07EE26A1604222E000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */,
@@ -1265,7 +1265,7 @@
 				C0828E6316BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
 				C0828E6E16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
-				C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */,
+				C0828E7516C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m in Sources */,
 				C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
 				C0089A7416C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m in Sources */,
 			);
