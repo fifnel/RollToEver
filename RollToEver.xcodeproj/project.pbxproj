@@ -780,11 +780,9 @@
 		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
+				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
+				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
-				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
-				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
-				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
-				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
 			);
 			name = Refactoring;
 			sourceTree = "<group>";
@@ -792,8 +790,6 @@
 		C0828E5616BF297A00C3B7ED /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
-				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
@@ -811,10 +807,14 @@
 			isa = PBXGroup;
 			children = (
 				C09709DC16C663CE00AAE2B9 /* Exceptions */,
-				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
-				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
 				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
 				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
+				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
+				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
+				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
+				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
+				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
+				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
 			);
 			name = OK;
 			sourceTree = "<group>";
