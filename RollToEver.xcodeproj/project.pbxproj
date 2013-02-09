@@ -193,6 +193,10 @@
 		C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
 		C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
+		C09709DF16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
+		C09709E016C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
+		C09709E116C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
+		C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */; };
 		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -390,6 +394,9 @@
 		C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+InvocationUtils.m"; path = "RollToEver/Libraries/NSObject+InvocationUtils/NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
 		C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationError.h; path = RollToEver/Classes/ApplicationError.h; sourceTree = "<group>"; };
 		C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationError.m; path = RollToEver/Classes/ApplicationError.m; sourceTree = "<group>"; };
+		C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+FilteredList.h"; path = "RollToEver/Classes/ALAssetsLibrary+FilteredList.h"; sourceTree = "<group>"; };
+		C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+FilteredList.m"; path = "RollToEver/Classes/ALAssetsLibrary+FilteredList.m"; sourceTree = "<group>"; };
+		C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+FilteredListTest.m"; sourceTree = "<group>"; };
 		C0B604A6155BFEAD003DA7F3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C0B604A8155BFEB3003DA7F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C0B604AA155BFECB003DA7F3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -776,6 +783,8 @@
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
 				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
+				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
+				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
 			);
 			name = Refactoring;
 			sourceTree = "<group>";
@@ -885,6 +894,7 @@
 				C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */,
 				C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */,
 				C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */,
+				C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */,
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
@@ -1151,6 +1161,7 @@
 				C0828E6C16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
 				C0828E7116C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
 				C0828E8916C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
+				C09709DF16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1195,6 +1206,7 @@
 				C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
 				C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */,
 				C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
+				C09709E016C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,6 +1272,8 @@
 				C0828E7516C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m in Sources */,
 				C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
 				C0089A7416C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m in Sources */,
+				C09709E116C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */,
+				C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

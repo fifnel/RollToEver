@@ -11,6 +11,7 @@
 #import "PhotoUploader.h"
 #import "UserSettings.h"
 #import "ALAssetsLibrary+BlockingUtility.h"
+#import "ALAssetsLibrary+FilteredList.h"
 #import "NSObject+InvocationUtils.h"
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"

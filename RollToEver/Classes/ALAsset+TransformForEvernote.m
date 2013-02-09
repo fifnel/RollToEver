@@ -14,6 +14,38 @@
 
 @implementation ALAsset (TransformForEvernote)
 
++ (CFStringRef)stringToUTType:(NSString *)extension
+{
+    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
+    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
+    if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
+        return kUTTypeJPEG;
+    } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
+        return kUTTypePNG;
+    } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
+        return kUTTypeGIF;
+    } else {
+        // 未対応フォーマット
+        return NULL;
+    }
+}
+
++ (NSString *)stringToMIMEType:(NSString *)extension
+{
+    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
+    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
+    if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
+        return @"image/jpeg";
+    } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
+        return @"image/png";
+    } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
+        return @"image/gif";
+    } else {
+        // 未対応フォーマット
+        return nil;
+    }
+}
+
 - (NSString *)filename
 {
     ALAssetRepresentation *rep = [self defaultRepresentation];
@@ -129,41 +161,6 @@
 
     return metaData;
 }
-
-// 拡張子文字列をUTTypeに変換する
-+ (CFStringRef)stringToUTType:(NSString *)extension
-{
-    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
-    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
-    if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
-        return kUTTypeJPEG;
-    } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
-        return kUTTypePNG;
-    } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
-        return kUTTypeGIF;
-    } else {
-        // 未対応フォーマット
-        return NULL;
-    }
-}
-
-// 拡張子文字列をMIME向け文字列に変換する
-+ (NSString *)stringToMIMEType:(NSString *)extension
-{
-    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
-    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
-    if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
-        return @"image/jpeg";
-    } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
-        return @"image/png";
-    } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
-        return @"image/gif";
-    } else {
-        // 未対応フォーマット
-        return nil;
-    }
-}
-
 
 // 拡縮と回転（EXIFの向きをUpにして画像の向きを直す)
 + (UIImage *)scaleAndRotateImage:(CGImageRef)imageRef orientation:(int)orientation resizeRatio:(float)resizeRatio

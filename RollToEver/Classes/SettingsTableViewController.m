@@ -10,7 +10,7 @@
 
 #import "MainViewController.h"
 #import "UserSettings.h"
-#import "ALAssetsLibrary+BlockingUtility.h"
+#import "ALAssetsLibrary+FilteredList.h"
 #import "AssetURLStorage.h"
 
 #import "AssetURLStorage.h"

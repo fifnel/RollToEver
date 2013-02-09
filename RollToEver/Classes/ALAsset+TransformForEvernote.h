@@ -10,6 +10,12 @@
 
 @interface ALAsset (TransformForEvernote)
 
+// 拡張子文字列をUTTypeに変換する
++ (CFStringRef)stringToUTType:(NSString *)extension;
+
+// 拡張子文字列をMIME向け文字列に変換する
++ (NSString *)stringToMIMEType:(NSString *)extension;
+
 // ファイル名の取得
 - (NSString *)filename;
 

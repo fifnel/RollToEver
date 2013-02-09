@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "ALAssetsLibrary+BlockingUtility.h"
+#import "ALAssetsLibrary+FilteredList.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
