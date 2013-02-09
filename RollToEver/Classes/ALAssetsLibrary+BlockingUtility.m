@@ -6,23 +6,16 @@
 //  Copyright (c) 2013年 fifnel. All rights reserved.
 //
 
-#import "AssetURLStorage.h"
 #import "ALAssetsLibrary+BlockingUtility.h"
 
 @implementation ALAssetsLibrary (BlockingUtility)
 
-// アセットURLのリストを取得する
-- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude
+- (NSArray *)assetsURLList
 {
     __block NSMutableArray *result = [[NSMutableArray alloc] init];
     __block BOOL completed = NO;
     __block NSError *assetError = nil;
-    __block AssetURLStorage *urlStorage = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-
-    if (exclude) {
-        urlStorage = [[AssetURLStorage alloc] init];
-    }
 
     // グループ内画像1枚ずつ呼び出される
     __block ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
@@ -30,21 +23,16 @@
                 if (asset) {
                     ALAssetRepresentation *rep = [asset defaultRepresentation];
                     NSString *url = [rep.url absoluteString];
-                    if (exclude) {
-                        if (![urlStorage isExistURL:url]) {
-                            [result addObject:url];
-                        }
-                    } else {
-                        [result addObject:url];
-                    }
+                    [result addObject:url];
                 }
             };
-
+    
     // グループごと呼び出される
     __block ALAssetsLibraryGroupsEnumerationResultsBlock usingBlock =
             ^(ALAssetsGroup *group, BOOL *stop) {
                 if (group) {
                     [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                    // TODO グループのフィルタを入れたい
                     [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
                 } else {
                     completed = YES;
@@ -63,9 +51,10 @@
 
     // 列挙開始
     [self enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                                  usingBlock:usingBlock
-                                failureBlock:failureBlock];
+                        usingBlock:usingBlock
+                      failureBlock:failureBlock];
 
+    // 終了待ち
     if ([NSThread isMainThread]) {
         while (!completed && !assetError) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -81,31 +70,33 @@
     return result;
 }
 
-// 1アセットの読み込み
-- (ALAsset *)loadAssetURLString:(NSString *)urlString
+- (ALAsset *)loadAssetFromURLString:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
-    return [self loadAssetURL:url];
+    return [self loadAssetFromURL:url];
 }
 
 // 1アセットの読み込み
-- (ALAsset *)loadAssetURL:(NSURL *)url
+- (ALAsset *)loadAssetFromURL:(NSURL *)url;
 {
     /*
      cocoa touch - Error trying to assigning __block ALAsset from inside assetForURL:resultBlock: - Stack Overflow
      http://stackoverflow.com/questions/7625402/error-trying-to-assigning-block-alasset-from-inside-assetforurlresultblock
      */
+
     __block ALAsset *result = nil;
     __block NSError *assetError = nil;
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
 
-    [self assetForURL:url resultBlock:^(ALAsset *asset) {
-        result = asset;
-        dispatch_semaphore_signal(sema);
-    }              failureBlock:^(NSError *error) {
-        assetError = error;
-        dispatch_semaphore_signal(sema);
-    }];
+    [self assetForURL:url
+        resultBlock:^(ALAsset *asset) {
+            result = asset;
+            dispatch_semaphore_signal(sema);
+        }
+        failureBlock:^(NSError *error) {
+            assetError = error;
+            dispatch_semaphore_signal(sema);
+        }];
 
     if ([NSThread isMainThread]) {
         while (!result && !assetError) {
@@ -122,3 +113,4 @@
 }
 
 @end
+

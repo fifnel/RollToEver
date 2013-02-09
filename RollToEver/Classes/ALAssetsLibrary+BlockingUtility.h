@@ -10,10 +10,13 @@
 
 @interface ALAssetsLibrary (BlockingUtility)
 
-- (NSArray *)EnumerateURLExcludeDuplication:(BOOL)exclude;
+// アセットURLのリストを取得する
+- (NSArray *)assetsURLList;
 
-- (ALAsset *)loadAssetURLString:(NSString *)urlString;
+// 1アセットの読み込み
+- (ALAsset *)loadAssetFromURLString:(NSString *)urlString;
 
-- (ALAsset *)loadAssetURL:(NSURL *)url;
+// 1アセットの読み込み
+- (ALAsset *)loadAssetFromURL:(NSURL *)url;
 
 @end

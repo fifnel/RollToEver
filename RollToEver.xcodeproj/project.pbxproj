@@ -10,6 +10,7 @@
 		C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C000DD7014E8E43900DDD8C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
 		C000DD7114E8E44500DDD8C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
+		C0089A7416C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */; };
 		C00AA8671506FE4D00415DA7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8661506FE4D00415DA7 /* Icon.png */; };
 		C00AA8691506FE5900415DA7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8681506FE5900415DA7 /* Icon@2x.png */; };
 		C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
@@ -232,6 +233,7 @@
 /* Begin PBXFileReference section */
 		C000DD6F14E8E43900DDD8C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+BlockingUtilityTest.m"; sourceTree = "<group>"; };
 		C00AA8661506FE4D00415DA7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C00AA8681506FE5900415DA7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		C0192E8814FFC43400DEC1F7 /* uploadbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uploadbutton.png; path = RollToEver/Resources/uploadbutton.png; sourceTree = "<group>"; };
@@ -880,6 +882,7 @@
 				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
 				C0828E7416C158F800C3B7ED /* ALAssetTest.m */,
 				C0828E8416C1C40E00C3B7ED /* EDAMNoteTest.m */,
+				C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */,
 				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
@@ -1256,6 +1259,7 @@
 				C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
 				C0828E7516C158F800C3B7ED /* ALAssetTest.m in Sources */,
 				C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
+				C0089A7416C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
