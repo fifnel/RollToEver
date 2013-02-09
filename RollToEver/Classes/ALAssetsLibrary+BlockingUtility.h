@@ -13,6 +13,9 @@
 // アセットURLのリストを取得する
 - (NSArray *)assetsURLList;
 
+// 登録済みURL除外フィルタ済みアセットURLのリストを取得する
+- (NSArray *)filterdAssetsURLList;
+
 // 1アセットの読み込み
 - (ALAsset *)loadAssetFromURLString:(NSString *)urlString;
 

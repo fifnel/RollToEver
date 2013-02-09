@@ -7,6 +7,7 @@
 //
 
 #import "ALAssetsLibrary+BlockingUtility.h"
+#import "AssetURLStorage.h"
 
 @implementation ALAssetsLibrary (BlockingUtility)
 
@@ -68,6 +69,22 @@
     }
 
     return result;
+}
+
+- (NSArray *)filterdAssetsURLList
+{
+    AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if ([storage isExistURL:evaluatedObject]) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }];
+    
+    NSArray *list = [self assetsURLList];
+    return [list filteredArrayUsingPredicate:predicate];
 }
 
 - (ALAsset *)loadAssetFromURLString:(NSString *)urlString;
