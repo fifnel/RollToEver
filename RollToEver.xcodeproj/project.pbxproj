@@ -805,14 +805,11 @@
 		C0828E7716C1BCAF00C3B7ED /* OK */ = {
 			isa = PBXGroup;
 			children = (
+				C09709DC16C663CE00AAE2B9 /* Exceptions */,
 				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
 				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
 				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
 				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
-				C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */,
-				C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */,
-				C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */,
-				C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */,
 			);
 			name = OK;
 			sourceTree = "<group>";
@@ -824,6 +821,17 @@
 				C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */,
 			);
 			name = "NSObject+InvocationUtils";
+			sourceTree = "<group>";
+		};
+		C09709DC16C663CE00AAE2B9 /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */,
+				C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */,
+				C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */,
+				C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */,
+			);
+			name = Exceptions;
 			sourceTree = "<group>";
 		};
 		C0B604A4155BFC52003DA7F3 /* Utilities */ = {
