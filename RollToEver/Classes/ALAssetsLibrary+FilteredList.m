@@ -13,6 +13,7 @@
 
 @implementation ALAssetsLibrary (FilteredList)
 
+// TODO 除外されたファイルとその理由をはき出した方が良いかもしれない。デバッグ的な意味で。
 - (NSArray *)filteredAssetsURLList
 {
     AssetURLStorage *storage = [[AssetURLStorage alloc] init];
