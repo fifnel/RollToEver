@@ -148,18 +148,5 @@
     }
 }
 
-// 登録済みURLを除外する
-- (NSArray *)filterdURLList:(NSArray *)urlList
-{
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        if ([self isExistURL:evaluatedObject]) {
-            return NO;
-        } else {
-            return YES;
-        }
-    }];
-    
-    return [urlList filteredArrayUsingPredicate:predicate];
-}
 
 @end

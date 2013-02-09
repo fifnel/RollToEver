@@ -27,6 +27,4 @@
 
 - (void)deleteAllURLs;
 
-- (NSArray *)filterdURLList:(NSArray *)urlList;
-
 @end
