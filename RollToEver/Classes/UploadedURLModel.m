@@ -1,24 +1,53 @@
 //
-//  AssetURLStorage.m
+//  UploadedURLModel.m
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/10.
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 
-@interface AssetURLStorage ()
+@interface UploadedURLModel ()
 
 @property(readonly, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
 
 @end
 
+/*
+ 
+ 各関数はstaticで良いんじゃ無いか
+ 
+ getManagedObjectsURL　の引数が気持ち悪い
+ predicate渡すようにして、executeうんたら　の方がいいか
+ 
+ クラス名変えたい
+ UploadedURLModel
+ 
+ 
+ - (BOOL)isExistURL:(NSString *)url;
+ 
+ - (BOOL)insertURL:(NSString *)url;
+ 
+ - (BOOL)insertURLs:(NSArray *)urlList;
+ 
+ - (void)deleteURL:(NSString *)url;
+ 
+ - (void)deleteAllURLs;
 
-@implementation AssetURLStorage
+ 
+ 
+ - (NSManagedObjectContext *)getManagedObjectContext
+ - (NSArray *)getManagedObjects
+ - (NSArray *)getManagedObjectsURL:(NSString *)url
+ 
+ */
+
+
+@implementation UploadedURLModel
 
 /**
  CoreDataのManagedObjectContextを取得

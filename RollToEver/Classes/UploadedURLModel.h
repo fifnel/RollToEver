@@ -1,21 +1,19 @@
 //
-//  AssetURLStorage.h
+//  UploadedURLModel.h
 //  RollToEver
 //
 //  Created by fifnel on 2012/02/10.
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-// TODO クラス名を変更する
-// AssetURLModel　とかの方が良い
-// TODO isExistURLの処理が重くないか検討する
-// 毎回取りに行くのが重くないのか
 // TODO 今の状態だとインスタンスメソッドにしている意味が無い
 // クラスメソッドにするか、メンバ変数を使って効率化を模索するか、検討が必要
+// TODO メソッド名の変更
+// もう少し具体的な用途に即した名前にする
 
 #import <Foundation/Foundation.h>
 
-@interface AssetURLStorage : NSObject
+@interface UploadedURLModel : NSObject
 
 - (BOOL)isExistURL:(NSString *)url;
 

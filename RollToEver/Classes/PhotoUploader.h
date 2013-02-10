@@ -10,7 +10,7 @@
 #import <AssetsLibrary/ALAssetsLibrary.h>
 #import <AssetsLibrary/ALAsset.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 #import "ApplicationError.h"
 
 /**

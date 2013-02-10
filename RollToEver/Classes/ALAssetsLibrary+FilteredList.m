@@ -9,14 +9,14 @@
 #import "ALAssetsLibrary+FilteredList.h"
 #import "ALAssetsLibrary+BlockingUtility.h"
 #import "ALAsset+TransformForEvernote.h"
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 
 @implementation ALAssetsLibrary (FilteredList)
 
 // TODO 除外されたファイルとその理由をはき出した方が良いかもしれない。デバッグ的な意味で。
 - (NSArray *)filteredAssetsURLList
 {
-    AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+    UploadedURLModel *storage = [[UploadedURLModel alloc] init];
     
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         // 登録済みチェック

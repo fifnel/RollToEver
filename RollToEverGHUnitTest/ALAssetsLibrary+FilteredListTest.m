@@ -10,7 +10,7 @@
 //#import <OCMock/OCMock.h>
 #import "ALAssetsLibrary+FilteredList.h"
 #import "ALAssetsLibrary+BlockingUtility.h"
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 
 @interface ALAssetsLibrary_FilteredListTest : GHTestCase { }
 @end
@@ -36,7 +36,7 @@
 {
     NSArray *list = [_assetsLibrary assetsURLList];
     
-    AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+    UploadedURLModel *storage = [[UploadedURLModel alloc] init];
     
     [storage deleteAllURLs];
     

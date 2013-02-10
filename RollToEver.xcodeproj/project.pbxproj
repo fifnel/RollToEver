@@ -33,8 +33,8 @@
 		C039CDE614F68B9E00948DC6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = C039CDDB14F68B9E00948DC6 /* iTunesArtwork */; };
 		C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
 		C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDEE14F68BD400948DC6 /* AppDelegate.m */; };
-		C039CE1214F68BD500948DC6 /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF414F68BD400948DC6 /* AssetURLStorage.m */; };
-		C039CE1314F68BD500948DC6 /* AssetURLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF414F68BD400948DC6 /* AssetURLStorage.m */; };
+		C039CE1214F68BD500948DC6 /* UploadedURLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF414F68BD400948DC6 /* UploadedURLModel.m */; };
+		C039CE1314F68BD500948DC6 /* UploadedURLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF414F68BD400948DC6 /* UploadedURLModel.m */; };
 		C039CE1414F68BD500948DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF514F68BD400948DC6 /* main.m */; };
 		C039CE1614F68BD500948DC6 /* NotebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */; };
 		C039CE1714F68BD500948DC6 /* NotebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */; };
@@ -258,8 +258,8 @@
 		C039CDDB14F68B9E00948DC6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = RollToEver/Resources/iTunesArtwork; sourceTree = "<group>"; };
 		C039CDED14F68BD400948DC6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		C039CDEE14F68BD400948DC6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		C039CDF314F68BD400948DC6 /* AssetURLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetURLStorage.h; path = RollToEver/Classes/AssetURLStorage.h; sourceTree = "<group>"; };
-		C039CDF414F68BD400948DC6 /* AssetURLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetURLStorage.m; path = RollToEver/Classes/AssetURLStorage.m; sourceTree = "<group>"; };
+		C039CDF314F68BD400948DC6 /* UploadedURLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadedURLModel.h; path = RollToEver/Classes/UploadedURLModel.h; sourceTree = "<group>"; };
+		C039CDF414F68BD400948DC6 /* UploadedURLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadedURLModel.m; path = RollToEver/Classes/UploadedURLModel.m; sourceTree = "<group>"; };
 		C039CDF514F68BD400948DC6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		C039CDF614F68BD500948DC6 /* NotebookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotebookTableViewController.h; path = Classes/NotebookTableViewController.h; sourceTree = "<group>"; };
 		C039CDF714F68BD500948DC6 /* NotebookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotebookTableViewController.m; path = Classes/NotebookTableViewController.m; sourceTree = "<group>"; };
@@ -778,8 +778,8 @@
 		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
-				C039CDF314F68BD400948DC6 /* AssetURLStorage.h */,
-				C039CDF414F68BD400948DC6 /* AssetURLStorage.m */,
+				C039CDF314F68BD400948DC6 /* UploadedURLModel.h */,
+				C039CDF414F68BD400948DC6 /* UploadedURLModel.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 			);
 			name = Refactoring;
@@ -1110,7 +1110,7 @@
 				C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */,
 				C039CE1414F68BD500948DC6 /* main.m in Sources */,
 				C039CE0C14F68BD500948DC6 /* AppDelegate.m in Sources */,
-				C039CE1214F68BD500948DC6 /* AssetURLStorage.m in Sources */,
+				C039CE1214F68BD500948DC6 /* UploadedURLModel.m in Sources */,
 				C039CE1614F68BD500948DC6 /* NotebookTableViewController.m in Sources */,
 				C039CE1814F68BD500948DC6 /* PhotoUploader.m in Sources */,
 				C039CE1C14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,
@@ -1220,7 +1220,7 @@
 				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
 				C039CE0D14F68BD500948DC6 /* AppDelegate.m in Sources */,
-				C039CE1314F68BD500948DC6 /* AssetURLStorage.m in Sources */,
+				C039CE1314F68BD500948DC6 /* UploadedURLModel.m in Sources */,
 				C039CE1714F68BD500948DC6 /* NotebookTableViewController.m in Sources */,
 				C039CE1914F68BD500948DC6 /* PhotoUploader.m in Sources */,
 				C039CE1D14F68BD500948DC6 /* SettingsTableViewController.m in Sources */,

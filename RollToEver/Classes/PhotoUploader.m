@@ -61,7 +61,7 @@
     __weak   id _delegate;
 
     // アップロード済みアセットURL記録クラス
-    __strong AssetURLStorage *_assetUrlStorage;
+    __strong UploadedURLModel *_assetUrlStorage;
 
     /// アセットライブラリ
     __strong ALAssetsLibrary *_assetsLibrary;
@@ -87,7 +87,7 @@
     self = [super init];
     if (self != nil) {
         _assetsLibrary = [[ALAssetsLibrary alloc] init];
-        _assetUrlStorage = [[AssetURLStorage alloc] init];
+        _assetUrlStorage = [[UploadedURLModel alloc] init];
         _delegate = delegate;
     }
     return self;
@@ -95,9 +95,9 @@
 
 /// 非同期メイン処理
 - (void)main {
-    __block AssetURLStorage *urlStorage = nil;
+    __block UploadedURLModel *urlStorage = nil;
 
-    urlStorage = [[AssetURLStorage alloc] init];
+    urlStorage = [[UploadedURLModel alloc] init];
     _currentIndex = 0;
     _currentAsset = nil;
     _totalCount = 0;

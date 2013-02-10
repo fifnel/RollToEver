@@ -11,9 +11,9 @@
 #import "MainViewController.h"
 #import "UserSettings.h"
 #import "ALAssetsLibrary+FilteredList.h"
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 
-#import "AssetURLStorage.h"
+#import "UploadedURLModel.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+Login.h"
@@ -158,7 +158,7 @@
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                 
                 ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-                AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+                UploadedURLModel *storage = [[UploadedURLModel alloc] init];
                 [storage insertURLs:[assetsLibrary filteredAssetsURLList]];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
@@ -168,7 +168,7 @@
         case 1: { // 全削除
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                AssetURLStorage *storage = [[AssetURLStorage alloc] init];
+                UploadedURLModel *storage = [[UploadedURLModel alloc] init];
                 [storage deleteAllURLs];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
