@@ -41,8 +41,17 @@
  
  
  - (NSManagedObjectContext *)getManagedObjectContext
- - (NSArray *)getManagedObjects
- - (NSArray *)getManagedObjectsURL:(NSString *)url
+ - (NSArray *)loadAllUploadedURL
+ - (NSArray *)loadUploadedURL:(NSString *)url
+
+ fetch
+
+ save
+
+ fetchUploadedURLFromCoreData
+
+ loadUploadedURL
+ loadAllUploadedURL
  
  */
 
@@ -54,40 +63,52 @@
  */
 - (NSManagedObjectContext *)getManagedObjectContext
 {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    id appDelegate = [UIApplication sharedApplication].delegate;
     return [appDelegate managedObjectContext];
 }
 
 /**
  CoreDataからデータをすべて取得
  */
-- (NSArray *)getManagedObjects
-{
-    return [self getManagedObjectsURL:nil];
-}
-
-/**
- 任意のURLのデータを取得
- */
-- (NSArray *)getManagedObjectsURL:(NSString *)url
+- (NSArray *)loadAllUploadedURL
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
 
-    if (url != nil) {
-        NSString *predicateCommand = [NSString stringWithFormat:@"url='%@'", url];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateCommand];
-        [request setPredicate:predicate];
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"(loadAllUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
+        return nil;
     }
+    return results;
+}
+
+/**
+ CoreDataから任意のデータを取得
+ */
+- (id)loadUploadedURL:(NSString *)url
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+
+    NSString *predicateCommand = [NSString stringWithFormat:@"url='%@'", url];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateCommand];
+    [request setPredicate:predicate];
 
     NSError *error = nil;
     NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
     if (error) {
-        NSLog(@"(getManagedObjectsURL:)Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"(loadUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return nil;
     }
-    return results;
+    if ([results count] == 0) {
+        return nil;
+    } else {
+        return [results objectAtIndex:0];
+    }
 }
 
 /**
@@ -95,14 +116,13 @@
  */
 - (BOOL)isExistURL:(NSString *)url
 {
-    NSArray *results = [self getManagedObjectsURL:url];
+    id target = [self loadUploadedURL:url];
 
-    if (results != nil && [results count] > 0) {
-        // NSLog(@"isExistURL count=%d", [results count]);
-        return YES;
-    } else {
+    if (target == nil) {
         return NO;
     }
+
+    return YES;
 }
 
 /**
@@ -143,14 +163,12 @@
  */
 - (void)deleteUploadedURL:(NSString *)url
 {
-    NSArray *array = [self getManagedObjectsURL:url];
-    if (array == nil) {
+    id target = [self loadUploadedURL:url];
+    if (target == nil) {
         return;
     }
 
-    for (int i = 0, end = [array count]; i < end; i++) {
-        [self.managedObjectContext deleteObject:(NSManagedObject *) [array objectAtIndex:i]];
-    }
+    [self.managedObjectContext deleteObject:(NSManagedObject *) target];
     NSLog(@"deleteURL:%@", url);
 
     NSError *error = nil;
@@ -164,9 +182,9 @@
  */
 - (void)deleteAllUploadedURL
 {
-    NSArray *urls = [self getManagedObjects];
+    NSArray *urls = [self loadAllUploadedURL];
     for (int i = 0, end = [urls count]; i < end; i++) {
-        NSManagedObject *obj = [urls objectAtIndex:i];
+        NSManagedObject *obj = [urls objectAtIndex:(NSUInteger) i];
         NSLog(@"delete url=%@", [obj valueForKey:@"url"]);
         [self.managedObjectContext deleteObject:obj];
     }
