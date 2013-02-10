@@ -780,8 +780,6 @@
 		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
-				C039CDF314F68BD400948DC6 /* UploadedURLModel.h */,
-				C039CDF414F68BD400948DC6 /* UploadedURLModel.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 			);
 			name = Refactoring;
@@ -815,6 +813,8 @@
 				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
 				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
 				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
+				C039CDF314F68BD400948DC6 /* UploadedURLModel.h */,
+				C039CDF414F68BD400948DC6 /* UploadedURLModel.m */,
 			);
 			name = OK;
 			sourceTree = "<group>";

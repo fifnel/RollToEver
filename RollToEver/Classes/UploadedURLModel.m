@@ -11,13 +11,6 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 
-/*
-
- getManagedObjectsURL　の引数が気持ち悪い
- predicate渡すようにして、executeうんたら　の方がいいか
- */
-
-
 @implementation UploadedURLModel
 
 // CoreDataのManagedObjectContextを取得
@@ -30,11 +23,11 @@
 + (NSArray *)loadAllUploadedURL
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
 
     NSError *error = nil;
-    NSArray *results = [[UploadedURLModel managedObjectContext] executeFetchRequest:request error:&error];
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"(loadAllUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return nil;
@@ -45,7 +38,7 @@
 + (id)loadUploadedURL:(NSString *)url
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
 
     NSString *predicateCommand = [NSString stringWithFormat:@"url='%@'", url];
@@ -53,7 +46,7 @@
     [request setPredicate:predicate];
 
     NSError *error = nil;
-    NSArray *results = [[UploadedURLModel managedObjectContext] executeFetchRequest:request error:&error];
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"(loadUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return nil;
@@ -78,13 +71,13 @@
 
 + (BOOL)saveUploadedURL:(NSString *)url
 {
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
 
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:[UploadedURLModel managedObjectContext]];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     [newManagedObject setValue:url forKey:@"url"];
 
     NSError *error = nil;
-    if ([[UploadedURLModel managedObjectContext] save:&error]) {
+    if ([self.managedObjectContext save:&error]) {
         NSLog(@"saveUploadedURL:%@", url);
         return YES;
     } else {
@@ -110,11 +103,11 @@
         return;
     }
 
-    [[UploadedURLModel managedObjectContext] deleteObject:(NSManagedObject *) target];
+    [self.managedObjectContext deleteObject:(NSManagedObject *) target];
     NSLog(@"deleteURL:%@", url);
 
     NSError *error = nil;
-    if (![[UploadedURLModel managedObjectContext] save:&error]) {
+    if (![self.managedObjectContext save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
     }
 }
@@ -125,11 +118,11 @@
     for (int i = 0, end = [urls count]; i < end; i++) {
         NSManagedObject *obj = [urls objectAtIndex:(NSUInteger) i];
         NSLog(@"delete url=%@", [obj valueForKey:@"url"]);
-        [[UploadedURLModel managedObjectContext] deleteObject:obj];
+        [self.managedObjectContext deleteObject:obj];
     }
 
     NSError *error = nil;
-    if (![[UploadedURLModel managedObjectContext] save:&error]) {
+    if (![self.managedObjectContext save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
     }
 }
