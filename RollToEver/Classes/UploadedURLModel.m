@@ -30,9 +30,9 @@
  
  - (BOOL)isExistURL:(NSString *)url;
  
- - (BOOL)insertURL:(NSString *)url;
+ - (BOOL)saveUploadedURL:(NSString *)url;
  
- - (BOOL)insertURLs:(NSArray *)urlList;
+ - (BOOL)saveUploadedURLList:(NSArray *)urlList;
  
  - (void)deleteURL:(NSString *)url;
  
@@ -108,7 +108,7 @@
 /**
  URLの追加
  */
-- (BOOL)insertURL:(NSString *)url
+- (BOOL)saveUploadedURL:(NSString *)url
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
 
@@ -117,10 +117,10 @@
 
     NSError *error = nil;
     if ([self.managedObjectContext save:&error]) {
-        NSLog(@"insertURL:%@", url);
+        NSLog(@"saveUploadedURL:%@", url);
         return YES;
     } else {
-        NSLog(@"(insertURL:)Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"(saveUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return NO;
     }
 }
@@ -128,10 +128,10 @@
 /**
  複数のURLの追加
  */
-- (BOOL)insertURLs:(NSArray *)urlList
+- (BOOL)saveUploadedURLList:(NSArray *)urlList
 {
     for (NSString *url in urlList) {
-        if ([self insertURL:url] == NO) {
+        if ([self saveUploadedURL:url] == NO) {
             return NO;
         }
     }
@@ -141,7 +141,7 @@
 /**
  URLの削除
  */
-- (void)deleteURL:(NSString *)url
+- (void)deleteUploadedURL:(NSString *)url
 {
     NSArray *array = [self getManagedObjectsURL:url];
     if (array == nil) {
@@ -162,7 +162,7 @@
 /**
  登録されているURLをすべて削除する
  */
-- (void)deleteAllURLs
+- (void)deleteAllUploadedURL
 {
     NSArray *urls = [self getManagedObjects];
     for (int i = 0, end = [urls count]; i < end; i++) {

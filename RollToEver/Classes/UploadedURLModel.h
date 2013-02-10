@@ -8,8 +8,6 @@
 
 // TODO 今の状態だとインスタンスメソッドにしている意味が無い
 // クラスメソッドにするか、メンバ変数を使って効率化を模索するか、検討が必要
-// TODO メソッド名の変更
-// もう少し具体的な用途に即した名前にする
 
 #import <Foundation/Foundation.h>
 
@@ -17,12 +15,12 @@
 
 - (BOOL)isExistURL:(NSString *)url;
 
-- (BOOL)insertURL:(NSString *)url;
+- (BOOL)saveUploadedURL:(NSString *)url;
 
-- (BOOL)insertURLs:(NSArray *)urlList;
+- (BOOL)saveUploadedURLList:(NSArray *)urlList;
 
-- (void)deleteURL:(NSString *)url;
+- (void)deleteUploadedURL:(NSString *)url;
 
-- (void)deleteAllURLs;
+- (void)deleteAllUploadedURL;
 
 @end

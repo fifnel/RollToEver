@@ -139,7 +139,7 @@
                         [self PhotoUploaderCancelAsync:self];
                         return;
                     }
-                    [urlStorage insertURL:url];
+                    [urlStorage saveUploadedURL:url];
                 }
                 @catch (UnsupportedFormatException *exception) {
                     NSLog(@"UnsupportedFormatException:%@", [exception reason]);

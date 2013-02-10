@@ -38,12 +38,12 @@
     
     UploadedURLModel *storage = [[UploadedURLModel alloc] init];
     
-    [storage deleteAllURLs];
+    [storage deleteAllUploadedURL];
     
     NSArray *preFilteredList = [_assetsLibrary filteredAssetsURLList];
     
     __block NSString *excludeURL = [list objectAtIndex:0];
-    [storage insertURL:excludeURL];
+    [storage saveUploadedURL:excludeURL];
     
     NSArray *postFilteredList = [_assetsLibrary filteredAssetsURLList];
 

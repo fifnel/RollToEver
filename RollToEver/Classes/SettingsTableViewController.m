@@ -159,7 +159,7 @@
                 
                 ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
                 UploadedURLModel *storage = [[UploadedURLModel alloc] init];
-                [storage insertURLs:[assetsLibrary filteredAssetsURLList]];
+                [storage saveUploadedURLList:[assetsLibrary filteredAssetsURLList]];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
             }
@@ -169,7 +169,7 @@
             if (buttonIndex == 0) {
                 [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                 UploadedURLModel *storage = [[UploadedURLModel alloc] init];
-                [storage deleteAllURLs];
+                [storage deleteAllUploadedURL];
                 [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                 [self setParentSkipUpdatePhotoCount:NO];
 
