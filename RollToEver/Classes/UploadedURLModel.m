@@ -11,73 +11,30 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 
-@interface UploadedURLModel ()
-
-@property(readonly, getter=getManagedObjectContext) NSManagedObjectContext *managedObjectContext;
-
-@end
-
 /*
- 
- 各関数はstaticで良いんじゃ無いか
- 
+
  getManagedObjectsURL　の引数が気持ち悪い
  predicate渡すようにして、executeうんたら　の方がいいか
- 
- クラス名変えたい
- UploadedURLModel
- 
- 
- - (BOOL)isExistURL:(NSString *)url;
- 
- - (BOOL)saveUploadedURL:(NSString *)url;
- 
- - (BOOL)saveUploadedURLList:(NSArray *)urlList;
- 
- - (void)deleteURL:(NSString *)url;
- 
- - (void)deleteAllURLs;
-
- 
- 
- - (NSManagedObjectContext *)getManagedObjectContext
- - (NSArray *)loadAllUploadedURL
- - (NSArray *)loadUploadedURL:(NSString *)url
-
- fetch
-
- save
-
- fetchUploadedURLFromCoreData
-
- loadUploadedURL
- loadAllUploadedURL
- 
  */
 
 
 @implementation UploadedURLModel
 
-/**
- CoreDataのManagedObjectContextを取得
- */
-- (NSManagedObjectContext *)getManagedObjectContext
+// CoreDataのManagedObjectContextを取得
++ (NSManagedObjectContext *)managedObjectContext
 {
     id appDelegate = [UIApplication sharedApplication].delegate;
     return [appDelegate managedObjectContext];
 }
 
-/**
- CoreDataからデータをすべて取得
- */
-- (NSArray *)loadAllUploadedURL
++ (NSArray *)loadAllUploadedURL
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
     [request setEntity:entity];
 
     NSError *error = nil;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *results = [[UploadedURLModel managedObjectContext] executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"(loadAllUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return nil;
@@ -85,13 +42,10 @@
     return results;
 }
 
-/**
- CoreDataから任意のデータを取得
- */
-- (id)loadUploadedURL:(NSString *)url
++ (id)loadUploadedURL:(NSString *)url
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
     [request setEntity:entity];
 
     NSString *predicateCommand = [NSString stringWithFormat:@"url='%@'", url];
@@ -99,7 +53,7 @@
     [request setPredicate:predicate];
 
     NSError *error = nil;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *results = [[UploadedURLModel managedObjectContext] executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"(loadUploadedURL:)Unresolved error %@, %@", error, [error userInfo]);
         return nil;
@@ -111,10 +65,7 @@
     }
 }
 
-/**
- URLが存在（登録済み）するかどうか
- */
-- (BOOL)isExistURL:(NSString *)url
++ (BOOL)isUploadedURL:(NSString *)url
 {
     id target = [self loadUploadedURL:url];
 
@@ -125,18 +76,15 @@
     return YES;
 }
 
-/**
- URLの追加
- */
-- (BOOL)saveUploadedURL:(NSString *)url
++ (BOOL)saveUploadedURL:(NSString *)url
 {
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PhotoURL" inManagedObjectContext:[UploadedURLModel managedObjectContext]];
 
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:[UploadedURLModel managedObjectContext]];
     [newManagedObject setValue:url forKey:@"url"];
 
     NSError *error = nil;
-    if ([self.managedObjectContext save:&error]) {
+    if ([[UploadedURLModel managedObjectContext] save:&error]) {
         NSLog(@"saveUploadedURL:%@", url);
         return YES;
     } else {
@@ -145,10 +93,7 @@
     }
 }
 
-/**
- 複数のURLの追加
- */
-- (BOOL)saveUploadedURLList:(NSArray *)urlList
++ (BOOL)saveUploadedURLList:(NSArray *)urlList
 {
     for (NSString *url in urlList) {
         if ([self saveUploadedURL:url] == NO) {
@@ -158,42 +103,35 @@
     return YES;
 }
 
-/**
- URLの削除
- */
-- (void)deleteUploadedURL:(NSString *)url
++ (void)deleteUploadedURL:(NSString *)url
 {
     id target = [self loadUploadedURL:url];
     if (target == nil) {
         return;
     }
 
-    [self.managedObjectContext deleteObject:(NSManagedObject *) target];
+    [[UploadedURLModel managedObjectContext] deleteObject:(NSManagedObject *) target];
     NSLog(@"deleteURL:%@", url);
 
     NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
+    if (![[UploadedURLModel managedObjectContext] save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
     }
 }
 
-/**
- 登録されているURLをすべて削除する
- */
-- (void)deleteAllUploadedURL
++ (void)deleteAllUploadedURL
 {
     NSArray *urls = [self loadAllUploadedURL];
     for (int i = 0, end = [urls count]; i < end; i++) {
         NSManagedObject *obj = [urls objectAtIndex:(NSUInteger) i];
         NSLog(@"delete url=%@", [obj valueForKey:@"url"]);
-        [self.managedObjectContext deleteObject:obj];
+        [[UploadedURLModel managedObjectContext] deleteObject:obj];
     }
 
     NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
+    if (![[UploadedURLModel managedObjectContext] save:&error]) {
         NSLog(@"(deleteURL:)Unresolved error %@, %@", error, [error userInfo]);
     }
 }
-
 
 @end

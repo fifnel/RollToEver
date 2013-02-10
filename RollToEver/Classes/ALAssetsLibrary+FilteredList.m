@@ -16,11 +16,9 @@
 // TODO 除外されたファイルとその理由をはき出した方が良いかもしれない。デバッグ的な意味で。
 - (NSArray *)filteredAssetsURLList
 {
-    UploadedURLModel *storage = [[UploadedURLModel alloc] init];
-    
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         // 登録済みチェック
-        if ([storage isExistURL:evaluatedObject]) {
+        if ([UploadedURLModel isUploadedURL:evaluatedObject]) {
             return NO;
         }
         

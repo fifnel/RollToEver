@@ -95,9 +95,6 @@
 
 /// 非同期メイン処理
 - (void)main {
-    __block UploadedURLModel *urlStorage = nil;
-
-    urlStorage = [[UploadedURLModel alloc] init];
     _currentIndex = 0;
     _currentAsset = nil;
     _totalCount = 0;
@@ -139,7 +136,7 @@
                         [self PhotoUploaderCancelAsync:self];
                         return;
                     }
-                    [urlStorage saveUploadedURL:url];
+                    [UploadedURLModel saveUploadedURL:url];
                 }
                 @catch (UnsupportedFormatException *exception) {
                     NSLog(@"UnsupportedFormatException:%@", [exception reason]);

@@ -6,21 +6,29 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-// TODO 今の状態だとインスタンスメソッドにしている意味が無い
-// クラスメソッドにするか、メンバ変数を使って効率化を模索するか、検討が必要
-
 #import <Foundation/Foundation.h>
 
 @interface UploadedURLModel : NSObject
 
-- (BOOL)isExistURL:(NSString *)url;
+// CoreDataからすべてのURLを読み込む
++ (NSArray *)loadAllUploadedURL;
 
-- (BOOL)saveUploadedURL:(NSString *)url;
+// CoreDataから任意のURLを読み込む
++ (id)loadUploadedURL:(NSString *)url;
 
-- (BOOL)saveUploadedURLList:(NSArray *)urlList;
+// URLがアップロード済みかどうか
++ (BOOL)isUploadedURL:(NSString *)url;
 
-- (void)deleteUploadedURL:(NSString *)url;
+// アップロード済みURLの保存
++ (BOOL)saveUploadedURL:(NSString *)url;
 
-- (void)deleteAllUploadedURL;
+// 複数のアップロード済みURLの保存
++ (BOOL)saveUploadedURLList:(NSArray *)urlList;
+
+// アップロード済みURLの削除
++ (void)deleteUploadedURL:(NSString *)url;
+
+// 保存されているすべてのアップロード済みURLを削除する
++ (void)deleteAllUploadedURL;
 
 @end
