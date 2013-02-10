@@ -15,7 +15,7 @@
     __block NSMutableArray *result = [[NSMutableArray alloc] init];
     __block BOOL completed = NO;
     __block NSError *assetError = nil;
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     // グループ内画像1枚ずつ呼び出される
     __block ALAssetsGroupEnumerationResultsBlock assetsEnumerationBlock =
@@ -36,7 +36,7 @@
                     [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
                 } else {
                     completed = YES;
-                    dispatch_semaphore_signal(sema);
+                    dispatch_semaphore_signal(semaphore);
                 }
             };
 
@@ -46,7 +46,7 @@
                 NSLog(@"error:%@", error);
                 assetError = error;
                 completed = YES;
-                dispatch_semaphore_signal(sema);
+                dispatch_semaphore_signal(semaphore);
             };
 
     // 列挙開始
@@ -61,7 +61,7 @@
         }
     }
     else {
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
     if (assetError) {
         result = nil;

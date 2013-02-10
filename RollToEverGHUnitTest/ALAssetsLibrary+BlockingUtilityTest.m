@@ -42,7 +42,6 @@
     }
 
     {
-        NSArray *list = [_assetsLibrary assetsURLList];
         NSString *urlStr = [list objectAtIndex:0];
         NSURL *url = [NSURL URLWithString:urlStr];
         ALAsset *asset = [_assetsLibrary loadAssetFromURL:url];

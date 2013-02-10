@@ -203,7 +203,6 @@
 		C0BC74D614E6CCFD003B0611 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0BC74D414E6CCFD003B0611 /* InfoPlist.strings */; };
 		C0BC74D814E6CCFD003B0611 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74D714E6CCFD003B0611 /* main.m */; };
 		C0BC74E814E6CD64003B0611 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */; };
-		C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BC74E914E6CE2B003B0611 /* MyTest.m */; };
 		C0BC74EF14E6CF1D003B0611 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0D8A929163D2FA8002FC719 /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0D8A92C163D6142002FC719 /* PrivateConfig.h.sample in Resources */ = {isa = PBXBuildFile; fileRef = C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */; };
@@ -406,7 +405,6 @@
 		C0BC74D714E6CCFD003B0611 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0BC74D914E6CCFD003B0611 /* RollToEverGHUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEverGHUnitTest-Prefix.pch"; sourceTree = "<group>"; };
 		C0BC74E714E6CD64003B0611 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = RollToEverGHUnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
-		C0BC74E914E6CE2B003B0611 /* MyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		C0D8A927163D2FA8002FC719 /* UnsupportedFormatException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnsupportedFormatException.h; path = RollToEver/Classes/UnsupportedFormatException.h; sourceTree = "<group>"; };
 		C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnsupportedFormatException.m; path = RollToEver/Classes/UnsupportedFormatException.m; sourceTree = "<group>"; };
 		C0D8A92A163D605F002FC719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -895,7 +893,6 @@
 				C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */,
 				C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */,
 				C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */,
-				C0BC74E914E6CE2B003B0611 /* MyTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
 			);
@@ -1219,7 +1216,6 @@
 				C07EE26A1604222E000EFA19 /* PDKeychainBindingsController.m in Sources */,
 				C07EE26216042167000EFA19 /* MBProgressHUD.m in Sources */,
 				C000DD6114E7BB5F00DDD8C8 /* RollToEver.xcdatamodeld in Sources */,
-				C0BC74EC14E6CE48003B0611 /* MyTest.m in Sources */,
 				C0BC74D814E6CCFD003B0611 /* main.m in Sources */,
 				C04F82E214E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m in Sources */,
 				C0881FAD14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */,
@@ -1416,6 +1412,7 @@
 				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
 				INFOPLIST_FILE = "RollToEver/RollToEver-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1448,6 +1445,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
 				INFOPLIST_FILE = "RollToEverTests/RollToEverTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1465,6 +1463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
 				INFOPLIST_FILE = "RollToEverTests/RollToEverTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1482,6 +1481,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RollToEverGHUnitTest/RollToEverGHUnitTest-Prefix.pch";
 				INFOPLIST_FILE = "RollToEverGHUnitTest/RollToEverGHUnitTest-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1502,6 +1502,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RollToEverGHUnitTest/RollToEverGHUnitTest-Prefix.pch";
 				INFOPLIST_FILE = "RollToEverGHUnitTest/RollToEverGHUnitTest-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

@@ -119,9 +119,9 @@
 
     // リサイズ・回転処理
     CGImageRef fullResolution = [rep fullResolutionImage];
-    int orientation           = [self orientation];
+    int orientation           = (int) [self orientation];
     float ratio               = [self resizeRatio:maxPixel];
-    UIImage *resizedImage     = [ALAsset scaleAndRotateImage:(CGImageRef) fullResolution orientation:(int) orientation resizeRatio:(float) ratio];
+    UIImage *resizedImage     = [ALAsset scaleAndRotateImage:fullResolution orientation:orientation resizeRatio:ratio];
     
     // 書き戻し用のメタデータ組み立て (Orientationだけは元画像を回転加工済みなので1に固定する)
     NSDictionary *metaData = [self fixedMetadata];
@@ -168,7 +168,7 @@
     CGFloat width = CGImageGetWidth(imageRef);
     CGFloat height = CGImageGetHeight(imageRef);
 
-    CGAffineTransform transform = CGAffineTransformIdentity;
+    CGAffineTransform transform;
     CGRect bounds = CGRectMake(0, 0, width, height);
     CGFloat boundHeight;
     switch (orientation) {
@@ -184,7 +184,7 @@
 
         case 3: //UIImageOrientationDown: //EXIF = 3
             transform = CGAffineTransformMakeTranslation(width, height);
-            transform = CGAffineTransformRotate(transform, M_PI);
+            transform = CGAffineTransformRotate(transform, (CGFloat) M_PI);
             break;
 
         case 4: //UIImageOrientationDownMirrored: //EXIF = 4
@@ -198,7 +198,7 @@
             bounds.size.width = boundHeight;
             transform = CGAffineTransformMakeTranslation(height, width);
             transform = CGAffineTransformScale(transform, -1.0, 1.0);
-            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) (3.0 * M_PI / 2.0));
             break;
 
         case 6: //UIImageOrientationLeft: //EXIF = 6
@@ -206,7 +206,7 @@
             bounds.size.height = bounds.size.width;
             bounds.size.width = boundHeight;
             transform = CGAffineTransformMakeTranslation(0.0, width);
-            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) (3.0 * M_PI / 2.0));
             break;
 
         case 7: //UIImageOrientationRightMirrored: //EXIF = 7
@@ -214,7 +214,7 @@
             bounds.size.height = bounds.size.width;
             bounds.size.width = boundHeight;
             transform = CGAffineTransformMakeScale(-1.0, 1.0);
-            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) (M_PI / 2.0));
             break;
 
         case 8: //UIImageOrientationRight: //EXIF = 8
@@ -222,7 +222,7 @@
             bounds.size.height = bounds.size.width;
             bounds.size.width = boundHeight;
             transform = CGAffineTransformMakeTranslation(height, 0.0);
-            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) (M_PI / 2.0));
             break;
 
         default:

@@ -32,7 +32,7 @@
     
 } 
 
-- (void)testFilterdAssetURLList
+- (void)testFilteredAssetURLList
 {
     NSArray *list = [_assetsLibrary assetsURLList];
     
@@ -40,14 +40,14 @@
     
     [storage deleteAllURLs];
     
-    NSArray *preFilterdList = [_assetsLibrary filteredAssetsURLList];
+    NSArray *preFilteredList = [_assetsLibrary filteredAssetsURLList];
     
     __block NSString *excludeURL = [list objectAtIndex:0];
     [storage insertURL:excludeURL];
     
-    NSArray *postFilterdList = [_assetsLibrary filteredAssetsURLList];
+    NSArray *postFilteredList = [_assetsLibrary filteredAssetsURLList];
 
-    GHAssertLessThan([postFilterdList count], [preFilterdList count], @"filter is not work");
+    GHAssertLessThan([postFilteredList count], [preFilteredList count], @"filter is not work");
 }
 
 @end

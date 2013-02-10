@@ -55,24 +55,19 @@
     GHAssertNotNil(asset, @"tiff not found");
 }
 
-- (void)testGetUnkown {
+- (void)testGetUnknown {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"hoge"];
     GHAssertNil(asset, @"unknown(hoge) asset found");
 }
 
 - (void)testGetNil {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:nil];
-    GHAssertNil(asset, @"testGetNil");
+    GHAssertNil(asset, @"unknown(nil) assset found");
 }
 
 - (void)testGetEmpty {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@""];
-    GHAssertNil(asset, @"testGetEmpty");
-}
-
-- (void)testGetUnknwn {
-    ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"abc"];
-    GHAssertNil(asset, @"testGetUnknown");
+    GHAssertNil(asset, @"unknown(empty) asset found");
 }
 
 @end

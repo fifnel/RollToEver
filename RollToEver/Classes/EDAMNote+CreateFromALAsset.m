@@ -53,7 +53,7 @@
     [note setResources:resources];
     
     // 作成日を写真の撮影日にする
-    [note setCreated:[[asset valueForProperty:ALAssetPropertyDate] timeIntervalSince1970] * 1000];
+    [note setCreated:(EDAMTimestamp) ([[asset valueForProperty:ALAssetPropertyDate] timeIntervalSince1970] * 1000)];
     
     return note;
 }
