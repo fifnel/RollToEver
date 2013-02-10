@@ -86,16 +86,16 @@
 
     __block ALAsset *result = nil;
     __block NSError *assetError = nil;
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
     [self assetForURL:url
         resultBlock:^(ALAsset *asset) {
             result = asset;
-            dispatch_semaphore_signal(sema);
+            dispatch_semaphore_signal(semaphore);
         }
         failureBlock:^(NSError *error) {
             assetError = error;
-            dispatch_semaphore_signal(sema);
+            dispatch_semaphore_signal(semaphore);
         }];
 
     if ([NSThread isMainThread]) {
@@ -104,10 +104,10 @@
         }
     }
     else {
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
 
-    dispatch_release(sema);
+    dispatch_release(semaphore);
 
     return result;
 }
