@@ -212,6 +212,7 @@
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 		C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */; };
+		C0EE3FD616C9066900790727 /* EvernoteSession+ProgressableClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */; };
 		C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FA0EF1150877DF00BF7CEA /* blank_image.png */; };
 		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
 /* End PBXBuildFile section */
@@ -414,6 +415,7 @@
 		C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrivateConfig.h.sample; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EvernoteSession+LoginTest.m"; sourceTree = "<group>"; };
+		C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EvernoteSession+ProgressableClientTest.m"; sourceTree = "<group>"; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
@@ -783,10 +785,6 @@
 			isa = PBXGroup;
 			children = (
 				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
-				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
-				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
-				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
-				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 			);
 			name = Refactoring;
@@ -874,6 +872,8 @@
 		C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
 			isa = PBXGroup;
 			children = (
+				C0828E7616C15E5900C3B7ED /* Utility */,
+				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
 				C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */,
 				C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */,
 				C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */,
@@ -881,8 +881,7 @@
 				C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */,
 				C09709E416C733E400AAE2B9 /* UploadedURLModelTest.m */,
 				C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */,
-				C0828E7616C15E5900C3B7ED /* Utility */,
-				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
+				C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -956,8 +955,12 @@
 			children = (
 				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
 				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
+				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
+				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
 				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
+				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
+				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
 			);
 			name = Evernote;
 			sourceTree = "<group>";
@@ -1286,6 +1289,7 @@
 				C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */,
 				C09709E616C7342400AAE2B9 /* UploadedURLModelTest.m in Sources */,
 				C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */,
+				C0EE3FD616C9066900790727 /* EvernoteSession+ProgressableClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
