@@ -780,6 +780,13 @@
 		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
 			isa = PBXGroup;
 			children = (
+				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
+				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
+				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
+				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
+				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
+				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
+				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
 			);
 			name = Refactoring;
@@ -799,24 +806,6 @@
 				C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */,
 			);
 			name = Utility;
-			sourceTree = "<group>";
-		};
-		C0828E7716C1BCAF00C3B7ED /* OK */ = {
-			isa = PBXGroup;
-			children = (
-				C09709DC16C663CE00AAE2B9 /* Exceptions */,
-				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
-				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
-				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
-				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
-				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
-				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
-				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
-				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
-				C039CDF314F68BD400948DC6 /* UploadedURLModel.h */,
-				C039CDF414F68BD400948DC6 /* UploadedURLModel.m */,
-			);
-			name = OK;
 			sourceTree = "<group>";
 		};
 		C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */ = {
@@ -843,12 +832,6 @@
 			isa = PBXGroup;
 			children = (
 				C0773F411513951E00336E0C /* GCDSingleton.h */,
-				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
-				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
-				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
-				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
-				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
-				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C07EE30C160425CF000EFA19 /* Evernote */,
 				C0881FA814F29F9B00818BAE /* NSObject+InvocationUtils */,
 			);
@@ -880,9 +863,10 @@
 		C0BC743E14E5FEE0003B0611 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C0828E7716C1BCAF00C3B7ED /* OK */,
 				C0828E5516BEB7DE00C3B7ED /* Refactoring */,
-				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
+				C09709DC16C663CE00AAE2B9 /* Exceptions */,
+				C0EE3FD216C85CE400790727 /* Evernote */,
+				C0EE3FD116C85CBD00790727 /* AssetsLibrary */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -949,6 +933,30 @@
 				C07EE24F1603FA30000EFA19 /* Default@2x.png */,
 			);
 			name = Splashes;
+			sourceTree = "<group>";
+		};
+		C0EE3FD116C85CBD00790727 /* AssetsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */,
+				C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */,
+				C09709DD16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.h */,
+				C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */,
+				C0828E5F16BF2EC800C3B7ED /* ALAsset+TransformForEvernote.h */,
+				C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */,
+				C039CDF314F68BD400948DC6 /* UploadedURLModel.h */,
+				C039CDF414F68BD400948DC6 /* UploadedURLModel.m */,
+			);
+			name = AssetsLibrary;
+			sourceTree = "<group>";
+		};
+		C0EE3FD216C85CE400790727 /* Evernote */ = {
+			isa = PBXGroup;
+			children = (
+				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
+				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
+			);
+			name = Evernote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
