@@ -99,7 +99,7 @@
     _currentAsset = nil;
     _totalCount = 0;
 
-    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreWithDelegate:self];
+    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreClientWithDelegate:self];
 
     @try {
         ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];

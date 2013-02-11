@@ -10,8 +10,14 @@
 
 @interface EvernoteSession (ProgressableClient)
 
-- (EDAMNoteStoreClient *)noteStoreWithDelegate:(id)delegate;
+// ユーザーエージェント文字列の取得
+// TODO もっと汎用的に使える場所におきたい。AppDelegateとか
++ (NSString *)userAgent;
 
-- (EDAMUserStoreClient *)userStoreWithDelegate:(id)delegate;
+// ノートストアクライアント取得
+- (EDAMNoteStoreClient *)noteStoreClientWithDelegate:(id)delegate;
+
+// ユーザーストアクライアント取得
+- (EDAMUserStoreClient *)userStoreClientWithDelegate:(id)delegate;
 
 @end

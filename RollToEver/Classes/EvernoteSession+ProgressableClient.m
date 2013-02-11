@@ -14,7 +14,7 @@
 
 @implementation EvernoteSession (ProgressableClient)
 
-- (NSString *)getUserAgent
++ (NSString *)userAgent
 {
     UIDevice *device = [UIDevice currentDevice];
     NSString *userAgent = [NSString stringWithFormat:@"%@/%@;%@(%@)/%@",
@@ -27,19 +27,19 @@
     return userAgent;
 }
 
-- (EDAMNoteStoreClient *)noteStoreWithDelegate:(id)delegate
+- (EDAMNoteStoreClient *)noteStoreClientWithDelegate:(id)delegate
 {
     NSURL *url = [NSURL URLWithString:[self noteStoreUrl]];
-    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:[self getUserAgent] timeout:15000] autorelease];
+    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:[EvernoteSession userAgent] timeout:15000] autorelease];
     httpClient.delegate = delegate;
     TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
     return [[[EDAMNoteStoreClient alloc] initWithProtocol:protocol] autorelease];
 }
 
-- (EDAMUserStoreClient *)userStoreWithDelegate:(id)delegate
+- (EDAMUserStoreClient *)userStoreClientWithDelegate:(id)delegate
 {
     NSURL *url = [NSURL URLWithString:[self userStoreUrl]];
-    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:[self getUserAgent] timeout:15000] autorelease];
+    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:[EvernoteSession userAgent] timeout:15000] autorelease];
     httpClient.delegate = delegate;
     TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
     return [[[EDAMUserStoreClient alloc] initWithProtocol:protocol] autorelease];
