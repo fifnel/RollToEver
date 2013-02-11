@@ -9,7 +9,8 @@
 #import <GHUnitIOS/GHUnit.h>
 //#import <OCMock/OCMock.h>
 #import "EvernoteSession+Login.h"
- 
+#import "MyGHUnitIOSAppDelegate.h"
+
 @interface EvernoteSession_LoginTest : GHTestCase { }
 @end
  
@@ -26,9 +27,10 @@
 {
     
 } 
- 
-- (void)testLoginIsFailure {
-    GHAssertFalse([EvernoteSession loginWithViewController:nil], @"unknown status");
+
+- (void)testLoginIsSuccess {
+    MyGHUnitIOSAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    GHAssertTrue([EvernoteSession loginWithViewController:[delegate navigationController]], @"please single re-run test and authorize to Evernote.");
 }
  
 @end

@@ -785,8 +785,6 @@
 				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
 				C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */,
 				C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */,
-				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
-				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
 				C03EF5471604CAAD000703BD /* EvernoteSession+ProgressableClient.h */,
 				C03EF5481604CAAD000703BD /* EvernoteSession+ProgressableClient.m */,
 				C0828E5616BF297A00C3B7ED /* Deprecated */,
@@ -882,9 +880,9 @@
 				C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */,
 				C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */,
 				C09709E416C733E400AAE2B9 /* UploadedURLModelTest.m */,
+				C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
-				C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -956,6 +954,8 @@
 		C0EE3FD216C85CE400790727 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
+				C07EE3221604561E000EFA19 /* EvernoteSession+Login.h */,
+				C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */,
 				C0828E6A16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.h */,
 				C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */,
 			);

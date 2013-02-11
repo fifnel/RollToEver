@@ -35,6 +35,15 @@
 @synthesize managedObjectModel = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
 
+- (UINavigationController *)navigationController
+{
+    return navigationController_;
+}
+
+- (UIWindow *)window
+{
+    return window_;
+}
 
 - (void)saveContext
 {
