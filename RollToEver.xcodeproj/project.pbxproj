@@ -211,6 +211,7 @@
 		C0E85A2914F6799300B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
+		C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */; };
 		C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FA0EF1150877DF00BF7CEA /* blank_image.png */; };
 		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
 /* End PBXBuildFile section */
@@ -412,6 +413,7 @@
 		C0D8A92A163D605F002FC719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrivateConfig.h.sample; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EvernoteSession+LoginTest.m"; sourceTree = "<group>"; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
 		C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewControllerViewController.m; path = Classes/AboutViewControllerViewController.m; sourceTree = "<group>"; };
@@ -882,6 +884,7 @@
 				C09709E416C733E400AAE2B9 /* UploadedURLModelTest.m */,
 				C0828E7616C15E5900C3B7ED /* Utility */,
 				C0BC74D214E6CCFD003B0611 /* Supporting Files */,
+				C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				C09709E116C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */,
 				C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */,
 				C09709E616C7342400AAE2B9 /* UploadedURLModelTest.m in Sources */,
+				C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

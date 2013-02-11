@@ -12,7 +12,7 @@
 
 @implementation EvernoteSession (Login)
 
-- (BOOL)loginWithViewController:(UIViewController *)viewController
++ (BOOL)loginWithViewController:(UIViewController *)viewController
 {
     [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
 
@@ -22,13 +22,15 @@
     [session authenticateWithViewController:viewController completionHandler:^(NSError *error) {
         if (error || !session.isAuthenticated) {
             NSLog(@"authentication failed.");
-            UIAlertView *alert = [
-                    [UIAlertView alloc]
-                    initWithTitle :NSLocalizedString(@"AccountSettingLoginTitle", @"Evernote Login")
-                          message :NSLocalizedString(@"AccountSettingLoginFailed", "Login failed")
-                         delegate :nil cancelButtonTitle :@"OK"
-                otherButtonTitles :nil];
-            [alert show];
+            if (viewController) {
+                UIAlertView *alert = [
+                                      [UIAlertView alloc]
+                                      initWithTitle :NSLocalizedString(@"AccountSettingLoginTitle", @"Evernote Login")
+                                      message :NSLocalizedString(@"AccountSettingLoginFailed", @"Login failed")
+                                      delegate :nil cancelButtonTitle :@"OK"
+                                      otherButtonTitles :nil];
+                [alert show];
+            }
 
         } else {
             NSLog(@"authentication succeeded.");

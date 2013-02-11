@@ -49,7 +49,7 @@
         _hud = nil;
     }
 
-    [[EvernoteSession sharedSession] loginWithViewController:self];
+    [EvernoteSession loginWithViewController:self];
 }
 
 - (void)viewDidUnload

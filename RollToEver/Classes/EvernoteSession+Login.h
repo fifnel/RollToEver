@@ -10,6 +10,7 @@
 
 @interface EvernoteSession (Login)
 
-- (BOOL)loginWithViewController:(UIViewController *)viewController;
+// Evernoteログインをする（してない場合はID/PASS入力画面を出す)
++ (BOOL)loginWithViewController:(UIViewController *)viewController;
 
 @end

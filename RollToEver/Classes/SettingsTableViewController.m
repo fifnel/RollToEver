@@ -106,7 +106,7 @@
                 self.evernoteLinkCell.textLabel.text = @"Login";
                 [[EvernoteSession sharedSession] logout];
             } else {
-                if ([[EvernoteSession sharedSession] loginWithViewController:self]) {
+                if ([EvernoteSession loginWithViewController:self]) {
                     self.evernoteLinkCell.textLabel.text = @"Logout";
                 }
             }
