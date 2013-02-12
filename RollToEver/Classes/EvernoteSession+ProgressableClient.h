@@ -11,7 +11,7 @@
 @interface EvernoteSession (ProgressableClient)
 
 // ユーザーエージェント文字列の取得
-// TODO もっと汎用的に使える場所におきたい。AppDelegateとか
+// TODO: もっと汎用的に使える場所におきたい。AppDelegateとか
 + (NSString *)userAgent;
 
 // ノートストアクライアント取得

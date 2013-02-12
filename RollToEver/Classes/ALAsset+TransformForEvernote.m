@@ -16,8 +16,8 @@
 
 + (CFStringRef)stringToUTType:(NSString *)extension
 {
-    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
-    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
+    // TODO: 他のフォーマットにも対応したい bmpとかjpg2000とか
+    // TODO: pairのようなフォーマットを使ってもう少しスマートに書きたい
     if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
         return kUTTypeJPEG;
     } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {
@@ -32,8 +32,8 @@
 
 + (NSString *)stringToMIMEType:(NSString *)extension
 {
-    // TODO 他のフォーマットにも対応したい bmpとかjpg2000とか
-    // TODO pairのようなフォーマットを使ってもう少しスマートに書きたい
+    // TODO: 他のフォーマットにも対応したい bmpとかjpg2000とか
+    // TODO: pairのようなフォーマットを使ってもう少しスマートに書きたい
     if ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame) {
         return @"image/jpeg";
     } else if ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame) {

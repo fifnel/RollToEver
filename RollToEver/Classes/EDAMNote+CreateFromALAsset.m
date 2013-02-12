@@ -12,6 +12,8 @@
 
 @implementation EDAMNote (CreateFromALAsset)
 
+// TODO: photoSizeとか渡したくない
+// TODO: 変換済みのassetを渡せればそれでいい気がする
 + (EDAMNote *)createFromALAsset:(ALAsset *)asset notebook:(NSString *)notebookGUID photoSize:(NSInteger)photoSize
 {
     EDAMNote *note = [[EDAMNote alloc] init];
