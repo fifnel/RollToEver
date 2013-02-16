@@ -7,9 +7,9 @@
 //
 
 #import "Config.h"
-
 #import "AppDelegate.h"
 #import "UserSettings.h"
+#import "EvernoteSession.h"
 #import <CoreData/CoreData.h>
 
 @interface AppDelegate ()
@@ -35,6 +35,7 @@
         // 前回と同じバージョン
     }
     [UserSettings sharedInstance].version = APPLICATION_VERSION;
+    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
 
     return YES;
 }

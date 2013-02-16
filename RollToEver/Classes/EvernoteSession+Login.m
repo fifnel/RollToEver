@@ -6,17 +6,12 @@
 //  Copyright (c) 2012年 fifnel. All rights reserved.
 //
 
-#import "Config.h"
-
 #import "EvernoteSession+Login.h"
 
 @implementation EvernoteSession (Login)
 
 + (BOOL)loginWithViewController:(UIViewController *)viewController
 {
-    // TODO: 以下の1行、ここから分離したい。Config.hを分離してキレイな実装にしたい。
-    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST consumerKey:CONSUMER_KEY consumerSecret:CONSUMER_SECRET];
-
     __block BOOL isSucceeded = NO;
 
     EvernoteSession *session = [EvernoteSession sharedSession];
