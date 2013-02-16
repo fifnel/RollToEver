@@ -25,7 +25,7 @@
     note.notebookGuid = notebookGUID;
 
     // asset(写真)のRollToEver向け変換
-    NSData *data = [asset transformForEvernote:photoSize];
+    NSData *data = [asset transformForEvernoteWithMaxPixel:photoSize];
     
     // Calculating the md5
     NSString *hash = [[[data md5] description] stringByReplacingOccurrencesOfString:@" " withString:@""];

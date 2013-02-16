@@ -113,7 +113,7 @@
     return orientation;
 }
 
-- (NSData *)transformForEvernote:(NSInteger)maxPixel
+- (NSData *)transformForEvernoteWithMaxPixel:(NSInteger)maxPixel
 {
     ALAssetRepresentation *rep = [self defaultRepresentation];
 

@@ -41,7 +41,7 @@
     GHAssertEqualStrings([asset MIMEType], @"image/jpeg", @"MIMEType is mismatch");
     GHAssertGreaterThan([asset resizeRatio:100], 0.0f, @"resize ratio not greater than 0.0f");
     GHAssertGreaterThan([asset orientation], 0.0f, @"orientation not greater than 0.0f");
-    GHAssertNotNil([asset transformForEvernote:100], @"transform is failure");
+    GHAssertNotNil([asset transformForEvernoteWithMaxPixel:100], @"transform is failure");
 }
 
 - (void)testPngAssetTest {
@@ -53,7 +53,7 @@
     GHAssertEqualStrings([asset MIMEType], @"image/png", @"MIMEType is mismatch");
     GHAssertGreaterThan([asset resizeRatio:100], 0.0f, @"resize ratio not greater than 0.0f");
     GHAssertGreaterThan([asset orientation], 0.0f, @"orientation not greater than 0.0f");
-    GHAssertNotNil([asset transformForEvernote:100], @"transform is failure");
+    GHAssertNotNil([asset transformForEvernoteWithMaxPixel:100], @"transform is failure");
 }
 
 - (void)testGifAssetTest {
@@ -65,7 +65,7 @@
     GHAssertEqualStrings([asset MIMEType], @"image/gif", @"MIMEType is mismatch");
     GHAssertGreaterThan([asset resizeRatio:100], 0.0f, @"resize ratio not greater than 0.0f");
     GHAssertGreaterThan([asset orientation], 0.0f, @"orientation not greater than 0.0f");
-    GHAssertNotNil([asset transformForEvernote:100], @"transform is failure");
+    GHAssertNotNil([asset transformForEvernoteWithMaxPixel:100], @"transform is failure");
 }
 
 - (void)testTiffAssetTest {
