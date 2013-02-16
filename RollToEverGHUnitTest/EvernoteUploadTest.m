@@ -41,11 +41,8 @@
     
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"jpg"];
     GHAssertNotNil(asset, @"cannot got asset");
-
-//    NSData *data = [asset transformForEvernoteWithMaxPixel:10];
-//    GHAssertNotNil(data, @"transform failure");
     
-    EvernoteSession *session = [[EvernoteSession alloc] init];
+    EvernoteSession *session = [EvernoteSession sharedSession];
     EDAMNoteStoreClient *noteStoreClient = [session noteStoreClientWithDelegate:nil];
     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:100];
 
