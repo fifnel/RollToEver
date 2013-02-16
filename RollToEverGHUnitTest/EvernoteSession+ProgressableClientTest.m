@@ -8,8 +8,9 @@
 
 #import <GHUnitIOS/GHUnit.h>
 //#import <OCMock/OCMock.h>
-#import "EvernoteSession+ProgressableClient.h"
- 
+#import "EDAMNoteStoreClient+WithDelegate.h"
+#import "EDAMUserStoreClient+WithDelegate.h"
+
 @interface EvernoteSession_ProgressableClientTest : GHTestCase { }
 @end
  
@@ -28,14 +29,12 @@
 }
 
 - (void)testNoteStoreClient {
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMNoteStoreClient *client = [session noteStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
+    EDAMNoteStoreClient *client = [EDAMNoteStoreClient noteStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
     GHAssertNotNil(client, @"note store client allocate failure");
 }
  
 - (void)testUserStoreClient {
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMUserStoreClient *client = [session userStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
+    EDAMUserStoreClient *client = [EDAMUserStoreClient userStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
     GHAssertNotNil(client, @"user store client allocate failure");
 } 
  

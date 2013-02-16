@@ -10,7 +10,7 @@
 //#import <OCMock/OCMock.h>
 #import "ALAsset+TransformForEvernote.h"
 #import "EvernoteSession+Login.h"
-#import "EvernoteSession+ProgressableClient.h"
+#import "EDAMNoteStoreClient+WithDelegate.h"
 #import "EDAMNote+CreateFromALAsset.h"
 #import "MyGHUnitIOSAppDelegate.h"
 #import "ALAssetTestUtility.h"
@@ -43,8 +43,7 @@
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"jpg"];
     GHAssertNotNil(asset, @"cannot got asset");
     
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMNoteStoreClient *noteStoreClient = [session noteStoreClientWithDelegate:nil UserAgent:[AppDelegate evernoteUserAgent]];
+    EDAMNoteStoreClient *noteStoreClient = [EDAMNoteStoreClient noteStoreClientWithDelegate:nil UserAgent:[AppDelegate evernoteUserAgent]];
     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:100];
 
     GHAssertNoThrow([noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note], @"evernote upload failure");
