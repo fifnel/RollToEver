@@ -277,8 +277,8 @@
 		C039CDFD14F68BD500948DC6 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewController.m; path = Classes/SettingsTableViewController.m; sourceTree = "<group>"; };
 		C039CDFE14F68BD500948DC6 /* THTTPAsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTTPAsyncClient.h; path = RollToEver/Classes/THTTPAsyncClient.h; sourceTree = "<group>"; };
 		C039CDFF14F68BD500948DC6 /* THTTPAsyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THTTPAsyncClient.m; path = RollToEver/Classes/THTTPAsyncClient.m; sourceTree = "<group>"; };
-		C039CE0214F68BD500948DC6 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSettings.h; path = RollToEver/Classes/UserSettings.h; sourceTree = "<group>"; };
-		C039CE0314F68BD500948DC6 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSettings.m; path = RollToEver/Classes/UserSettings.m; sourceTree = "<group>"; };
+		C039CE0214F68BD500948DC6 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSettings.h; path = Classes/UserSettings.h; sourceTree = "<group>"; };
+		C039CE0314F68BD500948DC6 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSettings.m; path = Classes/UserSettings.m; sourceTree = "<group>"; };
 		C039CE0414F68BD500948DC6 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		C039CE0514F68BD500948DC6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		C039CE2614F6911700948DC6 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadViewController.h; path = Classes/UploadViewController.h; sourceTree = "<group>"; };
@@ -570,6 +570,8 @@
 				C039CDF914F68BD500948DC6 /* PhotoUploader.m */,
 				C0896A0E1505C1CC00CFABE1 /* ApplicationError.h */,
 				C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */,
+				C039CE0214F68BD500948DC6 /* UserSettings.h */,
+				C039CE0314F68BD500948DC6 /* UserSettings.m */,
 			);
 			name = ViewControllers;
 			path = RollToEver;
@@ -785,30 +787,6 @@
 			name = Evernote;
 			sourceTree = "<group>";
 		};
-		C0828E5416BE7F7E00C3B7ED /* NoRefactor */ = {
-			isa = PBXGroup;
-			children = (
-				C0B604B1155C049D003DA7F3 /* RollToEver */,
-			);
-			name = NoRefactor;
-			sourceTree = "<group>";
-		};
-		C0828E5516BEB7DE00C3B7ED /* Refactoring */ = {
-			isa = PBXGroup;
-			children = (
-				C0828E5416BE7F7E00C3B7ED /* NoRefactor */,
-				C0828E5616BF297A00C3B7ED /* Deprecated */,
-			);
-			name = Refactoring;
-			sourceTree = "<group>";
-		};
-		C0828E5616BF297A00C3B7ED /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Deprecated;
-			sourceTree = "<group>";
-		};
 		C0828E7616C15E5900C3B7ED /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -848,15 +826,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		C0B604B1155C049D003DA7F3 /* RollToEver */ = {
-			isa = PBXGroup;
-			children = (
-				C039CE0214F68BD500948DC6 /* UserSettings.h */,
-				C039CE0314F68BD500948DC6 /* UserSettings.m */,
-			);
-			name = RollToEver;
-			sourceTree = "<group>";
-		};
 		C0B604B2155C0607003DA7F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,7 +838,6 @@
 		C0BC743E14E5FEE0003B0611 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C0828E5516BEB7DE00C3B7ED /* Refactoring */,
 				C09709DC16C663CE00AAE2B9 /* Exceptions */,
 				C0EE3FD216C85CE400790727 /* Evernote */,
 				C0EE3FD116C85CBD00790727 /* AssetsLibrary */,
