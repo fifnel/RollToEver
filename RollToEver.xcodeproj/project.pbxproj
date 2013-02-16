@@ -62,6 +62,8 @@
 		C062281016CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C062281116CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C062281316CFC4C400C049DF /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C062281216CFC4C400C049DF /* UserSettingsTest.m */; };
+		C062281516CFE82600C049DF /* EDAMNoteStoreClient+WithDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C062281416CFE82500C049DF /* EDAMNoteStoreClient+WithDelegateTest.m */; };
+		C062281716CFE83D00C049DF /* EDAMUserStoreClient+WithDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C062281616CFE83C00C049DF /* EDAMUserStoreClient+WithDelegateTest.m */; };
 		C066C6E11506EF1900D1188B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C066C6E01506EF1900D1188B /* logo.png */; };
 		C07EE2461603F839000EFA19 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C07EE2471603F84F000EFA19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8661506FE4D00415DA7 /* Icon.png */; };
@@ -216,7 +218,6 @@
 		C0E85A2A14F6799E00B3A1B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
 		C0E85A2B14F679A400B3A1B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
 		C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */; };
-		C0EE3FD616C9066900790727 /* EvernoteSession+ProgressableClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */; };
 		C0EE3FD816C9C3A500790727 /* EvernoteUploadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EE3FD716C9C3A500790727 /* EvernoteUploadTest.m */; };
 		C0FA0EF2150877DF00BF7CEA /* blank_image.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FA0EF1150877DF00BF7CEA /* blank_image.png */; };
 		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
@@ -295,6 +296,8 @@
 		C062280D16CFB88C00C049DF /* EDAMUserStoreClient+WithDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EDAMUserStoreClient+WithDelegate.h"; path = "RollToEver/Classes/EDAMUserStoreClient+WithDelegate.h"; sourceTree = "<group>"; };
 		C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDAMUserStoreClient+WithDelegate.m"; path = "RollToEver/Classes/EDAMUserStoreClient+WithDelegate.m"; sourceTree = "<group>"; };
 		C062281216CFC4C400C049DF /* UserSettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTest.m; sourceTree = "<group>"; };
+		C062281416CFE82500C049DF /* EDAMNoteStoreClient+WithDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMNoteStoreClient+WithDelegateTest.m"; sourceTree = "<group>"; };
+		C062281616CFE83C00C049DF /* EDAMUserStoreClient+WithDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMUserStoreClient+WithDelegateTest.m"; sourceTree = "<group>"; };
 		C066C6E01506EF1900D1188B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = RollToEver/Resources/logo.png; sourceTree = "<group>"; };
 		C074D16714ED46310077C201 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C074D16914ED46360077C201 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -423,7 +426,6 @@
 		C0D8A92B163D6142002FC719 /* PrivateConfig.h.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrivateConfig.h.sample; sourceTree = "<group>"; };
 		C0E85A2814F6799300B3A1B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EvernoteSession+LoginTest.m"; sourceTree = "<group>"; };
-		C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EvernoteSession+ProgressableClientTest.m"; sourceTree = "<group>"; };
 		C0EE3FD716C9C3A500790727 /* EvernoteUploadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvernoteUploadTest.m; sourceTree = "<group>"; };
 		C0FA0EF1150877DF00BF7CEA /* blank_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank_image.png; path = RollToEver/Resources/blank_image.png; sourceTree = "<group>"; };
 		C0FAF65C1501BC9A00F2BE23 /* AboutViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewControllerViewController.h; path = Classes/AboutViewControllerViewController.h; sourceTree = "<group>"; };
@@ -858,9 +860,10 @@
 				C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */,
 				C09709E416C733E400AAE2B9 /* UploadedURLModelTest.m */,
 				C0EE3FD316C8E29A00790727 /* EvernoteSession+LoginTest.m */,
-				C0EE3FD516C9066900790727 /* EvernoteSession+ProgressableClientTest.m */,
 				C0EE3FD716C9C3A500790727 /* EvernoteUploadTest.m */,
 				C062281216CFC4C400C049DF /* UserSettingsTest.m */,
+				C062281416CFE82500C049DF /* EDAMNoteStoreClient+WithDelegateTest.m */,
+				C062281616CFE83C00C049DF /* EDAMUserStoreClient+WithDelegateTest.m */,
 			);
 			path = RollToEverGHUnitTest;
 			sourceTree = "<group>";
@@ -1271,11 +1274,12 @@
 				C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */,
 				C09709E616C7342400AAE2B9 /* UploadedURLModelTest.m in Sources */,
 				C0EE3FD416C8E29A00790727 /* EvernoteSession+LoginTest.m in Sources */,
-				C0EE3FD616C9066900790727 /* EvernoteSession+ProgressableClientTest.m in Sources */,
 				C0EE3FD816C9C3A500790727 /* EvernoteUploadTest.m in Sources */,
 				C062280C16CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m in Sources */,
 				C062281116CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */,
 				C062281316CFC4C400C049DF /* UserSettingsTest.m in Sources */,
+				C062281516CFE82600C049DF /* EDAMNoteStoreClient+WithDelegateTest.m in Sources */,
+				C062281716CFE83D00C049DF /* EDAMUserStoreClient+WithDelegateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

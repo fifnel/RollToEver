@@ -1,20 +1,19 @@
 //
-//  EvernoteSession+ProgressableClientTest.m
+//  EDAMUserStoreClient+WithDelegateTest.m
 //  RollToEver
 //
-//  Created by fifnel on 2013/02/11.
+//  Created by fifnel on 2013/02/17.
 //  Copyright 2013年 fifnel. All rights reserved.
 //
 
 #import <GHUnitIOS/GHUnit.h>
 //#import <OCMock/OCMock.h>
-#import "EDAMNoteStoreClient+WithDelegate.h"
 #import "EDAMUserStoreClient+WithDelegate.h"
 
-@interface EvernoteSession_ProgressableClientTest : GHTestCase { }
+@interface EDAMUserStoreClient_WithDelegateTest : GHTestCase { }
 @end
  
-@implementation EvernoteSession_ProgressableClientTest
+@implementation EDAMUserStoreClient_WithDelegateTest
 
 //Method called before each tests
 - (void) setUp
@@ -26,16 +25,11 @@
 - (void) tearDown
 {
     
-}
-
-- (void)testNoteStoreClient {
-    EDAMNoteStoreClient *client = [EDAMNoteStoreClient noteStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
-    GHAssertNotNil(client, @"note store client allocate failure");
-}
+} 
  
 - (void)testUserStoreClient {
     EDAMUserStoreClient *client = [EDAMUserStoreClient userStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
     GHAssertNotNil(client, @"user store client allocate failure");
-} 
- 
+}
+
 @end
