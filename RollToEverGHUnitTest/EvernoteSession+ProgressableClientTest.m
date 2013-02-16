@@ -29,13 +29,13 @@
 
 - (void)testNoteStoreClient {
     EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMNoteStoreClient *client = [session noteStoreClientWithDelegate:nil];
+    EDAMNoteStoreClient *client = [session noteStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
     GHAssertNotNil(client, @"note store client allocate failure");
 }
  
 - (void)testUserStoreClient {
     EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMUserStoreClient *client = [session userStoreClientWithDelegate:nil];
+    EDAMUserStoreClient *client = [session userStoreClientWithDelegate:nil UserAgent:@"dummy-ua"];
     GHAssertNotNil(client, @"user store client allocate failure");
 } 
  

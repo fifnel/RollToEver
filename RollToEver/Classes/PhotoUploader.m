@@ -13,6 +13,7 @@
 #import "ALAssetsLibrary+BlockingUtility.h"
 #import "ALAssetsLibrary+FilteredList.h"
 #import "NSObject+InvocationUtils.h"
+#import "AppDelegate.h"
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"
 #import "EvernoteSession+ProgressableClient.h"
@@ -99,7 +100,7 @@
     _currentAsset = nil;
     _totalCount = 0;
 
-    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreClientWithDelegate:self];
+    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreClientWithDelegate:self UserAgent:[AppDelegate evernoteUserAgent]];
 
     @try {
         ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];

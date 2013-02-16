@@ -14,7 +14,8 @@
 #import "EDAMNote+CreateFromALAsset.h"
 #import "MyGHUnitIOSAppDelegate.h"
 #import "ALAssetTestUtility.h"
- 
+#import "AppDelegate.h"
+
 @interface EvernoteUploadTest : GHTestCase { }
 @end
 
@@ -43,7 +44,7 @@
     GHAssertNotNil(asset, @"cannot got asset");
     
     EvernoteSession *session = [EvernoteSession sharedSession];
-    EDAMNoteStoreClient *noteStoreClient = [session noteStoreClientWithDelegate:nil];
+    EDAMNoteStoreClient *noteStoreClient = [session noteStoreClientWithDelegate:nil UserAgent:[AppDelegate evernoteUserAgent]];
     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:100];
 
     GHAssertNoThrow([noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note], @"evernote upload failure");
