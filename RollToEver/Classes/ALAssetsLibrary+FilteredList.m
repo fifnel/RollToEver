@@ -13,7 +13,7 @@
 
 @implementation ALAssetsLibrary (FilteredList)
 
-// TODO 除外されたファイルとその理由をはき出した方が良いかもしれない。デバッグ的な意味で。
+// TODO: 除外されたファイルとその理由をはき出した方が良いかもしれない。デバッグ的な意味で。
 - (NSArray *)filteredAssetsURLList
 {
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {

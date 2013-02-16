@@ -13,9 +13,10 @@
 #import "ALAssetsLibrary+BlockingUtility.h"
 #import "ALAssetsLibrary+FilteredList.h"
 #import "NSObject+InvocationUtils.h"
+#import "EDAMNoteStoreClient+WithDelegate.h"
+#import "AppDelegate.h"
 #import "THTTPAsyncClient.h"
 #import "EvernoteSDK.h"
-#import "EvernoteSession+ProgressableClient.h"
 #import "ALAsset+TransformForEvernote.h"
 #import "EDAMNote+CreateFromALAsset.h"
 #import "UnsupportedFormatException.h"
@@ -99,7 +100,7 @@
     _currentAsset = nil;
     _totalCount = 0;
 
-    EDAMNoteStoreClient *noteStoreClient = [[EvernoteSession sharedSession] noteStoreWithDelegate:self];
+    EDAMNoteStoreClient *noteStoreClient = [EDAMNoteStoreClient noteStoreClientWithDelegate:self UserAgent:[AppDelegate evernoteUserAgent]];
 
     @try {
         ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];

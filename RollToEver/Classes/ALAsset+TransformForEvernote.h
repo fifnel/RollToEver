@@ -36,6 +36,6 @@
 
 // アセット内の写真をEvernote向けに変換して生データを返す
 // maxPixelが0以下の場合はオリジナルサイズのまま返す
-- (NSData *)transformForEvernote:(NSInteger)maxPixel;
+- (NSData *)transformForEvernoteWithMaxPixel:(NSInteger)maxPixel;
 
 @end

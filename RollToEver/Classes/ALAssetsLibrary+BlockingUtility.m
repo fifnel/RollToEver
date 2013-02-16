@@ -32,7 +32,7 @@
             ^(ALAssetsGroup *group, BOOL *stop) {
                 if (group) {
                     [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-                    // TODO グループのフィルタを入れたい
+                    // TODO: グループのフィルタを入れたい
                     [group enumerateAssetsUsingBlock:assetsEnumerationBlock];
                 } else {
                     completed = YES;

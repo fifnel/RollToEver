@@ -12,6 +12,8 @@
 
 @implementation EDAMNote (CreateFromALAsset)
 
+// TODO: photoSizeとか渡したくない
+// TODO: 変換済みのassetを渡せればそれでいい気がする
 + (EDAMNote *)createFromALAsset:(ALAsset *)asset notebook:(NSString *)notebookGUID photoSize:(NSInteger)photoSize
 {
     EDAMNote *note = [[EDAMNote alloc] init];
@@ -23,7 +25,7 @@
     note.notebookGuid = notebookGUID;
 
     // asset(写真)のRollToEver向け変換
-    NSData *data = [asset transformForEvernote:photoSize];
+    NSData *data = [asset transformForEvernoteWithMaxPixel:photoSize];
     
     // Calculating the md5
     NSString *hash = [[[data md5] description] stringByReplacingOccurrencesOfString:@" " withString:@""];

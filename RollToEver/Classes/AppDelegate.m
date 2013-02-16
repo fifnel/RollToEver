@@ -191,4 +191,18 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - UserAgent for Evernote
++ (NSString *)evernoteUserAgent
+{
+    UIDevice *device = [UIDevice currentDevice];
+    NSString *userAgent = [NSString stringWithFormat:@"%@/%@;%@(%@)/%@",
+                           APPLICATION_NAME,
+                           APPLICATION_VERSION,
+                           [device systemName],
+                           [device model],
+                           [device systemVersion]];
+    
+    return userAgent;
+}
+
 @end

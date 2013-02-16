@@ -20,4 +20,6 @@
 
 - (NSURL *)applicationDocumentsDirectory;
 
++ (NSString *)evernoteUserAgent;
+
 @end
