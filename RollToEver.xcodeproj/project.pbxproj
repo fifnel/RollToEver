@@ -276,6 +276,7 @@
 		C0AA4E6A16EB61BD00D91257 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0AA4E6916EB61BD00D91257 /* StoreKit.framework */; };
 		C0AA4E6B16EB61C900D91257 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0AA4E6916EB61BD00D91257 /* StoreKit.framework */; };
 		C0AA4E6C16EB61D400D91257 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0AA4E6916EB61BD00D91257 /* StoreKit.framework */; };
+		C0AA4E6D16EB7B9800D91257 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
 		C0BC74CE14E6CCFD003B0611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C0BC74CF14E6CCFD003B0611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C0BC74D014E6CCFD003B0611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
@@ -561,6 +562,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0AA4E6D16EB7B9800D91257 /* CoreLocation.framework in Frameworks */,
 				C0AA4E6A16EB61BD00D91257 /* StoreKit.framework in Frameworks */,
 				C08582371616CF6100D0092B /* CoreGraphics.framework in Frameworks */,
 				C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */,

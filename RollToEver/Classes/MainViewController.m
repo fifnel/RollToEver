@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "ALAssetsLibrary+FilteredList.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
@@ -49,7 +50,46 @@
         _hud = nil;
     }
 
+    // Evernoteにログインする
     [EvernoteSession loginWithViewController:self];
+
+
+    NSString *privacyAlertMessage = nil;
+
+    // 大元の位置情報サービスがオンになっているか
+    if (![CLLocationManager locationServicesEnabled]) {
+        privacyAlertMessage = NSLocalizedString(@"CLServicesDisable", @"");
+    } else {
+        switch ([CLLocationManager authorizationStatus]) {
+            case kCLAuthorizationStatusNotDetermined:
+                // 未選択状態
+                // これからどうするか自動的に聞かれるので放っておく
+                break;
+            case kCLAuthorizationStatusRestricted:
+                // ペアレンタルコントロールで制限されている
+                privacyAlertMessage = NSLocalizedString(@"CLAuthorizationStatusRestricted", @"");
+                break;
+            case kCLAuthorizationStatusDenied:
+                // アプリが不許可になっている
+                privacyAlertMessage = NSLocalizedString(@"CLAuthorizationStatusDenied", @"");
+                break;
+            case kCLAuthorizationStatusAuthorized:
+            default:
+                // OK
+                break;
+        }
+    }
+    if (privacyAlertMessage) {
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle : @"Notice"
+                              message : privacyAlertMessage
+                              delegate : self
+                              cancelButtonTitle : @"OK"
+                              otherButtonTitles:nil
+                              ];
+        [alert show];
+    }
 }
 
 - (void)viewDidUnload
