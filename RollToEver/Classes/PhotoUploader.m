@@ -132,7 +132,7 @@
                                                  index:[NSNumber numberWithInt:i]
                                             totalCount:[NSNumber numberWithInt:_totalCount]];
                     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:notebookGUID photoSize:photoSize];
-                    [noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note];
+                    [noteStoreClient createNote:[EvernoteSession sharedSession].authenticationToken note:note];
                     if ([self isCancelled]) {
                         [self PhotoUploaderCancelAsync:self];
                         return;

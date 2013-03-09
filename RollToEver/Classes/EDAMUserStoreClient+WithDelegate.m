@@ -16,10 +16,10 @@
 + (EDAMUserStoreClient *)userStoreClientWithDelegate:(id)delegate UserAgent:userAgent
 {
     NSURL *url = [NSURL URLWithString:[[EvernoteSession sharedSession] userStoreUrl]];
-    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000] autorelease];
+    THTTPAsyncClient *httpClient = [[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000];
     httpClient.delegate = delegate;
-    TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-    return [[[EDAMUserStoreClient alloc] initWithProtocol:protocol] autorelease];
+    TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:httpClient];
+    return [[EDAMUserStoreClient alloc] initWithProtocol:protocol];
 }
 
 @end

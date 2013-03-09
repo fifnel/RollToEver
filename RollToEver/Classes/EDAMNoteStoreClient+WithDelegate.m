@@ -16,10 +16,10 @@
 + (EDAMNoteStoreClient *)noteStoreClientWithDelegate:(id)delegate UserAgent:userAgent
 {
     NSURL *url = [NSURL URLWithString:[[EvernoteSession sharedSession] noteStoreUrl]];
-    THTTPAsyncClient *httpClient = [[[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000] autorelease];
+    THTTPAsyncClient *httpClient = [[THTTPAsyncClient alloc] initWithURL:url userAgent:userAgent timeout:15000];
     httpClient.delegate = delegate;
-    TBinaryProtocol *protocol = [[[TBinaryProtocol alloc] initWithTransport:httpClient] autorelease];
-    return [[[EDAMNoteStoreClient alloc] initWithProtocol:protocol] autorelease];
+    TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:httpClient];
+    return [[EDAMNoteStoreClient alloc] initWithProtocol:protocol];
 }
 
 @end

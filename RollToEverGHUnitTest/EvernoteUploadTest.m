@@ -46,7 +46,7 @@
     EDAMNoteStoreClient *noteStoreClient = [EDAMNoteStoreClient noteStoreClientWithDelegate:nil UserAgent:[AppDelegate evernoteUserAgent]];
     EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:nil photoSize:100];
 
-    GHAssertNoThrow([noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] :note], @"evernote upload failure");
+    GHAssertNoThrow([noteStoreClient createNote:[[EvernoteSession sharedSession] authenticationToken] note:note], @"evernote upload failure");
 }
 
 @end
