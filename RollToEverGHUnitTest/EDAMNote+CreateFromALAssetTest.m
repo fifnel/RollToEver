@@ -54,18 +54,16 @@
 
 - (void)testEDAMNoteFromTif {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"tif"];
-    
-    GHAssertThrows(
-                   [EDAMNote createFromALAsset:asset notebook:@"notebookgiud" photoSize:100],
-                   @"craeteFromALAsset is unknown result");
+
+    EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:@"notebookgiud" photoSize:100];
+    GHAssertNotNil(note, @"craeteFromALAsset is failure");
 }
 
 - (void)testEDAMNoteFromJp2 {
     ALAsset *asset = [_assetsUtility getFirstAssertByExtension:@"jp2"];
     
-    GHAssertThrows(
-                   [EDAMNote createFromALAsset:asset notebook:@"notebookgiud" photoSize:100],
-                   @"craeteFromALAsset is unknown result");
+    EDAMNote *note = [EDAMNote createFromALAsset:asset notebook:@"notebookgiud" photoSize:100];
+    GHAssertNotNil(note, @"craeteFromALAsset is failure");
 }
 
 @end

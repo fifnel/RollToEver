@@ -73,13 +73,11 @@
     
     GHAssertNotNil([asset filename], @"filename is nil");
     GHAssertEqualStrings([asset fileExtension], @"tif", @"file extension is mismatch");
-    GHAssertThrows([asset UTType], @"UTType is mismatch");
-    GHAssertThrows([asset MIMEType], @"MIMEType is mismatch");
-    /*
+    GHAssertEquals([asset UTType], kUTTypeTIFF, @"UTType is mismatch");
+    GHAssertEqualStrings([asset MIMEType], @"image/tiff", @"MIMEType is mismatch");
     GHAssertGreaterThan([asset resizeRatio:100], 0.0f, @"resize ratio not greater than 0.0f");
     GHAssertGreaterThan([asset orientation], 0.0f, @"orientation not greater than 0.0f");
-    GHAssertThrows([asset transformForEvernote:100], @"transform is failure");
-    */
+    GHAssertNotNil([asset transformForEvernoteWithMaxPixel:100], @"transform is failure");
 }
 
 - (void)testJp2AssetTest {
@@ -87,13 +85,11 @@
     
     GHAssertNotNil([asset filename], @"filename is nil");
     GHAssertEqualStrings([asset fileExtension], @"jp2", @"file extension is mismatch");
-    GHAssertThrows([asset UTType], @"UTType is mismatch");
-    GHAssertThrows([asset MIMEType], @"MIMEType is mismatch");
-    /*
+    GHAssertEquals([asset UTType], kUTTypeJPEG2000, @"UTType is mismatch");
+    GHAssertEqualStrings([asset MIMEType], @"image/jp2", @"MIMEType is mismatch");
     GHAssertGreaterThan([asset resizeRatio:100], 0.0f, @"resize ratio not greater than 0.0f");
     GHAssertGreaterThan([asset orientation], 0.0f, @"orientation not greater than 0.0f");
-    GHAssertThrows([asset transformForEvernote:100], @"transform is failure");
-    */
+    GHAssertNotNil([asset transformForEvernoteWithMaxPixel:100], @"transform is failure");
 }
 
 

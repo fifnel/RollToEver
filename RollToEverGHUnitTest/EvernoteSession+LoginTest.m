@@ -19,7 +19,8 @@
 //Method called before each tests
 - (void) setUp
 {
-    
+    // パスワード変更時などにいったんコメントアウトを解除してログアウト処理を呼び出してください
+    //[[EvernoteSession sharedSession] logout];
 }
 
 //Method called before after each tests

@@ -24,6 +24,11 @@
         return kUTTypePNG;
     } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
         return kUTTypeGIF;
+    } else if ([extension caseInsensitiveCompare:@"tif"] == NSOrderedSame ||
+              ([extension caseInsensitiveCompare:@"tiff"] == NSOrderedSame)) {
+        return kUTTypeTIFF;
+    } else if ([extension caseInsensitiveCompare:@"jp2"] == NSOrderedSame) {
+        return kUTTypeJPEG2000;
     } else {
         // 未対応フォーマット
         return NULL;
@@ -40,6 +45,11 @@
         return @"image/png";
     } else if ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame) {
         return @"image/gif";
+    } else if ([extension caseInsensitiveCompare:@"tif"] == NSOrderedSame ||
+               ([extension caseInsensitiveCompare:@"tiff"] == NSOrderedSame)) {
+        return @"image/tiff";
+    } else if ([extension caseInsensitiveCompare:@"jp2"] == NSOrderedSame) {
+        return @"image/jp2";
     } else {
         // 未対応フォーマット
         return nil;
