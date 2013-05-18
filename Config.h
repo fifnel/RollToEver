@@ -19,4 +19,4 @@
 #define APPLICATION_NAME    @"RollToEver"
 
 // アプリケーションバージョン番号
-#define APPLICATION_VERSION @"1.0.5"
+#define APPLICATION_VERSION @"1.1.0"
