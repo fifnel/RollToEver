@@ -72,8 +72,6 @@
                                           delegate:self
                                  cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil];
         [alertDone show];
-
-        [[self navigationController] popViewControllerAnimated:YES];
     }];
 }
 
@@ -133,6 +131,12 @@
     [[UserSettings sharedInstance] setEvernoteNotebookGUID:notebook.guid];
 
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end
