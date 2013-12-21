@@ -5,3 +5,6 @@ RollToEver/Libraries/GoogleAdMobAdsSDKiOS
 .idea
 PrivateConfig.h
 DerivedData
+Pods
+RollToEver.xcworkspace
+Podfile.lock
