@@ -211,12 +211,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="アップロード時リサイズ設定" id="j6C-uP-lJ2">
-                                <string key="footerTitle">画像サイズはiPhone4Sで撮影した
-ファイルサイズが大きめの写真から
-導き出した参考値です。 設定した大きさより
-対象の画像が小さい場合は
-そのままのサイズになります。</string>
+                            <tableViewSection headerTitle="アップロード時リサイズ設定" footerTitle="リサイズをしても撮影時間や位置情報などEXIF情報は維持されます" id="j6C-uP-lJ2">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="98n-fA-7fj" detailTextLabel="odx-lG-2gG" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Fuq-Cw-nZF">
                                         <rect key="frame" x="0.0" y="303" width="320" height="44"/>
@@ -232,8 +227,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2448 × 3264  およそ2.5MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="odx-lG-2gG">
-                                                    <rect key="frame" x="15" y="24" width="173" height="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="odx-lG-2gG">
+                                                    <rect key="frame" x="15" y="24" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -257,8 +252,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1224 × 1632  およそ700KB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="nZ9-We-HAP">
-                                                    <rect key="frame" x="15" y="24" width="174" height="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="700KB 程度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="nZ9-We-HAP">
+                                                    <rect key="frame" x="15" y="24" width="76" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -282,8 +277,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="480 × 640 およそ150KB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="cpf-sh-ZzU">
-                                                    <rect key="frame" x="15" y="24" width="154" height="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="150KB 程度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="cpf-sh-ZzU">
+                                                    <rect key="frame" x="15" y="24" width="76" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -307,8 +302,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="240 × 320 およそ50KB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="V0k-RS-nHS">
-                                                    <rect key="frame" x="15" y="24" width="146" height="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="50KB 程度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="V0k-RS-nHS">
+                                                    <rect key="frame" x="15" y="24" width="68" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,7 +318,7 @@
                             <tableViewSection headerTitle="動作オプション" footerTitle="このオプションをONにする場合、画像枚数が多い場合は電源ケーブルを挿した状態で利用することをお勧めします。アップロード動作中以外は通常のスリープ動作に戻ります。" id="1s9-RE-Syu">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QIv-wZ-l9G">
-                                        <rect key="frame" x="0.0" y="638" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="571" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QIv-wZ-l9G" id="0Rp-6b-wTP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -352,7 +347,7 @@
                             <tableViewSection headerTitle="リセット" id="fGP-cQ-GNf">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="sDp-m7-znS">
-                                        <rect key="frame" x="0.0" y="807" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="740" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sDp-m7-znS" id="A0j-fN-3ow">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -370,7 +365,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gbJ-Nf-7LD">
-                                        <rect key="frame" x="0.0" y="851" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="784" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbJ-Nf-7LD" id="HJS-a8-Eg4">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -392,7 +387,7 @@
                             <tableViewSection headerTitle="情報" id="X32-k7-B46">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XYq-9i-nnS">
-                                        <rect key="frame" x="0.0" y="943" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="876" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XYq-9i-nnS" id="8hb-V0-5yT">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -413,7 +408,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RWC-Nz-VHt">
-                                        <rect key="frame" x="0.0" y="987" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="920" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWC-Nz-VHt" id="r1n-L1-KrA">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
