@@ -18,7 +18,6 @@
 		C0192E8A14FFC43400DEC1F7 /* uploadbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C0192E8814FFC43400DEC1F7 /* uploadbutton.png */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
-		C039B10F14DF79D300F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B10D14DF79D300F4169E /* InfoPlist.strings */; };
 		C039B11814DF79D300F4169E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C039B11614DF79D300F4169E /* MainStoryboard.storyboard */; };
 		C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C039CDE014F68B9E00948DC6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD514F68B9E00948DC6 /* Icon-72.png */; };
@@ -145,9 +144,7 @@
 		C039B10614DF79D300F4169E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C039B10814DF79D300F4169E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C039B10C14DF79D300F4169E /* RollToEver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEver-Info.plist"; sourceTree = "<group>"; };
-		C039B10E14DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C039B11214DF79D300F4169E /* RollToEver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEver-Prefix.pch"; sourceTree = "<group>"; };
-		C039B11714DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C039B12214DF79D400F4169E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C039CDD514F68B9E00948DC6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "RollToEver/Resources/Icon-72.png"; sourceTree = "<group>"; };
@@ -179,8 +176,8 @@
 		C03EF55D16056BEB000703BD /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = Classes/TestViewController.m; sourceTree = "<group>"; };
 		C04F82E014E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGHUnitIOSAppDelegate.h; sourceTree = "<group>"; };
 		C04F82E114E7B15F00C9D1FE /* MyGHUnitIOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGHUnitIOSAppDelegate.m; sourceTree = "<group>"; };
-		C060505F14FF38FF001A41B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C060506114FF3909001A41B7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0574B371865CB42000C1C1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C0574B3A1865CB7D000C1C1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C062280816CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EDAMNoteStoreClient+WithDelegate.h"; path = "RollToEver/Classes/EDAMNoteStoreClient+WithDelegate.h"; sourceTree = "<group>"; };
 		C062280916CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDAMNoteStoreClient+WithDelegate.m"; path = "RollToEver/Classes/EDAMNoteStoreClient+WithDelegate.m"; sourceTree = "<group>"; };
 		C062280D16CFB88C00C049DF /* EDAMUserStoreClient+WithDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EDAMUserStoreClient+WithDelegate.h"; path = "RollToEver/Classes/EDAMUserStoreClient+WithDelegate.h"; sourceTree = "<group>"; };
@@ -390,7 +387,6 @@
 				C060506014FF38FF001A41B7 /* Localizable.strings */,
 				C039CDF514F68BD400948DC6 /* main.m */,
 				C039B10C14DF79D300F4169E /* RollToEver-Info.plist */,
-				C039B10D14DF79D300F4169E /* InfoPlist.strings */,
 				C039B11214DF79D300F4169E /* RollToEver-Prefix.pch */,
 				C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */,
 			);
@@ -638,6 +634,7 @@
 			knownRegions = (
 				en,
 				ja,
+				Base,
 			);
 			mainGroup = C039B0F514DF79D300F4169E;
 			productRefGroup = C039B10114DF79D300F4169E /* Products */;
@@ -655,7 +652,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C039B10F14DF79D300F4169E /* InfoPlist.strings in Resources */,
 				C039B11814DF79D300F4169E /* MainStoryboard.storyboard in Resources */,
 				C039CDE014F68B9E00948DC6 /* Icon-72.png in Resources */,
 				C039CDE114F68B9E00948DC6 /* Icon-Small-50.png in Resources */,
@@ -845,18 +841,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C039B10D14DF79D300F4169E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C039B10E14DF79D300F4169E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C039B11614DF79D300F4169E /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C039B11714DF79D300F4169E /* en */,
+				C0574B371865CB42000C1C1C /* Base */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -864,8 +852,7 @@
 		C060506014FF38FF001A41B7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C060505F14FF38FF001A41B7 /* en */,
-				C060506114FF3909001A41B7 /* ja */,
+				C0574B3A1865CB7D000C1C1C /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
