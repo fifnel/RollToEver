@@ -14,17 +14,12 @@
 		C0089A7416C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0089A7316C65BE30009213C /* ALAssetsLibrary+BlockingUtilityTest.m */; };
 		C00AA8671506FE4D00415DA7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8661506FE4D00415DA7 /* Icon.png */; };
 		C00AA8691506FE5900415DA7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C00AA8681506FE5900415DA7 /* Icon@2x.png */; };
-		C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C0192E8914FFC43400DEC1F7 /* uploadbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C0192E8814FFC43400DEC1F7 /* uploadbutton.png */; };
 		C0192E8A14FFC43400DEC1F7 /* uploadbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C0192E8814FFC43400DEC1F7 /* uploadbutton.png */; };
-		C0192E8B14FFDB6B00DEC1F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
 		C039B10514DF79D300F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
 		C039B10714DF79D300F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
 		C039B10F14DF79D300F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B10D14DF79D300F4169E /* InfoPlist.strings */; };
 		C039B11814DF79D300F4169E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C039B11614DF79D300F4169E /* MainStoryboard.storyboard */; };
-		C039B12414DF79D400F4169E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10414DF79D300F4169E /* UIKit.framework */; };
-		C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10614DF79D300F4169E /* Foundation.framework */; };
-		C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C039B12B14DF79D400F4169E /* InfoPlist.strings */; };
 		C039B14614DF8A9E00F4169E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */; };
 		C039CDE014F68B9E00948DC6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD514F68B9E00948DC6 /* Icon-72.png */; };
 		C039CDE114F68B9E00948DC6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C039CDD614F68B9E00948DC6 /* Icon-Small-50.png */; };
@@ -56,10 +51,8 @@
 		C060505D14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C060505E14FF38FF001A41B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C060506014FF38FF001A41B7 /* Localizable.strings */; };
 		C062280A16CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280916CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m */; };
-		C062280B16CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280916CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m */; };
 		C062280C16CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280916CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m */; };
 		C062280F16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */; };
-		C062281016CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */; };
 		C062281116CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C062280E16CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m */; };
 		C062281316CFC4C400C049DF /* UserSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C062281216CFC4C400C049DF /* UserSettingsTest.m */; };
 		C062281516CFE82600C049DF /* EDAMNoteStoreClient+WithDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C062281416CFE82500C049DF /* EDAMNoteStoreClient+WithDelegateTest.m */; };
@@ -75,41 +68,27 @@
 		C07EE2541603FA61000EFA19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE24E1603FA30000EFA19 /* Default-568h@2x.png */; };
 		C07EE2551603FA69000EFA19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C07EE24F1603FA30000EFA19 /* Default@2x.png */; };
 		C07EE312160425F3000EFA19 /* NSDataMD5Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */; };
-		C07EE313160425F3000EFA19 /* NSDataMD5Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */; };
 		C07EE314160425F3000EFA19 /* NSDataMD5Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE30F160425F3000EFA19 /* NSDataMD5Additions.m */; };
 		C07EE315160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
-		C07EE316160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
 		C07EE317160425F3000EFA19 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE311160425F3000EFA19 /* NSString+MD5.m */; };
 		C07EE31E16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
-		C07EE31F16042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE32016042656000EFA19 /* MD5.c in Sources */ = {isa = PBXBuildFile; fileRef = C07EE31916042656000EFA19 /* MD5.c */; };
 		C07EE3241604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
-		C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
 		C07EE3261604561F000EFA19 /* EvernoteSession+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EE3231604561E000EFA19 /* EvernoteSession+Login.m */; };
 		C0828E4E16BE772000C3B7ED /* UnsupportedFormatException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8A928163D2FA8002FC719 /* UnsupportedFormatException.m */; };
 		C0828E5016BE7B1100C3B7ED /* ALAssetTestUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E4F16BE7B1100C3B7ED /* ALAssetTestUtilTest.m */; };
 		C0828E5316BE7E3B00C3B7ED /* ALAssetTestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E5216BE7E3B00C3B7ED /* ALAssetTestUtility.m */; };
 		C0828E6116BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */; };
-		C0828E6216BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */; };
 		C0828E6316BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6016BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m */; };
 		C0828E6C16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */; };
-		C0828E6D16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */; };
 		C0828E6E16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E6B16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m */; };
 		C0828E7116C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
-		C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7316C157A300C3B7ED /* RollToEverCommonException.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */; };
 		C0828E7516C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */; };
-		C0828E7D16C1C2C900C3B7ED /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D17314ED48760077C201 /* MobileCoreServices.framework */; };
-		C0828E7E16C1C2E300C3B7ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
-		C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E85A2814F6799300B3A1B4 /* ImageIO.framework */; };
-		C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DD6F14E8E43900DDD8C8 /* Security.framework */; };
-		C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8216C1C35600C3B7ED /* SampleTest.m */; };
 		C0828E8616C1C6C800C3B7ED /* EDAMNote+CreateFromALAssetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */; };
 		C0828E8916C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
-		C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
 		C0828E8B16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */; };
 		C0833FF314E392A700DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
-		C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0833FF214E392A700DB4144 /* CoreData.framework */; };
 		C0833FF814E393A500DB4144 /* RollToEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0833FF614E393A500DB4144 /* RollToEver.xcdatamodeld */; };
 		C08582371616CF6100D0092B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B10814DF79D300F4169E /* CoreGraphics.framework */; };
 		C0881FAC14F29FAD00818BAE /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0881FAB14F29FAD00818BAE /* NSObject+InvocationUtils.m */; };
@@ -117,7 +96,6 @@
 		C0896A101505C1CC00CFABE1 /* ApplicationError.m in Sources */ = {isa = PBXBuildFile; fileRef = C0896A0F1505C1CC00CFABE1 /* ApplicationError.m */; };
 		C08AA3401524C3AB004324DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C074D16714ED46310077C201 /* SystemConfiguration.framework */; };
 		C09709DF16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
-		C09709E016C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
 		C09709E116C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709DE16C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m */; };
 		C09709E316C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709E216C6A24300AAE2B9 /* ALAssetsLibrary+FilteredListTest.m */; };
 		C09709E616C7342400AAE2B9 /* UploadedURLModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C09709E416C733E400AAE2B9 /* UploadedURLModelTest.m */; };
@@ -139,19 +117,11 @@
 		C0FA7D0E18653C5500173561 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA7D0D18653C5500173561 /* libPods.a */; };
 		C0FA7D0F1865402500173561 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C000DDBB14E966B000DDD8C8 /* CoreLocation.framework */; };
 		C0FA7D121865433300173561 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA7D111865433300173561 /* libxml2.2.dylib */; };
-		C0FA7D13186549FC00173561 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C039B12214DF79D400F4169E /* SenTestingKit.framework */; };
 		C0FAF65E1501BC9A00F2BE23 /* AboutViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FAF65D1501BC9A00F2BE23 /* AboutViewControllerViewController.m */; };
 		FE238778C81F4CC983FE0123 /* libPods-RollToEverGHUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD49A02E702042F3A008238D /* libPods-RollToEverGHUnitTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C039B12614DF79D400F4169E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C039B0F714DF79D300F4169E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C039B0FF14DF79D300F4169E;
-			remoteInfo = RollToEver;
-		};
 		C0BC74F114E6CF64003B0611 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C039B0F714DF79D300F4169E /* Project object */;
@@ -178,10 +148,7 @@
 		C039B10E14DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C039B11214DF79D300F4169E /* RollToEver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RollToEver-Prefix.pch"; sourceTree = "<group>"; };
 		C039B11714DF79D300F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C039B12114DF79D400F4169E /* RollToEverTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollToEverTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C039B12214DF79D400F4169E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		C039B12A14DF79D400F4169E /* RollToEverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RollToEverTests-Info.plist"; sourceTree = "<group>"; };
-		C039B12C14DF79D400F4169E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C039B14514DF8A9E00F4169E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C039CDD514F68B9E00948DC6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "RollToEver/Resources/Icon-72.png"; sourceTree = "<group>"; };
 		C039CDD614F68B9E00948DC6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "RollToEver/Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -251,8 +218,6 @@
 		C0828E6F16C157A200C3B7ED /* RollToEverCommonException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollToEverCommonException.h; path = RollToEver/Classes/RollToEverCommonException.h; sourceTree = "<group>"; };
 		C0828E7016C157A300C3B7ED /* RollToEverCommonException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RollToEverCommonException.m; path = RollToEver/Classes/RollToEverCommonException.m; sourceTree = "<group>"; };
 		C0828E7416C158F800C3B7ED /* ALAsset+TransformForEvernoteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+TransformForEvernoteTest.m"; sourceTree = "<group>"; };
-		C0828E8116C1C35600C3B7ED /* SampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTest.h; sourceTree = "<group>"; };
-		C0828E8216C1C35600C3B7ED /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
 		C0828E8416C1C40E00C3B7ED /* EDAMNote+CreateFromALAssetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMNote+CreateFromALAssetTest.m"; sourceTree = "<group>"; };
 		C0828E8716C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ALAssetsLibrary+BlockingUtility.h"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.h"; sourceTree = "<group>"; };
 		C0828E8816C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ALAssetsLibrary+BlockingUtility.m"; path = "RollToEver/Classes/ALAssetsLibrary+BlockingUtility.m"; sourceTree = "<group>"; };
@@ -310,23 +275,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C039B11D14DF79D400F4169E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C0FA7D13186549FC00173561 /* SenTestingKit.framework in Frameworks */,
-				C0192E8B14FFDB6B00DEC1F7 /* CoreGraphics.framework in Frameworks */,
-				C0828E7E16C1C2E300C3B7ED /* SystemConfiguration.framework in Frameworks */,
-				C0828E7F16C1C2F800C3B7ED /* ImageIO.framework in Frameworks */,
-				C0828E7D16C1C2C900C3B7ED /* MobileCoreServices.framework in Frameworks */,
-				C0828E8016C1C30700C3B7ED /* Security.framework in Frameworks */,
-				C0833FF514E392AF00DB4144 /* CoreData.framework in Frameworks */,
-				C00C792014E56E7F00A68DCC /* AssetsLibrary.framework in Frameworks */,
-				C039B12414DF79D400F4169E /* UIKit.framework in Frameworks */,
-				C039B12514DF79D400F4169E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C0BC74C914E6CCFD003B0611 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				C039B10014DF79D300F4169E /* RollToEver.app */,
-				C039B12114DF79D400F4169E /* RollToEverTests.octest */,
 				C0BC74CC14E6CCFD003B0611 /* RollToEverGHUnitTest.app */,
 			);
 			name = Products;
@@ -451,25 +398,6 @@
 			path = RollToEver;
 			sourceTree = "<group>";
 		};
-		C039B12814DF79D400F4169E /* RollToEverTests */ = {
-			isa = PBXGroup;
-			children = (
-				C039B12914DF79D400F4169E /* Supporting Files */,
-				C0828E8116C1C35600C3B7ED /* SampleTest.h */,
-				C0828E8216C1C35600C3B7ED /* SampleTest.m */,
-			);
-			path = RollToEverTests;
-			sourceTree = "<group>";
-		};
-		C039B12914DF79D400F4169E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C039B12A14DF79D400F4169E /* RollToEverTests-Info.plist */,
-				C039B12B14DF79D400F4169E /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		C07EE30C160425CF000EFA19 /* Evernote */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,7 +453,6 @@
 		C0B604B2155C0607003DA7F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C039B12814DF79D400F4169E /* RollToEverTests */,
 				C0BC74D114E6CCFD003B0611 /* RollToEverGHUnitTest */,
 			);
 			name = Tests;
@@ -665,25 +592,6 @@
 			productReference = C039B10014DF79D300F4169E /* RollToEver.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C039B12014DF79D400F4169E /* RollToEverTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C039B13614DF79D400F4169E /* Build configuration list for PBXNativeTarget "RollToEverTests" */;
-			buildPhases = (
-				C039B11C14DF79D400F4169E /* Sources */,
-				C039B11D14DF79D400F4169E /* Frameworks */,
-				C039B11E14DF79D400F4169E /* Resources */,
-				C039B11F14DF79D400F4169E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C039B12714DF79D400F4169E /* PBXTargetDependency */,
-			);
-			name = RollToEverTests;
-			productName = RollToEverTests;
-			productReference = C039B12114DF79D400F4169E /* RollToEverTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		C0BC74CB14E6CCFD003B0611 /* RollToEverGHUnitTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0BC74E514E6CCFD003B0611 /* Build configuration list for PBXNativeTarget "RollToEverGHUnitTest" */;
@@ -737,7 +645,6 @@
 			projectRoot = "";
 			targets = (
 				C039B0FF14DF79D300F4169E /* RollToEver */,
-				C039B12014DF79D400F4169E /* RollToEverTests */,
 				C0BC74CB14E6CCFD003B0611 /* RollToEverGHUnitTest */,
 			);
 		};
@@ -764,14 +671,6 @@
 				C07EE2501603FA30000EFA19 /* Default.png in Resources */,
 				C07EE2511603FA30000EFA19 /* Default-568h@2x.png in Resources */,
 				C07EE2521603FA30000EFA19 /* Default@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C039B11E14DF79D400F4169E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C039B12D14DF79D400F4169E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,19 +706,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		C039B11F14DF79D400F4169E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		C4BE1E04146F47D4AD22AA95 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -903,25 +789,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C039B11C14DF79D400F4169E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C07EE313160425F3000EFA19 /* NSDataMD5Additions.m in Sources */,
-				C07EE316160425F3000EFA19 /* NSString+MD5.m in Sources */,
-				C07EE31F16042656000EFA19 /* MD5.c in Sources */,
-				C07EE3251604561F000EFA19 /* EvernoteSession+Login.m in Sources */,
-				C0828E6216BF2EC800C3B7ED /* ALAsset+TransformForEvernote.m in Sources */,
-				C0828E6D16C1514E00C3B7ED /* EDAMNote+CreateFromALAsset.m in Sources */,
-				C0828E7216C157A300C3B7ED /* RollToEverCommonException.m in Sources */,
-				C0828E8316C1C35600C3B7ED /* SampleTest.m in Sources */,
-				C0828E8A16C1D9EF00C3B7ED /* ALAssetsLibrary+BlockingUtility.m in Sources */,
-				C09709E016C69CCC00AAE2B9 /* ALAssetsLibrary+FilteredList.m in Sources */,
-				C062280B16CFB85E00C049DF /* EDAMNoteStoreClient+WithDelegate.m in Sources */,
-				C062281016CFB88D00C049DF /* EDAMUserStoreClient+WithDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C0BC74C814E6CCFD003B0611 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -970,11 +837,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C039B12714DF79D400F4169E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C039B0FF14DF79D300F4169E /* RollToEver */;
-			targetProxy = C039B12614DF79D400F4169E /* PBXContainerItemProxy */;
-		};
 		C0BC74F214E6CF64003B0611 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C039B0FF14DF79D300F4169E /* RollToEver */;
@@ -997,14 +859,6 @@
 				C039B11714DF79D300F4169E /* en */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		C039B12B14DF79D400F4169E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C039B12C14DF79D400F4169E /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		C060506014FF38FF001A41B7 /* Localizable.strings */ = {
@@ -1127,40 +981,6 @@
 			};
 			name = Release;
 		};
-		C039B13714DF79D400F4169E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC1A079D25FB4FB1AA8250FD /* Pods.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
-				INFOPLIST_FILE = "RollToEverTests/RollToEverTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		C039B13814DF79D400F4169E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC1A079D25FB4FB1AA8250FD /* Pods.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RollToEver/RollToEver-Prefix.pch";
-				INFOPLIST_FILE = "RollToEverTests/RollToEverTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		C0BC74E314E6CCFD003B0611 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35EDF444ADE24F48B5E2D9CE /* Pods-RollToEverGHUnitTest.xcconfig */;
@@ -1214,15 +1034,6 @@
 			buildConfigurations = (
 				C039B13414DF79D400F4169E /* Debug */,
 				C039B13514DF79D400F4169E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C039B13614DF79D400F4169E /* Build configuration list for PBXNativeTarget "RollToEverTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C039B13714DF79D400F4169E /* Debug */,
-				C039B13814DF79D400F4169E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
