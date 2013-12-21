@@ -186,13 +186,13 @@
 - (void)PhotoUploaderCanceled:(PhotoUploader *)photoUploader
 {
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // アラートビューのdelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
