@@ -70,12 +70,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    
-    // Evernoteにログインする
-    [EvernoteSession loginWithViewController:self];
-    
-    
+
     NSString *privacyAlertMessage = nil;
     
     // 大元の位置情報サービスがオンになっているか
@@ -128,7 +123,12 @@
                               otherButtonTitles:nil
                               ];
         [alert show];
+        self.photoCountLabel.text = privacyAlertMessage;
     } else {
+        
+        // Evernoteにログインする
+        [EvernoteSession loginWithViewController:self];
+        
         if (!_hud) {
             if (!_skipUpdatePhotoCount) {
                 [_uploadButton setEnabled:NO];
