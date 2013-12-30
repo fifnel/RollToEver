@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "ALAssetsLibrary+FilteredList.h"
 #import "MBProgressHUD.h"
 #import "EvernoteSDK.h"
@@ -49,13 +50,34 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         _hud = nil;
     }
+}
 
+- (void)viewDidUnload
+{
+    if (_hud != nil) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        _hud = nil;
+    }
+    [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_uploadButton setEnabled:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
     // Evernoteにログインする
     [EvernoteSession loginWithViewController:self];
-
-
+    
+    
     NSString *privacyAlertMessage = nil;
-
+    
     // 大元の位置情報サービスがオンになっているか
     if (![CLLocationManager locationServicesEnabled]) {
         privacyAlertMessage = NSLocalizedString(@"CLServicesDisable", @"");
@@ -79,45 +101,43 @@
                 break;
         }
     }
+    
+    // 写真アクセスが許可されているか
+    switch ([ALAssetsLibrary authorizationStatus]) {
+        case ALAuthorizationStatusNotDetermined:
+            privacyAlertMessage = NSLocalizedString(@"ALAuthorizationStatusNotDetermined", @"");
+            break;
+        case ALAuthorizationStatusRestricted:
+            privacyAlertMessage = NSLocalizedString(@"ALAuthorizationStatusRestricted", @"");
+            break;
+        case ALAuthorizationStatusDenied:
+            privacyAlertMessage = NSLocalizedString(@"ALAuthorizationStatusDenied", @"");
+            break;
+        case ALAuthorizationStatusAuthorized:
+        default:
+            break;
+    }
+    
     if (privacyAlertMessage) {
         UIAlertView *alert = [
                               [UIAlertView alloc]
-                              initWithTitle : @"Notice"
+                              initWithTitle : NSLocalizedString(@"Warning", @"")
                               message : privacyAlertMessage
                               delegate : self
-                              cancelButtonTitle : @"OK"
+                              cancelButtonTitle : NSLocalizedString(@"OK", @"")
                               otherButtonTitles:nil
                               ];
         [alert show];
-    }
-}
-
-- (void)viewDidUnload
-{
-    if (_hud != nil) {
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        _hud = nil;
-    }
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-    if (!_hud) {
-        if (!_skipUpdatePhotoCount) {
-            [_uploadButton setEnabled:NO];
-            [self updatePhotoCount];
-        } else {
-            [self assetsCountDidFinish];
+    } else {
+        if (!_hud) {
+            if (!_skipUpdatePhotoCount) {
+                [_uploadButton setEnabled:NO];
+                [self updatePhotoCount];
+            } else {
+                [self assetsCountDidFinish];
+            }
+            _skipUpdatePhotoCount = NO;
         }
-        _skipUpdatePhotoCount = NO;
     }
 }
 
